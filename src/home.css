@@ -1,0 +1,51 @@
+#homemenubar{
+    width: 70vw;
+    margin-top : 10vh;  
+    margin-left : 15vw;
+    margin-right: 15vw;
+    display: flex;
+    justify-content: space-around;
+    flex-grow: calc();
+    font-size: medium;
+}
+
+#homestudybar{
+    width: 85vw;
+    margin-top: 7.5vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    display: flex;
+    justify-content: space-around;
+    flex-grow: calc();
+    font-size: small;
+}
+
+#SettingKeyword{
+    font-weight: bold;
+}
+
+#Logo{
+    font-weight: bold;
+}
+
+#StudyHome{
+    font-weight: bold;
+    color:#5C4EFF;
+}
+
+#homebody{
+    width: 85vw;
+    height: 60vh;
+    margin-top : 7.5vh;
+    margin-bottom: 10vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+#home{
+    display: flex;
+    flex-direction: column;
+}
