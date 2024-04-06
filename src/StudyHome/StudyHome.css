@@ -1,4 +1,4 @@
-#homemenubar{
+#StudtHomeMenubar{
     width: 70vw;
     margin-top : 10vh;  
     margin-left : 15vw;
@@ -9,7 +9,7 @@
     font-size: medium;
 }
 
-#homestudybar{
+#StudyHomeStudybar{
     width: 85vw;
     margin-top: 7.5vh;    
     margin-left : 7.5vw;
@@ -20,20 +20,20 @@
     font-size: small;
 }
 
-#SettingKeyword{
+#StudyHomeSettingKeyword{
     font-weight: bold;
 }
 
-#Logo{
+#StudyHomeLogo{
     font-weight: bold;
 }
 
-#StudyHome{
+#StudyHomeStudyHome{
     font-weight: bold;
     color:#5C4EFF;
 }
 
-#homebody{
+#StudyHomeBody{
     width: 85vw;
     height: 60vh;
     margin-top : 7.5vh;
@@ -45,7 +45,7 @@
     border-radius: 10px;
 }
 
-#home{
+#StudyHome{
     display: flex;
     flex-direction: column;
 }
