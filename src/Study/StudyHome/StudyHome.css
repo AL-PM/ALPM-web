@@ -5,8 +5,7 @@
     margin-right: 15vw;
     display: flex;
     justify-content: space-around;
-    flex-grow: calc();
-    font-size: medium;
+    font-size: larger;
 }
 
 #StudyHomeStudybar{
@@ -17,7 +16,7 @@
     display: flex;
     justify-content: space-around;
     flex-grow: calc();
-    font-size: small;
+    font-size: medium;
 }
 
 #StudyHomeSettingKeyword{
