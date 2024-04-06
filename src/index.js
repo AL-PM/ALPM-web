@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import CodeHome from './CodeHome/CodeHome'
+import CodeHome from './CodeCommunity/CodeHome/CodeHome'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
