@@ -1,0 +1,68 @@
+#CodeHomeMenuBar{
+    width: 70vw;
+    margin-top : 10vh;  
+    margin-left : 15vw;
+    margin-right: 15vw;
+    display: flex;
+    justify-content: space-around;
+    font-size: medium;
+}
+
+#CodeHomeSearchBar{
+    width: 85vw;
+    margin-top: 7.5vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    display: flex;
+    justify-content: space-around;
+    align-items:center; 
+    flex-grow: calc();
+    font-size: small;
+}
+
+#CodeSettingKeyword{
+    font-weight: bold;
+}
+
+#CodeLogo{
+    font-weight: bold;
+}
+
+#CodeCode{
+    font-weight: bold;
+    color:#FF6B00;
+}
+
+#CodeHomeBody{
+    width: 85vw;
+    height: 55vh;
+    margin-top : 5vh;
+    margin-bottom: 5vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+#CodeHomeSearchButton{
+    height: 15px;
+}
+
+#CodeHomeUploadButton{
+    width: 85vw;
+    height : 5vh;
+    margin-left: 7.5vw;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+#CodeHomeSearchInput{
+    border: 0px;
+}
+
+#Codehome{
+    display: flex;
+    flex-direction: column;
+}
