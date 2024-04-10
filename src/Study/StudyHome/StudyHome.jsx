@@ -1,6 +1,6 @@
 import React from "react";
 import "./StudyHome.css";
-import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
+import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
 
 
 function StudyHomeStudybar(){

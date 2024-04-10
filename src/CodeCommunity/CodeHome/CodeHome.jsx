@@ -1,12 +1,12 @@
 import React from "react";
 import "./CodeHome.css";
 import CodeSearchIcon from "./img/SearchIcon.png";
-import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
+import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
 
 
 function CodeHomeSearchBar(props){
     return(
-        <div id="CodeHomeSearchBar">ㄴ
+        <div id="CodeHomeSearchBar">
             <span id = "CodeSettingKeyword" >학습 언어</span>
             <span>|</span>
             <span id = "CodeLanguageSetting1" >PYTHON</span>
