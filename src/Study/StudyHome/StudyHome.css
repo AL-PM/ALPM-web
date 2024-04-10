@@ -5,7 +5,6 @@
     margin-right: 7.5vw;
     display: flex;
     justify-content: space-around;
-    flex-grow: calc();
     font-size: medium;
 }
 
