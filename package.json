@@ -1,17 +1,15 @@
 {
-  "name": "alpm-web",
+  "name": "my-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4",
-    "yarn": "^1.22.22"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,17 +37,5 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AL-PM/ALPM-web.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/AL-PM/ALPM-web/issues"
-  },
-  "homepage": "https://github.com/AL-PM/ALPM-web#readme"
+  }
 }
