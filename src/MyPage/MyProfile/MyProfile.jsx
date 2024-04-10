@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MyProfile.css";
 import UserEx from "./img/UserEx.png";
-import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
+import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 
 
 function MyProfileDetailmenubar(){

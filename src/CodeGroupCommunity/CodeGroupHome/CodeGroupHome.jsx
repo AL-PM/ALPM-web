@@ -1,7 +1,7 @@
 import React from "react";
 import "./CodeGroupHome.css";
 import CodeGroupSearchIcon from "./img/SearchIcon.png";
-import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
+import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 
 
 function CodeGroupHomeSearchBar(props){
