@@ -1,36 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CodeHome.css";
 import CodeSearchIcon from "./img/SearchIcon.png";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 
 
-function CodeHomeSearchBar(props){
+function CodeHomeSearchBar({language, setlanguage, reference, setreference, setkeword}){
+    const [input, setinput] = useState("");
     return(
-        <div id="CodeHomeSearchBar">ㄴ
+        <div id="CodeHomeSearchBar">
             <span id = "CodeSettingKeyword" >학습 언어</span>
             <span>|</span>
-            <span id = "CodeLanguageSetting1" >PYTHON</span>
-            <span id = "CodeLanguageSetting2" >JAVA</span>
-            <span id = "CodeLanguageSettissng3" >C++</span>
+            <span onClick={()=> setlanguage("PYTHON")} style={{fontWeight:language==="PYTHON" ? "bold" : "normal", color:language==="PYTHON" ? "#FF6B00" : "black"}} >PYTHON </span>
+            <span onClick={()=> setlanguage("JAVA")} style={{fontWeight:language==="JAVA" ? "bold" : "normal", color:language==="JAVA" ? "#FF6B00" : "black"}} >JAVA</span>
+            <span onClick={()=> setlanguage("C++")} style={{fontWeight:language==="C++" ? "bold" : "normal", color:language==="C++" ? "#FF6B00" : "black"}} >C++</span>
             <span></span>
             <span id = "CodeSettingKeyword" >코드 유형</span>
             <span>|</span>
-            <span id = "CodeType1" >ALL</span>
-            <span id = "CodeType2" >REFERENCE</span>
-            <span id = "CodeType3" >USER_MADE</span>
+            <span id = "CodeType1" onClick={()=> setreference("ALL")} style={{fontWeight:reference==="ALL" ? "bold" : "normal", color:reference==="ALL" ? "#FF6B00" : "black"}} >ALL</span>
+            <span id = "CodeType2" onClick={()=> setreference("REFERENCE")} style={{fontWeight:reference==="REFERENCE" ? "bold" : "normal", color:reference==="REFERENCE" ? "#FF6B00" : "black"}} >REFERENCE</span>
+            <span id = "CodeType3" onClick={()=> setreference("USER_MADE")} style={{fontWeight:reference==="USER_MADE" ? "bold" : "normal", color:reference==="USER_MADE" ? "#FF6B00" : "black"}} >USER_MADE</span>
             <span></span>
             <span id = "CodeSettingKeyword" >검색어</span>
             <span>|</span>
-            <input id = "CodeHomeSearchInput" type="text" name="CodeHomeSearchKeyword" placeholder="키워드를 입력해주세요"></input>
-            <img id = "CodeHomeSearchButton" src={CodeSearchIcon} alt="CodeSearchIcon"></img>
+            <input id = "CodeHomeSearchInput" value={input} onChange={(event)=>setinput(event.target.value)} type="text" name="CodeHomeSearchKeyword" placeholder="키워드를 입력해주세요"></input>
+            <img id = "CodeHomeSearchButton" onClick={()=>setkeword(input)} src={CodeSearchIcon} alt="CodeSearchIcon"></img>
         </div>
     )
 }
 
-function CodeHomebody(){
-
+function CodeHomebody({language, reference, searchkeyword}){
     return(
         <div id="CodeHomeBody">
+            <ol>{language}</ol>
+            <ol>{reference}</ol>
+            <ol>{searchkeyword}</ol>
         </div>
     )
 }
@@ -43,12 +46,14 @@ function CodeHomeUploadButton(){
 
 
 function CodeCommunity(){
-
+    const [language, setlanguage] = useState("PYTHON");
+    const [reference, setreference] = useState("ALL");
+    const [searchkeyword, setkeword] = useState("");
     return(
         <div id = "Codehome">
             <MainMenuBar page={"Code"} />
-            <CodeHomeSearchBar />
-            <CodeHomebody />
+            <CodeHomeSearchBar language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword}/>
+            <CodeHomebody language = {language} reference = {reference} searchkeyword={searchkeyword}/>
             <CodeHomeUploadButton />
         </div>
        
