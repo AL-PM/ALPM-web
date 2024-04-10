@@ -1,13 +1,3 @@
-#CodeHomeMenuBar{
-    width: 70vw;
-    margin-top : 10vh;  
-    margin-left : 15vw;
-    margin-right: 15vw;
-    display: flex;
-    justify-content: space-around;
-    font-size: larger;
-}
-
 #CodeHomeSearchBar{
     width: 85vw;
     margin-top: 7.5vh;    
@@ -22,15 +12,6 @@
 
 #CodeSettingKeyword{
     font-weight: bold;
-}
-
-#CodeLogo{
-    font-weight: bold;
-}
-
-#CodeCode{
-    font-weight: bold;
-    color:#FF6B00;
 }
 
 #CodeHomeBody{

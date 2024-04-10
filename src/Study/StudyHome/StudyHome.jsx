@@ -38,7 +38,7 @@ function StudyHome(){
 
     return(
         <div id = "StudyHome">
-            <MainMenuBar page="Study" />
+            <MainMenuBar page={"Study"} />
             <StudyHomeStudybar />
             <StudyHomeBody />
         </div>

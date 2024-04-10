@@ -1,22 +1,8 @@
 import React from "react";
 import "./CodeGroupHome.css";
 import CodeGroupSearchIcon from "./img/SearchIcon.png";
+import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
 
-function CodeGroupHomemenubar(){
-    return(
-        <div id="CodeGroupHomeMenuBar">
-            <span id = "CodeGroupLogo" >A.L.P.M</span>
-            <span>|</span>
-            <span id = "CodeGroupStudyHome" >STUDY HOME</span>
-            <span>|</span>
-            <span id = "CodeGroupCode" >CODE COMMUNITY</span>
-            <span>|</span>
-            <span id = "CodeGroupCodeGroup" >CODE GROUP COMMUNITY</span>
-            <span>|</span>
-            <span id = "CodeGroupMypage" >MY PAGE</span>
-        </div>
-    )
-}
 
 function CodeGroupHomeSearchBar(props){
     return(
@@ -54,7 +40,7 @@ function CodeGrupHome(){
 
     return(
         <div id = "CodeGroupHome">
-            <CodeGroupHomemenubar />
+            <MainMenuBar page={"CodeGroup"} />
             <CodeGroupHomeSearchBar />
             <CodeGroupHomebody />
         </div>

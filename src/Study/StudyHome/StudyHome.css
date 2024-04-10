@@ -1,13 +1,3 @@
-#StudtHomeMenubar{
-    width: 70vw;
-    margin-top : 10vh;  
-    margin-left : 15vw;
-    margin-right: 15vw;
-    display: flex;
-    justify-content: space-around;
-    font-size: larger;
-}
-
 #StudyHomeStudybar{
     width: 85vw;
     margin-top: 7.5vh;    
@@ -23,14 +13,6 @@
     font-weight: bold;
 }
 
-#StudyHomeLogo{
-    font-weight: bold;
-}
-
-#StudyHomeStudyHome{
-    font-weight: bold;
-    color:#5C4EFF;
-}
 
 #StudyHomeBody{
     width: 85vw;

@@ -1,22 +1,8 @@
 import React, { useState } from "react";
 import "./MyProfile.css";
 import UserEx from "./img/UserEx.png";
+import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
 
-function MyProfilemenubar(){
-    return(
-        <div id="MyProfilemenubar">
-            <span id = "MyProfileLogo" >A.L.P.M</span>
-            <span>|</span>
-            <span id = "MyProfileStudyHome" >STUDY HOME</span>
-            <span>|</span>
-            <span id = "MyProfileCode" >CODE COMMUNITY</span>
-            <span>|</span>
-            <span id = "MyProfileCodeGroup" >CODE GROUP COMMUNITY</span>
-            <span>|</span>
-            <span id = "MyProfileMypage" >MY PAGE</span>
-        </div>
-    )
-}
 
 function MyProfileDetailmenubar(){
     let [test, testf] = useState("1");
@@ -125,7 +111,7 @@ function MyProfileStudyHistory(){
 function MyProfile(){
     return(
         <div id = "MyProfile">
-            <MyProfilemenubar />
+            <MainMenuBar page={"MyPage"} />
             <MyProfileDetailmenubar />
         </div>
     )

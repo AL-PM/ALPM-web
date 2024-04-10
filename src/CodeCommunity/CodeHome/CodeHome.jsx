@@ -1,22 +1,8 @@
 import React from "react";
 import "./CodeHome.css";
 import CodeSearchIcon from "./img/SearchIcon.png";
+import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
 
-function CodeHomemenubar(){
-    return(
-        <div id="CodeHomeMenuBar">
-            <span id = "CodeLogo" >A.L.P.M</span>
-            <span>|</span>
-            <span id = "CodeStudyHome" >STUDY HOME</span>
-            <span>|</span>
-            <span id = "CodeCode" >CODE COMMUNITY</span>
-            <span>|</span>
-            <span id = "CodeCodeGroup" >CODE GROUP COMMUNITY</span>
-            <span>|</span>
-            <span id = "CodeMypage" >MY PAGE</span>
-        </div>
-    )
-}
 
 function CodeHomeSearchBar(props){
     return(
@@ -60,7 +46,7 @@ function CodeCommunity(){
 
     return(
         <div id = "Codehome">
-            <CodeHomemenubar />
+            <MainMenuBar page={"Code"} />
             <CodeHomeSearchBar />
             <CodeHomebody />
             <CodeHomeUploadButton />
