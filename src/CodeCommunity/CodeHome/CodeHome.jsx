@@ -4,8 +4,10 @@ import CodeSearchIcon from "./img/SearchIcon.png";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 
 
-function CodeHomeSearchBar({language, setlanguage, reference, setreference, setkeword}){
-    const [input, setinput] = useState("");
+function CodeHomeSearchBar({language, setlanguage, reference, setreference, setkeword, searchkeyword}){
+    function searchButton(){
+        console.log({searchkeyword});
+    }
     return(
         <div id="CodeHomeSearchBar">
             <span id = "CodeSettingKeyword" >학습 언어</span>
@@ -22,8 +24,8 @@ function CodeHomeSearchBar({language, setlanguage, reference, setreference, setk
             <span></span>
             <span id = "CodeSettingKeyword" >검색어</span>
             <span>|</span>
-            <input id = "CodeHomeSearchInput" value={input} onChange={(event)=>setinput(event.target.value)} type="text" name="CodeHomeSearchKeyword" placeholder="키워드를 입력해주세요"></input>
-            <img id = "CodeHomeSearchButton" onClick={()=>setkeword(input)} src={CodeSearchIcon} alt="CodeSearchIcon"></img>
+            <input id = "CodeHomeSearchInput" value={searchkeyword} onChange={(event)=>setkeword(event.target.value)} type="text" name="CodeHomeSearchKeyword" placeholder="키워드를 입력해주세요"></input>
+            <img id = "CodeHomeSearchButton" onClick={searchButton} src={CodeSearchIcon} alt="CodeSearchIcon"></img>
         </div>
     )
 }
@@ -112,7 +114,7 @@ function CodeCommunity(){
     return(
         <div id = "Codehome">
             <MainMenuBar page={"Code"} />
-            <CodeHomeSearchBar language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword}/>
+            <CodeHomeSearchBar language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
             <CodeHomebody language={language} reference={reference} />
             <CodeHomeUploadButton />
         </div>
