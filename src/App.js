@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MyProfile from './MyPage/MyProfile/MyProfile';
 import StudyHome from './Study/StudyHome/StudyHome';
 import CodeHome from './CodeCommunity/CodeHome/CodeHome';
@@ -8,14 +8,14 @@ import CodeGroupHome from './CodeGroupCommunity/CodeGroupHome/CodeGroupHome';
 
 function App(){
     return(
-        <Router>
-            <Switch>
-                <Route path="/"><StudyHome /></Route>
-                <Route path="/mypage"><MyProfile /></Route>
-                <Route path="/codecommunity"><CodeHome /></Route>
-                <Route path="/codegroupcommunity"><CodeGroupHome /></Route>
-            </Switch>
-        </Router>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<StudyHome />} />
+                <Route path="/mypage" element={<MyProfile />} />
+                <Route path="/code" element={<CodeHome />} />
+                <Route path="/codegroup" element={<CodeGroupHome />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
