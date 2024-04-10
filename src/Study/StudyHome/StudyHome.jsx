@@ -1,21 +1,7 @@
 import React from "react";
 import "./StudyHome.css";
+import MainMenuBar from "/Users/chane/alpm_web/src/Etc/MainMenuBar/MainMenuBar.jsx";
 
-function StudyHomeMenubar(){
-    return(
-        <div id="StudtHomeMenubar">
-            <span id = "StudyHomeLogo" >A.L.P.M</span>
-            <span>|</span>
-            <span id = "StudyHomeStudyHome" >STUDY HOME</span>
-            <span>|</span>
-            <span id = "StudyHomeCode" >CODE COMMUNITY</span>
-            <span>|</span>
-            <span id = "StudyHomeCodeGroup" >CODE GROUP COMMUNITY</span>
-            <span>|</span>
-            <span id = "StudyHomeMypage" >MY PAGE</span>
-        </div>
-    )
-}
 
 function StudyHomeStudybar(){
     return(
@@ -52,7 +38,7 @@ function StudyHome(){
 
     return(
         <div id = "StudyHome">
-            <StudyHomeMenubar />
+            <MainMenuBar page="Study" />
             <StudyHomeStudybar />
             <StudyHomeBody />
         </div>

@@ -1,0 +1,13 @@
+#MainMenubar{
+    width: 70vw;
+    margin-top : 10vh;  
+    margin-left : 15vw;
+    margin-right: 15vw;
+    display: flex;
+    justify-content: space-around;
+    font-size: larger;
+}
+
+#MainMenuBarLogo{
+    font-weight: bold;
+}
