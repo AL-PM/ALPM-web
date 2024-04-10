@@ -24,37 +24,6 @@ function MyProfileDetailmenubar(){
         </div>
     )
 }
-/*
-function MyProfileDetailmenubar(){
-    const menuItems = [
-        { id: "DetailMyProfile", text: "내 정보" },
-        { id: "DetailMyCodeBoard", text: "내 코드 보드 관리" },
-        { id: "DetaulMyCodeGroup", text: "내 코드 그룹 관리" },
-        { id: "DetaulMyCode", text: "내가 작성한 코드 관리" },
-        { id: "DetailNewCode", text: "새로운 코드 업로드" }
-    ];
-
-    const [activeItem, setActiveItem] = useState("DetailMyProfile");
-
-    const handleClick = (itemId) => {
-        setActiveItem(itemId);
-    };
-
-    return(
-        <div>
-            <div id="MyProfileDetailmenubar">
-                {menuItems.map(item => (
-                    <span key={item.id} id={item.id} style={{ fontWeight: activeItem === item.id ? "bold" : "normal", color: activeItem === item.id ? "#EF4949" : "black" }} onClick={() => handleClick(item.id)}>
-                        {item.text}
-                    </span>
-                ))}
-            </div>
-            {activeItem === "DetailMyProfile" && <MyProfileUserBody />}
-            {activeItem === "DetailMyProfile" && <MyProfileStudyHistory />} 
-        </div>
-    );
-}
-*/
 
 function MyProfileUserBody(){
     return(
