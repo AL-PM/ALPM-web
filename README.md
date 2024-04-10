@@ -1,8 +1,10 @@
 ## Soongil University 2024-1 Capstone Project
 - 초심자를 위한 쉬운 알고리즘 학습 서비스 
+## Front-end Web 개발 담당
+- SSU / 20192830 / Park Byeongchan / qudcks8084@naver.com
 ##  개발 환경
 - 개발 언어 : JavaScript, HTML5, CSS
-- 프레임워크 : React - Node.js 20.11.1
+- 프레임워크 : ReactJS - Node.js 20.11.1
 - IDE : Visual Studio Code
 
 ## GIT 관련 설정
