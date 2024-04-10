@@ -1,5 +1,5 @@
 #CodeHomeSearchBar{
-    width: 85vw;
+    width: 85%;
     margin-top: 7.5vh;    
     margin-left : 7.5vw;
     margin-right: 7.5vw;
@@ -20,9 +20,7 @@
     margin-bottom: 5vh;    
     margin-left : 7.5vw;
     margin-right: 7.5vw;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 10px;
+    overflow: auto;
 }
 
 #CodeHomeSearchButton{
@@ -45,4 +43,20 @@
 #Codehome{
     display: flex;
     flex-direction: column;
+}
+
+#CodeSearchResult{
+    width: 85%-1px;  
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-left : 7.5%;
+    padding-right: 7.5%;
+    margin-top:20px;
+    margin-bottom : 30px;
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr 1.5fr 0.5fr 1.5fr 0.5fr 0.5fr 0.5fr 1.5fr 0.5fr 2fr 0.5fr 1fr 0.5fr 2fr ;
+    gap: 20px; 
+    font-size: small;
+    border: 1px solid;
+    border-radius: 10px;
 }

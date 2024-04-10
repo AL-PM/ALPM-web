@@ -28,14 +28,74 @@ function CodeHomeSearchBar({language, setlanguage, reference, setreference, setk
     )
 }
 
-function CodeHomebody({language, reference, searchkeyword}){
+function CodeHomebody({reference, language}){
+    const ExampleData = [
+        {
+            "id": 1,
+            "name": "퀵 정렬",
+            "referencedCount": 2,
+            "verified": true,
+            "language": "Python",
+            "owner" : "Byeongchan"
+        },
+        {
+            "id": 2,
+            "name": "버블 정렬",
+            "referencedCount": 2,
+            "verified": true,
+            "language": "Python",
+            "owner" : "Rangjin"
+        },
+        {
+            "id": 3,
+            "name": "힙 정렬",
+            "referencedCount": 4,
+            "verified": true,
+            "language": "Python",
+            "owner" : "HyeonWoo"
+        },
+        {
+            "id": 4,
+            "name": "버블 정렬",
+            "referencedCount": 4,
+            "verified": null,
+            "language": "Python",
+            "owner" : "MoonKee"
+        },
+        
+    ]
     return(
         <div id="CodeHomeBody">
-            <ol>{language}</ol>
-            <ol>{reference}</ol>
-            <ol>{searchkeyword}</ol>
+            <CodeSearchResult ExampleData={ExampleData} language={language} reference={reference}/>
         </div>
     )
+}
+
+function CodeSearchResult({ExampleData, language, reference}){
+return(
+    <div>
+        {ExampleData.map((Data) =>
+            <div id="CodeSearchResult" key={Data.id}>
+                <span>학습 언어</span>
+                <span>|</span>
+                <span>{language}</span>
+                <span></span>
+                <span>코드 유형</span>
+                <span>|</span>
+                <span>{reference}</span>
+                <span></span>
+                <span>작성자</span>
+                <span>|</span>
+                <span>{Data.owner}</span>
+                <span></span>
+                <span>제목</span>
+                <span>|</span>
+                <span>{Data.name}</span>
+                
+            </div>
+        )}
+    </div>
+)
 }
 
 function CodeHomeUploadButton(){
@@ -53,7 +113,7 @@ function CodeCommunity(){
         <div id = "Codehome">
             <MainMenuBar page={"Code"} />
             <CodeHomeSearchBar language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword}/>
-            <CodeHomebody language = {language} reference = {reference} searchkeyword={searchkeyword}/>
+            <CodeHomebody language={language} reference={reference} />
             <CodeHomeUploadButton />
         </div>
        
