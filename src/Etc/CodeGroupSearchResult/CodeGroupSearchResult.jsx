@@ -1,7 +1,9 @@
 import React from "react";
 import './CodeGroupSearchResult.css';
+import {useNavigate} from 'react-router-dom';
 
 function CodeGroupSearchResult({searchData}){
+    const navigator = useNavigate();
     function verifiedInvertor(verified){
         if(verified === null)
             return "ALL";
@@ -13,7 +15,7 @@ function CodeGroupSearchResult({searchData}){
 return(
     <div id="CodeGroupSearchBody">
         {searchData.map((Data) => 
-            <div id="CodeGroupSearchResult" key={Data.id}>
+            <div id="CodeGroupSearchResult" key={Data.id} onClick={()=>navigator('/codegroup/Detail', {state : Data.id})}>
                 <span>그룹 요약</span>
                 <span>|</span>
                 <span>{Data.language}</span>
