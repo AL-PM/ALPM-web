@@ -5,6 +5,7 @@ import StudyHome from "./Study/StudyHome/StudyHome";
 import MyProfile from "./MyPage/MyProfile/MyProfile";
 import CodeGroupHome from "./CodeGroupCommunity/CodeGroupHome/CodeGroupHome";
 import CodeGroupDetail from "./CodeGroupCommunity/CodeGroupDetail/CodeGroupDetail";
+import CodeDetail from "./CodeCommunity/CodeDetail/CodeDetail";
 
 
 function App(){
@@ -13,7 +14,8 @@ function App(){
             <Routes>
                 <Route path="/" element={<StudyHome />} />
                 <Route path="/mypage/myprofile" element={<MyProfile />} />
-                <Route path="/code" element={<CodeHome />} />
+                <Route path="/code/" element={<CodeHome />} />
+                <Route path="/code/Detail" element={<CodeDetail />} />
                 <Route path="/codegroup/" element={<CodeGroupHome />} />
                 <Route path="/codegroup/Detail" element={<CodeGroupDetail />} />
             </Routes>
