@@ -1,0 +1,13 @@
+#CodeDetailInfo{
+    width: 80%;  
+    padding-left : 5%;
+    padding-right: 5%;
+    margin-left:5%;
+    margin-right: 5%;
+    margin-top: 7.5vh;  
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr 1.5fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 0.5fr 1fr ;
+    justify-items: start;
+    font-size: medium;
+
+}
