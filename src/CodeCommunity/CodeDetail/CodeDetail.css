@@ -6,3 +6,8 @@
     border: 1px solid;
     border-radius: 10px;
 }
+
+#CodeGroupDetail{
+    display: flex;
+    flex-direction: column;
+}
