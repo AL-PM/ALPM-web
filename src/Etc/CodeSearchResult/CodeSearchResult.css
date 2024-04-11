@@ -1,0 +1,26 @@
+#CodeSearchResult{
+    width: 85%-1px;  
+    padding-top:15px;
+    padding-bottom: 15px;
+    padding-left : 7.5%;
+    padding-right: 7.5%;
+    margin-top:20px;
+    margin-bottom : 30px;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 0.5fr 2.5fr 0.5fr 0.5fr 0.5fr 3fr ;
+    justify-items: start;
+    gap: 20px; 
+    font-size: small;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+#CodeSearchBody{
+    width: 85vw;
+    height: 55vh;
+    margin-top : 5vh;
+    margin-bottom: 5vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    overflow: auto;
+}
