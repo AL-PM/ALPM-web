@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./CodeHome.css";
 import CodeSearchIcon from "./img/SearchIcon.png";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
+import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult.jsx";
 
 
 function CodeHomeSearchBar({language, setlanguage, reference, setreference, setkeword, searchkeyword}){
@@ -30,8 +31,19 @@ function CodeHomeSearchBar({language, setlanguage, reference, setreference, setk
     )
 }
 
-function CodeHomebody({reference, language}){
-    const ExampleData = [
+
+function CodeHomeUploadButton(){
+    return(
+        <button id="CodeHomeUploadButton">새로운 코드 업로드</button>
+    )
+}
+
+
+function CodeCommunity(){
+    const [language, setlanguage] = useState("PYTHON");
+    const [reference, setreference] = useState("ALL");
+    const [searchkeyword, setkeword] = useState("");
+    const searchData = [
         {
             "id": 1,
             "name": "퀵 정렬",
@@ -67,55 +79,10 @@ function CodeHomebody({reference, language}){
         
     ]
     return(
-        <div id="CodeHomeBody">
-            <CodeSearchResult ExampleData={ExampleData} language={language} reference={reference}/>
-        </div>
-    )
-}
-
-function CodeSearchResult({ExampleData, language, reference}){
-return(
-    <div>
-        {ExampleData.map((Data) =>
-            <div id="CodeSearchResult" key={Data.id}>
-                <span>학습 언어</span>
-                <span>|</span>
-                <span>{language}</span>
-                <span></span>
-                <span>코드 유형</span>
-                <span>|</span>
-                <span>{reference}</span>
-                <span></span>
-                <span>작성자</span>
-                <span>|</span>
-                <span>{Data.owner}</span>
-                <span></span>
-                <span>제목</span>
-                <span>|</span>
-                <span>{Data.name}</span>
-                
-            </div>
-        )}
-    </div>
-)
-}
-
-function CodeHomeUploadButton(){
-    return(
-        <button id="CodeHomeUploadButton">새로운 코드 업로드</button>
-    )
-}
-
-
-function CodeCommunity(){
-    const [language, setlanguage] = useState("PYTHON");
-    const [reference, setreference] = useState("ALL");
-    const [searchkeyword, setkeword] = useState("");
-    return(
         <div id = "Codehome">
             <MainMenuBar page={"Code"} />
             <CodeHomeSearchBar language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
-            <CodeHomebody language={language} reference={reference} />
+            <CodeSearchResult searchData={searchData}/>
             <CodeHomeUploadButton />
         </div>
        
