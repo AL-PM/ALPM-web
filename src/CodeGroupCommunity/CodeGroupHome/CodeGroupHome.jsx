@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./CodeGroupHome.css";
-import CodeGroupSearchIcon from "./img/SearchIcon.png";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CommunitySearchBar from "../../Etc/CommunitySearchBar/CommunitySearchBar.jsx";
 
