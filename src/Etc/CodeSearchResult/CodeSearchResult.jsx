@@ -1,7 +1,7 @@
 import React from "react";
 import './CodeSearchResult.css';
 
-function CodeSearchResult({searchData}){
+function CodeSearchResult({searchData, bodyHeight}){
     function verifiedInvertor(Data){
         if(Data === null)
             return "ALL";
@@ -11,7 +11,7 @@ function CodeSearchResult({searchData}){
             return "USER_MADE";
     }
 return(
-    <div id="CodeSearchBody">
+    <div id="CodeSearchBody" style={{height:bodyHeight}}>
         {searchData.map((Data) =>
             <div id="CodeSearchResult" key={Data.id}>
                 <span>학습 언어</span>
