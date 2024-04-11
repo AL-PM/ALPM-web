@@ -2,17 +2,17 @@ import React from "react";
 import './CodeGroupSearchResult.css';
 
 function CodeGroupSearchResult({searchData}){
-    function verifiedInvertor(Data){
-        if(Data === null)
+    function verifiedInvertor(verified){
+        if(verified === null)
             return "ALL";
-        if(Data === true)
+        if(verified === true)
             return "REFERENCE";
-        if(Data === false)
+        if(verified === false)
             return "USER_MADE";
     }
 return(
     <div id="CodeGroupSearchBody">
-        {searchData.map((Data) =>
+        {searchData.map((Data) => 
             <div id="CodeGroupSearchResult" key={Data.id}>
                 <span>그룹 요약</span>
                 <span>|</span>

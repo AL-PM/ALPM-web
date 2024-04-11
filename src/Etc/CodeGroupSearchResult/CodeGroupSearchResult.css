@@ -1,13 +1,13 @@
 #CodeGroupSearchResult{
-    width: 85%-1px;  
+    width: 90%-1px;  
     padding-top:15px;
     padding-bottom: 15px;
-    padding-left : 7.5%;
-    padding-right: 7.5%;
+    padding-left : 5%;
+    padding-right: 5%;
     margin-top:20px;
     margin-bottom : 30px;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr 2fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 0.5fr 1fr ;
+    grid-template-columns: 1fr 0.2fr 1fr 2fr 0.2fr 1fr 0.2fr 2fr 0.2fr 1fr 0.2fr 3fr 0.2fr 1fr 0.2fr 1fr ;
     justify-items: start;
     gap: 20px; 
     font-size: small;
