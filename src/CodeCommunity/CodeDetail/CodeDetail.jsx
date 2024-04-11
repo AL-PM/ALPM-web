@@ -2,6 +2,7 @@ import React from "react";
 import {useLocation} from "react-router-dom"
 import './CodeDetail.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx";
+import CodeDetailInfo from "../../Etc/CodeDetailInfo/CodeDetailInfo.jsx";
 
 function CodeFollowBtn(){
     return(
@@ -11,7 +12,7 @@ function CodeFollowBtn(){
 
 function CodeDetail(){
     const {state} = useLocation();
-    let exampleData = {
+    let Data = {
         "id": {state},
         "name": "TestCode", 
         "referencedCount": 3,
@@ -28,6 +29,7 @@ function CodeDetail(){
     return(
         <div id="CodeDetail">
             <MainMenuBar page={"Code"} />
+            <CodeDetailInfo verified={Data.verified} language={Data.language} owner={Data.owner.name} name={Data.name}/>
             <CodeFollowBtn />
         </div>
     )
