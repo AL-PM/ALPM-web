@@ -7,7 +7,7 @@ import CodeDetailBody from "../../Etc/CodeDetailBody/CodeDetailBody.jsx";
 
 function CodeFollowBtn(){
     return(
-        <button id="CodeFollowBtn">코드 그룹 팔로우하기</button>
+        <button id="CodeFollowBtn">코드 그룹에 추가하기</button>
     )
 }
 
