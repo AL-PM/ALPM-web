@@ -2,23 +2,24 @@ import React from "react";
 import {useLocation} from "react-router-dom"
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult.jsx";
+import CodeGroupDetailInfo from "../../Etc/CodeGroupDetailInfo/CodeGroupDetailInfo.jsx";
 
 function CodeGroupDetail(){
     const {state} = useLocation();
     console.log(state);
-    let exampleData = [
-        {
+    let exampleData = 
+            {
             "id": 124, 
             "name": "TestGroup",
             "referencedCount": 3,
             "verified": true,
             "visible": true, 
             "language": "JAVA",
-            "owner":  [
+            "owner":  
                 {"id": 2, 
-                 "name": "Park"
+                 "name": "ALPM"
                 }
-            ], 
+            , 
             "algorithms": [
                 {
                     "id": 1,
@@ -53,18 +54,13 @@ function CodeGroupDetail(){
                     "owner" : "MoonKee"
                 }
             ] 
-        }
-    ];
-    let algorithms = [];
-
-    exampleData.forEach(group => {
-        algorithms = algorithms.concat(group.algorithms);
-    });
-    
+        };
+        
     return(
-        <div>
+        <div id="CodeGroupDetail">
             <MainMenuBar page={"CodeGroup"} />
-            <CodeSearchResult searchData={algorithms}/>
+            <CodeGroupDetailInfo language={exampleData.language} verified={exampleData.verified} owner={exampleData.owner.name} name={exampleData.name} numOfAlgorithm={exampleData.algorithms.length}/>
+            <CodeSearchResult searchData={exampleData.algorithms}/>
         </div>
     )
 }
