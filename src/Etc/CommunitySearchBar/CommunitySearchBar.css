@@ -1,0 +1,23 @@
+#CommunitySearchBar{
+    width: 85%;
+    margin-top: 7.5vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1.3fr 0.8fr 0.8fr 0.5fr 1fr 0.5fr 0.7fr 1.5fr 1.5fr 0.5fr 1fr 0.5fr 2fr 0.5fr ;
+    justify-items: center;
+    font-size: medium;
+}
+
+#SearchBarSetting{
+    font-weight: bold;
+}
+
+#SearchKeywordInput{
+    border: 0px;
+}
+
+#DataLoadbutton{
+    height: 15px;
+}
+
