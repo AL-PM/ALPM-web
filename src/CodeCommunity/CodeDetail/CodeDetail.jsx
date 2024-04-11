@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom"
 import './CodeDetail.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx";
 import CodeDetailInfo from "../../Etc/CodeDetailInfo/CodeDetailInfo.jsx";
+import CodeDetailBody from "../../Etc/CodeDetailBody/CodeDetailBody.jsx";
 
 function CodeFollowBtn(){
     return(
@@ -18,7 +19,7 @@ function CodeDetail(){
         "referencedCount": 3,
         "verified": true,
         "language": "JAVA",
-        "content": "Test Code Ex",
+        "content": "Test Code\n 코드 \t 코드",
         "description": "Test description Ex",
         "owner": {
           "id": 20192830, 
@@ -30,6 +31,7 @@ function CodeDetail(){
         <div id="CodeDetail">
             <MainMenuBar page={"Code"} />
             <CodeDetailInfo verified={Data.verified} language={Data.language} owner={Data.owner.name} name={Data.name}/>
+            <CodeDetailBody content={Data.content} description={Data.description} owner={Data.owner}/>
             <CodeFollowBtn />
         </div>
     )
