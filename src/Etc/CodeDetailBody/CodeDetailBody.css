@@ -1,6 +1,6 @@
 #CodeDetailBody{
     width: 85%;
-    margin-top: 60px;
+    margin-top: 30px;
     margin-left: 7.5%;
     margin-right : 7.5%;
     display: flex;
@@ -10,11 +10,11 @@
 #CodeDetailTitle{
     display: flex;
     justify-content: start;
-    gap: 30px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    gap: 20px;
+    padding-top: 25px;
+    padding-bottom: 5px;
     font-weight: 400;
-    font-size: larger;
+    font-size: medium;
 }
 
 #CodeContent{
