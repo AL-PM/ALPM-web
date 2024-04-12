@@ -1,51 +1,54 @@
 import React from "react";
 import UserEx from "./img/UserEx.png";
+import './MyProfile.css';
+
+function TextContainer({keyword, content}){
+    function TextContainerVer1({ keyword, content}){
+        return(
+            <div id="TextContainer">
+                <span>{keyword}</span>
+                <span>|</span>
+                <span>{content}</span>
+            </div>
+        )
+    }
+
+    function TextContainerVer2({keyword}){
+        return(
+            <div id="TextContainer">
+                <span>|</span>
+                <span>{keyword}</span>
+                <span>|</span>
+            </div>
+        )
+    }
+    return content ? <TextContainerVer1 keyword={keyword} content={content} /> : <TextContainerVer2 keyword={keyword} />;
+}
 
 function MyProfileUserInfo({name, comment}){
     return(
-        <div id="MyProfileUserBody">
+        <div id="MyProfileUserInfo">
             <img id="MyProfileUserImage" src={UserEx} alt="UserEx" />
-            <div id="MyProfildUserInformationContainer">
-                <div id="MyProfileUserUpdown">
-                    <span id = "MyProfileUserLeftright" >이름</span>
-                    <span id = "MyProfileUserLeftright" >|</span>
-                    <span id = "MyProfileUserLeftright">{name}</span>
-                </div>
-                <div>
-                    <span id = "MyProfileUserLeftright" >사용자 소개</span>
-                    <span id = "MyProfileUserLeftright">|</span>
-                    <span id = "MyProfileUserLeftright" >{comment}</span>
-                </div>
+            <div id="MyProfildUserInfoContainer">
+                <TextContainer keyword={"이름"} content={name} />
+                <TextContainer keyword={"소개"} content={comment} />
             </div>
         </div>
     )
 }
 
-function MyProfileStudyHistory(){
+function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint}){
     return(
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
-                    <span id = "MyProfileUserLeftright" >|</span>
-                    <span id = "MyProfileUserLeftright">사용자 학습 통계</span>
-                    <span id = "MyProfileUserLeftright" >|</span>
+                <TextContainer keyword={"사용자 학습 통계"} />
             </div>
             <div id="MyProfileStudyHistoryBody">
                 <div id="MyProfileStudyHistoryNumeric">
-                    <div id="MyProfileHistoryUpdown">
-                        <span id="MyProfileHistoryLeftright">총 학습한 타자의 수</span>
-                        <span id="MyProfileHistoryLeftright">|</span>
-                        <span id="MyProfileHistoryLeftright">20192830</span>
-                    </div>
-                    <div id="MyProfileHistoryUpdown">
-                        <span id="MyProfileHistoryLeftright">총 학습한 단어의 수</span>
-                        <span id="MyProfileHistoryLeftright">|</span>
-                        <span id="MyProfileHistoryLeftright">20192830</span>
-                    </div>
-                    <div >
-                        <span id="MyProfileHistoryLeftright">총 학습한 빈칸의 수</span>
-                        <span id="MyProfileHistoryLeftright">|</span>
-                        <span id="MyProfileHistoryLeftright">20192830</span>
-                    </div>
+                    <TextContainer keyword={"따라친 글자의 수"} content={tracePoint} />
+                    <TextContainer keyword={"순서를 맞춘 줄의 수"} content={sequencePoint} />
+                    <TextContainer keyword={"순서를 맞춘 빈칸의 수"} content={blockPoint} />
+                    <TextContainer keyword={"채운 빈칸의 수"} content={fillPoint} />
                 </div>
                 <div id="MyProfileStudyHistoryGrass"></div>
             </div>
@@ -280,7 +283,7 @@ function MyProfile(){
     return(
         <div>
             <MyProfileUserInfo name={UserData.name} comment={UserData.provider}/>
-            <MyProfileStudyHistory />
+            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint}/>
         </div>
     )
 }
