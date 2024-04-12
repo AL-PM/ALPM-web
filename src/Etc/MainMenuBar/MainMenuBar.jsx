@@ -14,7 +14,7 @@ function MainMenuBar({page}){
             <span>|</span>
             <span style={{fontWeight:page ==="CodeGroup" ? "bold" : "normal", color:page ==="CodeGroup" ? "#009418" : "Black"}} onClick={()=>navigator('/codegroup')}>CODE GROUP COMMUNITY</span>
             <span>|</span>
-            <span style={{fontWeight:page ==="MyPage" ? "bold" : "normal", color:page ==="MyPage" ? "#EF4949" : "Black"}} onClick={()=>navigator('/mypage/myprofile')}>MY PAGE</span>
+            <span style={{fontWeight:page ==="MyPage" ? "bold" : "normal", color:page ==="MyPage" ? "#EF4949" : "Black"}} onClick={()=>navigator('/mypage')}>MY PAGE</span>
         </div>
     )
 }

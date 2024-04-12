@@ -1,26 +1,23 @@
 import React, { useState } from "react";
-import "./MyProfile.css";
+import "./MyPageHome.css";
 import UserEx from "./img/UserEx.png";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 
 
-function MyProfileDetailmenubar(){
-    let [test, testf] = useState("1");
+function MyProfileDetailmenubar({MyPage, setMyPage}){
     return(
         <div>
             <div id="MyProfileDetailmenubar">
-                <span id = "DetailMyProfile" style={{fontWeight : test === "1" ? "bold" : "normal", color : test ==="1" ? "#EF4949" : "black"}} onClick={()=>testf("1")}>내 정보</span>
+                <span id = "DetailMyProfile" style={{fontWeight : MyPage === "1" ? "bold" : "normal", color : MyPage ==="1" ? "#EF4949" : "black"}} onClick={()=>setMyPage("1")}>내 정보</span>
                 <span>|</span>
-                <span id = "DetailMyCodeBoard" style={{fontWeight : test === "2" ? "bold" : "normal", color : test ==="2" ? "#EF4949" : "black"}} onClick={()=>testf("2")}>내 코드 보드 관리</span>
+                <span id = "DetailMyCodeBoard" style={{fontWeight : MyPage === "2" ? "bold" : "normal", color : MyPage ==="2" ? "#EF4949" : "black"}} onClick={()=>setMyPage("2")}>내 코드 보드 관리</span>
                 <span>|</span>
-                <span id = "DetaulMyCodeGroup" style={{fontWeight : test === "3" ? "bold" : "normal", color : test ==="3" ? "#EF4949" : "black"}} onClick={()=>testf("3")}>내 코드 그룹 관리</span>
+                <span id = "DetaulMyCodeGroup" style={{fontWeight : MyPage === "3" ? "bold" : "normal", color : MyPage ==="3" ? "#EF4949" : "black"}} onClick={()=>setMyPage("3")}>내 코드 그룹 관리</span>
                 <span>|</span>
-                <span id = "DetaulMyCode" style={{fontWeight : test === "4" ? "bold" : "normal", color : test ==="4" ? "#EF4949" : "black"}} onClick={()=>testf("4")}>내가 작성한 코드 관리</span>
+                <span id = "DetaulMyCode" style={{fontWeight : MyPage === "4" ? "bold" : "normal", color : MyPage ==="4" ? "#EF4949" : "black"}} onClick={()=>setMyPage("4")}>내가 작성한 코드 관리</span>
                 <span>|</span>
-                <span id = "DetailNewCode" style={{fontWeight : test === "5" ? "bold" : "normal", color : test ==="5" ? "#EF4949" : "black"}} onClick={()=>testf("5")}>새로운 코드 업로드</span>
+                <span id = "DetailNewCode" style={{fontWeight : MyPage === "5" ? "bold" : "normal", color : MyPage ==="5" ? "#EF4949" : "black"}} onClick={()=>setMyPage("5")}>새로운 코드 업로드</span>
             </div>
-            {test ==="1" ? <MyProfileUserBody />  : null}
-            {test ==="1" ? <MyProfileStudyHistory />  : null} 
         </div>
     )
 }
@@ -78,10 +75,12 @@ function MyProfileStudyHistory(){
 }
 
 function MyProfile(){
+        let [MyPage, setMyPage] = useState("1");
     return(
         <div id = "MyProfile">
             <MainMenuBar page={"MyPage"} />
-            <MyProfileDetailmenubar />
+            <MyProfileDetailmenubar MyPage={MyPage} setMyPage={setMyPage} />
+            {MyPage ==="1" ? <div><MyProfileUserBody /><MyProfileStudyHistory /></div>  : null}
         </div>
     )
 }
