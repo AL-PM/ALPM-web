@@ -11,25 +11,27 @@ function CodeGroupDetailInfo({language, verified, owner, name, numOfAlgorithm}){
             return "USER_MADE";
     }
     return(
-        <div id="CodeGroupDetailInfo">
-                <span>그룹 요약</span>
+        <div>
+            <div id="CodeGroupDetailInfo">
+                <span id="CodeGroupDetialInfoKeyWord" >그룹 요약</span>
                 <span>|</span>
                 <span>{language}</span>
                 <span>{verifiedInvertor(verified)}</span>
                 <span></span>
-                <span>작성자</span>
+                <span id="CodeGroupDetialInfoKeyWord" >작성자</span>
                 <span>|</span>
                 <span>{owner}</span>
                 <span></span>
-                <span>그룹 이름</span>
+                <span id="CodeGroupDetialInfoKeyWord" >그룹 이름</span>
                 <span>|</span>
                 <span>{name}</span>
                 <span></span>
-                <span>코드 개수</span>
+                <span id="CodeGroupDetialInfoKeyWord" >코드 개수</span>
                 <span>|</span>
                 <span>{numOfAlgorithm} 개</span>
-                
             </div>
+        </div>
+        
     )
 
 }
