@@ -11,7 +11,9 @@ function CodeDetailInfo({verified, language, owner, name}){
             return "USER_MADE";
     }
     return(
-        <div id="CodeDetailInfo">
+        <div>
+            <div id="CodeDetailInfoContainer" style={{marginTop:"7.5vh"}}></div>
+            <div id="CodeDetailInfo">
                 <span>학습 언어</span>
                 <span>|</span>
                 <span>{language}</span>
@@ -28,6 +30,9 @@ function CodeDetailInfo({verified, language, owner, name}){
                 <span>|</span>
                 <span>{name}</span>
             </div>
+            <div id="CodeDetailInfoContainer"></div>
+        </div>
+        
     )
 }
 
