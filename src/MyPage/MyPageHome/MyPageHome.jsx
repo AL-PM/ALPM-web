@@ -8,15 +8,15 @@ function MyProfileDetailmenubar({MyPage, setMyPage}){
     return(
         <div>
             <div id="MyProfileDetailmenubar">
-                <span id = "DetailMyProfile" style={{fontWeight : MyPage === "1" ? "bold" : "normal", color : MyPage ==="1" ? "#EF4949" : "black"}} onClick={()=>setMyPage("1")}>내 정보</span>
+                <span style={{fontWeight : MyPage === "1" ? "bold" : "normal", color : MyPage ==="1" ? "#EF4949" : "black"}} onClick={()=>setMyPage("1")}>내 정보</span>
                 <span>|</span>
-                <span id = "DetailMyCodeBoard" style={{fontWeight : MyPage === "2" ? "bold" : "normal", color : MyPage ==="2" ? "#EF4949" : "black"}} onClick={()=>setMyPage("2")}>내 코드 보드 관리</span>
+                <span style={{fontWeight : MyPage === "2" ? "bold" : "normal", color : MyPage ==="2" ? "#EF4949" : "black"}} onClick={()=>setMyPage("2")}>내 코드 보드 관리</span>
                 <span>|</span>
-                <span id = "DetaulMyCodeGroup" style={{fontWeight : MyPage === "3" ? "bold" : "normal", color : MyPage ==="3" ? "#EF4949" : "black"}} onClick={()=>setMyPage("3")}>내 코드 그룹 관리</span>
+                <span style={{fontWeight : MyPage === "3" ? "bold" : "normal", color : MyPage ==="3" ? "#EF4949" : "black"}} onClick={()=>setMyPage("3")}>내 코드 그룹 관리</span>
                 <span>|</span>
-                <span id = "DetaulMyCode" style={{fontWeight : MyPage === "4" ? "bold" : "normal", color : MyPage ==="4" ? "#EF4949" : "black"}} onClick={()=>setMyPage("4")}>내가 작성한 코드 관리</span>
+                <span style={{fontWeight : MyPage === "4" ? "bold" : "normal", color : MyPage ==="4" ? "#EF4949" : "black"}} onClick={()=>setMyPage("4")}>내가 작성한 코드 관리</span>
                 <span>|</span>
-                <span id = "DetailNewCode" style={{fontWeight : MyPage === "5" ? "bold" : "normal", color : MyPage ==="5" ? "#EF4949" : "black"}} onClick={()=>setMyPage("5")}>새로운 코드 업로드</span>
+                <span style={{fontWeight : MyPage === "5" ? "bold" : "normal", color : MyPage ==="5" ? "#EF4949" : "black"}} onClick={()=>setMyPage("5")}>새로운 코드 업로드</span>
             </div>
         </div>
     )
@@ -26,7 +26,7 @@ function MyProfileDetailmenubar({MyPage, setMyPage}){
 function MyPageHome(){
         let [MyPage, setMyPage] = useState("1");
     return(
-        <div id = "MyProfile">
+        <div id = "MyPageHome">
             <MainMenuBar page={"MyPage"} />
             <MyProfileDetailmenubar MyPage={MyPage} setMyPage={setMyPage} />
             {MyPage ==="1" ? <MyProfile />  : null}
