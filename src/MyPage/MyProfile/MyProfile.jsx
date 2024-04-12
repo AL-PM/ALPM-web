@@ -37,7 +37,7 @@ function MyProfileUserInfo({name, comment}){
     )
 }
 
-function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint}){
+function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint, historyList}){
     return(
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
@@ -50,7 +50,11 @@ function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint
                     <TextContainer keyword={"순서를 맞춘 빈칸의 수"} content={blockPoint} />
                     <TextContainer keyword={"채운 빈칸의 수"} content={fillPoint} />
                 </div>
-                <div id="MyProfileStudyHistoryGrass"></div>
+                <div id="MyProfileStudyHistoryGrass">
+                    {historyList.map((dailyData) =>
+                        <div id="grass"></div>
+                    )}
+                </div>
             </div>
         </div>
     )
@@ -283,7 +287,7 @@ function MyProfile(){
     return(
         <div>
             <MyProfileUserInfo name={UserData.name} comment={UserData.provider}/>
-            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint}/>
+            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList}/>
         </div>
     )
 }
