@@ -71,7 +71,7 @@ function MyCodeBoard(){
     ]
     return(
         <div id="MyCodeBoard">
-            <CodeSearchResult searchData={searchData} bodyHeight={"66vh"}/>
+            <CodeSearchResult searchData={searchData} bodyHeight={"66vh"} siteTag={"MyPage"}/>
         </div>
     )
 }
