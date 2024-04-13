@@ -79,7 +79,7 @@ function CodeGrupHome(){
         <div id = "CodeGroupHome">
             <MainMenuBar page={"CodeGroup"} />
             <CommunitySearchBar secondTag={"제작자 유형"} language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
-            <CodeGroupSearchResult searchData={searchData}/>
+            <CodeGroupSearchResult searchData={searchData} bodyHeight={"60vh"}/>
         </div>
        
     )
