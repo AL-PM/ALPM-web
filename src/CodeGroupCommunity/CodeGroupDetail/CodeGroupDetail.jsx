@@ -90,7 +90,7 @@ function CodeGroupDetail(){
         <div id="CodeGroupDetail">
             <MainMenuBar page={"CodeGroup"} />
             <CodeGroupDetailInfo language={exampleData.language} verified={exampleData.verified} owner={exampleData.owner.name} name={exampleData.name} numOfAlgorithm={exampleData.algorithms.length}/>
-            <CodeSearchResult searchData={exampleData.algorithms} bodyHeight={"55vh"}/>
+            <CodeSearchResult searchData={exampleData.algorithms} bodyHeight={"55vh"} siteTag={"CodeGroup"}/>
             <CodeGroupFollowBtn />
         </div>
     )
