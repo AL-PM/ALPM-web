@@ -2,7 +2,7 @@ import React from "react";
 import './CodeGroupSearchResult.css';
 import {useNavigate} from 'react-router-dom';
 
-function CodeGroupSearchResult({searchData}){
+function CodeGroupSearchResult({searchData, bodyHeight}){
     const navigator = useNavigate();
     function verifiedInvertor(verified){
         if(verified === null)
@@ -13,7 +13,7 @@ function CodeGroupSearchResult({searchData}){
             return "USER_MADE";
     }
 return(
-    <div id="CodeGroupSearchBody">
+    <div id="CodeGroupSearchBody" style={{height:bodyHeight}}>
         {searchData.map((Data) => 
             <div id="CodeGroupSearchResult" key={Data.id} onClick={()=>navigator('/codegroup/Detail', {state : Data.id})}>
                 <span>그룹 요약</span>
