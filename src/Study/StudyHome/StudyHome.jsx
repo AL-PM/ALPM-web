@@ -26,7 +26,7 @@ function StudyHome(){
                 "referencedCount": 3,
                 "verified": true,
                 "visible": true,
-                "language": "JAVA", 
+                "language": "Java", 
             }, 
             {
                 "id": 2, 
@@ -34,7 +34,7 @@ function StudyHome(){
                 "referencedCount": 3,
                 "verified": true,
                 "visible": true,
-                "language": "JAVA", 
+                "language": "Java", 
             }, 
             {
                 "id": 3, 
@@ -42,7 +42,7 @@ function StudyHome(){
                 "referencedCount": 3,
                 "verified": true,
                 "visible": true,
-                "language": "JAVA", 
+                "language": "Java", 
             }, 
     ]
     return(
