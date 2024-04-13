@@ -15,7 +15,7 @@ function CodeGroupSearchResult({searchData, bodyHeight}){
 return(
     <div id="CodeGroupSearchBody" style={{height:bodyHeight}}>
         {searchData.map((Data) => 
-            <div id="CodeGroupSearchResult" key={Data.id} onClick={()=>navigator('/codegroup/Detail', {state : Data.id})}>
+            <div id="CodeGroupSearchResult" key={Data.id} onClick={()=>navigator('/codegroup/Detail', {state : {"id" : Data.id, "site":"CodeGroup"}})}>
                 <span>그룹 요약</span>
                 <span>|</span>
                 <span>{Data.language}</span>
