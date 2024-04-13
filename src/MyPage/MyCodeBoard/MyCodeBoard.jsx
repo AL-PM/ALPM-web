@@ -1,5 +1,4 @@
 import React from "react";
-import './MyCodeBoard.css';
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult";
 
 function MyCodeBoard(){
