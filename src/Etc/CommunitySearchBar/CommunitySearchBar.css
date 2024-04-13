@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: 1fr 0.5fr 1.3fr 0.8fr 0.8fr 0.5fr 1fr 0.5fr 0.7fr 1.5fr 1.5fr 0.5fr 1fr 0.5fr 2fr 0.5fr ;
     justify-items: center;
+    align-items: center;
     font-size: medium;
 }
 
