@@ -4,8 +4,9 @@
     margin-left : 7.5vw;
     margin-right: 7.5vw;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1.3fr 1fr 0.7fr 0.5fr 1fr 0.5fr 1fr 1.5fr 1.5fr 1.2fr 0.5fr 1fr 0.5fr 1.5fr ;
+    grid-template-columns: 1fr 0.5fr 1.3fr 1fr 0.7fr 0.5fr 1fr 0.5fr 1fr 1.5fr 1.5fr 1.2fr 0.5fr 1fr 0.5fr 1.5fr 1fr;
     justify-items: center;
+    align-items: center;
     font-size: medium;
 }
 
@@ -15,4 +16,8 @@
 
 #CodeGroupSetting{
     border: 0px;
+}
+
+#ProblemSettingIcon{
+    height: 15px;
 }

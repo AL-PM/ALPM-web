@@ -1,5 +1,6 @@
 import React from "react";
 import './StudySettingBar.css';
+import ProblemSettingIcon from "./img/SearchIcon.png";
 
 function StudySettingBar({language, setlanguage, method, setmethod, codegroup, setcodegroup, codegrouplist}){
     return(
@@ -24,6 +25,7 @@ function StudySettingBar({language, setlanguage, method, setmethod, codegroup, s
                 <option value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
+            <img id = "ProblemSettingIcon" onClick={console.log({language, method, codegroup})} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
         </div>
     )
 }
