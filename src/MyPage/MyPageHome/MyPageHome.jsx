@@ -3,6 +3,7 @@ import "./MyPageHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import MyProfile from "../MyProfile/MyProfile.jsx";
 import MyCodeBoard from "../MyCodeBoard/MyCodeBoard.jsx";
+import MyCodeGroup from "../MyCodeGroup/MyCodeGroup.jsx";
 
 
 function MyProfileDetailmenubar({MyPage, setMyPage}){
@@ -32,6 +33,7 @@ function MyPageHome(){
             <MyProfileDetailmenubar MyPage={MyPage} setMyPage={setMyPage} />
             {MyPage ==="1" ? <MyProfile />  : null}
             {MyPage ==="2" ? <MyCodeBoard /> : null}
+            {MyPage ==="3" ? <MyCodeGroup /> : null}
         </div>
     )
 }
