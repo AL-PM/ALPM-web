@@ -1,6 +1,6 @@
 {
   "short_name": "ALPM",
-  "name": "Learn Algorithm Easily With us !!",
+  "name": "ALPM",
   "icons": [
     {
       "src": "ALPM ICON.png",
@@ -9,7 +9,7 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
+  "display": "fullscreen",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
