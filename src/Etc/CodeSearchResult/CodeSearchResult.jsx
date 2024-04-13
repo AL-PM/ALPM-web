@@ -2,7 +2,7 @@ import React from "react";
 import './CodeSearchResult.css';
 import {useNavigate} from 'react-router-dom';
 
-function CodeSearchResult({searchData, bodyHeight}){
+function CodeSearchResult({searchData, bodyHeight, siteTag}){
     const navigator = useNavigate();
     function verifiedInvertor(Data){
         if(Data === null)
@@ -15,7 +15,7 @@ function CodeSearchResult({searchData, bodyHeight}){
 return(
     <div id="CodeSearchBody" style={{height:bodyHeight}}>
         {searchData.map((Data) =>
-            <div id="CodeSearchResult" key={Data.id} onClick={()=>navigator('/code/Detail', {state : Data.id})} >
+            <div id="CodeSearchResult" key={Data.id} onClick={()=>navigator('/code/Detail', {state : {"id" : Data.id, "site": siteTag}})} >
                 <span>학습 언어</span>
                 <span>|</span>
                 <span>{Data.language}</span>
