@@ -66,10 +66,19 @@ function MyCodeGroup(){
             "language": "Python",
             "owner" : "MoonKee"
         },
+        {
+            "id": 7,
+            "name": "Tree Search",
+            "referencedCount": 4,
+            "verified": false,
+            "visible": true,
+            "language": "Python",
+            "owner" : "MoonKee"
+        },
     ]
     return(
         <div id="MyCodeGroup">
-            <CodeGroupSearchResult searchData={searchData} />
+            <CodeGroupSearchResult searchData={searchData} bodyHeight={"66vh"}/>
         </div>
     )
 }
