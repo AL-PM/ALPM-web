@@ -13,8 +13,9 @@ function CodeFollowBtn(){
 
 function CodeDetail(){
     const {state} = useLocation();
+    console.log(state);
     let Data = {
-        "id": {state},
+        "id": state.id,
         "name": "TestCode", 
         "referencedCount": 3,
         "verified": true,
@@ -29,7 +30,7 @@ function CodeDetail(){
       }
     return(
         <div id="CodeDetail">
-            <MainMenuBar page={"Code"} />
+            <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={Data.verified} language={Data.language} owner={Data.owner.name} name={Data.name}/>
             <CodeDetailBody content={Data.content} description={Data.description} owner={Data.owner}/>
             <CodeFollowBtn />

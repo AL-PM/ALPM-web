@@ -55,7 +55,7 @@ function CodeCommunity(){
         <div id = "Codehome">
             <MainMenuBar page={"Code"} />
             <CommunitySearchBar secondTag={"코드 유형"} language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
-            <CodeSearchResult searchData={searchData} bodyHeight={"55vh"}/>
+            <CodeSearchResult searchData={searchData} bodyHeight={"55vh"} siteTag={"Code"}/>
             <CodeHomeUploadButton />
         </div>
        
