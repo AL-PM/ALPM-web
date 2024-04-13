@@ -13,18 +13,6 @@
     font-weight: bold;
 }
 
-#CodeGroupHomeBody{
-    width: 85vw;
-    height: 55vh;
-    margin-top : 5vh;
-    margin-bottom: 10vh;    
-    margin-left : 7.5vw;
-    margin-right: 7.5vw;
-    border: 1px solid;
-    border-color: black;
-    border-radius: 10px;
-}
-
 #CodeGroupHomeSearchButton{
     height: 15px;
 }
