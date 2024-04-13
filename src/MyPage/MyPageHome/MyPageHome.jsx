@@ -4,6 +4,7 @@ import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import MyProfile from "../MyProfile/MyProfile.jsx";
 import MyCodeBoard from "../MyCodeBoard/MyCodeBoard.jsx";
 import MyCodeGroup from "../MyCodeGroup/MyCodeGroup.jsx";
+import MyUploadCode from "../MyUploadCode/MyUploadCode.jsx";
 
 
 function MyProfileDetailmenubar({MyPage, setMyPage}){
@@ -34,6 +35,7 @@ function MyPageHome(){
             {MyPage ==="1" ? <MyProfile />  : null}
             {MyPage ==="2" ? <MyCodeBoard /> : null}
             {MyPage ==="3" ? <MyCodeGroup /> : null}
+            {MyPage ==="4" ? <MyUploadCode /> : null}
         </div>
     )
 }
