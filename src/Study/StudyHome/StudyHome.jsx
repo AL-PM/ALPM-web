@@ -1,46 +1,55 @@
-import React from "react";
+import React, { useState } from "react";
 import "./StudyHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
+import StudySettingBar from "../StudySettingBar/StudySettingBar.jsx";
 
-
-function StudyHomeStudybar(){
-    return(
-        <div id="StudyHomeStudybar">
-            <span id = "StudyHomeSettingKeyword" >학습 언어</span>
-            <span>|</span>
-            <span id = "StudyHomeLanguageSetting1" >PYTHON</span>
-            <span id = "StudyHomeLanguageSetting2" >JAVA</span>
-            <span id = "StudyHomeLanguageSetting3" >C++</span>
-            <span></span>
-            <span id = "StudyHomeSettingKeyword" >학습 방법</span>
-            <span>|</span>
-            <span id = "StudyHomeMethodSetting1" >따라치기</span>
-            <span id = "StudyHomeMethodSetting2" >블록 순서맞추기</span>
-            <span id = "StudyHomeMethodSetting3" >줄별 순서맞추기</span>
-            <span id = "StudyHomeMethodSetting4" >빈칸 채우기</span>
-            <span></span>
-            <span id = "StudyHomeSettingKeyword" >코드그룹</span>
-            <span>|</span>
-            <span id = "StudyHomeGroupSetting1" >블록 순서맞추기</span>
-        </div>
-    )
-}
-
-function StudyHomeBody(){
+function StudyHomeBody({language, method, codegroup}){
     return(
         <div id="StudyHomeBody">
+            <ul>
+                <li>{language}</li>
+                <li>{method}</li>
+                <li>{codegroup}</li>
+            </ul>
         </div>
     )
 }
 
-
 function StudyHome(){
-
+    const [language, setlanguage] = useState("PYTHON");
+    const [method, setmethod] = useState("따라치기");
+    const [codegroup, setcodegroup] = useState(1);
+    const codegrouplist = [
+            {
+                "id": 1, 
+                "name": "CodeGroup01", 
+                "referencedCount": 3,
+                "verified": true,
+                "visible": true,
+                "language": "JAVA", 
+            }, 
+            {
+                "id": 2, 
+                "name": "CodeGroup02", 
+                "referencedCount": 3,
+                "verified": true,
+                "visible": true,
+                "language": "JAVA", 
+            }, 
+            {
+                "id": 3, 
+                "name": "CodeGroup03", 
+                "referencedCount": 3,
+                "verified": true,
+                "visible": true,
+                "language": "JAVA", 
+            }, 
+    ]
     return(
         <div id = "StudyHome">
             <MainMenuBar page={"Study"} />
-            <StudyHomeStudybar />
-            <StudyHomeBody />
+            <StudySettingBar language={language} setlanguage={setlanguage} method={method} setmethod={setmethod} codegroup={codegroup} setcodegroup={setcodegroup} codegrouplist={codegrouplist}/>
+            <StudyHomeBody language={language} method={method} codegroup={codegroup} />
         </div>
        
     )
