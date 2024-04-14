@@ -15,13 +15,17 @@ function CodeDetailBody({content, description, owner}){
     return(
         <div id="CodeDetailBody">
             <CodeDetailTitle Title={"코드 원문"}/>
-            <div id="CodeContent">
-                <span>{content}</span>
-            </div>
+            <textarea id='CodeContent' style={{fontSize:"large"}}
+                value={content}
+                rows={20}
+                cols={100}
+            />
             <CodeDetailTitle Title={"코드에 대한 설명"}/>
-            <div id="CodeContent">
-                <span>{description}</span>
-            </div>
+            <textarea id='CodeContent' style={{fontSize:"large"}}
+                value={description}
+                rows={10}
+                cols={100}
+            />
             <CodeDetailTitle Title={"제작자"}/>
             <div id="UserContent">
                 <span>{owner.name}</span>
