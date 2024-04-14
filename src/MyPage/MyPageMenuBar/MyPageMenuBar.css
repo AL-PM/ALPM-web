@@ -1,0 +1,9 @@
+#MyPageMenuBar{
+    width: 60vw;
+    margin-top : 5vh;  
+    margin-left : 20vw;
+    margin-right: 20vw;
+    display: flex;
+    justify-content: space-around;
+    font-size: small;
+}
