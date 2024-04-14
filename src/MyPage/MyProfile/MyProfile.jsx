@@ -1,6 +1,8 @@
 import React from "react";
 import UserEx from "./img/UserEx.png";
 import './MyProfile.css';
+import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
+import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 
 function TextContainer({keyword, content}){
     function TextContainerVer1({ keyword, content}){
@@ -286,6 +288,8 @@ function MyProfile(){
     };
     return(
         <div>
+            <MainMenuBar page={"MyPage"} />
+            <MyPageMenuBar MyPage={"1"}/>
             <MyProfileUserInfo name={UserData.name} comment={UserData.provider}/>
             <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList}/>
         </div>

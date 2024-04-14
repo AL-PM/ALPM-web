@@ -21,10 +21,10 @@ function App(){
                 <Route path="/codegroup/" element={<CodeGroupHome />} />
                 <Route path="/codegroup/Detail" element={<CodeGroupDetail />} />
                 <Route path="/mypage/" element={<MyProfile />} />
-                <Route path="/mypage/NewCode" element={<NewCodeUpload />} />
                 <Route path="/mypage/MyCodeBoard" element={<MyCodeBoard />} />
                 <Route path="/mypage/MyCodeGroup" element={<MyCodeGroup />} />
                 <Route path="/mypage/MyUploadCode" element={<MyUploadCode />} />
+                <Route path="/mypage/NewCode" element={<NewCodeUpload />} />
             </Routes>
         </BrowserRouter>
     )

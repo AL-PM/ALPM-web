@@ -1,5 +1,7 @@
 import React from "react";
 import CodeGroupSearchResult from "../../Etc/CodeGroupSearchResult/CodeGroupSearchResult";
+import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
+import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 
 function MyCodeGroup(){
     const searchData = [
@@ -78,6 +80,8 @@ function MyCodeGroup(){
     ]
     return(
         <div id="MyCodeGroup">
+            <MainMenuBar page={"MyPage"} />
+            <MyPageMenuBar MyPage={"3"}/>
             <CodeGroupSearchResult searchData={searchData} bodyHeight={"66vh"}/>
         </div>
     )

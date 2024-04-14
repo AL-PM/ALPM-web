@@ -1,5 +1,7 @@
 import React from "react";
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult";
+import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
+import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 
 function MyUploadCode(){
     const searchData = [
@@ -71,6 +73,8 @@ function MyUploadCode(){
     ]
     return(
         <div id="MyUploadCode">
+            <MainMenuBar page={"MyPage"} />
+            <MyPageMenuBar MyPage={"4"}/>
             <CodeSearchResult searchData={searchData} bodyHeight={"66vh"}/>
         </div>
     )

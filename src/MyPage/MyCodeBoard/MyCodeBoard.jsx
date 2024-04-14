@@ -1,5 +1,7 @@
 import React from "react";
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult";
+import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
+import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 
 function MyCodeBoard(){
     const searchData = [
@@ -71,6 +73,8 @@ function MyCodeBoard(){
     ]
     return(
         <div id="MyCodeBoard">
+            <MainMenuBar page={"MyPage"} />
+            <MyPageMenuBar MyPage={"2"}/>
             <CodeSearchResult searchData={searchData} bodyHeight={"66vh"} siteTag={"MyPage"}/>
         </div>
     )
