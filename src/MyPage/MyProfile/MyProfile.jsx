@@ -33,7 +33,6 @@ function MyProfileUserInfo({name, comment}){
             <img id="MyProfileUserImage" src={UserEx} alt="UserEx" />
             <div id="MyProfildUserInfoContainer">
                 <TextContainer keyword={"이름"} content={name} />
-                <TextContainer keyword={"소개"} content={comment} />
             </div>
         </div>
     )
@@ -290,7 +289,7 @@ function MyProfile(){
         <div>
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"1"}/>
-            <MyProfileUserInfo name={UserData.name} comment={UserData.provider}/>
+            <MyProfileUserInfo name={UserData.name}/>
             <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList}/>
         </div>
     )

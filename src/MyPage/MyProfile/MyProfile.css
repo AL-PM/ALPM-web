@@ -21,7 +21,7 @@
     border: 1px solid;
     border-radius: 10px;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
     justify-items: start;
     padding-left:5%;
