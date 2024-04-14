@@ -5,6 +5,7 @@ import MyProfile from "../MyProfile/MyProfile.jsx";
 import MyCodeBoard from "../MyCodeBoard/MyCodeBoard.jsx";
 import MyCodeGroup from "../MyCodeGroup/MyCodeGroup.jsx";
 import MyUploadCode from "../MyUploadCode/MyUploadCode.jsx";
+import NewCodeUpload from "../NewCodeUpload/NewCodeUpload.jsx";
 
 
 function MyProfileDetailmenubar({MyPage, setMyPage}){
@@ -36,6 +37,7 @@ function MyPageHome(){
             {MyPage ==="2" ? <MyCodeBoard /> : null}
             {MyPage ==="3" ? <MyCodeGroup /> : null}
             {MyPage ==="4" ? <MyUploadCode /> : null}
+            {MyPage ==="5" ? <NewCodeUpload /> : null}
         </div>
     )
 }
