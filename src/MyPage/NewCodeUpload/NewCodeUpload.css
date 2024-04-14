@@ -13,6 +13,16 @@
     font-size: medium;
 }
 
+#CodeUploadTitle{
+    display: flex;
+    justify-content: start;
+    gap: 20px;
+    padding-top: 25px;
+    padding-bottom: 5px;
+    font-weight: 500;
+    font-size: medium;
+}
+
 #UploadContent{
     border: 1px solid;
     border-radius: 10px;
@@ -23,5 +33,16 @@
     padding-bottom: 15px;
     margin-top: 15px;
     margin-bottom :15px;
-    font-size: large;
+}
+
+#CodeUploadwBtn{
+    width: 85vw;
+    height : 6.125vh;
+    margin-top: 5vh;
+    margin-bottom: 10vh;
+    margin-left: 7.5vw;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 10px;
+    font-size: medium;
 }
