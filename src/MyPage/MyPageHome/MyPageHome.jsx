@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import "./MyPageHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import MyProfile from "../MyProfile/MyProfile.jsx";
@@ -9,6 +10,7 @@ import NewCodeUpload from "../NewCodeUpload/NewCodeUpload.jsx";
 
 
 function MyProfileDetailmenubar({MyPage, setMyPage}){
+    const navigator = useNavigate();
     return(
         <div>
             <div id="MyProfileDetailmenubar">
@@ -20,7 +22,7 @@ function MyProfileDetailmenubar({MyPage, setMyPage}){
                 <span>|</span>
                 <span style={{fontWeight : MyPage === "4" ? "bold" : "normal", color : MyPage ==="4" ? "#EF4949" : "black"}} onClick={()=>setMyPage("4")}>내가 작성한 코드 관리</span>
                 <span>|</span>
-                <span style={{fontWeight : MyPage === "5" ? "bold" : "normal", color : MyPage ==="5" ? "#EF4949" : "black"}} onClick={()=>setMyPage("5")}>새로운 코드 업로드</span>
+                <span style={{fontWeight : MyPage === "5" ? "bold" : "normal", color : MyPage ==="5" ? "#EF4949" : "black"}} onClick={()=>navigator('/mypage/NewCode')}>새로운 코드 업로드</span>
             </div>
         </div>
     )

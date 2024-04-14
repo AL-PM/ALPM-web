@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './NewCodeUpload.css';
+import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
+import MyPageMenuBar from '../MyPageMenuBar/MyPageMenuBar';
 
 function CodeDetailTitle({Title}){
     return(
@@ -39,12 +41,14 @@ function NewCodeUpload() {
 
   return (
     <div>
+        <MainMenuBar page={"MyPage"} />
+        <MyPageMenuBar MyPage={"5"}/>
         <div id="CodeDetailBody">
             <CodeDetailTitle Title={"코드 언어"}/>
             <div id="UploadSettingInfo">
-                <span onClick={()=>setlanguage("Python")}  style={{fontWeight:language==="Python" ? "bold" : 'normal'}} >Python</span>
-                <span onClick={()=>setlanguage("Java")}  style={{fontWeight:language==="Java" ? "bold" : 'normal'}} >Java</span>
-                <span onClick={()=>setlanguage("C++")}  style={{fontWeight:language==="C++" ? "bold" : 'normal'}} >C++</span>
+                <span onClick={()=>setlanguage("Python")}  style={{fontWeight:language==="Python" ? "bold" : 'normal' , color : language ==="Python" ? "#EF4949" : "black"}}>Python</span>
+                <span onClick={()=>setlanguage("Java")}  style={{fontWeight:language==="Java" ? "bold" : 'normal' , color : language ==="Java" ? "#EF4949" : "black"}} >Java</span>
+                <span onClick={()=>setlanguage("C++")}  style={{fontWeight:language==="C++" ? "bold" : 'normal' , color : language ==="C++" ? "#EF4949" : "black"}} >C++</span>
             </div> 
             <CodeDetailTitle Title={"코드 이름"}/>
             <input id='UploadContent'
