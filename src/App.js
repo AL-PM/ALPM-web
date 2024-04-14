@@ -6,6 +6,7 @@ import MyPageHome from "./MyPage/MyPageHome/MyPageHome";
 import CodeGroupHome from "./CodeGroupCommunity/CodeGroupHome/CodeGroupHome";
 import CodeGroupDetail from "./CodeGroupCommunity/CodeGroupDetail/CodeGroupDetail";
 import CodeDetail from "./CodeCommunity/CodeDetail/CodeDetail";
+import NewCodeUpload from "./MyPage/NewCodeUpload/NewCodeUpload";
 
 
 function App(){
@@ -18,6 +19,7 @@ function App(){
                 <Route path="/code/Detail" element={<CodeDetail />} />
                 <Route path="/codegroup/" element={<CodeGroupHome />} />
                 <Route path="/codegroup/Detail" element={<CodeGroupDetail />} />
+                <Route path="/mypage/NewCode" element={<NewCodeUpload />} />
             </Routes>
         </BrowserRouter>
     )
