@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'SOGANGUNIVERSITYTTF';
+  src: url('./Font/AnyConv.com__SOGANG_UNIVERSITY_for_mac.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
