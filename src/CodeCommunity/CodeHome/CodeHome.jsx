@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./CodeHome.css";
+import {useNavigate} from "react-router-dom";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult.jsx";
 import CommunitySearchBar from "../../Etc/CommunitySearchBar/CommunitySearchBar.jsx";
 
 
 function CodeHomeUploadButton(){
+    const navigator = useNavigate();
     return(
-        <button id="CodeHomeUploadButton">새로운 코드 업로드</button>
+        <button id="CodeHomeUploadButton" onClick={()=>navigator('/mypage/NewCode')}>새로운 코드 업로드</button>
     )
 }
 
