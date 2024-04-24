@@ -22,7 +22,7 @@ function CodeUploadwBtn(){
 function NewCodeUpload() {
   const [code, setCode] = useState("");
   const [description, setDescription] = useState("");
-  const [language, setlanguage] = useState("Java");
+  const [language, setlanguage] = useState("Python");
   const [codeName, setCodeName] = useState("");
 
   const codeKeyDown = (e) => {
