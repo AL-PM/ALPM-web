@@ -22,7 +22,7 @@ function StudySettingBar({language, setlanguage, method, setmethod, codegroup, s
             <span>|</span>
             <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setcodegroup(event.target.value)}>
                 {codegrouplist.map((codegrouptag)=>
-                <option value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+                <option id="CodeGroupSettingList" value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
             <img id = "ProblemSettingIcon" onClick={console.log({language, method, codegroup})} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
