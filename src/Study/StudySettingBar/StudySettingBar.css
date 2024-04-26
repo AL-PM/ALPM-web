@@ -22,3 +22,8 @@
 #ProblemSettingIcon{
     height: 15px;
 }
+
+#CodeGroupSettingList{
+    font-family: 'SUITE-Regular';
+    background-color: white;
+}
