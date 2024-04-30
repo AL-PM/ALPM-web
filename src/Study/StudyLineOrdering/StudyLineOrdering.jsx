@@ -20,7 +20,7 @@ function StudyLineOrdering({language, method, level, codegroup, problem}){
             <li>학습 레벨 : {level}</li> 
             <li>학습 그룹 ID : {codegroup}</li>
             </ul> 
-            <textarea 
+            <textarea readOnly
                 id="StudyLineOrderingCodeArea" 
                 rows={countNumberOfCode(code.text)}
                 cols={150}
