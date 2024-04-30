@@ -2,21 +2,35 @@ import React from "react";
 import './StudySettingBar.css';
 import ProblemSettingIcon from "./img/SearchIcon.png";
 
-function StudySettingBar({language, setlanguage, method, setmethod, codegroup, setcodegroup, codegrouplist}){
+function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setproblem, codegrouplist}){
     return(
         <div id="StudySettingBar">
             <span id = "SettingBarSetting" >학습 언어</span>
             <span>|</span>
-            <span onClick={()=>setlanguage("PYTHON")} style={{fontWeight:language==="PYTHON" ? "bold" : "normal", color:language==="PYTHON"?"#5C4EFF" : "black"}}>PYTHON</span>
-            <span onClick={()=>setlanguage("JAVA")} style={{fontWeight:language==="JAVA" ? "bold" : "normal", color:language==="JAVA"?"#5C4EFF" : "black"}}>JAVA</span>
-            <span onClick={()=>setlanguage("C++")} style={{fontWeight:language==="C++" ? "bold" : "normal", color:language==="C++"?"#5C4EFF" : "black"}}>C++</span>
+            <select id="CodeGroupSetting" onChange={(event)=>setlanguage(event.target.value)}>
+                <option id="CodeGroupSettingList" value={"Python"} >Python</option>
+                <option id="CodeGroupSettingList" value={"Java"} >Java</option>
+                <option id="CodeGroupSettingList" value={"C++"} >C++</option>
+            </select>
             <span></span>
             <span id = "SettingBarSetting" >학습 방법</span>
             <span>|</span>
-            <span onClick={()=>setmethod("따라치기")} style={{fontWeight:method==="따라치기" ? "bold" : "normal", color:method==="따라치기"?"#5C4EFF" : "black"}}>따라치기</span>
-            <span onClick={()=>setmethod("블록 순서맞추기")} style={{fontWeight:method==="블록 순서맞추기" ? "bold" : "normal", color:method==="블록 순서맞추기"?"#5C4EFF" : "black"}}>블록 순서맞추기</span>
-            <span onClick={()=>setmethod("줄별 순서맞추기")} style={{fontWeight:method==="줄별 순서맞추기" ? "bold" : "normal", color:method==="줄별 순서맞추기"?"#5C4EFF" : "black"}}>줄별 순서맞추기</span>
-            <span onClick={()=>setmethod("빈칸 채우기")} style={{fontWeight:method==="빈칸 채우기" ? "bold" : "normal", color:method==="빈칸 채우기"?"#5C4EFF" : "black"}}>빈칸 채우기</span>
+            <select id="CodeGroupSetting" onChange={(event)=>setmethod(event.target.value)}>
+                <option id="CodeGroupSettingList" value={"따라치기"} >따라치기</option>
+                <option id="CodeGroupSettingList" value={"블록 순서맞추기"} >블록 순서맞추기</option>
+                <option id="CodeGroupSettingList" value={"줄별 순서맞추기"} >줄별 순서맞추기</option>
+                <option id="CodeGroupSettingList" value={"빈칸 채우기"} >빈칸 채우기</option>
+            </select>
+            <span></span>
+            <span id = "SettingBarSetting" >난이도</span>
+            <span>|</span>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setlevel(event.target.value)}>
+                <option id="CodeGroupSettingList" value={"1"} >1 레벨</option>
+                <option id="CodeGroupSettingList" value={"2"} >2 레벨</option>
+                <option id="CodeGroupSettingList" value={"3"} >3 레벨</option>
+                <option id="CodeGroupSettingList" value={"4"} >4 레벨</option>
+                <option id="CodeGroupSettingList" value={"5"} >5 레벨</option>
+            </select>
             <span></span>
             <span id = "SettingBarSetting" >코드그룹</span>
             <span>|</span>
@@ -25,7 +39,8 @@ function StudySettingBar({language, setlanguage, method, setmethod, codegroup, s
                 <option id="CodeGroupSettingList" value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
-            <img id = "ProblemSettingIcon" onClick={console.log({language, method, codegroup})} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
+            
+            <img id = "ProblemSettingIcon" onClick={()=>setproblem(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
         </div>
     )
 }
