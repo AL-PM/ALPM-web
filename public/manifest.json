@@ -3,7 +3,7 @@
   "name": "ALPM",
   "icons": [
     {
-      "src": "ALPM ICON.png",
+      "src": "alpm_Icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
