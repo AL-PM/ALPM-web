@@ -15,7 +15,7 @@
 
 #StudyHomeBody{
     width: 85vw;
-    height: 60vh;
+    height: 55vh;
     margin-top : 7.5vh;
     margin-bottom: 10vh;    
     margin-left : 7.5vw;
@@ -23,6 +23,9 @@
     border: 1px solid;
     border-color: black;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #StudyHome{

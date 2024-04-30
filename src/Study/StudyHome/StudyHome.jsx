@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import "./StudyHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import StudySettingBar from "../StudySettingBar/StudySettingBar.jsx";
+import StudyLineOrdering from "../StudyLineOrdering/StudyLineOrdering.jsx";
 
-function StudyHomeBody({language, method, codegroup}){
+function StudyHomeBody(){
     return(
         <div id="StudyHomeBody">
-            <ul>
-                <li>{language}</li>
-                <li>{method}</li>
-                <li>{codegroup}</li>
-            </ul>
+            <span>문제 출제를 위해 설정을 완료한 후 오른쪽 버튼을 눌러주세요 </span>
         </div>
     )
 }
@@ -19,6 +16,8 @@ function StudyHome(){
     const [language, setlanguage] = useState("PYTHON");
     const [method, setmethod] = useState("따라치기");
     const [codegroup, setcodegroup] = useState(1);
+    const [level, setlevel] = useState(1);
+    const [problem, setproblem] = useState(false);
     const codegrouplist = [
             {
                 "id": 1, 
@@ -48,8 +47,9 @@ function StudyHome(){
     return(
         <div id = "StudyHome">
             <MainMenuBar page={"Study"} />
-            <StudySettingBar language={language} setlanguage={setlanguage} method={method} setmethod={setmethod} codegroup={codegroup} setcodegroup={setcodegroup} codegrouplist={codegrouplist}/>
-            <StudyHomeBody language={language} method={method} codegroup={codegroup} />
+            <StudySettingBar setlanguage={setlanguage} setmethod={setmethod} setcodegroup={setcodegroup} setlevel={setlevel} setproblem={setproblem} codegrouplist={codegrouplist}/>
+            {setproblem && method === "줄별 순서맞추기" ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : <StudyHomeBody />}
+            
         </div>
        
     )
