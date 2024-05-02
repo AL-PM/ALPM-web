@@ -17,8 +17,8 @@ function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setpro
             <span>|</span>
             <select id="CodeGroupSetting" onChange={(event)=>setmethod(event.target.value)}>
                 <option id="CodeGroupSettingList" value={"따라치기"} >따라치기</option>
-                <option id="CodeGroupSettingList" value={"블록 순서맞추기"} >블록 순서맞추기</option>
                 <option id="CodeGroupSettingList" value={"줄별 순서맞추기"} >줄별 순서맞추기</option>
+                <option id="CodeGroupSettingList" value={"블록 순서맞추기"} >블록 순서맞추기</option>
                 <option id="CodeGroupSettingList" value={"빈칸 채우기"} >빈칸 채우기</option>
             </select>
             <span></span>
