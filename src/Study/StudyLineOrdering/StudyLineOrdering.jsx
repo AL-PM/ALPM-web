@@ -4,7 +4,7 @@ import './StudyLineOrdering.css';
 function StudyLineOrdering({language, method, level, codegroup, problem}){
 
     function countNumberOfCode(code) {
-        return(code.split('\n').length + 2);
+        return(code.split('\n').length + 3);
     }
     
     const code = {
