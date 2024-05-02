@@ -3,7 +3,8 @@
     padding-left: 20px;
     resize: none;
     outline: none;
-
+    font-family: 'intelone-mono-font-family-regular';
+    font-size: small;
 }
 
 #StudyLineOrdering{
@@ -24,3 +25,4 @@
     display: flex;
     gap: 5vw;
 }
+
