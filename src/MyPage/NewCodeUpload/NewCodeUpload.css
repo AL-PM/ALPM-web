@@ -23,7 +23,7 @@
     font-size: medium;
 }
 
-#UploadContent{
+#UploadCode{
     border: 1px solid;
     border-radius: 10px;
     width: 95%;
@@ -33,6 +33,26 @@
     padding-bottom: 15px;
     margin-top: 15px;
     margin-bottom :15px;
+    font-family: 'intelone-mono-font-family-regular';
+    font-size: medium;
+    resize: none;
+    outline: none;
+}
+
+#UploadDescription{
+    border: 1px solid;
+    border-radius: 10px;
+    width: 95%;
+    padding-top:15px;
+    padding-left : 2.5%;
+    padding-right : 2.5%;
+    padding-bottom: 15px;
+    margin-top: 15px;
+    margin-bottom :15px;
+    font-family: 'SUITE-Regular';
+    font-size: large;
+    resize: none;
+    outline: none;
 }
 
 #CodeUploadwBtn{

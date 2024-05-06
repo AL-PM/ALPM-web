@@ -45,6 +45,11 @@ function NewCodeUpload() {
     } 
   };
 
+    // TextArea row 설정을 위해 코드 전체의 줄 수 계산
+  function countNumberOfCode(code) {
+    return(code.split('\n').length);
+  }
+
   return (
     <div>
         <MainMenuBar page={"MyPage"} />
@@ -57,26 +62,26 @@ function NewCodeUpload() {
                 <span onClick={()=>setlanguage("C++")}  style={{fontWeight:language==="C++" ? "bold" : 'normal' , color : language ==="C++" ? "#EF4949" : "black"}} >C++</span>
             </div> 
             <CodeUploadTitle Title={"코드 이름"}/>
-            <input id='UploadContent' style={{fontSize:"medium"}}
+            <input id='UploadDescription' style={{fontSize:"medium"}}
                 value={codeName}
                 onChange={(e) => setCodeName(e.target.value)}
                 placeholder='여기에 업로드할 코드의 이름을 입력해주세요'
             />
             <CodeUploadTitle Title={"코드 원문"}/>
-            <textarea id='UploadContent' style={{fontSize:"large"}}
+            <textarea id='UploadCode' style={{fontSize:"large"}}
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 onKeyDown={codeKeyDown}
-                rows={20}
+                rows={countNumberOfCode(code)}
                 cols={100}
                 placeholder='여기에 업로드할 코드를 입력해주세요'
             />
             <CodeUploadTitle Title={"코드에 대한 설명"}/>
-            <textarea id='UploadContent' style={{fontSize:"large"}}
+            <textarea id='UploadDescription' style={{fontSize:"large"}}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 onKeyDown={descriptionKeyDown}
-                rows={10}
+                rows={countNumberOfCode(description)}
                 cols={100}
                 placeholder='여기에 업로드할 코드에 대한 설명을 입력해주세요'
             />
