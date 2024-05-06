@@ -37,10 +37,11 @@
     border: 1px solid;
     border-radius: 10px;
     width: 95%;
-    padding-top:20px;
+    padding-top:15px;
     padding-left : 2.5%;
     padding-right : 2.5%;
     padding-bottom: 15px;
+    font-family: 'SUITE-Regular';
     margin-top: 15px;
     margin-bottom :15px;
     font-size: large;
