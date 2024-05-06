@@ -62,13 +62,13 @@ function NewCodeUpload() {
                 <span onClick={()=>setlanguage("C++")}  style={{fontWeight:language==="C++" ? "bold" : 'normal' , color : language ==="C++" ? "#EF4949" : "black"}} >C++</span>
             </div> 
             <CodeUploadTitle Title={"코드 이름"}/>
-            <input id='UploadDescription' style={{fontSize:"medium"}}
+            <input id='UploadDescription'
                 value={codeName}
                 onChange={(e) => setCodeName(e.target.value)}
                 placeholder='여기에 업로드할 코드의 이름을 입력해주세요'
             />
             <CodeUploadTitle Title={"코드 원문"}/>
-            <textarea id='UploadCode' style={{fontSize:"large"}}
+            <textarea id='UploadCode' 
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 onKeyDown={codeKeyDown}
@@ -77,7 +77,7 @@ function NewCodeUpload() {
                 placeholder='여기에 업로드할 코드를 입력해주세요'
             />
             <CodeUploadTitle Title={"코드에 대한 설명"}/>
-            <textarea id='UploadDescription' style={{fontSize:"large"}}
+            <textarea id='UploadDescription' 
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 onKeyDown={descriptionKeyDown}
