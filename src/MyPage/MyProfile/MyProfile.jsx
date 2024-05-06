@@ -52,9 +52,7 @@ function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint
                     <TextContainer keyword={"채운 빈칸의 수"} content={fillPoint} />
                 </div>
                 <div id="MyProfileStudyHistoryGrass">
-                    {historyList.map((dailyData) =>
-                        <div id="grass"></div>
-                    )}
+                    <span>사용자 연속 학습 기록 [잔디] 추가 예정</span>
                 </div>
             </div>
         </div>

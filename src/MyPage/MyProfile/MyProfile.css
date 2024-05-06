@@ -73,7 +73,7 @@
     padding-bottom: 2.5vh;
 }
 
-#MyProfileStudyHistoryGrass {
+#MyProfileStudyHistoryGrass2 {
     height: 100%;
     width: 55%;
     border: 1px solid;
@@ -82,6 +82,16 @@
     grid-template-columns: repeat(30, 1fr); /* 12개의 열 */
     grid-template-rows: repeat(12, 1fr); /* 7개의 행 */
     gap:5px;
+}
+
+#MyProfileStudyHistoryGrass {
+    height: 100%;
+    width: 55%;
+    border: 1px solid;
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 #grass {
