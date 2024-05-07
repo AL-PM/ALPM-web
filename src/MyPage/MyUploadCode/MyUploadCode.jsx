@@ -61,15 +61,6 @@ function MyUploadCode(){
             "language": "Python",
             "owner" : "MoonKee"
         },
-        {
-            "id": 4,
-            "name": "버블 정렬",
-            "referencedCount": 4,
-            "verified": null,
-            "language": "Python",
-            "owner" : "MoonKee"
-        },
-        
     ]
     return(
         <div id="MyUploadCode">

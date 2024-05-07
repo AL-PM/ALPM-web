@@ -3,6 +3,12 @@ import CodeGroupSearchResult from "../../Etc/CodeGroupSearchResult/CodeGroupSear
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 
+function MyCodeGroupNew(){
+    return(
+        <button id="CodeHomeUploadButton" >새로운 코드 그룹 생성</button>
+    )
+}
+
 function MyCodeGroup(){
     const searchData = [
         {
@@ -68,21 +74,13 @@ function MyCodeGroup(){
             "language": "Python",
             "owner" : "MoonKee"
         },
-        {
-            "id": 7,
-            "name": "Tree Search",
-            "referencedCount": 4,
-            "verified": false,
-            "visible": true,
-            "language": "Python",
-            "owner" : "MoonKee"
-        },
     ]
     return(
         <div id="MyCodeGroup">
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"3"}/>
-            <CodeGroupSearchResult searchData={searchData} bodyHeight={"66vh"}/>
+            <CodeGroupSearchResult searchData={searchData} bodyHeight={"60vh"}/>
+            <MyCodeGroupNew />
         </div>
     )
 }
