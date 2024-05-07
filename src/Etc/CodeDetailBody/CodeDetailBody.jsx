@@ -46,7 +46,7 @@ function CodeDetailBody({content, description, owner}){
                 rows={countNumberOfCode(description)}
                 cols={100}
             />
-            <CodeDetailTitle Title={"제작자"}/>
+            <CodeDetailTitle Title={"작성자"}/>
             <div id="UserContent">
                 <span>{owner.name}</span>
             </div>
