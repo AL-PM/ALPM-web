@@ -13,6 +13,15 @@ function StudyTracking(){
         data[i] = data[i].split("//");
     }
 
+    function setTabFunt(lineCode){
+        let numOfTab = lineCode.split("\t").length-1;
+        let defaultTab = "";
+        for(let j = 0 ; j < numOfTab ; j++){
+            defaultTab = defaultTab + "\t";
+        }
+        return defaultTab;
+    }
+
     return( 
         <div id="StudyTracking">
             {data.map((codeData) =>
@@ -25,7 +34,8 @@ function StudyTracking(){
                 <textarea id="StudyTrackingInput" style={{color:"red"}} 
                 rows={1}
                 cols={150}
-/>
+                defaultValue={setTabFunt(codeData[0])}
+                />
             </div>
             
             )} 
