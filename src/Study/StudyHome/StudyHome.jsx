@@ -49,8 +49,9 @@ function StudyHome(){
         <div id = "StudyHome">
             <MainMenuBar page={"Study"} />
             <StudySettingBar setlanguage={setlanguage} setmethod={setmethod} setcodegroup={setcodegroup} setlevel={setlevel} setproblem={setproblem} codegrouplist={codegrouplist}/>
-            {method === "줄별 순서맞추기" ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : <StudyHomeBody />}
-            {method === "따라치기" ? <StudyTracking /> : <StudyHomeBody />}
+            {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
+            {method === "따라치기" && problem ? <StudyTracking /> : null}
+            {!problem ? <StudyHomeBody /> : null}
         </div>
        
     )
