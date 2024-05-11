@@ -36,7 +36,7 @@ function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setpro
             <span>|</span>
             <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setcodegroup(event.target.value)}>
                 {codegrouplist.map((codegrouptag)=>
-                <option id="CodeGroupSettingList" value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+                <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
             
