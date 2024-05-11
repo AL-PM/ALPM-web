@@ -43,6 +43,7 @@ function StudyTracking(){
     // 코드 상태를 관리하기 위해 useState를 사용
     const [inputData, setInputData] = useState({});
 
+    /*
     function setTabFunt(tabCount) {
         let defaultTab = "";
         for (let j = 0; j < tabCount; j++) {
@@ -50,6 +51,7 @@ function StudyTracking(){
         }
         return defaultTab;
     }
+    */
 
     // preprocessCode 함수를 이용하여 코드 전처리
     let processedData = preprocessCode(code.text);
@@ -62,20 +64,35 @@ function StudyTracking(){
         });
     }
 
+    function handleTabKeyPress(event, num, defaultEvent) {
+        // keyCode 9는 탭 키를 나타냄
+        if (event.keyCode === 9 && !defaultEvent) {
+            event.preventDefault(); // 기본 동작 방지
+            setInputData({
+                ...inputData,
+                [num]: (inputData[num] || "") + "\t" // 현재 데이터 뒤에 "\t" 추가
+            });
+        }
+    }
+    
+
     return( 
         <div id="StudyTracking">
             {processedData.map((codeData) => 
             <div key={codeData.num}>
                 <textarea readOnly id="StudyTrackingBackground" style={{color:"gray"}} 
                 rows={1}
-                cols={150}
-                defaultValue={codeData.data} />
+                cols={100}
+                defaultValue={codeData.data} 
+                tabIndex={-1}
+                />
 
                 <textarea id="StudyTrackingInput" style={{color: codeData.data === inputData[codeData.num] ? "blue" : "red"}} 
                 rows={1}
-                cols={150}
-                value={inputData[codeData.num] || setTabFunt(codeData.tabCount) }
+                cols={100}
+                value={inputData[codeData.num] || "" }
                 onChange={(event) => handleInputChange(event, codeData.num)}
+                onKeyDown={(event) => handleTabKeyPress(event, codeData.num, codeData.data === inputData[codeData.num] )} // 탭 키 입력 처리
                 readOnly={codeData.data === inputData[codeData.num]}
                 />
                 </div>

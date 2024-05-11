@@ -1,4 +1,14 @@
 #StudyTracking{
+    width: 85vw;
+    margin-top : 7.5vh;
+    margin-bottom: 10vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    padding-left: 30px;
+    padding-top : 30px;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,6 +21,7 @@
     font-family: 'intelone-mono-font-family-regular';
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: large;
 }
 
 #StudyTrackingInput{
@@ -20,5 +31,6 @@
     font-family: 'intelone-mono-font-family-regular';
     padding-top: 5px;
     padding-bottom: 5px;
+    font-size: large;
 }
 
