@@ -25,7 +25,6 @@ function StudyTracking(){
             let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // 뒤쪽 공백 제거
             return trimmedCode;
         }
-        
 
         // 코드를 객체로 변환하고 배열에 저장
         for (let i = 0; i < lines.length; i++) {
@@ -38,6 +37,14 @@ function StudyTracking(){
         }
     
         return processedCode;
+    }
+
+    function setTabFunt(tabCount) {
+        let defaultTab = "";
+        for (let j = 0; j < tabCount; j++) {
+            defaultTab = defaultTab + "\t";
+        }
+        return defaultTab;
     }
 
     // 코드 상태를 관리하기 위해 useState를 사용
@@ -68,7 +75,6 @@ function StudyTracking(){
             });
         }
     }
-    
 
     return( 
         <div id="StudyTracking">
@@ -85,10 +91,11 @@ function StudyTracking(){
                 <textarea id="StudyTrackingInput" style={{color: codeData.data === inputData[codeData.num] ? "blue" : "red"}} 
                 rows={1}
                 cols={140}
-                value={inputData[codeData.num] || "" }
+                value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
                 onChange={(event) => handleInputChange(event, codeData.num)}
                 onKeyDown={(event) => handleTabKeyPress(event, codeData.num, codeData.data === inputData[codeData.num] )} // 탭 키 입력 처리
                 readOnly={codeData.data === inputData[codeData.num]}
+                defaultValue={setTabFunt(codeData.data)}
                 />
                 </div>
             )} 
@@ -100,7 +107,6 @@ function StudyTracking(){
                 </div>
                 }
         </div>
-
     )
 }
 
