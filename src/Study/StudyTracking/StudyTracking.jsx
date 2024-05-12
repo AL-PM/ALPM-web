@@ -42,16 +42,7 @@ function StudyTracking(){
 
     // 코드 상태를 관리하기 위해 useState를 사용
     const [inputData, setInputData] = useState({});
-
-    /*
-    function setTabFunt(tabCount) {
-        let defaultTab = "";
-        for (let j = 0; j < tabCount; j++) {
-            defaultTab = defaultTab + "\t";
-        }
-        return defaultTab;
-    }
-    */
+    const [currentExplanation, setCurrentExplanation] = useState("");
 
     // preprocessCode 함수를 이용하여 코드 전처리
     let processedData = preprocessCode(code.text);
@@ -62,6 +53,9 @@ function StudyTracking(){
             ...inputData,
             [num]: event.target.value
         });
+
+        // 현재 라인의 설명을 업데이트
+        setCurrentExplanation(processedData[num - 1].explain);
     }
 
     function handleTabKeyPress(event, num, defaultEvent) {
@@ -98,6 +92,13 @@ function StudyTracking(){
                 />
                 </div>
             )} 
+                {currentExplanation === "" ? null : 
+                <div id="explainationBox">
+                    <p>현재 작성중인 라인에 대한 설명</p>
+                    <p style={{fontWeight:"bold"}}>:</p>
+                    <p>{currentExplanation}</p> 
+                </div>
+                }
         </div>
 
     )

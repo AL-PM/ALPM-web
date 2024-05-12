@@ -4,17 +4,17 @@
     margin-bottom: 10vh;    
     margin-left : 7.5vw;
     margin-right: 7.5vw;
-    padding-left: 30px;
-    padding-top : 30px;
     border: 1px solid;
     border-color: black;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top : 30px;
 }
 
 #StudyTrackingBackground{
+    padding-left: 30px;
     border: 0px;
     resize: none;
     outline: none;
@@ -25,6 +25,7 @@
 }
 
 #StudyTrackingInput{
+    padding-left: 30px;
     border: 0px;
     resize: none;
     outline: none;
@@ -32,5 +33,25 @@
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: large;
+}
+
+#explainationBox{
+    position: fixed;
+    width: 80vw;
+    bottom : 5vh;
+    background-color: white;
+    border: 1px solid;
+    border-color: #5C4EFF;
+    border-radius: 10px;
+    display: flex;
+    gap : 20px;
+    justify-content: center;
+    align-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+    font-size: large;
+    font-weight: lighter;
 }
 
