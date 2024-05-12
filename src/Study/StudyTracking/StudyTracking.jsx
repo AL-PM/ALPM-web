@@ -80,16 +80,17 @@ function StudyTracking(){
         <div id="StudyTracking">
             {processedData.map((codeData) => 
             <div key={codeData.num}>
+                {codeData.data===inputData[codeData.num] ? null : 
                 <textarea readOnly id="StudyTrackingBackground" style={{color:"gray"}} 
                 rows={1}
-                cols={100}
+                cols={140}
                 defaultValue={codeData.data} 
                 tabIndex={-1}
-                />
+                />}
 
                 <textarea id="StudyTrackingInput" style={{color: codeData.data === inputData[codeData.num] ? "blue" : "red"}} 
                 rows={1}
-                cols={100}
+                cols={140}
                 value={inputData[codeData.num] || "" }
                 onChange={(event) => handleInputChange(event, codeData.num)}
                 onKeyDown={(event) => handleTabKeyPress(event, codeData.num, codeData.data === inputData[codeData.num] )} // 탭 키 입력 처리
