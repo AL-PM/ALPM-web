@@ -14,12 +14,6 @@ function StudyBlockOrdering(){
         // 각 줄을 객체로 변환하여 저장할 배열
         let processedCode = [];
     
-        // 각 줄에 대한 설명을 분리하는 함수
-        function extractExplain(line) {
-            let parts = line.split("//");
-            return parts.length > 1 ? parts[1].trim() : "";
-        }
-
         function extractCode(line) {
             let codeWithoutComment = line.split("//")[0]; // 주석 제거
             let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // 뒤쪽 공백 제거
@@ -28,7 +22,7 @@ function StudyBlockOrdering(){
 
         // 코드를 객체로 변환하고 배열에 저장
         for (let i = 0; i < lines.length; i++) {
-            let linedata = lines[i]
+            let linedata = extractCode(lines[i]);
             let preprocessLine = linedata.split(" ");
             processedCode.push({
                 blockData : preprocessLine,
@@ -40,39 +34,54 @@ function StudyBlockOrdering(){
         return processedCode;
     }
 
-    let finalCode = "";
-
-
-    // 코드별 설명 분리
-    const data = code.text.split("\n");
-    for(let i = 0 ; i < data.length ; i++){
-        data[i] = data[i].split("//");
-    }
-    for(let i = 0 ; i < data.length ; i++){
-        if(data[i].length === 2){
-            finalCode = finalCode + data[i][0] + "\n";
-        }else{
-            finalCode = finalCode + data[i] + "\n";
+    function lineDataBlockSetting(lineCode) {
+        let result = "";
+    
+        for (let i = 0; i < lineCode.length; i++) {
+            let block = lineCode[i];
+            
+            // Check if the block starts with a '$' character
+            if (block.startsWith("$")) {
+                // Find the closing '$' character
+                let closingIndex = block.indexOf("$", 1);
+                
+                if (closingIndex !== -1) {
+                    // If found, replace the entire block with a space
+                    result += "%";
+                } else {
+                    // If no closing '$' is found, just append the block
+                    result += " " + block;
+                }
+            } else {
+                // If the block doesn't start with '$', just append it
+                result += " " + block;
+            }
         }
+    
+        return result; // Remove any leading/trailing whitespace
     }
+
+    
     
 
-    console.log(preprocessCode(code.text));
+    let finalCode = preprocessCode(code.text);
 
-    // TextArea row 설정을 위해 코드 전체의 줄 수 계산
-    // Font-size medium 기준 +3 해야함sss
-    function countNumberOfCode(code) {
-        return(code.split('\n').length + 3);
-    }
+    console.log(finalCode);
 
     return(
         <div id="StudyBlockOrdering">
-            <textarea readOnly
+            {finalCode.map((lineData) =>
+            <div key={lineData.num}>
+                <textarea readOnly
                 id="StudyBlockOrderingCodeArea" 
-                rows={countNumberOfCode(finalCode)}
-                cols={150}
-                defaultValue={finalCode} // defaultValue 속성 사용
-            />
+                rows={1}
+                cols={140}
+                defaultValue={lineDataBlockSetting(lineData.blockData)} // defaultValue 속성 사용
+                />
+            </div>
+        
+        )}
+            
         </div>
     )
 }
