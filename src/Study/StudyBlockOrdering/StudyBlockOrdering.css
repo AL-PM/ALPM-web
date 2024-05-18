@@ -1,0 +1,25 @@
+#StudyBlockOrderingCodeArea{
+    border: 0px;
+    padding-left: 20px;
+    resize: none;
+    outline: none;
+    font-family: 'intelone-mono-font-family-regular';
+    font-size: medium;
+    border-radius: 10px;
+}
+
+#StudyBlockOrdering{
+    width: 85vw;
+    margin-top : 7.5vh;
+    margin-bottom: 10vh;    
+    margin-left : 7.5vw;
+    margin-right: 7.5vw;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top : 30px;
+}
+
