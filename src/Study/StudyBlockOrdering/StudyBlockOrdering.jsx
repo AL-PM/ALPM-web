@@ -122,6 +122,8 @@ function StudyBlockOrdering() {
         // 랜덤한 숫자 배열 생성 및 설정
         const randomNumbers = getRandomNumbers(preprocessedCode[2], numOfBlankInLevel);
         
+        console.log(randomNumbers);
+
         // 전처리된 코드 설정
         setFinalCode(preprocessedCode);
         
