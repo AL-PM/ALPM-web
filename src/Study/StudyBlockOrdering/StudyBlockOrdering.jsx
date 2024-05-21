@@ -78,13 +78,11 @@ function StudyBlockOrdering() {
         }
 
         let totalCode = "";
-        let numOfBlank = 1;
         let blockNum = new Set(blockData.map(element => element.num));
 
         codeData.forEach((element) => {
             if (blockNum.has(element.num)) {
-                totalCode += " < " + numOfBlank + " > ";
-                numOfBlank += 1;
+                totalCode += " [__BLANK__] ";
             } else {
                 totalCode += element.data;
             }
