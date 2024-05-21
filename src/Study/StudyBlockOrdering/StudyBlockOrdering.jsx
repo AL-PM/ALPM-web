@@ -3,6 +3,7 @@ import './StudyBlockOrdering.css';
 
 function StudyBlockOrdering() {
     const [codeData, setCodeData] = useState(null);
+    const [userInput, setUserInput] = useState([]);
 
     useEffect(() => {
         const code = {
@@ -19,7 +20,6 @@ function StudyBlockOrdering() {
                     [result[i], result[j]] = [result[j], result[i]];
                 }
                 result.splice(numOfBlank);
-                result.sort((a, b) => a.num - b.num);
                 return result;
             }
 
@@ -27,6 +27,7 @@ function StudyBlockOrdering() {
             let trimmedCode = "";
             let processedCode = [];
             let blockData = [];
+            let sortedblockData = [];
             let lines = code.split("\n");
 
             function extractCode(line) {
@@ -59,7 +60,14 @@ function StudyBlockOrdering() {
             }
 
             blockData = getRandomNumbers(blockData, 3);
-            finalCode = [processedCode, blockData];
+
+            blockData.forEach((element) => {
+                sortedblockData.push(element);
+            });
+
+            sortedblockData.sort((a, b) => a.num - b.num);
+            
+            finalCode = [processedCode, blockData, sortedblockData];
 
             return finalCode;
         }
@@ -94,6 +102,15 @@ function StudyBlockOrdering() {
         return <div>Loading...</div>;
     }
 
+    function exampleFn(eachBlock) {
+        setUserInput(prevUserInput => [...prevUserInput, eachBlock]);
+        setCodeData(prevCodeData => {
+            const updatedBlockData = prevCodeData[1].filter(block => block.num !== eachBlock.num);
+            return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
+        });
+        console.log(userInput);
+    }
+
     const finalCode = totalTextMaker(codeData[0], codeData[1]);
 
     return (
@@ -104,6 +121,22 @@ function StudyBlockOrdering() {
                 cols={140}
                 defaultValue={finalCode}
             />
+            {userInput.length >= 15 ? null : 
+            <div id="exampleBox">
+                <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 보기 ]"} </p>
+                <div id="exampleList">
+                    {codeData[1].map((eachBlock) =>
+                        <p
+                            key={eachBlock.num}
+                            id="exampleListBlock"
+                            onClick={() => exampleFn(eachBlock)}
+                        >
+                            {eachBlock.data}
+                        </p>
+                    )}
+                </div>
+            </div>}
+            
         </div>
     );
 }
