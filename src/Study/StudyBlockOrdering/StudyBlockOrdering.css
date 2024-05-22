@@ -11,9 +11,8 @@
 
 #StudyBlockOrdering{
     width: 85vw;
-    margin-top : 7.5vh;
-    margin-bottom: 35vh;    
-    margin-left : 7.5vw;
+    margin-top : 7.5vh;  
+    margin-left : 7.5vw ;
     margin-right: 7.5vw;
     border: 1px solid;
     border-color: black;
@@ -23,15 +22,15 @@
     justify-content: center;
     padding-top : 30px;
     padding-bottom: 30px;
-    font-size: medium;
+    font-size: small;
 }
 
 #exampleBox{
     position: fixed;
-    width: 80vw;
+    width: 84.8vw;
     bottom : 5vh;
     background-color: white;
-    border: 1px solid;
+    border: 2px solid;
     border-color: #5C4EFF;
     border-radius: 10px;
     display: flex;
@@ -40,10 +39,8 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-right: 2.5vw;
-    margin-left: 2.5vw;
     font-size: large;
-    font-weight: lighter;
+    font-weight: bold;
 }
 
 #exampleList{
