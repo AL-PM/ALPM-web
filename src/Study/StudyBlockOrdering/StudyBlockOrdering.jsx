@@ -91,6 +91,7 @@ function StudyBlockOrdering() {
 
         const preprocessedCode = preprocessCode(code.text);
         setCodeData(preprocessedCode);
+        console.log(preprocessedCode);
     }, []);
 
     useEffect(() => {
@@ -176,27 +177,15 @@ function StudyBlockOrdering() {
             const updatedBlockData = prevCodeData[1].filter(block => block.num !== eachBlock.num);
             return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
         });
-
-        console.log(userInput, codeData[1]);
     }
 
     function resetFn() {
-        setUserInput(prevUserInput => {
-            const updatedUserInput = [];
-            let updatedBlockData = [];
-            prevUserInput.forEach((element) => {
-                updatedBlockData.push(element);
-            });
-            const newFinalCode = totalTextMaker(codeData[0], codeData[1], updatedUserInput);
-            setFinalCode(newFinalCode);
-            setCodeData(prevCodeData => {
-                prevCodeData[1].forEach((element) => {
-                    updatedBlockData.push(element);
-                });
-                return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
-            });
-            return updatedUserInput;
+        setUserInput([]);
+        setCodeData(prevCodeData => {
+            const allBlocks = [...prevCodeData[1], ...userInput];
+            return [prevCodeData[0], allBlocks, prevCodeData[2]];
         });
+        setFinalCode(totalTextMaker(codeData[0], codeData[1], []));
     }
 
     function countMarginBottom(length) {
@@ -208,6 +197,18 @@ function StudyBlockOrdering() {
             return "29vh";
         } else {
             return "15vh";
+        }
+    }
+
+    function checkCompleteFn() {
+        const userInputtxt = userInput.map(element => element.data).join('');
+        const blockDatatxt = codeData[2].map(element => element.data).join('');
+
+        if (userInputtxt === blockDatatxt) {
+            alert("정답입니다.");
+        }else{
+            resetFn();
+            alert("옳지 않은 답변입니다. 다시 작성해주세요");
         }
     }
 
@@ -238,7 +239,7 @@ function StudyBlockOrdering() {
             </div> : null}
             <div id="BlockOrderingBtnContainer">
                 <button id="BlockOrderingBtn" style={{ borderColor: "#EF4949" }} onClick={resetFn}>초기화</button>
-                <button id="BlockOrderingBtn" style={{ backgroundColor: "grays" }}>완료</button>
+                <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF"}} onClick={() => checkCompleteFn()}>완료</button>
             </div>
         </div>
     );
