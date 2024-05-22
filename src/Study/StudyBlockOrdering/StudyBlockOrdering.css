@@ -27,10 +27,10 @@
 
 #exampleBox{
     position: fixed;
-    width: 84.8vw;
-    bottom : 5vh;
+    width: 84.9vw;
+    bottom : 13vh;
     background-color: white;
-    border: 2px solid;
+    border: 1.5px solid;
     border-color: #5C4EFF;
     border-radius: 10px;
     display: flex;
@@ -53,6 +53,29 @@
 #exampleListBlock{
     width: 10vw;
     align-self: center;
+}
+
+#BlockOrderingBtnContainer{
+    position: fixed;
+    width: 84.8vw;
+    bottom : 5vh;
+    background-color: white;
+    border-color: #5C4EFF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+#BlockOrderingBtn{
+    width: 48%;
+    height: 5vh;
+    border: 1.5px solid;
+    border-radius: 10px;
+    background-color: white;
 }
 
 

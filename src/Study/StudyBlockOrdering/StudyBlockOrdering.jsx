@@ -185,8 +185,27 @@ function StudyBlockOrdering() {
         console.log(userInput, codeData[1]);
     }
 
+    function resetFn(){
+        setUserInput(prevUserInput => {
+            const updatedUserInput = [];
+            let updatedBlockData = [];
+            prevUserInput.forEach((element)=>{
+                updatedBlockData.push(element);
+            })
+            const newFinalCode = totalTextMaker(codeData[0], codeData[1], updatedUserInput);
+            setFinalCode(newFinalCode);
+            setCodeData(prevCodeData => {
+                return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
+            });
+            return updatedUserInput;
+        });
+
+       
+        
+    }
+
     return (
-        <div id="StudyBlockOrdering" style={userInput.length < 15 ? {marginBottom : "35vh"} : {marginBottom : "7.5vh"} }>
+        <div id="StudyBlockOrdering" style={userInput.length < 15 ? {marginBottom : "40vh"} : {marginBottom : "15vh"} }>
             <textarea readOnly
                 id="StudyBlockOrderingCodeArea"
                 rows={countRows(finalCode) }
@@ -210,6 +229,10 @@ function StudyBlockOrdering() {
                     </div>
                 </div>
             </div> : null}
+            <div id="BlockOrderingBtnContainer">
+                <button id="BlockOrderingBtn" style={{backgroundColor : "beige"}} onClick={resetFn}>초기화</button>
+                <button id="BlockOrderingBtn" style={{backgroundColor : "grays"}}>완료</button>
+            </div>
         </div>
     );
 }
