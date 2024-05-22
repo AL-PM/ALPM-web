@@ -202,13 +202,22 @@ function StudyBlockOrdering() {
             });
             return updatedUserInput;
         });
+    }
 
-       
-        
+    function countMarginBottom(length){
+        if(length < 15){
+            return "40vh";
+        }else if(length < 10){
+            return "30vh";
+        }else if(length < 5){
+            return "20vh";
+        }else{
+            return "15vh";
+        }
     }
 
     return (
-        <div id="StudyBlockOrdering" style={userInput.length < 15 ? {marginBottom : "40vh"} : {marginBottom : "15vh"} }>
+        <div id="StudyBlockOrdering" style={{marginBottom : countMarginBottom(userInput.length)}}>
             <textarea readOnly
                 id="StudyBlockOrderingCodeArea"
                 rows={countRows(finalCode) }
@@ -233,7 +242,7 @@ function StudyBlockOrdering() {
                 </div>
             </div> : null}
             <div id="BlockOrderingBtnContainer">
-                <button id="BlockOrderingBtn" style={{backgroundColor : "beige"}} onClick={resetFn}>초기화</button>
+                <button id="BlockOrderingBtn" style={{borderColor : "#EF4949"}} onClick={resetFn}>초기화</button>
                 <button id="BlockOrderingBtn" style={{backgroundColor : "grays"}}>완료</button>
             </div>
         </div>
