@@ -129,7 +129,7 @@ function StudyBlockOrdering() {
         codeData.forEach((element) => {
             if (blockNum.has(element.num)) {
                 let numB = findNumB(blockData, element.num);
-                if(userInput[numB] && userInput[numB] != ""){
+                if(userInput[numB] && userInput[numB] !== ""){
                     totalCode += userInput[numB];
                 }else{
                     totalCode += " [__BLANK_" + (numB + 1) + "_] ";
