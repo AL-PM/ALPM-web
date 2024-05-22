@@ -93,7 +93,6 @@ function StudyBlockOrdering() {
 
         const preprocessedCode = preprocessCode(code.text);
         setCodeData(preprocessedCode);
-        console.log(preprocessedCode);
 
     }, []);
 
@@ -109,8 +108,8 @@ function StudyBlockOrdering() {
                 codeData.forEach((element) => {
                     if (blockNum.has(element.num)) {
                         let numB = findNumB(blockData, element.num);
-                        if(userInput[numB] && userInput[numB] !== ""){
-                            totalCode += userInput[numB];
+                        if(userInput[numB] && userInput[numB].data!== ""){
+                            totalCode += userInput[numB].data;
                         }else{
                             totalCode += " [__BLANK_" + (numB + 1) + "_] ";
                         }
@@ -125,7 +124,6 @@ function StudyBlockOrdering() {
     
             const newFinalCode = totalTextMaker(codeData[0], codeData[2], userInput);
             setFinalCode(newFinalCode);
-            console.log(userInput);
         }
     }, [userInput, codeData]);
 
@@ -153,8 +151,8 @@ function StudyBlockOrdering() {
         codeData.forEach((element) => {
             if (blockNum.has(element.num)) {
                 let numB = findNumB(blockData, element.num);
-                if(userInput[numB] && userInput[numB] !== ""){
-                    totalCode += userInput[numB];
+                if(userInput[numB] && userInput[numB].data!== ""){
+                    totalCode += userInput[numB].data;
                 }else{
                     totalCode += " [__BLANK_" + (numB + 1) + "_] ";
                 }
@@ -173,7 +171,7 @@ function StudyBlockOrdering() {
 
     function exampleFn(eachBlock) {
         setUserInput(prevUserInput => {
-            const updatedUserInput = [...prevUserInput, eachBlock.data];
+            const updatedUserInput = [...prevUserInput, eachBlock];
             const newFinalCode = totalTextMaker(codeData[0], codeData[1], updatedUserInput);
             setFinalCode(newFinalCode);
             return updatedUserInput;
@@ -183,6 +181,8 @@ function StudyBlockOrdering() {
             const updatedBlockData = prevCodeData[1].filter(block => block.num !== eachBlock.num);
             return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
         });
+        
+        console.log(userInput, codeData[1]);
     }
 
     return (
