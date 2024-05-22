@@ -1,9 +1,11 @@
+
 import React, { useState, useEffect } from "react";
 import './StudyBlockOrdering.css';
 
 function StudyBlockOrdering() {
     const [codeData, setCodeData] = useState(null);
     const [userInput, setUserInput] = useState([]);
+    const [finalCode, setFinalCode] = useState("");
 
     useEffect(() => {
         const code = {
@@ -28,6 +30,7 @@ function StudyBlockOrdering() {
             let processedCode = [];
             let blockData = [];
             let sortedblockData = [];
+            let sortedlineupblockData = [];
             let lines = code.split("\n");
 
             function extractCode(line) {
@@ -61,40 +64,82 @@ function StudyBlockOrdering() {
 
             blockData = getRandomNumbers(blockData, 3);
 
+            
             blockData.forEach((element) => {
-                sortedblockData.push(element);
+                sortedblockData.push({
+                    data : element.data,
+                    num : element.num,
+                    blank : element.blank,
+                });
             });
 
+            let lineUp = 0;
             sortedblockData.sort((a, b) => a.num - b.num);
-            
-            finalCode = [processedCode, blockData, sortedblockData];
+
+            sortedblockData.forEach((element) =>{
+                sortedlineupblockData.push({
+                    data : element.data,
+                    num : element.num,
+                    blank : element.blank,
+                    lineup : lineUp,
+                });
+                lineUp++;
+            })
+
+            finalCode = [processedCode, blockData, sortedlineupblockData];
 
             return finalCode;
         }
 
         const preprocessedCode = preprocessCode(code.text);
         setCodeData(preprocessedCode);
+        console.log(preprocessedCode);
+
     }, []);
+
+    useEffect(() => {
+        if (codeData) {
+            const newFinalCode = totalTextMaker(codeData[0], codeData[2], userInput);
+            setFinalCode(newFinalCode);
+            console.log(userInput);
+        }
+    }, [userInput, codeData]);
 
     function countRows(codeData) {
         return codeData.split("\n").length;
     }
 
-    function totalTextMaker(codeData, blockData) {
+    function findNumB(blockData, numB){
+        let result = -1;
+        blockData.forEach((element) => {
+            let tmp = element.num;
+            if(tmp === numB)
+                result = element.lineup;
+        })
+        return result;
+    }
+
+    function totalTextMaker(codeData, blockData, userInput) {
         if (!codeData || !blockData) {
             return "";
         }
 
         let totalCode = "";
         let blockNum = new Set(blockData.map(element => element.num));
-
         codeData.forEach((element) => {
             if (blockNum.has(element.num)) {
-                totalCode += " [__BLANK__] ";
+                let numB = findNumB(blockData, element.num);
+                if(userInput[numB] && userInput[numB] != ""){
+                    totalCode += userInput[numB];
+                }else{
+                    totalCode += " [__BLANK_" + (numB + 1) + "_] ";
+                }
+                
             } else {
                 totalCode += element.data;
             }
         });
+
         return totalCode;
     }
 
@@ -103,40 +148,44 @@ function StudyBlockOrdering() {
     }
 
     function exampleFn(eachBlock) {
-        setUserInput(prevUserInput => [...prevUserInput, eachBlock]);
+        setUserInput(prevUserInput => {
+            const updatedUserInput = [...prevUserInput, eachBlock.data];
+            const newFinalCode = totalTextMaker(codeData[0], codeData[1], updatedUserInput);
+            setFinalCode(newFinalCode);
+            return updatedUserInput;
+        });
+
         setCodeData(prevCodeData => {
             const updatedBlockData = prevCodeData[1].filter(block => block.num !== eachBlock.num);
             return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
         });
-        console.log(userInput);
     }
 
-    const finalCode = totalTextMaker(codeData[0], codeData[1]);
-
     return (
-        <div id="StudyBlockOrdering">
+        <div id="StudyBlockOrdering" style={userInput.length < 15 ? {marginBottom : "35vh"} : {marginBottom : "7.5vh"} }>
             <textarea readOnly
                 id="StudyBlockOrderingCodeArea"
-                rows={countRows(finalCode)}
+                rows={countRows(finalCode) + 1}
                 cols={140}
-                defaultValue={finalCode}
+                value={finalCode}
             />
-            {userInput.length >= 15 ? null : 
-            <div id="exampleBox">
-                <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 보기 ]"} </p>
-                <div id="exampleList">
-                    {codeData[1].map((eachBlock) =>
-                        <p
-                            key={eachBlock.num}
-                            id="exampleListBlock"
-                            onClick={() => exampleFn(eachBlock)}
-                        >
-                            {eachBlock.data}
-                        </p>
-                    )}
+            {userInput.length < 15 ? 
+            <div>
+                <div id="exampleBox">
+                    <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 보기 ]"} </p>
+                    <div id="exampleList">
+                        {codeData[1].map((eachBlock) =>
+                            <p
+                                key={eachBlock.num}
+                                id="exampleListBlock"
+                                onClick={() => exampleFn(eachBlock)}
+                            >
+                                {eachBlock.data}
+                            </p>
+                        )}
+                    </div>
                 </div>
-            </div>}
-            
+            </div> : null}
         </div>
     );
 }

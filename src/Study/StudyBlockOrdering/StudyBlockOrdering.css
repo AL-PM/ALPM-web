@@ -12,7 +12,7 @@
 #StudyBlockOrdering{
     width: 85vw;
     margin-top : 7.5vh;
-    margin-bottom: 10vh;    
+    margin-bottom: 35vh;    
     margin-left : 7.5vw;
     margin-right: 7.5vw;
     border: 1px solid;
@@ -28,7 +28,7 @@
 
 #exampleBox{
     position: fixed;
-    width: 80vw;
+    width: 75vw;
     bottom : 5vh;
     background-color: white;
     border: 1px solid;
@@ -40,7 +40,6 @@
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    margin-left: 2.5vw;
     margin-right: 2.5vw;
     font-size: large;
     font-weight: lighter;
@@ -49,10 +48,13 @@
 #exampleList{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    column-gap: 10px;
-    justify-items: center;
     font-family: 'intelone-mono-font-family-regular';
     font-size: medium;
+}
+
+#exampleListBlock{
+    width: 10vw;
+    align-self: center;
 }
 
 
