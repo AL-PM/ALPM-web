@@ -195,6 +195,9 @@ function StudyBlockOrdering() {
             const newFinalCode = totalTextMaker(codeData[0], codeData[1], updatedUserInput);
             setFinalCode(newFinalCode);
             setCodeData(prevCodeData => {
+                prevCodeData[1].forEach((element)=>{
+                    updatedBlockData.push(element);
+                })
                 return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
             });
             return updatedUserInput;
