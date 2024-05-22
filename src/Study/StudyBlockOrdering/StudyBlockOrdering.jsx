@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import './StudyBlockOrdering.css';
 
@@ -64,27 +63,26 @@ function StudyBlockOrdering() {
 
             blockData = getRandomNumbers(blockData, 3);
 
-            
             blockData.forEach((element) => {
                 sortedblockData.push({
-                    data : element.data,
-                    num : element.num,
-                    blank : element.blank,
+                    data: element.data,
+                    num: element.num,
+                    blank: element.blank,
                 });
             });
 
             let lineUp = 0;
             sortedblockData.sort((a, b) => a.num - b.num);
 
-            sortedblockData.forEach((element) =>{
+            sortedblockData.forEach((element) => {
                 sortedlineupblockData.push({
-                    data : element.data,
-                    num : element.num,
-                    blank : element.blank,
-                    lineup : lineUp,
+                    data: element.data,
+                    num: element.num,
+                    blank: element.blank,
+                    lineup: lineUp,
                 });
                 lineUp++;
-            })
+            });
 
             finalCode = [processedCode, blockData, sortedlineupblockData];
 
@@ -93,7 +91,6 @@ function StudyBlockOrdering() {
 
         const preprocessedCode = preprocessCode(code.text);
         setCodeData(preprocessedCode);
-
     }, []);
 
     useEffect(() => {
@@ -102,26 +99,25 @@ function StudyBlockOrdering() {
                 if (!codeData || !blockData) {
                     return "";
                 }
-        
+
                 let totalCode = "";
                 let blockNum = new Set(blockData.map(element => element.num));
                 codeData.forEach((element) => {
                     if (blockNum.has(element.num)) {
                         let numB = findNumB(blockData, element.num);
-                        if(userInput[numB] && userInput[numB].data!== ""){
+                        if (userInput[numB] && userInput[numB].data !== "") {
                             totalCode += userInput[numB].data;
-                        }else{
+                        } else {
                             totalCode += " [__" + (numB + 1) + "__] ";
                         }
-                        
                     } else {
                         totalCode += element.data;
                     }
                 });
-        
+
                 return totalCode;
             }
-    
+
             const newFinalCode = totalTextMaker(codeData[0], codeData[2], userInput);
             setFinalCode(newFinalCode);
         }
@@ -131,13 +127,13 @@ function StudyBlockOrdering() {
         return codeData.split("\n").length;
     }
 
-    function findNumB(blockData, numB){
+    function findNumB(blockData, numB) {
         let result = -1;
         blockData.forEach((element) => {
             let tmp = element.num;
-            if(tmp === numB)
+            if (tmp === numB)
                 result = element.lineup;
-        })
+        });
         return result;
     }
 
@@ -151,12 +147,11 @@ function StudyBlockOrdering() {
         codeData.forEach((element) => {
             if (blockNum.has(element.num)) {
                 let numB = findNumB(blockData, element.num);
-                if(userInput[numB] && userInput[numB].data!== ""){
+                if (userInput[numB] && userInput[numB].data !== "") {
                     totalCode += userInput[numB].data;
-                }else{
+                } else {
                     totalCode += " [__BLANK_" + (numB + 1) + "_] ";
                 }
-                
             } else {
                 totalCode += element.data;
             }
@@ -181,46 +176,46 @@ function StudyBlockOrdering() {
             const updatedBlockData = prevCodeData[1].filter(block => block.num !== eachBlock.num);
             return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
         });
-        
+
         console.log(userInput, codeData[1]);
     }
 
-    function resetFn(){
+    function resetFn() {
         setUserInput(prevUserInput => {
             const updatedUserInput = [];
             let updatedBlockData = [];
-            prevUserInput.forEach((element)=>{
+            prevUserInput.forEach((element) => {
                 updatedBlockData.push(element);
-            })
+            });
             const newFinalCode = totalTextMaker(codeData[0], codeData[1], updatedUserInput);
             setFinalCode(newFinalCode);
             setCodeData(prevCodeData => {
-                prevCodeData[1].forEach((element)=>{
+                prevCodeData[1].forEach((element) => {
                     updatedBlockData.push(element);
-                })
+                });
                 return [prevCodeData[0], updatedBlockData, prevCodeData[2]];
             });
             return updatedUserInput;
         });
     }
 
-    function countMarginBottom(length){
-        if(length < 15){
+    function countMarginBottom(length) {
+        if (length < 5) {
             return "40vh";
-        }else if(length < 10){
-            return "30vh";
-        }else if(length < 5){
-            return "20vh";
-        }else{
+        } else if (length < 10) {
+            return "35vh";
+        } else if (length < 15) {
+            return "29vh";
+        } else {
             return "15vh";
         }
     }
 
     return (
-        <div id="StudyBlockOrdering" style={{marginBottom : countMarginBottom(userInput.length)}}>
+        <div id="StudyBlockOrdering" style={{ marginBottom: countMarginBottom(userInput.length)}}>
             <textarea readOnly
                 id="StudyBlockOrderingCodeArea"
-                rows={countRows(finalCode) }
+                rows={countRows(finalCode)}
                 cols={140}
                 value={finalCode}
             />
@@ -242,8 +237,8 @@ function StudyBlockOrdering() {
                 </div>
             </div> : null}
             <div id="BlockOrderingBtnContainer">
-                <button id="BlockOrderingBtn" style={{borderColor : "#EF4949"}} onClick={resetFn}>초기화</button>
-                <button id="BlockOrderingBtn" style={{backgroundColor : "grays"}}>완료</button>
+                <button id="BlockOrderingBtn" style={{ borderColor: "#EF4949" }} onClick={resetFn}>초기화</button>
+                <button id="BlockOrderingBtn" style={{ backgroundColor: "grays" }}>완료</button>
             </div>
         </div>
     );
