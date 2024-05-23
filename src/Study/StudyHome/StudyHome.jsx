@@ -5,6 +5,7 @@ import StudySettingBar from "../StudySettingBar/StudySettingBar.jsx";
 import StudyLineOrdering from "../StudyLineOrdering/StudyLineOrdering.jsx";
 import StudyTracking from "../StudyTracking/StudyTracking.jsx";
 import StudyBlockOrdering from "../StudyBlockOrdering/StudyBlockOrdering.jsx";
+import StudyBlockWriting from "../StudyBlockWriting/StudyBlockWriting.jsx";
 
 function StudyHomeBody(){
     return(
@@ -53,6 +54,7 @@ function StudyHome(){
             {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
             {method === "따라치기" && problem ? <StudyTracking /> : null}
             {method === "블록 순서맞추기" && problem ? <StudyBlockOrdering /> : null}
+            {method === "빈칸 채우기" && problem ? <StudyBlockWriting /> : null}
             {!problem ? <StudyHomeBody /> : null}
         </div>
        
