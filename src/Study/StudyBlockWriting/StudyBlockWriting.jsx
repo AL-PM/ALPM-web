@@ -133,7 +133,6 @@ function StudyBlockWriting() {
 
             const newFinalCode = totalTextMaker(codeData[0], codeData[2], userInput);
             setFinalCode(newFinalCode);
-            console.log(codeData[2]);
         }
 
     }, [userInput, codeData]);

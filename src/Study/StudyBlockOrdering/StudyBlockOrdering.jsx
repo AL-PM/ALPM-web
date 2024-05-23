@@ -91,7 +91,6 @@ function StudyBlockOrdering() {
 
         const preprocessedCode = preprocessCode(code.text);
         setCodeData(preprocessedCode);
-        console.log(preprocessedCode);
     }, []);
 
     useEffect(() => {
