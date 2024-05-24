@@ -55,8 +55,6 @@ function StudyTracking(){
     // preprocessCode 함수를 이용하여 코드 전처리
     let processedData = preprocessCode(code.text);
 
-    console.log(processedData);
-
     // 입력된 값을 추적하고 상태에 따라 색상을 변경하는 함수
     function handleInputChange(event, num) {
         setInputData({
