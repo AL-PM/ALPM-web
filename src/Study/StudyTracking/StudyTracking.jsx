@@ -28,14 +28,15 @@ function StudyTracking(){
 
         // 코드를 객체로 변환하고 배열에 저장
         for (let i = 0; i < lines.length; i++) {
-            processedCode.push({
-                data: extractCode(lines[i]),
-                explain: extractExplain(lines[i]),
-                num: i + 1, // 줄 수는 1부터 시작
-                tabCount: lines[i].search(/\S|$/)
-            });
+            if(extractCode(lines[i]) !== ""){
+                processedCode.push({
+                    data: extractCode(lines[i]),
+                    explain: extractExplain(lines[i]),
+                    num: i + 1, // 줄 수는 1부터 시작
+                    tabCount: lines[i].search(/\S|$/)
+                });
+            }
         }
-    
         return processedCode;
     }
 
@@ -53,6 +54,8 @@ function StudyTracking(){
 
     // preprocessCode 함수를 이용하여 코드 전처리
     let processedData = preprocessCode(code.text);
+
+    console.log(processedData);
 
     // 입력된 값을 추적하고 상태에 따라 색상을 변경하는 함수
     function handleInputChange(event, num) {
