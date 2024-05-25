@@ -43,15 +43,12 @@
 }
 
 #exampleList{
+    width: 70vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     font-family: 'intelone-mono-font-family-regular';
     font-size: medium;
-}
-
-#exampleListBlock{
-    width: 10vw;
-    align-self: center;
+    justify-items: center
 }
 
 #BlockOrderingBtnContainer{

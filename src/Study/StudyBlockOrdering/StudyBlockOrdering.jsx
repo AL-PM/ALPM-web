@@ -227,7 +227,6 @@ function StudyBlockOrdering() {
                         {codeData[1].map((eachBlock) =>
                             <p
                                 key={eachBlock.num}
-                                id="exampleListBlock"
                                 onClick={() => exampleFn(eachBlock)}
                             >
                                 {eachBlock.data}
