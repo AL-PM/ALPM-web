@@ -189,11 +189,11 @@ function StudyBlockOrdering() {
 
     function countMarginBottom(length) {
         if (length < 5) {
-            return "40vh";
+            return "45vh";
         } else if (length < 10) {
-            return "35vh";
+            return "39vh";
         } else if (length < 15) {
-            return "29vh";
+            return "33vh";
         } else {
             return "15vh";
         }
