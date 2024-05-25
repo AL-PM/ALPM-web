@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import './StudyLineOrdering.css';
 
 function StudyLineOrdering() {
-    //const [userInput, setUserInput] = useState();
     const [currentPage, setCurrentPage] = useState(0);
+    const [userInput, setUserInput] = useState([]);
 
     const code = {
         "level": 1,
@@ -119,9 +119,21 @@ function StudyLineOrdering() {
     let finalCode = devideFn(processedData);
     let randomfinalCode = randomFn(finalCode);
 
-    
+    useEffect(() => {
+        setUserInput(new Array(randomfinalCode.length).fill([]));
+    }, []);
 
-    console.log(finalCode, randomfinalCode);
+
+    console.log(finalCode, randomfinalCode, userInput);
+
+    function exampleFn(eachBlock) {
+        setUserInput(prevUserInput => {
+            const updatedUserInput = [...prevUserInput];
+            updatedUserInput[currentPage] = [...prevUserInput[currentPage], eachBlock];
+            return updatedUserInput;
+        });
+    }
+    
 
     return (
         <div>
@@ -150,6 +162,7 @@ function StudyLineOrdering() {
                             <p
                                 key={eachBlock.num}
                                 id="LineOredringExampleList"
+                                onClick={() => exampleFn(eachBlock)}
                             >
                                 {eachBlock.data}
                             </p>
