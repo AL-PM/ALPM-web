@@ -4,6 +4,8 @@ import './StudyLineOrdering.css';
 function StudyLineOrdering() {
     const [currentPage, setCurrentPage] = useState(0);
     const [userInput, setUserInput] = useState([]);
+    const [randomfinalCode, setRandomFinalCode] = useState([]);
+    const [processedData, setProcessedData] = useState();
 
     const code = {
         "level": 1,
@@ -115,16 +117,16 @@ function StudyLineOrdering() {
         return randomCode;
     }
 
-    let processedData = preprocessCode(code.text);
-    let finalCode = devideFn(processedData);
-    let randomfinalCode = randomFn(finalCode);
-
     useEffect(() => {
+        let processedData = preprocessCode(code.text);
+        setProcessedData(processedData);
+        let finalCode = devideFn(processedData);
+        let randomfinalCode = randomFn(finalCode);
         setUserInput(new Array(randomfinalCode.length).fill([]));
-    }, []);
+        setRandomFinalCode(randomfinalCode);
+    }, [code.text]);
 
-
-    console.log(finalCode, randomfinalCode, userInput);
+    console.log(randomfinalCode, userInput);
 
     function exampleFn(eachBlock) {
         setUserInput(prevUserInput => {
@@ -132,13 +134,18 @@ function StudyLineOrdering() {
             updatedUserInput[currentPage] = [...prevUserInput[currentPage], eachBlock];
             return updatedUserInput;
         });
+
+        setRandomFinalCode(prevRandomFinalCode => {
+            const updatedRandomFinalCode = [...prevRandomFinalCode];
+            updatedRandomFinalCode[currentPage] = prevRandomFinalCode[currentPage].filter(block => block.num !== eachBlock.num);
+            return updatedRandomFinalCode;
+        });
     }
     
-
     return (
         <div>
             <div id="StudyLineOrdering">
-                {processedData.map((codeData, index) =>
+                {processedData && processedData.map((codeData, index) =>
                     <div key={index}>
                         {codeData.codeSection === 0 ? <textarea readOnly id="StudyTrackingBackground"
                             rows={1}
@@ -158,7 +165,7 @@ function StudyLineOrdering() {
                 <div id="exampleBox">
                     <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ " + (currentPage + 1)  +"번 페이지 보기 ]"} </p>
                     <div id="LineOrderingexampleList">
-                        {randomfinalCode[currentPage].map((eachBlock) =>
+                        {randomfinalCode[currentPage] && randomfinalCode[currentPage].map((eachBlock) =>
                             <p
                                 key={eachBlock.num}
                                 id="LineOredringExampleList"
@@ -182,3 +189,4 @@ function StudyLineOrdering() {
 }
 
 export default StudyLineOrdering;
+
