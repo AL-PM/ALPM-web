@@ -27,3 +27,20 @@
     gap: 5vw;
 }
 
+#LineOrderingexampleList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    justify-items: center;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    padding-top : 20px;
+    padding-bottom: 40px;
+}
+
+#codeSectionPagination{
+    border: 0px solid;
+    background-color: white;
+    margin-right: 10px;
+    margin-left: 10px;
+    font-size: medium;
+}
