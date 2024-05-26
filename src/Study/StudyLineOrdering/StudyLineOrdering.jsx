@@ -5,7 +5,9 @@ function StudyLineOrdering() {
     const [currentPage, setCurrentPage] = useState(0);
     const [userInput, setUserInput] = useState([]);
     const [randomFinalCode, setRandomFinalCode] = useState([]);
+    const [initialRandomFinalCode, setInitialRandomFinalCode] = useState([]);
     const [processedData, setProcessedData] = useState([]);
+    const [finalCode, setFinalCode] = useState([]);
 
     const code = {
         "level": 1,
@@ -122,15 +124,15 @@ function StudyLineOrdering() {
         setProcessedData(processedData);
         let finalCode = devideFn(processedData);
         let randomfinalCode = randomFn(finalCode);
+        setFinalCode(finalCode);
         setUserInput(new Array(randomfinalCode.length).fill([]));
         setRandomFinalCode(randomfinalCode);
+        setInitialRandomFinalCode(randomfinalCode); // Save the initial random code
     }, [code.text, randomFn]);
 
     useEffect(() => {
         // This effect runs whenever userInput is updated to trigger re-render
     }, [userInput]);
-
-    console.log(randomFinalCode, userInput);
 
     function exampleFn(eachBlock) {
         setUserInput(prevUserInput => {
@@ -144,6 +146,33 @@ function StudyLineOrdering() {
             updatedRandomFinalCode[currentPage] = prevRandomFinalCode[currentPage].filter(block => block.num !== eachBlock.num);
             return updatedRandomFinalCode;
         });
+    }
+
+    function resetFn() {
+        setUserInput(new Array(initialRandomFinalCode.length).fill([]));
+        setRandomFinalCode(initialRandomFinalCode);
+        setCurrentPage(0);
+    }
+
+    function completeFn() {
+        let isCorrect = true;
+
+        for (let i = 0; i < finalCode.length; i++) {
+            for (let j = 0; j < finalCode[i].length; j++) {
+                if (!userInput[i][j] || userInput[i][j].data !== finalCode[i][j].data) {
+                    isCorrect = false;
+                    break;
+                }
+            }
+            if (!isCorrect) break;
+        }
+
+        if (isCorrect) {
+            alert("정답입니다");
+        } else {
+            alert("틀렸습니다. 정답을 다시 작성해주세요.");
+            resetFn();
+        }
     }
 
     return (
@@ -197,6 +226,10 @@ function StudyLineOrdering() {
                                 {"_" + (index + 1)}
                             </button>
                         ))}
+                    </div>
+                    <div id="BlockOrderingBtnContainer">
+                        <button id="BlockOrderingBtn" style={{ borderColor: "#EF4949" }} onClick={resetFn}>초기화</button>
+                        <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF" }} onClick={completeFn}>완료</button>
                     </div>
                 </div>
             </div>
