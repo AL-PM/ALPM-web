@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import './StudyLineOrdering.css';
 
 function StudyLineOrdering() {
@@ -99,14 +99,14 @@ function StudyLineOrdering() {
         return finalCode;
     }
 
-    function shuffle(array) {
+    const shuffle = useCallback((array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
-    }
+    }, []);
 
-    function randomFn(finalCode) {
+    const randomFn = useCallback((finalCode) => {
         // Make a deep copy of the finalCode array
         let randomCode = JSON.parse(JSON.stringify(finalCode));
 
@@ -115,7 +115,7 @@ function StudyLineOrdering() {
             shuffle(section);
         });
         return randomCode;
-    }
+    }, [shuffle]);
 
     useEffect(() => {
         let processedData = preprocessCode(code.text);
@@ -124,7 +124,7 @@ function StudyLineOrdering() {
         let randomfinalCode = randomFn(finalCode);
         setUserInput(new Array(randomfinalCode.length).fill([]));
         setRandomFinalCode(randomfinalCode);
-    }, [code.text]);
+    }, [code.text, randomFn]);
 
     useEffect(() => {
         // This effect runs whenever userInput is updated to trigger re-render
