@@ -177,35 +177,37 @@ function StudyLineOrdering() {
 
     return (
         <div>
-            <div id="StudyLineOrdering">
-                {processedData && processedData.map((codeData, index) =>
-                    <div key={index}>
-                        {codeData.codeSection === 0 ? (
-                            <textarea
-                                readOnly
-                                id="StudyTrackingBackground"
-                                rows={1}
-                                cols={140}
-                                value={codeData.data}
-                                tabIndex={-1}
-                            />
-                        ) : (
-                            <textarea
-                                readOnly
-                                id="StudyTrackingBackground"
-                                rows={1}
-                                cols={140}
-                                value={userInput[codeData.codeSection - 1][codeData.num] ? userInput[codeData.codeSection - 1][codeData.num].data : `[__${codeData.codeSection},${codeData.num + 1}__]`}
-                                tabIndex={-1}
-                            />
-                        )}
-                    </div>
-                )}
-                <div id="exampleBox">
+            <div id="StudyLineOrdering" >
+                <div id="StudyLineOrderingTextContainer">
+                    {processedData && processedData.map((codeData, index) =>
+                        <div key={index} >
+                            {codeData.codeSection === 0 ? (
+                                <textarea
+                                    readOnly
+                                    id="StudyLineOrderingCodeArea"
+                                    rows={1}
+                                    cols={130}
+                                    value={codeData.data}
+                                    tabIndex={-1}
+                                />
+                            ) : (
+                                <textarea
+                                    readOnly
+                                    id="StudyLineOrderingCodeArea"
+                                    rows={1}
+                                    cols={130}
+                                    value={userInput[codeData.codeSection - 1][codeData.num] ? userInput[codeData.codeSection - 1][codeData.num].data : `[__${codeData.codeSection},${codeData.num + 1}__]`}
+                                    tabIndex={-1}
+                                />
+                            )}
+                        </div>
+                    )}
+                </div>
+                <div id="LineOrderingExampleBox">
                     <p style={{ fontFamily: 'SUITE-Regular' }}>
                         {"[ " + (currentPage + 1) + "번 페이지 보기 ]"}
                     </p>
-                    <div id="LineOrderingexampleList">
+                    <div id="LineOrderingExampleList">
                         {randomFinalCode[currentPage] && randomFinalCode[currentPage].map((eachBlock) =>
                             <p
                                 key={eachBlock.num}

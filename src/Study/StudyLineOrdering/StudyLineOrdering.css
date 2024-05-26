@@ -6,13 +6,14 @@
     font-family: 'intelone-mono-font-family-regular';
     font-size: medium;
     border-radius: 10px;
+    padding-top: 10px;
 }
 
 #StudyLineOrdering{
     width: 85vw;
     height: fit-content;
     margin-top : 7.5vh;
-    margin-bottom: 10vh;    
+    margin-bottom: 52vh;    
     margin-left : 7.5vw;
     margin-right: 7.5vw;
     border: 1px solid;
@@ -27,7 +28,33 @@
     gap: 5vw;
 }
 
-#LineOrderingexampleList{
+#LineOrderingExampleBox{
+    position: fixed;
+    width: 84.9vw;
+    bottom : 13vh;
+    background-color: white;
+    border: 1.5px solid;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: large;
+    font-weight: bold;
+}
+
+#LineOredringExampleList{
+    display: flex;
+    width: 25vw;
+    justify-content: center;
+    align-items: center;
+}
+
+#LineOrderingExampleList{
+    height: 20vh;
+    overflow: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
     justify-items: center;
@@ -44,3 +71,10 @@
     margin-left: 10px;
     font-size: medium;
 }
+
+#StudyLineOrderingTextContainer{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
