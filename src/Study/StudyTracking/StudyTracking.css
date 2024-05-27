@@ -24,7 +24,8 @@
     font-size: large;
 }
 
-#StudyTrackingInput{
+#StudyTrackingInput,
+textarea[id^="textarea-line-"] {
     padding-left: 30px;
     border: 0px;
     resize: none;
