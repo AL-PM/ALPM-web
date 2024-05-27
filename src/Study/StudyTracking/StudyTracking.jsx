@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './StudyTracking.css';
 
 function StudyTracking() {
@@ -51,6 +51,7 @@ function StudyTracking() {
     // 코드 상태를 관리하기 위해 useState를 사용
     const [inputData, setInputData] = useState({});
     const [currentExplanation, setCurrentExplanation] = useState("");
+    const [isCompleted, setIsCompleted] = useState(false); // 완료 상태를 추적하는 상태
 
     // preprocessCode 함수를 이용하여 코드 전처리
     let processedData = preprocessCode(code.text);
@@ -63,7 +64,8 @@ function StudyTracking() {
         });
 
         // 현재 라인의 설명을 업데이트
-        setCurrentExplanation(processedData[num - 1].explain);
+        const explanation = processedData[num - 1]?.explain || ""; // 설명이 없을 경우 빈 문자열로 설정
+        setCurrentExplanation(explanation);
     }
 
     function handleKeyPress(event, num, defaultEvent) {
@@ -81,6 +83,12 @@ function StudyTracking() {
             }
         }
     }
+
+    // 모든 입력 필드가 원본 코드와 일치하는지 확인하는 useEffect
+    useEffect(() => {
+        const allMatch = processedData.every(codeData => codeData.data === (inputData[codeData.num] || setTabFunt(codeData.tabCount)));
+        setIsCompleted(allMatch);
+    }, [inputData, processedData]);
 
     return( 
         <div id="StudyTracking">
@@ -111,6 +119,7 @@ function StudyTracking() {
                     <p>{currentExplanation}</p> 
                 </div>
                 }
+            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={()=> alert("따라치기 학습을 종료합니다.")}> 완료 </button>
         </div>
     )
 }
