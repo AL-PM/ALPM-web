@@ -89,14 +89,14 @@ function StudyTracking() {
                 {codeData.data === inputData[codeData.num] ? null : 
                 <textarea readOnly id="StudyTrackingBackground" style={{color:"gray"}} 
                 rows={1}
-                cols={140}
+                cols={130}
                 defaultValue={codeData.data} 
                 tabIndex={-1}
                 />}
 
                 <textarea id={`textarea-line-${codeData.num}`} style={{color: codeData.data === inputData[codeData.num] ? "blue" : "red"}} 
                 rows={1}
-                cols={140}
+                cols={130}
                 value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
                 onChange={(event) => handleInputChange(event, codeData.num)}
                 onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])} // 탭 키 입력 처리
