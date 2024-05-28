@@ -5,11 +5,12 @@
 }
 
 #LoginMainLogo{
-    margin-top: 35vh;
-    font-size: xxx-large;
+    margin-top: 30vh;
+    font-size : 90px;
 }
 
 #LoginDesctiption{
     margin-top: 1vh;
+    font-size: 30px;
     margin-bottom: 10vh;
 }
