@@ -1,0 +1,15 @@
+#Login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#LoginMainLogo{
+    margin-top: 35vh;
+    font-size: xxx-large;
+}
+
+#LoginDesctiption{
+    margin-top: 1vh;
+    margin-bottom: 10vh;
+}
