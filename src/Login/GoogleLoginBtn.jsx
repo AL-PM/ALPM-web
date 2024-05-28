@@ -11,7 +11,7 @@ const GoogleLoginBtn = () => {
     console.log(clientId1, clientId2);
   return (
     <div>
-        <GoogleOAuthProvider clientId={clientId1}>
+        <GoogleOAuthProvider clientId={clientId2}>
             <GoogleLogin onSuccess={(res)=>{
                 let data = jwtDecode(res.credential) // 추가한 코드
                 console.log(data) // 추가한 코드
