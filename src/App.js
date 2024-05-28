@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CodeHome from './CodeCommunity/CodeHome/CodeHome';
 import StudyHome from "./Study/StudyHome/StudyHome";
@@ -10,12 +9,16 @@ import MyProfile from "./MyPage/MyProfile/MyProfile";
 import MyCodeBoard from "./MyPage/MyCodeBoard/MyCodeBoard";
 import MyCodeGroup from "./MyPage/MyCodeGroup/MyCodeGroup";
 import MyUploadCode from "./MyPage/MyUploadCode/MyUploadCode";
+import Login from "./Login/Login";
+
+
 
 function App(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<StudyHome />} />
+                <Route path="/" element={<Login />} />
+                <Route path="/Study/" element={<StudyHome />} />
                 <Route path="/code/" element={<CodeHome />} />
                 <Route path="/code/Detail" element={<CodeDetail />} />
                 <Route path="/codegroup/" element={<CodeGroupHome />} />
