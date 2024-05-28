@@ -8,7 +8,7 @@ function MainMenuBar({page}){
         <div id="MainMenubar">
             <span id="MainMenuBarLogo">A.L.P.M</span>
             <span>|</span>
-            <span style={{fontWeight:page ==="Study" ? "bold" : "normal", color:page ==="Study" ? "#5C4EFF" : "Black"}} onClick={()=>navigator('/')} >STUDY HOME</span>
+            <span style={{fontWeight:page ==="Study" ? "bold" : "normal", color:page ==="Study" ? "#5C4EFF" : "Black"}} onClick={()=>navigator('/study')} >STUDY HOME</span>
             <span>|</span>
             <span style={{fontWeight:page ==="Code" ? "bold" : "normal", color:page ==="Code" ? "#FF6B00" : "Black"}} onClick={()=>navigator('/code')} >CODE COMMUNITY</span>
             <span>|</span>
