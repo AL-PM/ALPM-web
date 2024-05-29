@@ -1,20 +1,13 @@
 import React from 'react';
-import GoogleLoginBtn from './GoogleLoginBtn';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import './Login.css';
+import GoogleLogin from './GoogleLogin';
 
 function Login() {
-  /*
-  const handleGoogleLogin = () => {
-    window.location.href = "http://alpm.duckdns.org/oauth2/authorization/google";
-  };
-  */
-
   return (
-    <div id='Login'>
-      <span id='LoginMainLogo'>AL-PM</span>
-      <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
-      <GoogleLoginBtn />
-    </div>
+    <GoogleOAuthProvider clientId='974624999104-as2donm7225f9ofp74er00qvfob57hgm.apps.googleusercontent.com'>
+      <GoogleLogin />
+    </GoogleOAuthProvider>
   );
 }
 
