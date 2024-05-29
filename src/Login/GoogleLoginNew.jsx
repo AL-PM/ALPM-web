@@ -1,10 +1,8 @@
-import { useGoogleLogin } from '@react-oauth/google';
 import GoogleLoginBtn from './GoogleLoginBtn';
 import './GoogleLoginNew.css';
 
 function GoogleLoginNew() {
 
-  const ClientID = "974624999104-as2donm7225f9ofp74er00qvfob57hgm.apps.googleusercontent.com"
   const handleLogin = () => {
     // 구글 로그인 화면으로 이동시키기
     window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https://alpm.pages.dev/&client_id=974624999104-as2donm7225f9ofp74er00qvfob57hgm.apps.googleusercontent.com`;
