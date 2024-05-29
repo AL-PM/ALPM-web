@@ -16,9 +16,9 @@ function GoogleLoginNew() {
 
     if (code) {
       // Log the 'code' value to the console
-      console.log('Google authorization code:', code);
+      console.log(code);
 
-      axios.get(`https://alpm.duckdns.org/oauth2/code/google`, {
+      axios.get(`http://alpm.duckdns.org/oauth2/code/google`, {
         params: {
           code: code,
         },
