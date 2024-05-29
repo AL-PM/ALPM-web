@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import './GoogleLoginNew.css';
-import axios from 'axios';
 
 function GoogleLoginNew() {
 
@@ -18,17 +17,14 @@ function GoogleLoginNew() {
       // Log the 'code' value to the console
       console.log(code);
 
-      axios.get(`http://alpm.duckdns.org/oauth2/code/google`, {
-        params: {
-          code: code,
-        },
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+      fetch(`http://alpm.duckdns.org/oauth2/code/google?code=${code}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
 
       // You can perform further actions here, such as exchanging the code for an access token
     }
