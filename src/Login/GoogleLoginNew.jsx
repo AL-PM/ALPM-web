@@ -1,24 +1,21 @@
 import { useGoogleLogin } from '@react-oauth/google';
-import axios from 'axios';
 import GoogleLoginBtn from './GoogleLoginBtn';
 import './GoogleLoginNew.css';
 
 function GoogleLoginNew() {
   const signIn = useGoogleLogin({
     flow: 'auth-code',
-    onSuccess: (res) => {
-      console.log(res);
-      axios.get(`https://alpm.duckdns.org/oauth2/code/google`, {
-        params: {
-          code: res.code,
-        },
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
+    onSuccess: async (res) => {
+      try {
+        console.log(res);
+        const response = await fetch(`https://alpm.duckdns.org/oauth2/code/google?code=${res.code}`, {
+          method: 'GET',
+        });
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
         console.log(error);
-      });
+      }
     },
     onError: (error) => { console.log(error); }
   });
