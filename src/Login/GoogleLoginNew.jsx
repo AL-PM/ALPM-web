@@ -8,7 +8,9 @@ function GoogleLoginNew() {
     flow: 'auth-code',
     onSuccess: (res) => {
       console.log(res);
-        axios.get(`https://alpm.duckdns.org/oauth2/${res.code}/google`)
+        axios.get(`https://alpm.duckdns.org/oauth2/code/google`,{
+          code : res.code,
+        })
         .then(response => {
             console.log(response);
         })
