@@ -14,3 +14,8 @@
     font-size: 30px;
     margin-bottom: 10vh;
 }
+
+#GoogleBtnContainer{
+    display: flex;
+    gap : 20px
+}
