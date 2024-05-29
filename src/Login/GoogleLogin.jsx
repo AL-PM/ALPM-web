@@ -8,8 +8,7 @@ function GoogleLogin() {
       onSuccess: async (codeResponse) => {
         console.log(codeResponse);
         try {
-          const tokens = await axios.get(`${"http://alpm.duckdns.org"}/${"/code/google"}`,{
-            code: codeResponse.code,
+          const tokens = await axios.get(`${"http://alpm.duckdns.org"}/${codeResponse.code}/google"`,{
           });
           console.log(tokens);
         } catch (error) {
