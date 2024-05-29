@@ -1,32 +1,8 @@
 import React, { useEffect } from 'react';
-import { useGoogleLogin } from '@react-oauth/google';
 import './GoogleLoginNew.css';
 import axios from 'axios';
-import { redirect } from 'react-router-dom';
 
 function GoogleLoginNew() {
-
-  const signIn = useGoogleLogin({
-    ux_mode: redirect,
-    redirect_uri: 'https://alpm.pages.dev/',
-    flow: 'auth-code',
-    onSuccess: (res) => {
-      console.log(res);
-      axios.get(`https://alpm.duckdns.org/oauth2/code/google`, {
-        params: {
-          code: res.code,
-        },
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-    },
-    onError: (error) => { console.log(error); },
-  });
-  
 
   const handleLogin = () => {
     // Redirect the user to Google login screen
@@ -42,6 +18,18 @@ function GoogleLoginNew() {
       // Log the 'code' value to the console
       console.log('Google authorization code:', code);
 
+      axios.get(`https://alpm.duckdns.org/oauth2/code/google`, {
+        params: {
+          code: code,
+        },
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
       // You can perform further actions here, such as exchanging the code for an access token
     }
   }, []); // This effect will run only once after component mount
@@ -51,8 +39,7 @@ function GoogleLoginNew() {
       <span id='LoginMainLogo'>AL-PM</span>
       <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
       <div id='GoogleBtnContainer'>
-        <button onClick={() => signIn()}>Sign in with Google Library! 🚀</button>
-        <button onClick={handleLogin}>Sign in with Google Href 🚀</button>
+        <button onClick={handleLogin}>Sign in with Google 🚀</button>
       </div>
     </div>
   );
