@@ -18,8 +18,6 @@ function Login() {
     const code = urlParams.get('code');
   
     if (code) {
-      // Log the 'code' value to the console
-      console.log(code);
   
       // Use Axios to send the request
       axios.get(`https://alpm.duckdns.org:8080/oauth2/code/google`, {
@@ -28,19 +26,17 @@ function Login() {
         withCredentials: true, // Include credentials if needed
       })
       .then(response => {
-        console.log(response.data);
 
         // Save access_token and refresh_token to localStorage
         localStorage.setItem('access_token', response.data.access_token);
         localStorage.setItem('refresh_token', response.data.refresh_token);
 
-        alert(" 안녕하세요! "+response.data.user.name +" \n 정상적으로 로그인되었습니다.");
+        alert(" 안녕하세요 "+response.data.user.name +" 사용자님! \n 정상적으로 로그인되었습니다.");
 
         // Navigate to /study on successful login
         navigate('/study');
       })
       .catch(error => {
-        console.error('Error:', error);
 
         alert("로그인에 실패하였습니다. 다시 시도해주세요.")
         // Redirect to the login page on failure
