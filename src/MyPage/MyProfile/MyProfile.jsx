@@ -330,7 +330,7 @@ function MyProfile() {
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"1"} />
             <MyProfileUserInfo name={fetchUser.name} />
-            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList} />
+            <MyProfileStudyHistory tracePoint={fetchUser.trace_point} fillPoint={fetchUser.fill_point} sequencePoint={fetchUser.sequence_point} blockPoint={fetchUser.block_point} historyList={fetchUser.history_list} />
         </div>
     )
 }
