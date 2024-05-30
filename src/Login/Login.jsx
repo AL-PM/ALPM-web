@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import axios from 'axios';
 import './Login.css';
 
 function Login() {
@@ -17,18 +18,17 @@ function Login() {
       // Log the 'code' value to the console
       console.log(code);
   
-      // Use 'no-cors' mode and handle the response
-      fetch(`https://alpm.duckdns.org:8080/oauth2/code/google?code=${code}`, {
-        mode: 'no-cors'
+      // Use Axios to send the request
+      axios.get(`https://alpm.duckdns.org:8080/oauth2/code/google`, {
+        params: { code },
+        // This will handle CORS automatically
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true, // Include credentials if needed
       })
       .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text(); // Since we can't use response.json() with 'no-cors'
-      })
-      .then(data => {
-        console.log(data);
+        console.log(response.data);
       })
       .catch(error => {
         console.error('Error:', error);
