@@ -4,27 +4,24 @@ import './MyProfile.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 
-function TextContainer({ keyword, content }) {
-    function TextContainerVer1({ keyword, content }) {
-        return (
-            <div id="TextContainer">
-                <span>{keyword}</span>
-                <span>|</span>
-                <span>{content}</span>
-            </div>
-        )
-    }
+function TextContainerVer1({ keyword, content }) {
+    return (
+        <div id="TextContainer">
+            <span>{keyword}</span>
+            <span>|</span>
+            <span>{content}</span>
+        </div>
+    )
+}
 
-    function TextContainerVer2({ keyword }) {
-        return (
-            <div id="TextContainer">
-                <span>|</span>
-                <span>{keyword}</span>
-                <span>|</span>
-            </div>
-        )
-    }
-    return content ? <TextContainerVer1 keyword={keyword} content={content} /> : <TextContainerVer2 keyword={keyword} />;
+function TextContainerVer2({ keyword }) {
+    return (
+        <div id="TextContainer">
+            <span>|</span>
+            <span>{keyword}</span>
+            <span>|</span>
+        </div>
+    )
 }
 
 function MyProfileUserInfo({ profile, name }) {
@@ -32,7 +29,7 @@ function MyProfileUserInfo({ profile, name }) {
         <div id="MyProfileUserInfo">
             <img id="MyProfileUserImage" src={profile} alt="User Profile" />
             <div id="MyProfileUserInfoContainer">
-                <TextContainer keyword={"이름"} content={name} />
+                <TextContainerVer2 keyword={"이름"} content={name} />
             </div>
         </div>
     );
@@ -43,14 +40,14 @@ function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_
     return (
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
-                <TextContainer keyword={"사용자 학습 통계"} />
+                <TextContainerVer2 keyword={"사용자 학습 통계"} />
             </div>
             <div id="MyProfileStudyHistoryBody">
                 <div id="MyProfileStudyHistoryNumeric">
-                    <TextContainer keyword={"따라친 글자의 수"} content={trace_point} />
-                    <TextContainer keyword={"순서를 맞춘 줄의 수"} content={sequence_point} />
-                    <TextContainer keyword={"순서를 맞춘 빈칸의 수"} content={block_point} />
-                    <TextContainer keyword={"채운 빈칸의 수"} content={fill_point} />
+                    <TextContainerVer1 keyword={"따라친 글자의 수"} content={trace_point} />
+                    <TextContainerVer1 keyword={"순서를 맞춘 줄의 수"} content={sequence_point} />
+                    <TextContainerVer1 keyword={"순서를 맞춘 빈칸의 수"} content={block_point} />
+                    <TextContainerVer1 keyword={"채운 빈칸의 수"} content={fill_point} />
                 </div>
                 <div id="MyProfileStudyHistoryGrass">
                     <span>사용자 연속 학습 기록 [잔디] 추가 예정</span>
