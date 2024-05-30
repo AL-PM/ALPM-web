@@ -2,12 +2,12 @@ import React from "react";
 import './StudySettingBar.css';
 import ProblemSettingIcon from "./img/SearchIcon.png";
 
-function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setproblem, codegrouplist}){
+function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist}){
     return(
         <div id="StudySettingBar">
             <span id = "SettingBarSetting" >학습 언어</span>
             <span>|</span>
-            <select id="CodeGroupSetting" onChange={(event)=>setlanguage(event.target.value)}>
+            <select id="CodeGroupSetting" onChange={(event)=>setLanguage(event.target.value)}>
                 <option id="CodeGroupSettingList" value={"Python"} >Python</option>
                 <option id="CodeGroupSettingList" value={"Java"} >Java</option>
                 <option id="CodeGroupSettingList" value={"C++"} >C++</option>
@@ -15,7 +15,7 @@ function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setpro
             <span></span>
             <span id = "SettingBarSetting" >학습 방법</span>
             <span>|</span>
-            <select id="CodeGroupSetting" onChange={(event)=>setmethod(event.target.value)}>
+            <select id="CodeGroupSetting" onChange={(event)=>setMethod(event.target.value)}>
                 <option id="CodeGroupSettingList" value={"따라치기"} >따라치기</option>
                 <option id="CodeGroupSettingList" value={"줄별 순서맞추기"} >줄별 순서맞추기</option>
                 <option id="CodeGroupSettingList" value={"블록 순서맞추기"} >블록 순서맞추기</option>
@@ -24,7 +24,7 @@ function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setpro
             <span></span>
             <span id = "SettingBarSetting" >난이도</span>
             <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setlevel(event.target.value)}>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setLevel(event.target.value)}>
                 <option id="CodeGroupSettingList" value={"1"} >1 레벨</option>
                 <option id="CodeGroupSettingList" value={"2"} >2 레벨</option>
                 <option id="CodeGroupSettingList" value={"3"} >3 레벨</option>
@@ -32,13 +32,13 @@ function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setpro
             <span></span>
             <span id = "SettingBarSetting" >코드그룹</span>
             <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setcodegroup(event.target.value)}>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setCodeGroup(event.target.value)}>
                 {codegrouplist.map((codegrouptag)=>
                 <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
             
-            <img id = "ProblemSettingIcon" onClick={()=>setproblem(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
+            <img id = "ProblemSettingIcon" onClick={()=>setProblem(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
         </div>
     )
 }
