@@ -38,7 +38,8 @@ function MyProfileUserInfo({ profile, name }) {
     );
 }
 
-function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoint, historyList }) {
+function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_point, history_list }) {
+    console.log("trace_point : " + trace_point + "\nfill_point : " + fill_point + "\nblock_point : " + block_point + "\nsequence_point : " + sequence_point );
     return (
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
@@ -46,10 +47,10 @@ function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoin
             </div>
             <div id="MyProfileStudyHistoryBody">
                 <div id="MyProfileStudyHistoryNumeric">
-                    <TextContainer keyword={"따라친 글자의 수"} content={tracePoint} />
-                    <TextContainer keyword={"순서를 맞춘 줄의 수"} content={sequencePoint} />
-                    <TextContainer keyword={"순서를 맞춘 빈칸의 수"} content={blockPoint} />
-                    <TextContainer keyword={"채운 빈칸의 수"} content={fillPoint} />
+                    <TextContainer keyword={"따라친 글자의 수"} content={trace_point} />
+                    <TextContainer keyword={"순서를 맞춘 줄의 수"} content={sequence_point} />
+                    <TextContainer keyword={"순서를 맞춘 빈칸의 수"} content={block_point} />
+                    <TextContainer keyword={"채운 빈칸의 수"} content={fill_point} />
                 </div>
                 <div id="MyProfileStudyHistoryGrass">
                     <span>사용자 연속 학습 기록 [잔디] 추가 예정</span>
@@ -106,11 +107,11 @@ function MyProfile() {
                 profile={userData.profile} 
             />
             <MyProfileStudyHistory
-                tracePoint={userData.trace_point}
-                fillPoint={userData.fill_point}
-                sequencePoint={userData.sequence_point}
-                blockPoint={userData.block_point}
-                historyList={userData.history_list} 
+                trace_point={userData.trace_point}
+                fill_point={userData.fill_point}
+                sequence_point={userData.sequence_point}
+                block_point={userData.block_point}
+                history_list={userData.history_list} 
             />
         </div>
     );
