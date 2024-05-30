@@ -5,6 +5,7 @@
     margin-bottom: 5vh;    
     margin-left : 15vw;
     margin-right: 15vw;
+    border: 1px solid;
     display: flex;
     align-items: center;
 }
@@ -15,7 +16,6 @@
     padding-right: 0.5vh;
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
-    border: 1px solid;
     border-radius: 10px;
     margin-right: 5%;
 }

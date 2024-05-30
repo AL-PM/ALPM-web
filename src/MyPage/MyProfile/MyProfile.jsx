@@ -28,7 +28,7 @@ function MyProfileUserInfo({ profile, name }) {
     return (
         <div id="MyProfileUserInfo">
             <img id="MyProfileUserImage" src={profile} alt="User Profile" />
-            <div id="MyProfileUserInfoContainer">
+            <div id="MyProfildUserInfoContainer">
                 <TextContainerVer1 keyword={"이름"} content={name} />
             </div>
         </div>
