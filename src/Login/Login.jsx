@@ -30,24 +30,6 @@ function Login() {
       .catch(error => {
         console.error('Error:', error);
       });
-
-      // Use 'no-cors' mode and handle the response
-      fetch(`https://alpm.duckdns.org:8080/oauth2/code/google?code=${code}`, {
-        mode: 'no-cors'
-      })
-      .then(response => {
-        console.log(response);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text(); // Since we can't use response.json() with 'no-cors'
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
   
       // You can perform further actions here, such as exchanging the code for an access token
     }
