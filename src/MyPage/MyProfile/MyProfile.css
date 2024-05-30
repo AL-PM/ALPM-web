@@ -5,13 +5,12 @@
     margin-bottom: 5vh;    
     margin-left : 15vw;
     margin-right: 15vw;
-    border: 1px solid;
     display: flex;
     align-items: center;
 }
 
 #MyProfileUserImage{
-    height : 8vh;
+    height : 10vh;
     padding-left: 0.5vh;
     padding-right: 0.5vh;
     padding-top: 0.5vh;
