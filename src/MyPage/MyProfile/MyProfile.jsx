@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import UserEx from "./img/UserEx.png";
 import axios from 'axios';
 import './MyProfile.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
@@ -28,10 +27,10 @@ function TextContainer({ keyword, content }) {
     return content ? <TextContainerVer1 keyword={keyword} content={content} /> : <TextContainerVer2 keyword={keyword} />;
 }
 
-function MyProfileUserInfo({ name, comment }) {
+function MyProfileUserInfo({ profile ,name }) {
     return (
         <div id="MyProfileUserInfo">
-            <img id="MyProfileUserImage" src={UserEx} alt="UserEx" />
+            <img id="MyProfileUserImage" src={profile} alt="UserEx" />
             <div id="MyProfildUserInfoContainer">
                 <TextContainer keyword={"이름"} content={name} />
             </div>
@@ -64,8 +63,7 @@ function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoin
 
 function MyProfile() {
 
-    const [userData, setuserData
-    ] = useState();
+    const [userData, setuserData] = useState();
 
     useEffect(() => {
         const userDataData = async () => {
@@ -80,9 +78,8 @@ function MyProfile() {
                     }
                 });
 
-                setuserData
-    (response.data);
-    
+                setuserData(response.data);
+
             } catch (error) {
                 console.error(error);
             }
@@ -92,32 +89,30 @@ function MyProfile() {
 
     }, []);
 
-    if (!userData
-    ) {
+    if (!userData) {
         return (
-        <div>
-            <MainMenuBar page={"MyPage"} />
-            <MyPageMenuBar MyPage={"1"} />
-            <p>LOADING</p>      
-        </div>
+            <div>
+                <MainMenuBar page={"MyPage"} />
+                <MyPageMenuBar MyPage={"1"} />
+                <p>LOADING</p>
+            </div>
         )
     }
 
-    console.log(userData
-    );
+    console.log(userData);
+    console.log(userData.name + userData.fill_point + userData.sequence_point + userData.block_point + userData.history_list);
 
     return (
         <div>
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"1"} />
-            <MyProfileUserInfo name={userData
-    .name} />
-            <MyProfileStudyHistory tracePoint={userData
-    .trace_point} fillPoint={userData
-    .fill_point} sequencePoint={userData
-    .sequence_point} blockPoint={userData
-    .block_point} historyList={userData
-    .history_list} />
+            <MyProfileUserInfo name={userData.name} />
+            <MyProfileStudyHistory
+                tracePoint={userData.trace_point}
+                fillPoint={userData.fill_point}
+                sequencePoint={userData.sequence_point}
+                blockPoint={userData.block_point}
+                historyList={userData.history_list} />
         </div>
     )
 }
