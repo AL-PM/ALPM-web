@@ -34,7 +34,7 @@ function Login() {
         localStorage.setItem('access_token', response.data.access_token);
         localStorage.setItem('refresh_token', response.data.refresh_token);
 
-        alert(response.data.user.name);
+        alert(" 안녕하세요! "+response.data.user.name +" \n 정상적으로 로그인되었습니다.");
 
         // Navigate to /study on successful login
         navigate('/study');
