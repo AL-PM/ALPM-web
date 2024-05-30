@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import "./StudyHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx";
 import StudySettingBar from "../StudySettingBar/StudySettingBar.jsx";
@@ -49,12 +48,10 @@ function StudyHome() {
         },
     ];
 
-    const navigate = useNavigate();
     const access_token = localStorage.getItem("access_token");
     const refresh_token = localStorage.getItem("refresh_token");
-    if (!access_token || !refresh_token) {
-        navigate("/");
-    }
+
+    console.log(access_token + " / " + refresh_token);
 
     return (
         <div id="StudyHome">
