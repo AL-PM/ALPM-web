@@ -48,15 +48,17 @@ function StudyHome() {
         },
     ];
 
-    const access_token = localStorage.getItem("access_token");
-    const refresh_token = localStorage.getItem("refresh_token");
-
-    console.log(access_token + " / " + refresh_token);
-
     return (
         <div id="StudyHome">
             <MainMenuBar page={"Study"} />
-            <StudySettingBar setLanguage={setLanguage} setMethod={setMethod} setCodeGroup={setCodeGroup} setLevel={setLevel} setProblem={setProblem} codeGroupList={codeGroupList} />
+            <StudySettingBar 
+                setLanguage={setLanguage} 
+                setMethod={setMethod} 
+                setCodeGroup={setCodeGroup} 
+                setLevel={setLevel} 
+                setProblem={setProblem} 
+                codegrouplist={codeGroupList}
+            />
             {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
             {method === "따라치기" && problem ? <StudyTracking /> : null}
             {method === "블록 순서맞추기" && problem ? <StudyBlockOrdering /> : null}
@@ -65,5 +67,6 @@ function StudyHome() {
         </div>
     );
 }
+
 
 export default StudyHome;
