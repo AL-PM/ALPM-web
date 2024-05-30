@@ -90,8 +90,6 @@ function MyProfile() {
 
     }, []);
 
-    console.log(fetchUser);
-
     const UserData = {
         "id": 21,
         "name": "홍길동",
@@ -324,6 +322,8 @@ function MyProfile() {
         </div>
         )
     }
+
+    console.log(fetchUser);
 
     return (
         <div>
