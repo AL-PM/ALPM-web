@@ -10,7 +10,12 @@
 }
 
 #MyProfileUserImage{
-    width : 10%;
+    height : 8vh;
+    padding-left: 0.5vh;
+    padding-right: 0.5vh;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    border: 1px solid;
     border-radius: 10px;
     margin-right: 5%;
 }
