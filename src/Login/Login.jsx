@@ -12,24 +12,32 @@ function Login() {
     // Check if the URL contains the 'code' parameter after redirection
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-
+  
     if (code) {
       // Log the 'code' value to the console
       console.log(code);
-
-      fetch(`https://alpm.duckdns.org:8080/oauth2/code/google?code=${code}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
-
+  
+      // Use 'no-cors' mode and handle the response
+      fetch(`https://alpm.duckdns.org:8080/oauth2/code/google?code=${code}`, {
+        mode: 'no-cors'
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.text(); // Since we can't use response.json() with 'no-cors'
+      })
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  
       // You can perform further actions here, such as exchanging the code for an access token
     }
   }, []); // This effect will run only once after component mount
-
+  
   return (
     <div id='Login'>
       <span id='LoginMainLogo'>AL-PM</span>
