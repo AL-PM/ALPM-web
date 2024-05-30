@@ -313,11 +313,23 @@ function MyProfile() {
             ],
         ]
     };
-    return (
+
+    if (!fetchUser) {
+        return (
         <div>
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"1"} />
             <MyProfileUserInfo name={UserData.name} />
+            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList} />
+        </div>
+        )
+    }
+
+    return (
+        <div>
+            <MainMenuBar page={"MyPage"} />
+            <MyPageMenuBar MyPage={"1"} />
+            <MyProfileUserInfo name={fetchUser.name} />
             <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList} />
         </div>
     )
