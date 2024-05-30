@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserEx from "./img/UserEx.png";
 import axios from 'axios';
 import './MyProfile.css';
@@ -64,6 +64,8 @@ function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoin
 
 function MyProfile() {
 
+    const [userData, setUserData] = useState();
+
     useEffect(() => {
         const fetchUserData = async () => {
             try {
@@ -77,243 +79,25 @@ function MyProfile() {
                     }
                 });
 
-                console.log(response.data);
+                setUserData(response.data);
+    
             } catch (error) {
                 console.error(error);
             }
         };
 
         fetchUserData();
+
     }, []);
 
+    console.log(userData);
 
-    const UserData = {
-        "id": 21,
-        "name": "홍길동",
-        "provider": "뭔지 모름",
-        "uid": "뭔지 모름",
-        "profile": "사진",
-        "tracePoint": 2024,
-        "fillPoint": 412,
-        "blockPoint": 9,
-        "sequencePoint": 56,
-        "historyList": [
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-            [
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-                {
-                    "id": 2,
-                    "problemType": "FILL",
-                    "point": 3,
-                    "algorithm": {
-                        "id": 2,
-                        "name": "정렬",
-                        "referencedCount": 3,
-                        "verified": true,
-                        "language": "Java",
-                    }
-                },
-            ],
-        ]
-    };
     return (
         <div>
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"1"} />
-            <MyProfileUserInfo name={UserData.name} />
-            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList} />
+            <MyProfileUserInfo name={userData.name} />
+            <MyProfileStudyHistory tracePoint={userData.trace_point} fillPoint={userData.fill_point} sequencePoint={userData.sequence_point} blockPoint={userData.block_point} historyList={userData.history_list} />
         </div>
     )
 }
