@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import UserEx from "./img/UserEx.png";
+import axios from 'axios';
 import './MyProfile.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 
-function TextContainer({keyword, content}){
-    function TextContainerVer1({ keyword, content}){
-        return(
+function TextContainer({ keyword, content }) {
+    function TextContainerVer1({ keyword, content }) {
+        return (
             <div id="TextContainer">
                 <span>{keyword}</span>
                 <span>|</span>
@@ -15,8 +16,8 @@ function TextContainer({keyword, content}){
         )
     }
 
-    function TextContainerVer2({keyword}){
-        return(
+    function TextContainerVer2({ keyword }) {
+        return (
             <div id="TextContainer">
                 <span>|</span>
                 <span>{keyword}</span>
@@ -27,8 +28,8 @@ function TextContainer({keyword, content}){
     return content ? <TextContainerVer1 keyword={keyword} content={content} /> : <TextContainerVer2 keyword={keyword} />;
 }
 
-function MyProfileUserInfo({name, comment}){
-    return(
+function MyProfileUserInfo({ name, comment }) {
+    return (
         <div id="MyProfileUserInfo">
             <img id="MyProfileUserImage" src={UserEx} alt="UserEx" />
             <div id="MyProfildUserInfoContainer">
@@ -38,8 +39,8 @@ function MyProfileUserInfo({name, comment}){
     )
 }
 
-function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint, historyList}){
-    return(
+function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoint, historyList }) {
+    return (
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
                 <TextContainer keyword={"사용자 학습 통계"} />
@@ -61,13 +62,37 @@ function MyProfileStudyHistory({tracePoint, fillPoint, blockPoint, sequencePoint
 
 
 
-function MyProfile(){
+function MyProfile() {
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+                const uid = localStorage.getItem("uid");
+
+                const response = await axios.get(`https://alpm.duckdns.org:8080/user/${uid}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                console.log(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+
     const UserData = {
-        "id": 21, 
-        "name": "홍길동", 
+        "id": 21,
+        "name": "홍길동",
         "provider": "뭔지 모름",
-        "uid": "뭔지 모름", 
-        "profile": "사진", 
+        "uid": "뭔지 모름",
+        "profile": "사진",
         "tracePoint": 2024,
         "fillPoint": 412,
         "blockPoint": 9,
@@ -75,220 +100,220 @@ function MyProfile(){
         "historyList": [
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
-            ], 
-            [
-                {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
-                    "algorithm": {
-                        "id": 2, 
-                        "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
-                {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
-                    "algorithm": {
-                        "id": 2, 
-                        "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
             [
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
                 {
-                    "id": 2, 
-                    "problemType": "FILL", 
-                    "point": 3, 
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
                     "algorithm": {
-                        "id": 2, 
+                        "id": 2,
                         "name": "정렬",
-                      "referencedCount": 3,
-                      "verified": true, 
-                      "language": "Java",
-                    } 
-                }, 
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
+            ],
+            [
+                {
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
+                    "algorithm": {
+                        "id": 2,
+                        "name": "정렬",
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
+                {
+                    "id": 2,
+                    "problemType": "FILL",
+                    "point": 3,
+                    "algorithm": {
+                        "id": 2,
+                        "name": "정렬",
+                        "referencedCount": 3,
+                        "verified": true,
+                        "language": "Java",
+                    }
+                },
             ],
         ]
     };
-    return(
+    return (
         <div>
             <MainMenuBar page={"MyPage"} />
-            <MyPageMenuBar MyPage={"1"}/>
-            <MyProfileUserInfo name={UserData.name}/>
-            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList}/>
+            <MyPageMenuBar MyPage={"1"} />
+            <MyProfileUserInfo name={UserData.name} />
+            <MyProfileStudyHistory tracePoint={UserData.tracePoint} fillPoint={UserData.fillPoint} sequencePoint={UserData.sequencePoint} blockPoint={UserData.blockPoint} historyList={UserData.historyList} />
         </div>
     )
 }
