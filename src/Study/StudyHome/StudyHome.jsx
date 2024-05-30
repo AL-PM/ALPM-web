@@ -48,6 +48,11 @@ function StudyHome() {
         },
     ];
 
+    const access_token = localStorage.getItem("access_token");
+    const refresh_token = localStorage.getItem("refresh_token");
+
+    console.log("access_token : "+access_token + " refresh_token" + refresh_token);
+
     return (
         <div id="StudyHome">
             <MainMenuBar page={"Study"} />
