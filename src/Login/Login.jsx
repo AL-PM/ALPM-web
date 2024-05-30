@@ -27,8 +27,6 @@ function Login() {
       })
         .then(response => {
 
-          console.log(response.data);
-
           // Save access_token and refresh_token to localStorage
           localStorage.setItem('uid', response.data.user.id);
           localStorage.setItem('access_token', response.data.access_token);

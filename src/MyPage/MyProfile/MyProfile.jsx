@@ -36,7 +36,7 @@ function MyProfileUserInfo({ profile, name }) {
 }
 
 function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_point, history_list }) {
-    console.log("trace_point : " + trace_point + "\nfill_point : " + fill_point + "\nblock_point : " + block_point + "\nsequence_point : " + sequence_point );
+    
     return (
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
@@ -92,8 +92,6 @@ function MyProfile() {
             </div>
         );
     }
-
-    console.log(userData);
 
     return (
         <div>
