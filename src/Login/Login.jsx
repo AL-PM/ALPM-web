@@ -16,36 +16,38 @@ function Login() {
     // Check if the URL contains the 'code' parameter after redirection
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
-  
+
     if (code) {
-  
+
       // Use Axios to send the request
       axios.get(`https://alpm.duckdns.org:8080/oauth2/code/google`, {
         params: { code },
         // This will handle CORS automatically
         withCredentials: true, // Include credentials if needed
       })
-      .then(response => {
+        .then(response => {
 
-        // Save access_token and refresh_token to localStorage
-        localStorage.setItem('uid', response.data.id);
-        localStorage.setItem('access_token', response.data.access_token);
-        localStorage.setItem('refresh_token', response.data.refresh_token);
+          console.log(response);
 
-        alert(" 안녕하세요 "+response.data.user.name +" 사용자님! \n 정상적으로 로그인되었습니다.");
+          // Save access_token and refresh_token to localStorage
+          localStorage.setItem('uid', response.data.id);
+          localStorage.setItem('access_token', response.data.access_token);
+          localStorage.setItem('refresh_token', response.data.refresh_token);
 
-        // Navigate to /study on successful login
-        navigate('/study');
-      })
-      .catch(error => {
+          alert(" 안녕하세요 " + response.data.user.name + " 사용자님! \n 정상적으로 로그인되었습니다.");
 
-        alert("로그인에 실패하였습니다. 다시 시도해주세요.")
-        // Redirect to the login page on failure
-        window.location.href = 'https://alpm.pages.dev/';
-      });
+          // Navigate to /study on successful login
+          navigate('/study');
+        })
+        .catch(error => {
+
+          alert("로그인에 실패하였습니다. 다시 시도해주세요.")
+          // Redirect to the login page on failure
+          window.location.href = 'https://alpm.pages.dev/';
+        });
     }
   }, [navigate]); // This effect will run only once after component mount
-  
+
   return (
     <div id='Login'>
       <span id='LoginMainLogo'>AL-PM</span>
