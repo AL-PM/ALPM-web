@@ -27,15 +27,15 @@ function TextContainer({ keyword, content }) {
     return content ? <TextContainerVer1 keyword={keyword} content={content} /> : <TextContainerVer2 keyword={keyword} />;
 }
 
-function MyProfileUserInfo({ profile ,name }) {
+function MyProfileUserInfo({ profile, name }) {
     return (
         <div id="MyProfileUserInfo">
-            <img id="MyProfileUserImage" src={profile} alt="UserEx" />
-            <div id="MyProfildUserInfoContainer">
+            <img id="MyProfileUserImage" src={profile} alt="User Profile" />
+            <div id="MyProfileUserInfoContainer">
                 <TextContainer keyword={"이름"} content={name} />
             </div>
         </div>
-    )
+    );
 }
 
 function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoint, historyList }) {
@@ -56,17 +56,14 @@ function MyProfileStudyHistory({ tracePoint, fillPoint, blockPoint, sequencePoin
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-
-
 function MyProfile() {
-
-    const [userData, setuserData] = useState();
+    const [userData, setUserData] = useState();
 
     useEffect(() => {
-        const userDataData = async () => {
+        const fetchUserData = async () => {
             try {
                 const access_token = localStorage.getItem("access_token");
                 const uid = localStorage.getItem("uid");
@@ -78,15 +75,14 @@ function MyProfile() {
                     }
                 });
 
-                setuserData(response.data);
+                setUserData(response.data);
 
             } catch (error) {
                 console.error(error);
             }
         };
 
-        userDataData();
-
+        fetchUserData();
     }, []);
 
     if (!userData) {
@@ -96,24 +92,28 @@ function MyProfile() {
                 <MyPageMenuBar MyPage={"1"} />
                 <p>LOADING</p>
             </div>
-        )
+        );
     }
 
     console.log(userData);
-    console.log(userData.name + userData.fill_point + userData.sequence_point + userData.block_point + userData.history_list);
 
     return (
         <div>
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"1"} />
-            <MyProfileUserInfo name={userData.name} />
+            <MyProfileUserInfo 
+                name={userData.name} 
+                profile={userData.profile} 
+            />
             <MyProfileStudyHistory
                 tracePoint={userData.trace_point}
                 fillPoint={userData.fill_point}
                 sequencePoint={userData.sequence_point}
                 blockPoint={userData.block_point}
-                historyList={userData.history_list} />
+                historyList={userData.history_list} 
+            />
         </div>
-    )
+    );
 }
+
 export default MyProfile;
