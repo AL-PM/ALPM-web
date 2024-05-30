@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import googleLogo from './img/Google-Logo.png';
 import './Login.css';
 
 function Login() {
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     // Redirect the user to Google login screen
@@ -26,21 +29,35 @@ function Login() {
       })
       .then(response => {
         console.log(response.data);
+
+        // Save access_token and refresh_token to localStorage
+        localStorage.setItem('access_token', response.data.access_token);
+        localStorage.setItem('refresh_token', response.data.refresh_token);
+
+        alert(response.data.user.name);
+
+        // Navigate to /study on successful login
+        navigate('/study');
       })
       .catch(error => {
         console.error('Error:', error);
+
+        alert("로그인에 실패하였습니다. 다시 시도해주세요.")
+        // Redirect to the login page on failure
+        window.location.href = 'https://alpm.pages.dev/';
       });
-  
-      // You can perform further actions here, such as exchanging the code for an access token
     }
-  }, []); // This effect will run only once after component mount
+  }, [navigate]); // This effect will run only once after component mount
   
   return (
     <div id='Login'>
       <span id='LoginMainLogo'>AL-PM</span>
       <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
       <div id='GoogleBtnContainer'>
-        <button onClick={handleLogin}>Sign in with Google 🚀</button>
+        <button id='GoogleBtn' onClick={handleLogin}>
+          <img id='loginGoogleLogo' src={googleLogo} alt="googleLogo" />
+          <span> 구글로 로그인하기 </span>
+        </button>
       </div>
     </div>
   );

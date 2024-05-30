@@ -12,10 +12,31 @@
 #LoginDesctiption{
     margin-top: 1vh;
     font-size: 30px;
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
 }
 
 #GoogleBtnContainer{
     display: flex;
     gap : 20px
+}
+
+#loginGoogleLogo{
+    height: 5vh;
+}
+
+#GoogleBtn {
+    display: flex;
+    gap: 30px;
+    border: 0px;
+    padding-right: 30px;
+    padding-left: 30px;
+    align-items: center;
+    justify-items: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add this line */
+    transition: box-shadow 0.3s ease; /* Optional: Add a transition for the shadow */
+}
+
+#GoogleBtn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Optional: Add a larger shadow on hover */
 }
