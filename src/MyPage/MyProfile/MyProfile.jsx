@@ -29,7 +29,7 @@ function MyProfileUserInfo({ profile, name }) {
         <div id="MyProfileUserInfo">
             <img id="MyProfileUserImage" src={profile} alt="User Profile" />
             <div id="MyProfileUserInfoContainer">
-                <TextContainerVer2 keyword={"이름"} content={name} />
+                <TextContainerVer1 keyword={"이름"} content={name} />
             </div>
         </div>
     );
