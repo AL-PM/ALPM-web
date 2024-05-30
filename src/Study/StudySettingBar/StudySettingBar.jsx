@@ -25,11 +25,9 @@ function StudySettingBar({setlanguage, setmethod, setlevel, setcodegroup, setpro
             <span id = "SettingBarSetting" >난이도</span>
             <span>|</span>
             <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setlevel(event.target.value)}>
-                <option id="CodeGroupSettingList" value={"1"} >1 레벨</option>
-                <option id="CodeGroupSettingList" value={"2"} >2 레벨</option>
-                <option id="CodeGroupSettingList" value={"3"} >3 레벨</option>
-                <option id="CodeGroupSettingList" value={"4"} >4 레벨</option>
-                <option id="CodeGroupSettingList" value={"5"} >5 레벨</option>
+                <option id="CodeGroupSettingList" value={1} >1 레벨</option>
+                <option id="CodeGroupSettingList" value={2} >2 레벨</option>
+                <option id="CodeGroupSettingList" value={3} >3 레벨</option>
             </select>
             <span></span>
             <span id = "SettingBarSetting" >코드그룹</span>

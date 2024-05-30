@@ -50,10 +50,11 @@ function StudyHome() {
     ];
 
     const navigate = useNavigate();
-        const token = localStorage.getItem("token");
-        if (!token) {
-            navigate("/");
-        }
+    const access_token = localStorage.getItem("access_token");
+    const refresh_token = localStorage.getItem("refresh_token");
+    if (!access_token || !refresh_token) {
+        navigate("/");
+    }
 
     return (
         <div id="StudyHome">
