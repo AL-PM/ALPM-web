@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import "./StudyHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx";
 import StudySettingBar from "../StudySettingBar/StudySettingBar.jsx";
@@ -6,6 +7,7 @@ import StudyLineOrdering from "../StudyLineOrdering/StudyLineOrdering.jsx";
 import StudyTracking from "../StudyTracking/StudyTracking.jsx";
 import StudyBlockOrdering from "../StudyBlockOrdering/StudyBlockOrdering.jsx";
 import StudyBlockWriting from "../StudyBlockWriting/StudyBlockWriting.jsx";
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
 function StudyHomeBody() {
     return (
@@ -21,37 +23,42 @@ function StudyHome() {
     const [codegroup, setCodeGroup] = useState(1);
     const [level, setLevel] = useState(1);
     const [problem, setProblem] = useState(false);
-    const codeGroupList = [
-        {
-            "id": 1,
-            "name": "CodeGroup01",
-            "referencedCount": 3,
-            "verified": true,
-            "visible": true,
-            "language": "Java",
-        },
-        {
-            "id": 2,
-            "name": "CodeGroup02",
-            "referencedCount": 3,
-            "verified": true,
-            "visible": true,
-            "language": "Java",
-        },
-        {
-            "id": 3,
-            "name": "CodeGroup03",
-            "referencedCount": 3,
-            "verified": true,
-            "visible": true,
-            "language": "Java",
-        },
-    ];
+    const [searchResult, setSearchResult] = useState();
 
-    const access_token = localStorage.getItem("access_token");
-    const refresh_token = localStorage.getItem("refresh_token");
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+                const refresh_token = localStorage.getItem("refresh_token");
+                console.log("access_token : "+access_token + " \nrefresh_token : " + refresh_token);
+                const uid = localStorage.getItem("uid");
 
-    console.log("access_token : "+access_token + " \nrefresh_token : " + refresh_token);
+                const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/user/${uid}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                setSearchResult(response.data);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchUserData();
+
+    }, []);
+
+    if (!searchResult) {
+        return (
+            <div id="MyCodeGroup">
+                <MainMenuBar page={"Study"} />
+                <LoadingSpinner />
+            </div>
+        );
+    }
 
     return (
         <div id="StudyHome">
@@ -62,7 +69,7 @@ function StudyHome() {
                 setCodeGroup={setCodeGroup} 
                 setLevel={setLevel} 
                 setProblem={setProblem} 
-                codegrouplist={codeGroupList}
+                codegrouplist={searchResult.content}
             />
             {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
             {method === "따라치기" && problem ? <StudyTracking /> : null}
