@@ -15,10 +15,14 @@ function CodeSearchResult({searchData, bodyHeight, siteTag}){
     }
     */
 
-    console.log(searchData);
+    let resultData = searchData.map(item => {
+        const { owner, ...rest } = item;
+        return rest;
+    });
+
 return(
     <div id="CodeSearchBody" style={{height:bodyHeight}}>
-        {searchData.map((Data) =>
+        {resultData.map((Data) =>
             <div id="CodeSearchResult" key={Data.id} onClick={()=>navigator('/code/Detail', {state : {"id" : Data.id, "site": siteTag}})} >
                 <span>학습 언어</span>
                 <span>|</span>
