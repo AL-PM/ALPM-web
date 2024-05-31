@@ -13,12 +13,6 @@ function CodeUploadTitle({Title}){
     )
 }
 
-function CodeUploadwBtn(){
-  return(
-      <button id="CodeUploadwBtn">새로운 코드 업로드하기</button>
-  )
-}
-
 function NewCodeUpload() {
   const [code, setCode] = useState("");
   const [description, setDescription] = useState("");
@@ -48,6 +42,11 @@ function NewCodeUpload() {
     // TextArea row 설정을 위해 코드 전체의 줄 수 계산
   function countNumberOfCode(code) {
     return(code.split('\n').length);
+  }
+
+  function NewCodeUploadBtcFn(){
+    console.log("code : " + code);
+    console.log("description : " + description);
   }
 
   return (
@@ -86,7 +85,7 @@ function NewCodeUpload() {
                 placeholder='여기에 업로드할 코드에 대한 설명을 입력해주세요'
             />
         </div>
-        <CodeUploadwBtn />
+        <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
     </div>
   );
 }
