@@ -4,16 +4,15 @@ import CodeGroupSearchResult from "../../Etc/CodeGroupSearchResult/CodeGroupSear
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 
-function MyCodeGroupNew(){
-    return(
-        <button id="CodeHomeUploadButton" >새로운 코드 그룹 생성</button>
-    )
+function MyCodeGroupNew() {
+    return (
+        <button id="CodeHomeUploadButton">새로운 코드 그룹 생성</button>
+    );
 }
 
-function MyCodeGroup(){
+function MyCodeGroup() {
 
     const [searchResult, setSearchResult] = useState();
-
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -39,58 +38,30 @@ function MyCodeGroup(){
 
     }, []);
 
-    if (!searchResult){
+    if (!searchResult) {
         return (
             <div id="MyCodeGroup">
                 <MainMenuBar page={"MyPage"} />
-                <MyPageMenuBar MyPage={"3"}/>
+                <MyPageMenuBar MyPage={"3"} />
             </div>
         );
     }
 
+    let searchData = searchResult.content.map(item => {
+        const { owner, ...rest } = item;
+        return rest;
+    });
+
     console.log(searchResult);
 
-    const searchData = 
-        [
-            {
-                "id": 2,
-                "name": "TestCodeGroup1",
-                "referenced_count": 1,
-                "verified": false,
-                "visible": true,
-                "language": "C",
-                "owner": {
-                    "id": 5,
-                    "name": "박병찬",
-                    "profile": "https://lh3.googleusercontent.com/a/ACg8ocKm6uFzZ4gkbhBCMIcRzezmSYUeFG1Kv40fuwz7e7XRm7UigqdC=s96-c"
-                },
-                "created_at": "2024-05-31T03:44:44.479416",
-                "updated_at": "2024-05-31T03:44:44.479422"
-            },
-            {
-                "id": 1,
-                "name": "TestCodeGroup1",
-                "referenced_count": 1,
-                "verified": false,
-                "visible": true,
-                "language": "C",
-                "owner": {
-                    "id": 5,
-                    "name": "박병찬",
-                    "profile": "https://lh3.googleusercontent.com/a/ACg8ocKm6uFzZ4gkbhBCMIcRzezmSYUeFG1Kv40fuwz7e7XRm7UigqdC=s96-c"
-                },
-                "created_at": "2024-05-31T03:38:56.982095",
-                "updated_at": "2024-05-31T03:38:56.982102"
-            }
-        ]
-
-    return(
+    return (
         <div id="MyCodeGroup">
             <MainMenuBar page={"MyPage"} />
-            <MyPageMenuBar MyPage={"3"}/>
+            <MyPageMenuBar MyPage={"3"} />
             <CodeGroupSearchResult searchData={searchData} bodyHeight={"60vh"} />
             <MyCodeGroupNew />
         </div>
-    )
+    );
 }
+
 export default MyCodeGroup;
