@@ -45,8 +45,7 @@ function NewCodeUpload() {
   }
 
   function NewCodeUploadBtcFn(){
-    console.log("code : " + code);
-    console.log("description : " + description);
+    console.log([code, description]);
   }
 
   return (
