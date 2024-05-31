@@ -26,7 +26,7 @@ return(
                 <span></span>
                 <span>작성자</span>
                 <span>|</span>
-                <span>{Data.owner}</span>
+                <span>임시 소유자</span>
                 <span></span>
                 <span>제목</span>
                 <span>|</span>
