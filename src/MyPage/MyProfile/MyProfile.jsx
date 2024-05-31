@@ -88,7 +88,6 @@ function MyProfile() {
             <div>
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"1"} />
-                <p>LOADING</p>
             </div>
         );
     }

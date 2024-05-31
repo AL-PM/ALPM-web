@@ -57,7 +57,8 @@ function NewCodeUpload() {
   }
 
   function NewCodeUploadBtcFn() {
-    console.log([code, description]);
+    let tmp = code.replace("\t", "    ");
+    console.log([tmp, description]);
   }
 
   return (
