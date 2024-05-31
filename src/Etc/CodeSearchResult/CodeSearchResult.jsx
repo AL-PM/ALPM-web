@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 
 function CodeSearchResult({searchData, bodyHeight, siteTag}){
     const navigator = useNavigate();
+    /*
     function verifiedInvertor(Data){
         if(Data === null)
             return "ALL";
@@ -12,6 +13,7 @@ function CodeSearchResult({searchData, bodyHeight, siteTag}){
         if(Data === false)
             return "USER_MADE";
     }
+    */
 return(
     <div id="CodeSearchBody" style={{height:bodyHeight}}>
         {searchData.map((Data) =>
