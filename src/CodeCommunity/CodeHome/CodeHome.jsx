@@ -26,7 +26,7 @@ function CodeCommunity(){
             try {
                 const access_token = localStorage.getItem("access_token");
 
-                const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm`, {
+                const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/`, {
                     withCredentials: true,
                     headers: {
                         'Authorization': `Bearer ${access_token}`
