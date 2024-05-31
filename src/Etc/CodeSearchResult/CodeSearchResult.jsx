@@ -22,7 +22,7 @@ return(
                 <span></span>
                 <span>코드 유형</span>
                 <span>|</span>
-                <span>{verifiedInvertor(Data.verified)}</span>
+                <span>{Data.verified}</span>
                 <span></span>
                 <span>작성자</span>
                 <span>|</span>
