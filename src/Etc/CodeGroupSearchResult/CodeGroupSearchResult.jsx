@@ -23,7 +23,7 @@ return(
                 <span></span>
                 <span>작성자</span>
                 <span>|</span>
-                <span>{Data.owner}</span>
+                <span>{Data.owner.name}</span>
                 <span></span>
                 <span>그룹 이름</span>
                 <span>|</span>

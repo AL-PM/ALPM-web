@@ -47,18 +47,13 @@ function MyCodeGroup() {
         );
     }
 
-    let searchData = searchResult.content.map(item => {
-        const { owner, ...rest } = item;
-        return rest;
-    });
-
-    console.log(searchResult, searchData);
+    console.log(searchResult);
 
     return (
         <div id="MyCodeGroup">
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"3"} />
-            <CodeGroupSearchResult searchData={searchData} bodyHeight={"60vh"} />
+            <CodeGroupSearchResult searchData={searchResult.content} bodyHeight={"60vh"} />
             <MyCodeGroupNew />
         </div>
     );
