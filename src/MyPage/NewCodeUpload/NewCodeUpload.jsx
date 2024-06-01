@@ -21,7 +21,7 @@ function NewCodeUpload() {
   const [codeName, setCodeName] = useState("");
   const codeRef = useRef(null);
   const descriptionRef = useRef(null);
-  const [upload, setUpload] = useState(true);
+  const [upload, setUpload] = useState(false);
 
   const codeKeyDown = (e) => {
     if (e.keyCode === 13 || e.keyCode === 9) {
