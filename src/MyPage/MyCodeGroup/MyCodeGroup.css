@@ -1,5 +1,4 @@
-
-#CodeHomeUploadButton{
+#NewCodeGroupBtn{
     width: 85vw;
     height : 5vh;
     margin-left: 7.5vw;
@@ -15,11 +14,6 @@
     transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
 }
 
-#CodeHomeUploadButton:hover{
+#NewCodeGroupBtn:hover{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
-}
-
-#Codehome{
-    display: flex;
-    flex-direction: column;
 }

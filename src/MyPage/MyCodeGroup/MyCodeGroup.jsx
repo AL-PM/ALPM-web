@@ -3,10 +3,11 @@ import axios from 'axios';
 import CodeGroupSearchResult from "../../Etc/CodeGroupSearchResult/CodeGroupSearchResult";
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
+import './MyCodeGroup.css';
 
 function MyCodeGroupNew() {
     return (
-        <button id="CodeHomeUploadButton">새로운 코드 그룹 생성</button>
+        <button id="NewCodeGroupBtn">새로운 코드 그룹 생성</button>
     );
 }
 
