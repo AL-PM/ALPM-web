@@ -1,17 +1,11 @@
 import React from "react";
 import SpinnerIMG from './img/LoadingSpinner1.gif';
+import './LoadingSpinner.css';
 
 function LoadingSpinner() {
-    const spinnerStyle = {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '30vh',
-    };
-
     return (
-        <div style={spinnerStyle}>
-            <img src={SpinnerIMG} alt="로딩 이미지" />
+        <div className="spinner-container">
+            <img src={SpinnerIMG} alt="로딩 이미지" className="spinner-image" />
         </div>
     );
 }
