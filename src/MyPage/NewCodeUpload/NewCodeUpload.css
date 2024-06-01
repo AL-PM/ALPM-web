@@ -71,7 +71,7 @@
     font-size: medium;
     font-weight: bold;
     font-family: 'SUITE-Regular';
-    color : "#EF4949";
+    color : #EF4949;
 
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
