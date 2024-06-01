@@ -9,7 +9,7 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
 function CodeFollowBtn({ site }) {
     return (
-        <button id="CodeFollowBtn" style={{ color: site === 'CodeGroup' ? '#009418' : '#FF6B00' }}>
+        <button id="CodeFollowBtn">
             코드 그룹에 추가하기
         </button>
     );
