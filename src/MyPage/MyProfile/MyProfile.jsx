@@ -94,6 +94,8 @@ function MyProfile() {
         );
     }
 
+    console.log(userData);
+
     return (
         <div>
             <MainMenuBar page={"MyPage"} />
