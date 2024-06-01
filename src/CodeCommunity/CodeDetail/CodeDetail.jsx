@@ -9,7 +9,7 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
 function CodeFollowBtn({ site }) {
     return (
-        <button id="CodeFollowBtn">
+        <button id="CodeFollowBtn" style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
             코드 그룹에 추가하기
         </button>
     );
@@ -18,7 +18,6 @@ function CodeFollowBtn({ site }) {
 function CodeDetail() {
     const { state } = useLocation();
     const [codeInfo, setCodeInfo] = useState(null);
-    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchCodeGroupInfo = async () => {
@@ -34,22 +33,12 @@ function CodeDetail() {
 
                 setCodeInfo(response.data);
             } catch (error) {
-                setError('Failed to fetch code details. Please try again.');
                 console.error(error);
             }
         };
 
         fetchCodeGroupInfo();
     }, [state]);
-
-    if (error) {
-        return (
-            <div id="CodeDetail">
-                <MainMenuBar page={state.site} />
-                <div className="error-message">{error}</div>
-            </div>
-        );
-    }
 
     if (!codeInfo) {
         return (
