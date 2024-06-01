@@ -55,7 +55,7 @@ function CodeDetail() {
         return (
             <div id="CodeDetail">
                 <MainMenuBar page={state.site} />
-                <LoadingSpinner color={{ color: state.site === 'CodeGroup' ? '#009418' : '#FF6B00' }} />
+                <LoadingSpinner color={'#009418'}/>
             </div>
         );
     }
