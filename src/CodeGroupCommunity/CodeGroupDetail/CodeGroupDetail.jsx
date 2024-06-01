@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import {useLocation} from "react-router-dom"
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult.jsx";
@@ -13,7 +14,33 @@ function CodeGroupFollowBtn(){
 
 function CodeGroupDetail(){
     const {state} = useLocation();
-    console.log(state);
+    const [searchResult, setSearchResult] = useState();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+
+                const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/${state.id}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                setSearchResult(response.data);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchUserData();
+
+    }, [state]);
+
+    console.log(searchResult);
+
     let exampleData = 
             {
             "id": 124, 
@@ -90,7 +117,7 @@ function CodeGroupDetail(){
         <div id="CodeGroupDetail">
             <MainMenuBar page={"CodeGroup"} />
             <CodeGroupDetailInfo language={exampleData.language} verified={exampleData.verified} owner={exampleData.owner.name} name={exampleData.name} numOfAlgorithm={exampleData.algorithms.length}/>
-            <CodeSearchResult searchData={exampleData.algorithms} bodyHeight={"55vh"} siteTag={"CodeGroup"}/>
+            <CodeSearchResult searchData={exampleData.algorithms} bodyHeight={"55vh"} siteTag={state.site}/>
             <CodeGroupFollowBtn />
         </div>
     )
