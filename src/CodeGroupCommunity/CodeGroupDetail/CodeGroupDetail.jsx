@@ -81,83 +81,11 @@ function CodeGroupDetail(){
 
     console.log(codeGroupInfo, codeGroupPage);
 
-    let exampleData = 
-            {
-            "id": 124, 
-            "name": "TestGroup",
-            "referencedCount": 3,
-            "verified": true,
-            "visible": true, 
-            "language": "JAVA",
-            "owner":  
-                {"id": 2, 
-                 "name": "ALPM"
-                }
-            , 
-            "algorithms": [
-                {
-                    "id": 1,
-                    "name": "퀵 정렬",
-                    "referencedCount": 2,
-                    "verified": true,
-                    "language": "Python",
-                    "owner" : "Byeongchan"
-                },
-                {
-                    "id": 2,
-                    "name": "버블 정렬",
-                    "referencedCount": 2,
-                    "verified": true,
-                    "language": "Python",
-                    "owner" : "Rangjin"
-                },
-                {
-                    "id": 3,
-                    "name": "힙 정렬",
-                    "referencedCount": 4,
-                    "verified": true,
-                    "language": "Python",
-                    "owner" : "HyeonWoo"
-                },
-                {
-                    "id": 4,
-                    "name": "버블 정렬",
-                    "referencedCount": 4,
-                    "verified": null,
-                    "language": "Python",
-                    "owner" : "MoonKee"
-                },
-                {
-                    "id": 5,
-                    "name": "버블 정렬",
-                    "referencedCount": 4,
-                    "verified": null,
-                    "language": "Python",
-                    "owner" : "MoonKee"
-                },
-                {
-                    "id": 6,
-                    "name": "버블 정렬",
-                    "referencedCount": 4,
-                    "verified": null,
-                    "language": "Python",
-                    "owner" : "MoonKee"
-                },{
-                    "id": 7,
-                    "name": "버블 정렬",
-                    "referencedCount": 4,
-                    "verified": null,
-                    "language": "Python",
-                    "owner" : "MoonKee"
-                }
-            ] 
-        };
-        
     return(
         <div id="CodeGroupDetail">
             <MainMenuBar page={"CodeGroup"} />
-            <CodeGroupDetailInfo language={exampleData.language} verified={exampleData.verified} owner={exampleData.owner.name} name={exampleData.name} numOfAlgorithm={exampleData.algorithms.length}/>
-            <CodeSearchResult searchData={exampleData.algorithms} bodyHeight={"55vh"} siteTag={state.site}/>
+            <CodeGroupDetailInfo language={codeGroupInfo.language} verified={codeGroupInfo.verified} owner={codeGroupInfo.owner.name} name={codeGroupInfo.name} numOfAlgorithm={codeGroupPage.content.length}/>
+            <CodeSearchResult searchData={codeGroupPage.content} bodyHeight={"55vh"} siteTag={state.site}/>
             <CodeGroupFollowBtn />
         </div>
     )
