@@ -49,7 +49,6 @@ function CodeDetail() {
                  :
                  <LoadingSpinner color={"#FF6B00"}/>
                 }
-               x
             </div>
         );
     }
