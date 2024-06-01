@@ -23,7 +23,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
     background-color: #fff; /* 배경색을 흰색으로 */
 
-    height: 10vh;
     width: 95%;
     padding-top:2.5%;
     padding-left : 2.5%;
@@ -66,6 +65,7 @@
 
 
 #UserContent{
+    height: 10vh;
     display: flex;
     justify-content: start;
     gap: 30px;
