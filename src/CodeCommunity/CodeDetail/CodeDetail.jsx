@@ -57,7 +57,7 @@ function CodeDetail(){
         <div id="CodeDetail">
             <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.name} name={codeInfo.name}/>
-            <CodeDetailBody content={codeInfo.content} description={codeInfo.description} owner={codeInfo.owner}/>
+            <CodeDetailBody content={codeInfo.original} description={codeInfo.description} owner={codeInfo.owner}/>
             <CodeFollowBtn />
         </div>
     )
