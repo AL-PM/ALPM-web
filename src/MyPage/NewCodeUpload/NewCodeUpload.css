@@ -26,8 +26,10 @@
 }
 
 #UploadCode{
-    border: 1px solid;
-    border-radius: 10px;
+    border: 1px solid #ddd; /* 연한 회색 경계선 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    background-color: #fff; /* 배경색을 흰색으로 */
     width: 95%;
     padding-top:15px;
     padding-left : 2.5%;
