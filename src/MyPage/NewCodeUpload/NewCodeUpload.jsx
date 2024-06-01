@@ -3,6 +3,7 @@ import './NewCodeUpload.css';
 import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
 import MyPageMenuBar from '../MyPageMenuBar/MyPageMenuBar';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
+import { HashLoader} from 'react-spinners';
 
 function CodeUploadTitle({ Title }) {
   return (
@@ -91,7 +92,7 @@ function NewCodeUpload() {
       <div>
         <MainMenuBar page={"MyPage"} />
         <MyPageMenuBar MyPage={"5"} />
-        <LoadingSpinner />
+        <HashLoader id='NewCodeUploadSpinner'  color="#EF4949" />
       </div>
     );
   }
