@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import {useLocation} from "react-router-dom"
 import './CodeDetail.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx";
@@ -13,7 +14,34 @@ function CodeFollowBtn(){
 
 function CodeDetail(){
     const {state} = useLocation();
+    const [codeInfo, setCodeInfo] = useState();
+
+    useEffect(() => {
+        const fetchcodeGroupInfo = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+
+                const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/${state.id}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                setCodeInfo(response.data);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchcodeGroupInfo();
+
+    }, [state]);
+
     console.log(state);
+
+    console.log(codeInfo);
     let Data = {
         "id": state.id,
         "name": "TestCode", 
