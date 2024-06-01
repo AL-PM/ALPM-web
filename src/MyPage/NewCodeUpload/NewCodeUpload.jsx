@@ -53,25 +53,48 @@ function NewCodeUpload() {
     }
   };
 
-  // TextArea row 설정을 위해 코드 전체의 줄 수 계산
   function countNumberOfCode(code) {
     return code.split('\n').length;
   }
 
-  function NewCodeUploadBtcFn() {
-    let tmp = code.replace("\t", "    ");
-    console.log([tmp, description]);
-    setUpload(false);
+  async function NewCodeUploadBtcFn() {
+    setUpload(true);
+    alert(" 코드 업로드를 진행합니다.");
+    /*
+    try {
+      let tmp = code.replace("\t", "    ");
+      console.log([tmp, description]);
+      const response = await fetch('YOUR_API_ENDPOINT', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ code: tmp, description, language, codeName }),
+      });
+
+      if (response.ok) {
+        alert('업로드가 완료되었습니다');
+      } else {
+        alert('업로드에 실패했습니다');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('업로드 중 오류가 발생했습니다');
+    } finally {
+      setUpload(false);
+    }
+    */
   }
 
-  if(upload)
-    return(
+  if (upload) {
+    return (
       <div>
         <MainMenuBar page={"MyPage"} />
         <MyPageMenuBar MyPage={"5"} />
         <LoadingSpinner />
       </div>
-    )
+    );
+  }
 
   return (
     <div>
