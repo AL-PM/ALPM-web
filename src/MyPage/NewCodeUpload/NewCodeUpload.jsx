@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import './NewCodeUpload.css';
 import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
 import MyPageMenuBar from '../MyPageMenuBar/MyPageMenuBar';
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
 
 function CodeUploadTitle({ Title }) {
   return (
@@ -20,6 +21,7 @@ function NewCodeUpload() {
   const [codeName, setCodeName] = useState("");
   const codeRef = useRef(null);
   const descriptionRef = useRef(null);
+  const [upload, setUpload] = useState(true);
 
   const codeKeyDown = (e) => {
     if (e.keyCode === 13 || e.keyCode === 9) {
@@ -59,7 +61,17 @@ function NewCodeUpload() {
   function NewCodeUploadBtcFn() {
     let tmp = code.replace("\t", "    ");
     console.log([tmp, description]);
+    setUpload(false);
   }
+
+  if(upload)
+    return(
+      <div>
+        <MainMenuBar page={"MyPage"} />
+        <MyPageMenuBar MyPage={"5"} />
+        <LoadingSpinner />
+      </div>
+    )
 
   return (
     <div>
