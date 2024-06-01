@@ -48,6 +48,7 @@ function CodeDetailBody({content, description, owner}){
             />
             <CodeDetailTitle Title={"작성자"}/>
             <div id="UserContent">
+                <img id="CodeDetailUserProfile" src={owner.profile} alt="User Profile" />
                 <span>{owner.name}</span>
             </div>
         </div>
