@@ -3,7 +3,6 @@ import './NewCodeUpload.css';
 import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
 import MyPageMenuBar from '../MyPageMenuBar/MyPageMenuBar';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
-import { HashLoader} from 'react-spinners';
 
 function CodeUploadTitle({ Title }) {
   return (
@@ -92,7 +91,7 @@ function NewCodeUpload() {
       <div>
         <MainMenuBar page={"MyPage"} />
         <MyPageMenuBar MyPage={"5"} />
-        <HashLoader id='NewCodeUploadSpinner'  color="#EF4949" />
+        <LoadingSpinner color={"EF4949"} comment={"코드 업로드중"}/>
       </div>
     );
   }

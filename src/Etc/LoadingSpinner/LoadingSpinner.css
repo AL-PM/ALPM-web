@@ -1,0 +1,9 @@
+
+#Spinner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* align-items로 변경 */
+    margin-top : 30vh;
+    gap: 5vh;
+}
