@@ -7,15 +7,19 @@ import CodeDetailInfo from "../../Etc/CodeDetailInfo/CodeDetailInfo.jsx";
 import CodeDetailBody from "../../Etc/CodeDetailBody/CodeDetailBody.jsx";
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
-function CodeFollowBtn(){
+function CodeFollowBtn({color}){
     return(
-        <button id="CodeFollowBtn">코드 그룹에 추가하기</button>
+        <button id="CodeFollowBtn" style={{color:color}} >코드 그룹에 추가하기</button>
     )
 }
 
 function CodeDetail(){
     const {state} = useLocation();
     const [codeInfo, setCodeInfo] = useState();
+    const [color, setColor] = useState("#FF6B00");
+
+    if(state.site === "CodeGroup")
+        setColor("#009418");
 
     useEffect(() => {
         const fetchcodeGroupInfo = async () => {
@@ -46,7 +50,7 @@ function CodeDetail(){
         return (
             <div id="CodeDetail">
                 <MainMenuBar page={state.site} />
-                <LoadingSpinner color={"#FF6B00"}/>
+                <LoadingSpinner color={color}/>
             </div>
         );
     }
@@ -58,7 +62,7 @@ function CodeDetail(){
             <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.name} name={codeInfo.name}/>
             <CodeDetailBody content={codeInfo.original} description={codeInfo.description} owner={codeInfo.owner}/>
-            <CodeFollowBtn />
+            <CodeFollowBtn color={color} />
         </div>
     )
 
