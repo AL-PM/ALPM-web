@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState , useRef } from 'react';
+import axios from 'axios';
 import './NewCodeUpload.css';
 import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
 import MyPageMenuBar from '../MyPageMenuBar/MyPageMenuBar';
@@ -57,41 +58,49 @@ function NewCodeUpload() {
     return code.split('\n').length;
   }
 
-  async function NewCodeUploadBtcFn() {
+  const NewCodeUploadBtcFn = async () => {
     setUpload(true);
-    alert(" 코드 업로드를 진행합니다.");
-    /*
+    console.log([{
+        name: codeName,
+        language: language,
+        content: code.replace("\t","    "),
+        description: description
+    }])
     try {
-      let tmp = code.replace("\t", "    ");
-      console.log([tmp, description]);
-      const response = await fetch('YOUR_API_ENDPOINT', {
-        method: 'POST',
+      const access_token = localStorage.getItem("access_token");
+
+      const response = await axios.post(`https://alpm.duckdns.org:8080/algorithm/create`, {
+        name: codeName,
+        language: language,
+        content: code.replace("\t","    "),
+        description: description
+      }, {
         headers: {
-          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${access_token}`,
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ code: tmp, description, language, codeName }),
+        withCredentials: true
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         alert('업로드가 완료되었습니다');
       } else {
         alert('업로드에 실패했습니다');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error(error);
       alert('업로드 중 오류가 발생했습니다');
     } finally {
       setUpload(false);
     }
-    */
-  }
+  };
 
   if (upload) {
     return (
       <div>
         <MainMenuBar page={"MyPage"} />
         <MyPageMenuBar MyPage={"5"} />
-        <LoadingSpinner color={"EF4949"} comment={"코드 업로드중"}/>
+        <LoadingSpinner color={"EF4949"} comment={"새로운 코드 업로드중"}/>
       </div>
     );
   }
