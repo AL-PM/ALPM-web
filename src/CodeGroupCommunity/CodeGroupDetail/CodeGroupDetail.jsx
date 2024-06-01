@@ -4,7 +4,9 @@ import {useLocation} from "react-router-dom"
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult.jsx";
 import CodeGroupDetailInfo from "../../Etc/CodeGroupDetailInfo/CodeGroupDetailInfo.jsx";
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 import './CodeGroupDetail.css';
+
 
 function CodeGroupFollowBtn(){
     return(
@@ -14,10 +16,11 @@ function CodeGroupFollowBtn(){
 
 function CodeGroupDetail(){
     const {state} = useLocation();
-    const [searchResult, setSearchResult] = useState();
+    const [codeGroupInfo, setCodeGroupInfo] = useState();
+    const [codeGroupPage, setCodeGroupPage] = useState();
 
     useEffect(() => {
-        const fetchUserData = async () => {
+        const fetchcodeGroupInfo = async () => {
             try {
                 const access_token = localStorage.getItem("access_token");
 
@@ -28,18 +31,55 @@ function CodeGroupDetail(){
                     }
                 });
 
-                setSearchResult(response.data);
+                setCodeGroupInfo(response.data);
 
             } catch (error) {
                 console.error(error);
             }
         };
 
-        fetchUserData();
+        fetchcodeGroupInfo();
 
     }, [state]);
 
-    console.log(searchResult);
+    useEffect(() => {
+        const fetchcodeGroupPage = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+
+                const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/codeGroup/${state.id}`, {
+                    params:
+                        {
+                            "page": 0,
+                            "size": 7
+                        },
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                setCodeGroupPage(response.data);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchcodeGroupPage();
+
+    }, [state]);
+
+    if (!codeGroupInfo || !codeGroupPage) {
+        return (
+            <div id="CodeGroupDetail">
+                <MainMenuBar page={"CodeGroup"} />
+                <LoadingSpinner />
+            </div>
+        );
+    }
+
+    console.log(codeGroupInfo, codeGroupPage);
 
     let exampleData = 
             {
