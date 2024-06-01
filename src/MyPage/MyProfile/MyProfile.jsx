@@ -3,6 +3,7 @@ import axios from 'axios';
 import './MyProfile.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
 
 function TextContainerVer1({ keyword, content }) {
     return (
@@ -88,6 +89,7 @@ function MyProfile() {
             <div>
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"1"} />
+                <LoadingSpinner color={"EF4949"} comment={"Loading"}/>
             </div>
         );
     }

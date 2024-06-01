@@ -74,7 +74,7 @@ function CodeGroupDetail(){
         return (
             <div id="CodeGroupDetail">
                 <MainMenuBar page={"CodeGroup"} />
-                <LoadingSpinner />
+                <LoadingSpinner color={"#009418"}/>
             </div>
         );
     }

@@ -4,6 +4,7 @@ import "./CodeGroupHome.css";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CommunitySearchBar from "../../Etc/CommunitySearchBar/CommunitySearchBar.jsx";
 import CodeGroupSearchResult from "../../Etc/CodeGroupSearchResult/CodeGroupSearchResult.jsx";
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
 
 function CodeGrupHome(){
@@ -40,6 +41,7 @@ function CodeGrupHome(){
             <div id="MyCodeGroup">
                 <MainMenuBar page={"CodeGroup"} />
                 <CommunitySearchBar secondTag={"제작자 유형"} language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
+                <LoadingSpinner color={"#009418"}/>
             </div>
         );
     }

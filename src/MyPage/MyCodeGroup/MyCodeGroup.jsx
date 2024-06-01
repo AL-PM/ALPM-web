@@ -3,6 +3,7 @@ import axios from 'axios';
 import CodeGroupSearchResult from "../../Etc/CodeGroupSearchResult/CodeGroupSearchResult";
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
 import './MyCodeGroup.css';
 
 function MyCodeGroupNew() {
@@ -44,6 +45,7 @@ function MyCodeGroup() {
             <div id="MyCodeGroup">
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"3"} />
+                <LoadingSpinner color={"EF4949"} comment={"Loading"}/>
             </div>
         );
     }

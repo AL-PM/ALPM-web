@@ -46,7 +46,7 @@ function CodeDetail(){
         return (
             <div id="CodeDetail">
                 <MainMenuBar page={state.site} />
-                <LoadingSpinner />
+                <LoadingSpinner color={"#FF6B00"}/>
             </div>
         );
     }

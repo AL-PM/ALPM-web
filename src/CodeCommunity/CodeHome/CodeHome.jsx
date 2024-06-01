@@ -5,6 +5,7 @@ import {useNavigate} from "react-router-dom";
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar.jsx"
 import CodeSearchResult from "../../Etc/CodeSearchResult/CodeSearchResult.jsx";
 import CommunitySearchBar from "../../Etc/CommunitySearchBar/CommunitySearchBar.jsx";
+import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
 
 function CodeHomeUploadButton(){
@@ -49,6 +50,7 @@ function CodeCommunity(){
             <div id="MyCodeGroup">
                 <MainMenuBar page={"Code"} />
                 <CommunitySearchBar secondTag={"코드 유형"} language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
+                <LoadingSpinner color={"#FF6B00"}/>
             </div>
         );
     }
