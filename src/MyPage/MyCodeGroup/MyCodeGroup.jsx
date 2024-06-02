@@ -88,7 +88,7 @@ function MyCodeGroupNew() {
                     >
                         <option value="C">C++</option>
                         <option value="JAVA">Java</option>
-                        <option value="Python">Python</option>
+                        <option value="PYTHON">Python</option>
                     </select>
                 </div>
                 <div className="input-group">
