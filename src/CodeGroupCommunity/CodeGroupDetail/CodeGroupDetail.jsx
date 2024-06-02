@@ -29,8 +29,10 @@ function CodeGroupFollowBtn({codeGroupId}){
 
             if (response.status === 200) {
                 alert('팔로우가 완료되었습니다');
-            } else {
-                alert('팔로우에 실패했습니다');
+            } else if (response.status === 400){
+                alert('이미 팔로우중인 코드그룹입니다.');
+            } else{
+                alert('팔로우에 실패하였습니다.');
             }
         } catch (error) {
             console.error(error);
