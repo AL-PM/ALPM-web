@@ -95,6 +95,15 @@ function NewCodeUpload() {
     }
   };
 
+  function tmpFn(){
+    console.log([{
+      name: codeName,
+      language: language,
+      content: code.replace("\t","    "),
+      description: description
+  }])
+  }
+
   if (upload) {
     return (
       <div>
@@ -144,6 +153,7 @@ function NewCodeUpload() {
         />
       </div>
       <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
+      <button onClick={tmpFn} id="CodeUploadwBtn">콘솔에 데이터 출력</button>
     </div>
   );
 }
