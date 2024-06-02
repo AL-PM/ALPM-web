@@ -24,38 +24,40 @@ function MyCodeGroupNew() {
 
     return (
         <div className="code-group-container">
-            <div className="input-group">
-                <label htmlFor="groupName">코드 그룹 이름</label>
-                <input
-                    type="text"
-                    id="groupName"
-                    value={groupName}
-                    onChange={(e) => setGroupName(e.target.value)}
-                />
-            </div>
-            <div className="input-group">
-                <label htmlFor="language">코드 그룹의 언어</label>
-                <select
-                    id="language"
-                    value={language}
-                    onChange={(e) => setLanguage(e.target.value)}
-                >
-                    <option value="C++">C++</option>
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                </select>
-            </div>
-            <div className="input-group">
-                <label htmlFor="isPublic">공개 여부</label>
-                <label className="switch">
+            <div className="input-row">
+                <div className="input-group">
+                    <label htmlFor="groupName">코드 그룹 이름</label>
                     <input
-                        type="checkbox"
-                        id="isPublic"
-                        checked={isPublic}
-                        onChange={handleToggle}
+                        type="text"
+                        id="groupName"
+                        value={groupName}
+                        onChange={(e) => setGroupName(e.target.value)}
                     />
-                    <span className="slider round"></span>
-                </label>
+                </div>
+                <div className="input-group">
+                    <label htmlFor="language">코드 그룹의 언어</label>
+                    <select
+                        id="language"
+                        value={language}
+                        onChange={(e) => setLanguage(e.target.value)}
+                    >
+                        <option value="C++">C++</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                    </select>
+                </div>
+                <div className="input-group">
+                    <label htmlFor="isPublic">공개 여부</label>
+                    <label className="switch">
+                        <input
+                            type="checkbox"
+                            id="isPublic"
+                            checked={isPublic}
+                            onChange={handleToggle}
+                        />
+                        <span className="slider round"></span>
+                    </label>
+                </div>
             </div>
             <button onClick={handleSubmit} id="NewCodeGroupBtn">코드 그룹 생성</button>
         </div>
