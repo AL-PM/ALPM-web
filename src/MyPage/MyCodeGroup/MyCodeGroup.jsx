@@ -50,6 +50,7 @@ function MyCodeGroupNew() {
 
                 if (patchResponse.status === 200) {
                     alert('코드 그룹 생성 및 업로드가 완료되었습니다');
+                    window.location.reload(); // Refresh the page
                 } else {
                     alert('코드 그룹 업로드에 실패했습니다');
                 }
