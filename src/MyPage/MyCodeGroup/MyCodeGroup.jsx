@@ -9,7 +9,7 @@ import './MyCodeGroupNew.css'; // Create and import a CSS file for styling
 
 function MyCodeGroupNew() {
     const [groupName, setGroupName] = useState('');
-    const [language, setLanguage] = useState('C++');
+    const [language, setLanguage] = useState('C');
     const [isPublic, setIsPublic] = useState(false);
 
     const handleSubmit = async () => {
@@ -79,7 +79,7 @@ function MyCodeGroupNew() {
                         value={language}
                         onChange={(e) => setLanguage(e.target.value)}
                     >
-                        <option value="C++">C++</option>
+                        <option value="C">C++</option>
                         <option value="Java">Java</option>
                         <option value="Python">Python</option>
                     </select>
