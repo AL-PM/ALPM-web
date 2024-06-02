@@ -64,7 +64,7 @@ function NewCodeUpload() {
         name: codeName,
         language: language,
         content: code.replace("\t","    "),
-        description: description.replace("$", "").replace("```","\n")
+        description: description.replace("$", "")
     })
     try {
       const access_token = localStorage.getItem("access_token");
@@ -96,11 +96,12 @@ function NewCodeUpload() {
   };
 
   function tmpFn(){
+    const newDescription = description.replace('$',"");
     console.log({
       name: codeName,
       language: language,
       content: code.replace("\t","    "),
-      description: description.replace("$", "").replace("```","\n")
+      description: newDescription
   })
   }
 
