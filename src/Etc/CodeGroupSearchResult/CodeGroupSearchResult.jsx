@@ -31,7 +31,7 @@ return(
                 <span></span>
                 <span>코드 개수</span>
                 <span>|</span>
-                <span>1 개</span>
+                <span>{Data.algorithm_count} 개</span>
                 
             </div>
         )}
