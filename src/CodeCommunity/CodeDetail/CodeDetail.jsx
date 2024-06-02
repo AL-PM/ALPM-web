@@ -7,13 +7,21 @@ import CodeDetailInfo from '../../Etc/CodeDetailInfo/CodeDetailInfo.jsx';
 import CodeDetailBody from '../../Etc/CodeDetailBody/CodeDetailBody.jsx';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
-function CodeFollowBtn({ site , codeGroupInfo }) {
-    console.log(codeGroupInfo);
+function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
+    const [target, setTarget] = useState(0);
+
+    function codeFollowFn(){
+        console.log("codeId : " + codeId + " codeGroupID : " + target);
+    }
+
+    function valueChangeFn(groupID){
+        setTarget(groupID);
+    }
     return (
-        <button id="CodeFollowBtn" style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
+        <button id="CodeFollowBtn" onClick={codeFollowFn} style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
             <span id = "SettingBarSetting" >코드그룹</span>
             <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>console.log(event.target.value)}>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>valueChangeFn(event.target.value)}>
                 {codeGroupInfo.map((codegrouptag)=>
                 <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
@@ -90,7 +98,7 @@ function CodeDetail() {
             <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.name} name={codeInfo.name} />
             <CodeDetailBody content={codeInfo.original} description={codeInfo.description} owner={codeInfo.owner} />
-            <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo.content} />
+            <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo.content} codeId={state.id} />
         </div>
     );
 }
