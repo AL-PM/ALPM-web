@@ -55,7 +55,7 @@ function StudyHome() {
         return (
             <div id="MyCodeGroup">
                 <MainMenuBar page={"Study"} />
-                <LoadingSpinner />
+                <LoadingSpinner color={"#5C4EFF"}/>
             </div>
         );
     }

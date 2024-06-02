@@ -154,7 +154,6 @@ function NewCodeUpload() {
       </div>
       <button onClick={tmpFn} id="CodeUploadwBtn">콘솔에 데이터 출력</button>
       <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
-
     </div>
   );
 }
