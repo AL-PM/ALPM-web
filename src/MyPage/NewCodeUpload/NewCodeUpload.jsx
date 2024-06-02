@@ -18,7 +18,7 @@ function CodeUploadTitle({ Title }) {
 function NewCodeUpload() {
   const [code, setCode] = useState("");
   const [description, setDescription] = useState("");
-  const [language, setLanguage] = useState("Python");
+  const [language, setLanguage] = useState("PYTHON");
   const [codeName, setCodeName] = useState("");
   const codeRef = useRef(null);
   const descriptionRef = useRef(null);
@@ -122,8 +122,8 @@ function NewCodeUpload() {
       <div id="CodeDetailBody">
         <CodeUploadTitle Title={"코드 언어"} />
         <div id="UploadSettingInfo">
-          <span onClick={() => setLanguage("Python")} style={{ fontWeight: language === "Python" ? "bold" : 'normal', color: language === "Python" ? "#EF4949" : "black" }}>Python</span>
-          <span onClick={() => setLanguage("Java")} style={{ fontWeight: language === "Java" ? "bold" : 'normal', color: language === "Java" ? "#EF4949" : "black" }}>Java</span>
+          <span onClick={() => setLanguage("PYTHON")} style={{ fontWeight: language === "PYTHON" ? "bold" : 'normal', color: language === "PYTHON" ? "#EF4949" : "black" }}>PYTHON</span>
+          <span onClick={() => setLanguage("JAVA")} style={{ fontWeight: language === "JAVA" ? "bold" : 'normal', color: language === "JAVA" ? "#EF4949" : "black" }}>JAVA</span>
           <span onClick={() => setLanguage("C")} style={{ fontWeight: language === "C" ? "bold" : 'normal', color: language === "C" ? "#EF4949" : "black" }}>C++</span>
         </div>
         <CodeUploadTitle Title={"코드 이름"} />
