@@ -10,8 +10,30 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
     const [target, setTarget] = useState(0);
 
-    function codeFollowFn(){
+    const codeFollowFn = async () =>{
+
         console.log("codeId : " + codeId + " codeGroupID : " + target);
+
+        try {
+            const access_token = localStorage.getItem("access_token");
+      
+            const response = await axios.post(`https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`,{
+              headers: {
+                'Authorization': `Bearer ${access_token}`,
+                'Content-Type': 'application/json'
+              },
+              withCredentials: true
+            });
+      
+            if (response.status === 200) {
+              alert('추가가 완료되었습니다');
+            } else {
+              alert('추가가 실패했습니다');
+            }
+          } catch (error) {
+            console.error(error);
+            alert('코드 추가 중 오류가 발생했습니다');
+          }
     }
 
     function valueChangeFn(groupID){
@@ -36,7 +58,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
 }
 
 function CodeDetail() {
-    const { state } = useLocation();
+    const {state} = useLocation();
     const [codeInfo, setCodeInfo] = useState(null);
     const [codeGroupInfo, setCodeGroupInfo] = useState(null);
 
