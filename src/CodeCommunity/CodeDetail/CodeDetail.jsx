@@ -32,7 +32,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
             if (response.status === 200) {
                 alert('추가가 완료되었습니다');
             } else {
-                alert('추가가 실패했습니다');
+                alert('추가가 실패했습니다\n코드 그룹을 올바르게 선택하고 다시 시도해주세요');
             }
         } catch (error) {
             console.error(error);
