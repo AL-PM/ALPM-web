@@ -96,12 +96,12 @@ function NewCodeUpload() {
   };
 
   function tmpFn(){
-    console.log([{
+    console.log({
       name: codeName,
       language: language,
       content: code.replace("\t","    "),
       description: description
-  }])
+  })
   }
 
   if (upload) {
