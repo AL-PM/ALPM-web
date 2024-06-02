@@ -95,15 +95,16 @@ function NewCodeUpload() {
     }
   };
 
-  function tmpFn(){
-    const newDescription = description.replace('$',"");
+  function tmpFn() {
+    const newDescription = description.replace(/\$/g, "").replace(/```/g, "\n");
     console.log({
-      name: codeName,
-      language: language,
-      content: code.replace("\t","    "),
-      description: newDescription
-  })
-  }
+        name: codeName,
+        language: language,
+        content: code.replace(/\t/g, "    "),
+        description: newDescription
+    });
+}
+
 
   if (upload) {
     return (
