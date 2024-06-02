@@ -64,7 +64,7 @@ function NewCodeUpload() {
         name: codeName,
         language: language,
         content: code.replace("\t","    "),
-        description: description
+        description: description.replace("$", "")
     }])
     try {
       const access_token = localStorage.getItem("access_token");
