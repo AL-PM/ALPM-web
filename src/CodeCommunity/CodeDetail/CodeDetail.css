@@ -3,14 +3,14 @@
     height : 5vh;
     display: flex;
     justify-items: center;
+    margin-left: 7.5vw;
+    margin-bottom: 7.5vh;
+    margin-top : 5vh;
 }
 
 #CodeFollowBtn{
     width: 35vw;
     height : 5vh;
-    margin-left: 7.5vw;
-    margin-bottom: 7.5vh;
-    margin-top : 5vh;
     background-color: white;
     font-family: 'SUITE-Regular';
     font-weight: bold;
