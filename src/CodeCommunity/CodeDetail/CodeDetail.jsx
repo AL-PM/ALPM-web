@@ -20,7 +20,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
     return (
         <div id='codeFollowBtnContainer'>
             <div id='codeFollowGroupSetting'>
-                <span id = "SettingBarSetting" style={{width : "10vw",  display: 'flex', justifyContent : 'center'}} >코드그룹</span>
+                <span id = "SettingBarSetting" style={{width : "10vw",  display: 'flex', justifyContent : 'center'}} >추가할 코드 그룹</span>
                 <span>|</span>
                 <select name="CodeGroupSetting" id="CodeGroupSetting" style={{width : "10vw", justifyContent : 'center'}} onChange={(event)=>valueChangeFn(event.target.value)}>
                     {codeGroupInfo.map((codegrouptag)=>
