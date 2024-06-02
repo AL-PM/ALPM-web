@@ -9,7 +9,7 @@ import './MyCodeGroupNew.css'; // Create and import a CSS file for styling
 
 function MyCodeGroupNew() {
     const [groupName, setGroupName] = useState('');
-    const [language, setLanguage] = useState('');
+    const [language, setLanguage] = useState('C++');
     const [isPublic, setIsPublic] = useState(false);
 
     const handleSubmit = () => {
@@ -35,12 +35,15 @@ function MyCodeGroupNew() {
             </div>
             <div className="input-group">
                 <label htmlFor="language">코드 그룹의 언어</label>
-                <input
-                    type="text"
+                <select
                     id="language"
                     value={language}
                     onChange={(e) => setLanguage(e.target.value)}
-                />
+                >
+                    <option value="C++">C++</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                </select>
             </div>
             <div className="input-group">
                 <label htmlFor="isPublic">공개 여부</label>
