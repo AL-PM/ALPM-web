@@ -18,16 +18,18 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
         setTarget(groupID);
     }
     return (
-        <button id="CodeFollowBtn" onClick={codeFollowFn} style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
-            <span id = "SettingBarSetting" >코드그룹</span>
-            <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>valueChangeFn(event.target.value)}>
-                {codeGroupInfo.map((codegrouptag)=>
-                <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
-                )}
-            </select>
+        <div style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
+        <span id = "SettingBarSetting" >코드그룹</span>
+        <span>|</span>
+        <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>valueChangeFn(event.target.value)}>
+            {codeGroupInfo.map((codegrouptag)=>
+            <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+            )}
+        </select>
+        <button id="CodeFollowBtn" onClick={codeFollowFn}>
             <span>코드 그룹에 추가하기</span>
         </button>
+        </div>
     );
 }
 
