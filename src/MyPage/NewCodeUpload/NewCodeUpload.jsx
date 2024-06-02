@@ -123,7 +123,7 @@ function NewCodeUpload() {
         <div id="UploadSettingInfo">
           <span onClick={() => setLanguage("Python")} style={{ fontWeight: language === "Python" ? "bold" : 'normal', color: language === "Python" ? "#EF4949" : "black" }}>Python</span>
           <span onClick={() => setLanguage("Java")} style={{ fontWeight: language === "Java" ? "bold" : 'normal', color: language === "Java" ? "#EF4949" : "black" }}>Java</span>
-          <span onClick={() => setLanguage("C")} style={{ fontWeight: language === "C" ? "bold" : 'normal', color: language === "C" ? "#EF4949" : "black" }}>C</span>
+          <span onClick={() => setLanguage("C")} style={{ fontWeight: language === "C" ? "bold" : 'normal', color: language === "C" ? "#EF4949" : "black" }}>C++</span>
         </div>
         <CodeUploadTitle Title={"코드 이름"} />
         <input id='UploadDescription'
