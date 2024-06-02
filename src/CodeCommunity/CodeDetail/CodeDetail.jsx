@@ -10,52 +10,58 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
     const [target, setTarget] = useState(0);
 
-    const codeFollowFn = async () =>{
+    const codeFollowFn = async () => {
 
         console.log("codeId : " + codeId + " codeGroupID : " + target);
 
         try {
             const access_token = localStorage.getItem("access_token");
-      
-            const response = await axios.patch(`https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`,{
-              headers: {
-                'Authorization': `Bearer ${access_token}`,
-                'Content-Type': 'application/json'
-              },
-              withCredentials: true
-            });
-      
+
+            const response = await axios.patch(
+                `https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`, 
+                {}, // 빈 객체를 두 번째 인수로 보냅니다
+                {
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    withCredentials: true
+                }
+            );
+
             if (response.status === 200) {
-              alert('추가가 완료되었습니다');
+                alert('추가가 완료되었습니다');
             } else {
-              alert('추가가 실패했습니다');
+                alert('추가가 실패했습니다');
             }
-          } catch (error) {
+        } catch (error) {
             console.error(error);
             alert('코드 추가 중 오류가 발생했습니다');
-          }
+        }
     }
 
-    function valueChangeFn(groupID){
+    function valueChangeFn(groupID) {
         setTarget(groupID);
     }
+
     return (
         <div id='codeFollowBtnContainer'>
             <div id='codeFollowGroupSetting'>
-                <span id = "SettingBarSetting" style={{width : "10vw",  display: 'flex', justifyContent : 'center'}} >추가할 코드 그룹</span>
+                <span id="SettingBarSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }}>추가할 코드 그룹</span>
                 <span>|</span>
-                <select name="CodeGroupSetting" id="CodeGroupSetting" style={{width : "10vw",  display: 'flex', justifyContent : 'center'}} onChange={(event)=>valueChangeFn(event.target.value)}>
-                    {codeGroupInfo.map((codegrouptag)=>
-                    <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+                <select name="CodeGroupSetting" id="CodeGroupSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }} onChange={(event) => valueChangeFn(event.target.value)}>
+                    {codeGroupInfo.map((codegrouptag) =>
+                        <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                     )}
                 </select>
             </div>
-            <button id="CodeFollowBtn" onClick={codeFollowFn} style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }} >
+            <button id="CodeFollowBtn" onClick={codeFollowFn} style={{ color: site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
                 <span>코드 그룹에 추가하기</span>
             </button>
         </div>
     );
 }
+
 
 function CodeDetail() {
     const {state} = useLocation();
