@@ -7,10 +7,18 @@ import CodeDetailInfo from '../../Etc/CodeDetailInfo/CodeDetailInfo.jsx';
 import CodeDetailBody from '../../Etc/CodeDetailBody/CodeDetailBody.jsx';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
-function CodeFollowBtn({ site }) {
+function CodeFollowBtn({ site , codeGroupInfo }) {
+    console.log("CodeGroupInfo"+codeGroupInfo);
     return (
         <button id="CodeFollowBtn" style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
-            코드 그룹에 추가하기
+            <span id = "SettingBarSetting" >코드그룹</span>
+            <span>|</span>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>console.log(event.target.value)}>
+                {codeGroupInfo.map((codegrouptag)=>
+                <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+                )}
+            </select>
+            <span>코드 그룹에 추가하기</span>
         </button>
     );
 }
@@ -18,9 +26,10 @@ function CodeFollowBtn({ site }) {
 function CodeDetail() {
     const { state } = useLocation();
     const [codeInfo, setCodeInfo] = useState(null);
+    const [codeGroupInfo, setCodeGroupInfo] = useState(null);
 
     useEffect(() => {
-        const fetchCodeGroupInfo = async () => {
+        const fetchCodeInfo = async () => {
             try {
                 const access_token = localStorage.getItem('access_token');
 
@@ -37,10 +46,31 @@ function CodeDetail() {
             }
         };
 
+        const fetchCodeGroupInfo = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+                const uid = localStorage.getItem("uid");
+
+                const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/user/${uid}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                setCodeGroupInfo(response.data);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchCodeInfo();
         fetchCodeGroupInfo();
+
     }, [state]);
 
-    if (!codeInfo) {
+    if (!codeInfo || !codeGroupInfo) {
         return (
             <div id="CodeDetail">
                 <MainMenuBar page={state.site} />
@@ -58,7 +88,7 @@ function CodeDetail() {
             <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.name} name={codeInfo.name} />
             <CodeDetailBody content={codeInfo.original} description={codeInfo.description} owner={codeInfo.owner} />
-            <CodeFollowBtn site={state.site} />
+            <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo} />
         </div>
     );
 }
