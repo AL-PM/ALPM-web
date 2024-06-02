@@ -60,12 +60,12 @@ function NewCodeUpload() {
 
   const NewCodeUploadBtcFn = async () => {
     setUpload(true);
-    console.log([{
+    console.log({
         name: codeName,
         language: language,
         content: code.replace("\t","    "),
         description: description.replace("$", "").replace("```","\n")
-    }])
+    })
     try {
       const access_token = localStorage.getItem("access_token");
 
@@ -100,7 +100,7 @@ function NewCodeUpload() {
       name: codeName,
       language: language,
       content: code.replace("\t","    "),
-      description: description
+      description: description.replace("$", "").replace("```","\n")
   })
   }
 
