@@ -58,6 +58,7 @@ function NewCodeUpload() {
     return code.split('\n').length;
   }
 
+  /*
   const NewCodeUploadBtcFn = async () => {
     setUpload(true);
     console.log([{
@@ -94,6 +95,7 @@ function NewCodeUpload() {
       setUpload(false);
     }
   };
+  */
 
   function tmpFn(){
     console.log([{
@@ -152,8 +154,7 @@ function NewCodeUpload() {
           placeholder='여기에 업로드할 코드에 대한 설명을 입력해주세요'
         />
       </div>
-      <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
-      <button onClick={tmpFn} id="CodeUploadwBtn">콘솔에 데이터 출력</button>
+      <button onClick={tmpFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
     </div>
   );
 }
