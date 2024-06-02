@@ -86,7 +86,7 @@ function MyCodeGroupNew() {
                         onChange={(e) => setLanguage(e.target.value)}
                     >
                         <option value="C">C++</option>
-                        <option value="Java">Java</option>
+                        <option value="JAVA">Java</option>
                         <option value="Python">Python</option>
                     </select>
                 </div>
