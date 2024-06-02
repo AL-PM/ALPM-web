@@ -11,10 +11,9 @@ import './CodeGroupDetail.css';
 function CodeGroupFollowBtn({codeGroupId}){
 
     const CodeGroupFollowFn = async () => {
-
         try {
             const access_token = localStorage.getItem("access_token");
-
+    
             const response = await axios.patch(
                 `https://alpm.duckdns.org:8080/codeGroup/import/${codeGroupId}`, 
                 {}, // 빈 객체를 두 번째 인수로 보냅니다
@@ -26,19 +25,22 @@ function CodeGroupFollowBtn({codeGroupId}){
                     withCredentials: true
                 }
             );
-
+    
             if (response.status === 200) {
                 alert('팔로우가 완료되었습니다');
-            } else if (response.status === 400){
-                alert('이미 팔로우중인 코드그룹입니다.');
-            } else{
-                alert('팔로우에 실패하였습니다.');
+            } else {
+                alert('팔로우에 실패하였습니다.')
             }
         } catch (error) {
-            console.error(error);
-            alert('코드 그룹 팔로우 중 오류가 발생했습니다');
+            if (error.response && error.response.status === 400) {
+                alert('이미 팔로우중인 코드그룹입니다.');
+            } else {
+                console.error(error);
+                alert('코드 그룹 팔로우 중 오류가 발생했습니다');
+            }
         }
     }
+    
 
     return(
         <button id="CodeGroupFollowBtn" onClick={CodeGroupFollowFn} >코드 그룹 팔로우하기</button>
