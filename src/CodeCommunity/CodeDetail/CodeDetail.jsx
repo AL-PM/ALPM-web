@@ -8,7 +8,7 @@ import CodeDetailBody from '../../Etc/CodeDetailBody/CodeDetailBody.jsx';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
 function CodeFollowBtn({ site , codeGroupInfo }) {
-    console.log("CodeGroupInfo"+codeGroupInfo);
+    console.log(codeGroupInfo);
     return (
         <button id="CodeFollowBtn" style={{color : site === "CodeGroup" ? "#009418" : "#FF6B00" }}>
             <span id = "SettingBarSetting" >코드그룹</span>
@@ -82,6 +82,8 @@ function CodeDetail() {
             </div>
         );
     }
+
+    console.log(codeInfo,codeGroupInfo);
 
     return (
         <div id="CodeDetail">
