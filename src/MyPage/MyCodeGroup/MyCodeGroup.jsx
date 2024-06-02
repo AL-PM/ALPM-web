@@ -109,7 +109,7 @@ function MyCodeGroup() {
         <div id="MyCodeGroup">
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"3"} />
-            <CodeGroupSearchResult searchData={searchResult.content} bodyHeight={"60vh"} />
+            <CodeGroupSearchResult searchData={searchResult.content} bodyHeight={"55vh"} />
             <MyCodeGroupNew />
         </div>
     );
