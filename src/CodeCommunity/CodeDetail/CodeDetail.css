@@ -2,14 +2,19 @@
     width: 85vw;
     height : 5vh;
     display: flex;
-    justify-items: center;
+    justify-content: center;
+    align-items: center;
     margin-left: 7.5vw;
     margin-bottom: 7.5vh;
     margin-top : 5vh;
+    border: 1px solid #ddd; /* 연한 회색 경계선 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    background-color: #fff; /* 배경색을 흰색으로 */
 }
 
 #CodeFollowBtn{
-    width: 35vw;
+    width: 65vw;
     height : 5vh;
     background-color: white;
     font-family: 'SUITE-Regular';
@@ -23,7 +28,7 @@
 }
 
 #codeFollowGroupSetting{
-    width: 35vw;
+    width: 20vw;
     height : 5vh;
 }
 
