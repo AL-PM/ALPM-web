@@ -16,6 +16,12 @@ function MyCodeGroupNew() {
         try {
             const access_token = localStorage.getItem("access_token");
 
+            console.log({
+                name: groupName,
+                language: language,
+                visible: isPublic
+            })
+
             // First API call: POST to create the code group
             const postResponse = await axios.post(`https://alpm.duckdns.org:8080/codeGroup/create`, {
                 name: groupName,
