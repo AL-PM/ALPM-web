@@ -41,7 +41,6 @@
     display: inline-block;
     width: 60px;
     height: 20px; /* Adjusted height */
-    margin-left: 10px;
 }
 
 .switch input {
@@ -75,7 +74,7 @@
 }
 
 input:checked + .slider {
-    background-color: #009418;
+    background-color: #EF4949;
 }
 
 input:checked + .slider:before {
