@@ -17,7 +17,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
         try {
             const access_token = localStorage.getItem("access_token");
       
-            const response = await axios.post(`https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`,{
+            const response = await axios.patch(`https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`,{
               headers: {
                 'Authorization': `Bearer ${access_token}`,
                 'Content-Type': 'application/json'
