@@ -1,4 +1,4 @@
-import React, { useState , useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import './NewCodeUpload.css';
 import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
@@ -61,10 +61,10 @@ function NewCodeUpload() {
   const NewCodeUploadBtcFn = async () => {
     setUpload(true);
     console.log({
-        name: codeName,
-        language: language,
-        content: code.replace("\t","    "),
-        description: description.replace("$", "")
+      name: codeName,
+      language: language,
+      content: code.replace(/\t/g, "    "),
+      description: description.replace(/\$/g, "").replace(/```/g, "\n")
     })
     try {
       const access_token = localStorage.getItem("access_token");
@@ -72,8 +72,8 @@ function NewCodeUpload() {
       const response = await axios.post(`https://alpm.duckdns.org:8080/algorithm/create`, {
         name: codeName,
         language: language,
-        content: code.replace("\t","    "),
-        description: description
+        content: code.replace(/\t/g, "    "),
+        description: description.replace(/\$/g, "").replace(/```/g, "\n")
       }, {
         headers: {
           'Authorization': `Bearer ${access_token}`,
@@ -96,14 +96,13 @@ function NewCodeUpload() {
   };
 
   function tmpFn() {
-    const newDescription = description.replace(/\$/g, "").replace(/```/g, "\n");
     console.log({
-        name: codeName,
-        language: language,
-        content: code.replace(/\t/g, "    "),
-        description: newDescription
+      name: codeName,
+      language: language,
+      content: code.replace(/\t/g, "    "),
+      description: description.replace(/\$/g, "").replace(/```/g, "\n")
     });
-}
+  }
 
 
   if (upload) {
@@ -111,7 +110,7 @@ function NewCodeUpload() {
       <div>
         <MainMenuBar page={"MyPage"} />
         <MyPageMenuBar MyPage={"5"} />
-        <LoadingSpinner color={"EF4949"} comment={"새로운 코드 업로드중"}/>
+        <LoadingSpinner color={"EF4949"} comment={"새로운 코드 업로드중"} />
       </div>
     );
   }
