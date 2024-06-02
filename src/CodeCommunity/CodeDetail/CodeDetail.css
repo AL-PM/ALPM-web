@@ -1,7 +1,7 @@
 #codeFollowBtnContainer{
     width: 85vw;
-    height : 5vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-left: 7.5vw;
@@ -14,8 +14,11 @@
 }
 
 #CodeFollowBtn{
-    width: 65vw;
+    width: 80vw;
     height : 5vh;
+    margin-left: 2.5vw;
+    margin-bottom: 2.5vw;
+    margin-right: 2.5vw;
     background-color: white;
     font-family: 'SUITE-Regular';
     font-weight: bold;
@@ -28,8 +31,9 @@
 }
 
 #codeFollowGroupSetting{
-    width: 20vw;
+    width: 85vw;
     height : 5vh;
+    margin-bottom: 1vh;
 }
 
 #CodeFollowBtn:hover{
