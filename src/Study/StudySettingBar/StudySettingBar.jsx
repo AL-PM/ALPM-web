@@ -2,13 +2,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import './StudySettingBar.css';
 
 function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
-    const [codeGroupName, setCodeGroupName] = useState("");
+    const [codeGroupName, setCodeGroupName] = useState("Default");
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
-    // Filter out code groups with algorithm_count of 0
-    const filteredCodeGroupList = method === "줄별 순서맞추기"
-        ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
-        : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0);
+    // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
+    const filteredCodeGroupList = [
+        { id: -1, name: "Default", language: "Default", algorithm_count: 1 },
+        ...(method === "줄별 순서맞추기"
+            ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
+            : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0))
+    ];
 
     // useCallback to memoize setCodeGroupSetting function
     const setCodeGroupSetting = useCallback((event) => {
@@ -29,9 +32,11 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
 
     const StudySettingBarResetFn = () => {
         resetProblemCode();
-        setCodeGroupName(""); // codeGroupName 초기화
+        setCodeGroupName("Default"); // codeGroupName 초기화
         setLevel(1); // 난이도 초기화
         setMethod("따라치기");
+        setCodeGroup(-1); // Default group
+        setLanguage("Default"); // Default language
     };
 
     return (
