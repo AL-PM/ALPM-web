@@ -1,13 +1,12 @@
 .contribution-graph {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
 }
 
 .week {
     display: flex;
-    flex-direction: column;
-    margin: 2px;
+    flex-direction: row;
+    margin: 2px 0;
 }
 
 .day {
