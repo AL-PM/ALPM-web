@@ -3,15 +3,17 @@ import './StudySettingBar.css';
 import ProblemSettingIcon from "./img/SearchIcon.png";
 
 function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist}){
+
+    function setCodeGroupSetting(codeGroupTag){
+        setCodeGroup(codeGroupTag.id);
+        setLanguage(codeGroupTag.language);
+    }
+
+    function StudySettingBarBtnFn(){
+        setProblem(true);
+    }
     return(
         <div id="StudySettingBar">
-            <span id = "SettingBarSetting" >학습 언어</span>
-            <span>|</span>
-            <select id="CodeGroupSetting" onChange={(event)=>setLanguage(event.target.value)}>
-                <option id="CodeGroupSettingList" value={"Python"} >Python</option>
-                <option id="CodeGroupSettingList" value={"Java"} >Java</option>
-                <option id="CodeGroupSettingList" value={"C++"} >C++</option>
-            </select>
             <span></span>
             <span id = "SettingBarSetting" >학습 방법</span>
             <span>|</span>
@@ -32,13 +34,13 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
             <span></span>
             <span id = "SettingBarSetting" >코드그룹</span>
             <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setCodeGroup(event.target.value)}>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setCodeGroupSetting(event.target.value)}>
                 {codegrouplist.map((codegrouptag)=>
-                <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+                <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
             
-            <img id = "ProblemSettingIcon" onClick={()=>setProblem(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
+            <img id = "ProblemSettingIcon" onClick={()=>StudySettingBarBtnFn(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
         </div>
     )
 }
