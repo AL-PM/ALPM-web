@@ -17,7 +17,11 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     const setCodeGroupSetting = useCallback((event) => {
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
-        setCheckDefault(codeGroupTag.id);
+        if (codeGroupTag.id === -1) {
+            setCheckDefault(codeGroupTag.id); // Default 선택 시 checkDefault를 -1이 아닌 Default 값으로 설정
+        } else {
+            setCheckDefault(-1); // Default 이외의 값 선택 시 checkDefault를 -1로 설정
+        }
         setLanguage(codeGroupTag.language);
     }, [setCodeGroup, setLanguage, setCheckDefault]);
 
