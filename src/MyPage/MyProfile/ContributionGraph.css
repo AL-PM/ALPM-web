@@ -1,18 +1,17 @@
 .contribution-graph {
     display: flex;
-    flex-direction: column;
 }
 
 .week {
     display: flex;
-    flex-direction: row;
-    margin: 2px 0;
+    flex-direction: column;
+    margin-right: 10px; /* Adjust margin for spacing between weeks */
 }
 
 .day {
     width: 10px;
     height: 10px;
-    margin: 2px;
+    margin: 2px 0; /* Adjust margin for spacing between days */
     background-color: #ebedf0;
     position: relative;
 }
