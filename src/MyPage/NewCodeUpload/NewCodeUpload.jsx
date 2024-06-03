@@ -64,7 +64,7 @@ function NewCodeUpload() {
       name: codeName,
       language: language,
       content: code.replace(/\t/g, "    "),
-      description: description.replace(/\$/g, "").replace(/```/g, "\n")
+      description: description
     })
     try {
       const access_token = localStorage.getItem("access_token");
@@ -73,7 +73,7 @@ function NewCodeUpload() {
         name: codeName,
         language: language,
         content: code.replace(/\t/g, "    "),
-        description: description.replace(/\$/g, "").replace(/```/g, "\n")
+        description: description
       }, {
         headers: {
           'Authorization': `Bearer ${access_token}`,
