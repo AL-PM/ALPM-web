@@ -18,8 +18,6 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
 
     const codeFollowFn = async () => {
 
-        console.log("codeId : " + codeId + " codeGroupID : " + target);
-
         if(target > 0){
             try {
                 const access_token = localStorage.getItem("access_token");
