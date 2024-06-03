@@ -38,7 +38,7 @@ function MyUploadCode(){
             <div id="MyCodeGroup">
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"4"}/>
-                <LoadingSpinner color={"EF4949"} comment={"Loading"}/>
+                <LoadingSpinner color={"EF4949"} comment={"내가 업로드한 코드 불러오는 중"}/>
             </div>
         );
     }

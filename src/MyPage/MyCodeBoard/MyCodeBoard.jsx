@@ -38,7 +38,7 @@ function MyCodeBoard(){
             <div id="MyCodeGroup">
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"2"}/>
-                <LoadingSpinner color={"EF4949"} comment={"Loading"}/>
+                <LoadingSpinner color={"EF4949"} comment={"내 코드 보드 불러오는 중"}/>
             </div>
         );
     }

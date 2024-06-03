@@ -110,7 +110,7 @@ function NewCodeUpload() {
       <div>
         <MainMenuBar page={"MyPage"} />
         <MyPageMenuBar MyPage={"5"} />
-        <LoadingSpinner color={"EF4949"} comment={"새로운 코드 업로드중"} />
+        <LoadingSpinner color={"EF4949"} comment={"새로운 코드 업로드 하는 중"} />
       </div>
     );
   }

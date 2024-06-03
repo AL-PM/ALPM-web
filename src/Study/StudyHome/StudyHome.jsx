@@ -81,7 +81,7 @@ function StudyHome() {
         return (
             <div id="MyCodeGroup">
                 <MainMenuBar page={"Study"} />
-                <LoadingSpinner color={"#5C4EFF"}/>
+                <LoadingSpinner color={"#5C4EFF"} comment={"학습 환경 구성중"}/>
             </div>
         );
     }

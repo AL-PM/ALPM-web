@@ -50,7 +50,7 @@ function CodeCommunity(){
             <div id="MyCodeGroup">
                 <MainMenuBar page={"Code"} />
                 <CommunitySearchBar secondTag={"코드 유형"} language = {language} setlanguage={setlanguage} reference= {reference} setreference = {setreference} setkeword={setkeword} searchkeyword={searchkeyword} />
-                <LoadingSpinner color={"#FF6B00"}/>
+                <LoadingSpinner color={"#FF6B00"} comment={"코드 정보 불러오는 중"}/>
             </div>
         );
     }

@@ -115,9 +115,9 @@ function CodeDetail() {
             <div id="CodeDetail">
                 <MainMenuBar page={state.site} />
                 {state.site === "CodeGroup" ?
-                 <LoadingSpinner color={"#009418"}/>
+                 <LoadingSpinner color={"#009418"} comment={"코드 정보 불러오는 중"}/>
                  :
-                 <LoadingSpinner color={"#FF6B00"}/>
+                 <LoadingSpinner color={"#FF6B00"} comment={"코드 정보 불러오는 중"}/>
                 }
             </div>
         );

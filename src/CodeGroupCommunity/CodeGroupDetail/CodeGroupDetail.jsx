@@ -107,7 +107,7 @@ function CodeGroupDetail(){
         return (
             <div id="CodeGroupDetail">
                 <MainMenuBar page={"CodeGroup"} />
-                <LoadingSpinner color={"#009418"}/>
+                <LoadingSpinner color={"#009418"} comment={"코드 그룹 정보 불러오는 중"}/>
             </div>
         );
     }
