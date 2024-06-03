@@ -38,6 +38,7 @@
 
 #TextContainer{
     display: flex;
+    gap: 20px;
 }
 
 #MyProfileStudyHistory{
