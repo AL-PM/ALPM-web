@@ -1,13 +1,12 @@
 .contribution-graph {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.month {
+.week {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: 2px;
 }
 
@@ -16,6 +15,21 @@
     height: 10px;
     margin: 2px;
     background-color: #ebedf0;
+    position: relative;
+}
+
+.day:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    white-space: nowrap;
+    z-index: 10;
 }
 
 .day-1 { background-color: #c6e48b; }

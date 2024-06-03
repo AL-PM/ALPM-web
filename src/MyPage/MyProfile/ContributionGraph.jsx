@@ -2,35 +2,40 @@ import React from 'react';
 import './ContributionGraph.css';
 
 function ContributionGraph({ historyList }) {
-    // Convert the historyList to a format suitable for the graph
-    const contributions = Array(7).fill().map(() => Array(53).fill(0)); // 7 days a week, up to 53 weeks
+    // Filter out dates after the current date
+    const currentDate = new Date();
+    const filteredHistoryList = historyList.filter(item => new Date(item.date) <= currentDate);
 
-    historyList.forEach(item => {
-        const date = new Date(item.date);
-        const week = Math.floor(getDayOfYear(date) / 7); // Week number
-        const day = date.getDay(); // Day of the week
+    // Prepare data for the contribution graph
+    const contributions = Array(7).fill().map(() => Array(Math.ceil(filteredHistoryList.length / 7)).fill(0));
+
+    filteredHistoryList.forEach((item, index) => {
+        const week = Math.floor(index / 7);
+        const day = index % 7;
         contributions[day][week] = item.size;
     });
 
     return (
         <div className="contribution-graph">
             {contributions.map((week, dayIndex) => (
-                <div key={dayIndex} className="month">
-                    {week.map((day, weekIndex) => (
-                        <div key={weekIndex} className={`day day-${day}`}></div>
-                    ))}
+                <div key={dayIndex} className="week">
+                    {week.map((day, weekIndex) => {
+                        const date = new Date(currentDate.getFullYear(), 0, 1);
+                        date.setDate(date.getDate() + (weekIndex * 7) + dayIndex);
+                        const dateString = date.toISOString().split('T')[0];
+                        return (
+                            <div 
+                                key={weekIndex} 
+                                className={`day day-${day}`} 
+                                title={`${dateString} | 학습 포인트: ${day}`}
+                            >
+                            </div>
+                        );
+                    })}
                 </div>
             ))}
         </div>
     );
-}
-
-// Helper function to get the day of the year
-function getDayOfYear(date) {
-    const start = new Date(date.getFullYear(), 0, 0);
-    const diff = date - start;
-    const oneDay = 1000 * 60 * 60 * 24;
-    return Math.floor(diff / oneDay);
 }
 
 export default ContributionGraph;
