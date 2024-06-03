@@ -5,13 +5,13 @@
 .week {
     display: flex;
     flex-direction: column;
-    margin-right: 10px; /* Adjust margin for spacing between weeks */
+    margin-right: 15px; /* Adjust margin for spacing between weeks */
 }
 
 .day {
-    width: 10px;
-    height: 10px;
-    margin: 2px 0; /* Adjust margin for spacing between days */
+    width: 15px; /* Adjusted width */
+    height: 15px; /* Adjusted height */
+    margin: 3px 0; /* Adjust margin for spacing between days */
     background-color: #ebedf0;
     position: relative;
 }
@@ -19,7 +19,7 @@
 .day:hover::after {
     content: attr(title);
     position: absolute;
-    bottom: 20px;
+    bottom: 25px; /* Adjusted for the new size */
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0, 0, 0, 0.75);
@@ -35,4 +35,3 @@
 .day-3 { background-color: #239a3b; }
 .day-4 { background-color: #196127; }
 .today { background-color: #fc8181; } /* 빨간색 */
-
