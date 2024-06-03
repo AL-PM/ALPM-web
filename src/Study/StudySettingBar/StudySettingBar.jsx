@@ -46,12 +46,14 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 )}
             </select>
             { problem ? 
+            <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn} >
+            <span>초기화</span> 
+            </button>
+            :
             <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn} >
                 <span>문제 출제하기</span>
-            </button> : 
-            <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn} >
-            <span>초기화</span>
-        </button>}
+            </button>
+        }
             
         </div>
     )
