@@ -20,7 +20,7 @@ function StudyHomeBody() {
 function StudyHome() {
     const [language, setLanguage] = useState("PYTHON");
     const [method, setMethod] = useState("따라치기");
-    const [codegroup, setCodeGroup] = useState(1);
+    const [codegroup, setCodeGroup] = useState(0);
     const [level, setLevel] = useState(1);
     const [problem, setProblem] = useState(false);
     const [searchResult, setSearchResult] = useState();
@@ -96,6 +96,7 @@ function StudyHome() {
                 setLevel={setLevel} 
                 codegrouplist={searchResult.content}
                 problem={problem}
+                language={language}
                 method={method}
                 level={level}
                 fetchProblemCode={fetchProblemCode}

@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, codegroup, problem, method, level, fetchProblemCode, resetProblemCode }) {
+function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language ,problem, method, level, fetchProblemCode, resetProblemCode }) {
+
+    const[codeGroupName, setCodeGroupName] = useState("");
 
     function setCodeGroupSetting(event) {
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
+        setCodeGroupName(codeGroupTag.name);
         setLanguage(codeGroupTag.language);
     }
 
@@ -49,7 +52,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             <span id="SettingBarSetting">코드그룹</span>
             <span>|</span>
             {problem ? (
-                <span>{codegroup}</span>
+                <span>{codeGroupName + "/" + language}</span>
             ) : (
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
                     {filteredCodeGroupList.map((codegrouptag) => (
