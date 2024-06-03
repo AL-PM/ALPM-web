@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './StudyBlockOrdering.css';
 
-function StudyBlockOrdering({problemCode}) {
+function StudyBlockOrdering({problemCode, level}) {
     const [codeData, setCodeData] = useState(null);
     const [userInput, setUserInput] = useState([]);
     const [finalCode, setFinalCode] = useState("");
@@ -56,7 +56,7 @@ function StudyBlockOrdering({problemCode}) {
                 });
             }
 
-            blockData = getRandomNumbers(blockData, 3);
+            blockData = getRandomNumbers(blockData, level);
 
             blockData.forEach((element) => {
                 sortedblockData.push({
@@ -86,7 +86,7 @@ function StudyBlockOrdering({problemCode}) {
 
         const preprocessedCode = preprocessCode(problemCode.content);
         setCodeData(preprocessedCode);
-    }, [problemCode]);
+    }, [problemCode, level]);
 
     useEffect(() => {
         if (codeData) {
@@ -206,10 +206,6 @@ function StudyBlockOrdering({problemCode}) {
         }
     }
 
-    if (!codeData) {
-        return <div>Loading...</div>;
-    }
-
     return (
         <div id="StudyBlockOrdering" style={{ marginBottom: countMarginBottom(userInput.length) }}>
             <textarea readOnly
@@ -218,7 +214,7 @@ function StudyBlockOrdering({problemCode}) {
                 cols={140}
                 value={finalCode}
             />
-            {userInput.length < 15 ?
+            {userInput.length < level * 5 ?
                 <div>
                     <div id="exampleBox">
                         <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 보기 ]"} </p>
