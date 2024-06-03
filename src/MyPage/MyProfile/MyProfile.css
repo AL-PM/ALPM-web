@@ -64,8 +64,8 @@
     font-weight: 500;
     width : 70vw;
     height: 35vh;
-    display: grid;
-    grid-template-columns: 4fr 9fr;
+    display: flex;
+    justify-content: space-between;
 }
 
 #MyProfileStudyHistoryNumeric{
