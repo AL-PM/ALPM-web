@@ -9,40 +9,6 @@
     gap : 10px;
 }
 
-#StudyBlockOrdering{
-    width: 85vw;
-    margin-top : 7.5vh;  
-    margin-left : 7.5vw ;
-    margin-right: 7.5vw;
-    margin-bottom: 46vh;
-    border: 1.5px solid;
-    border-color: black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top : 30px;
-    padding-bottom: 30px;
-    font-size: small;
-}
-
-#exampleBox{
-    position: fixed;
-    width: 84.9vw;
-    bottom : 13vh;
-    background-color: white;
-    border: 1.5px solid;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    padding-top: 10px;
-    padding-bottom: 5vh;
-    font-size: large;
-    font-weight: bold;
-}
-
 #exampleList{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -81,16 +47,4 @@
     font-size: large;
     font-weight: bold;
 }
-
-#BlockOrderingBtn{
-    width: 48%;
-    height: 5vh;
-    border: 1.5px solid;
-    border-radius: 10px;
-    background-color: white;
-    font-family: 'SUITE-Regular';
-    font-weight: normal;
-    font-size: medium;
-}
-
 
