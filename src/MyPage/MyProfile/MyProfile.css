@@ -82,7 +82,7 @@
 }
 
 #MyProfileStudyHistoryGrass {
-    height: 35;
+    height: 35vh;
     width: 40vh;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
