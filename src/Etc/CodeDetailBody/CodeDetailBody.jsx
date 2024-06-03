@@ -42,17 +42,15 @@ function CodeDetailBody({content, description, owner}){
                 cols={100}
             />
             <CodeDetailTitle Title={"코드에 대한 설명"}/>
-            <textarea readOnly id='CodeDescriptionContent' 
-                value={description}
-                rows={countNumberOfCode(description)}
-                cols={100}
-            />
+            <div id='CodeDescriptionContent' >
+                <ReactMarkdown>{description}</ReactMarkdown>
+            </div>
             <CodeDetailTitle Title={"작성자"}/>
             <div id="UserContent">
                 <img id="CodeDetailUserProfile" src={owner.profile} alt="User Profile" />
                 <span>{owner.name}</span>
             </div>
-            <ReactMarkdown>{description}</ReactMarkdown>
+            
         </div>
     )
 }
