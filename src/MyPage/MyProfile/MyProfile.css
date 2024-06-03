@@ -52,7 +52,8 @@
     align-items: flex-start;
 }
 
-#MyProfileStudyHistoryLogo{
+#MyProfileStudyHistoryContainer{
+    width: 30vh;
     font-size: large;
     font-weight: 500;
     margin-bottom: 2.5vh;
@@ -68,7 +69,7 @@
 
 #MyProfileStudyHistoryNumeric{
     height : 30vh;
-    width : 35%;
+    width: 30vh;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
