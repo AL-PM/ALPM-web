@@ -36,9 +36,10 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
         setMethod("따라치기");
     };
 
+    // filter 함수를 사용하여 algorithm_count가 0인 코드 그룹들을 제외함
     const filteredCodeGroupList = method === "줄별 순서맞추기"
-        ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON")
-        : codegrouplist;
+        ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
+        : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0);
 
     return (
         <div id="StudySettingBar">
