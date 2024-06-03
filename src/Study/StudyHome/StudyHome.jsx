@@ -25,14 +25,12 @@ function StudyHome() {
     const [problem, setProblem] = useState(false);
     const [searchResult, setSearchResult] = useState();
     const [problemCode, setProblemCode] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);  // Add loading state
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
                 const access_token = localStorage.getItem("access_token");
-                const refresh_token = localStorage.getItem("refresh_token");
-                console.log("access_token : "+access_token + " \nrefresh_token : " + refresh_token);
                 const uid = localStorage.getItem("uid");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/user/${uid}`, {
@@ -99,13 +97,13 @@ function StudyHome() {
                 codegrouplist={searchResult.content}
                 problem={problem}
                 method={method}
-                fetchProblemCode={fetchProblemCode}  // Pass fetch function
-                resetProblemCode={resetProblemCode}  // Pass reset function
+                fetchProblemCode={fetchProblemCode}
+                resetProblemCode={resetProblemCode}
             />
             {method === "줄별 순서맞추기" && problem && problemCode ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
-            {method === "따라치기" && problem && problemCode ? <StudyTracking /> : null}
+            {method === "따라치기" && problem && problemCode ? <StudyTracking problemCode={problemCode} /> : null}
             {method === "블록 순서맞추기" && problem && problemCode ? <StudyBlockOrdering problemCode={problemCode} /> : null}
-            {method === "빈칸 채우기" && problem && problemCode ? <StudyBlockWriting /> : null}
+            {method === "빈칸 채우기" && problem && problemCode ? <StudyBlockWriting problemCode={problemCode} /> : null}
             {!problem ? <StudyHomeBody /> : null}
         </div>
     );

@@ -1,13 +1,21 @@
 import React from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist ,problem, method, fetchProblemCode, resetProblemCode}){
+function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, codegroup, problem, method, fetchProblemCode, resetProblemCode}) {
 
-    function setCodeGroupSetting(event){
+    function setCodeGroupSetting(event) {
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
         setLanguage(codeGroupTag.language);
     }
+
+    const StudySettingBarBtnFn = () => {
+        fetchProblemCode();
+    };
+
+    const StudySettingBarResetFn = () => {
+        resetProblemCode();
+    };
 
     const filteredCodeGroupList = method === "줄별 순서맞추기"
         ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON")
@@ -38,11 +46,11 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, codegr
                 )}
             </select>
             { problem ? 
-            <button id="ProblemSettingIcon" onClick={resetProblemCode} >
+            <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn}>
                 <span>초기화</span> 
             </button>
             :
-            <button id="ProblemSettingIcon" onClick={fetchProblemCode} >
+            <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn}>
                 <span>문제 출제하기</span>
             </button>
         }
