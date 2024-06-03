@@ -61,7 +61,7 @@ function StudyLineOrdering({problemCode}) {
                             });
                             lineNumberInFunction += 1;
                         }
-                    } else if (tmpCode === "}") {
+                    } else if (tmpCode === "}" || tmpCode === "};") {
                         numOfOpenBracket -= 1;
                         processedCode.push({
                             data: tmpCode,
