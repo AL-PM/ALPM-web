@@ -10,8 +10,9 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
     const [target, setTarget] = useState(0);
 
-    const filteredCodeGroupList = [
-        { id: -1, name: "Default", language: "Default", algorithm_count: 1 }, codeGroupInfo]
+    const defaultCodeGroup = { id: -1, name: "Default", language: "Default", algorithm_count: 1 };
+    const filteredCodeGroupList = [defaultCodeGroup, ...codeGroupInfo];
+
 
     const codeFollowFn = async () => {
 
