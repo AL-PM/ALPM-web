@@ -63,9 +63,8 @@
     font-size: large;
     font-weight: 500;
     width : 70vw;
-    height: 35vh;
+    height: 40vh;
     display: flex;
-    justify-content: space-between;
 }
 
 #MyProfileStudyHistoryNumeric{
