@@ -52,12 +52,6 @@
     align-items: flex-start;
 }
 
-#MyProfileStudyHistoryContainer{
-    width: 40vh;
-    
-    margin-bottom: 2.5vh;
-}
-
 
 #MyProfileStudyHistoryBody{
     font-size: large;
@@ -80,8 +74,6 @@
     justify-items: start;
     margin-top:1.5vh;
     padding-left:5%;
-    padding-top : 10%;
-    padding-bottom: 10%;
 }
 
 #MyProfileStudyHistoryGrass {
