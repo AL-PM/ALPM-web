@@ -1,0 +1,24 @@
+.contribution-graph {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.month {
+    display: flex;
+    flex-direction: column;
+    margin: 0 5px;
+}
+
+.day {
+    width: 10px;
+    height: 10px;
+    margin: 2px;
+    background-color: #ebedf0;
+}
+
+.day-1 { background-color: #c6e48b; }
+.day-2 { background-color: #7bc96f; }
+.day-3 { background-color: #239a3b; }
+.day-4 { background-color: #196127; }

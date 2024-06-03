@@ -4,6 +4,7 @@ import './MyProfile.css';
 import MainMenuBar from "../../Etc/MainMenuBar/MainMenuBar";
 import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
+import ContributionGraph from './ContributionGraph';
 
 function TextContainerVer1({ keyword, content }) {
     return (
@@ -36,8 +37,8 @@ function MyProfileUserInfo({ profile, name }) {
     );
 }
 
+// Inside your MyProfileStudyHistory component
 function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_point, history_list }) {
-    
     return (
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryLogo">
@@ -51,12 +52,13 @@ function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_
                     <TextContainerVer1 keyword={"채운 빈칸의 수"} content={fill_point} />
                 </div>
                 <div id="MyProfileStudyHistoryGrass">
-                    <span>사용자 연속 학습 기록 [잔디] 추가 예정</span>
+                    <ContributionGraph historyList={history_list} />
                 </div>
             </div>
         </div>
     );
 }
+
 
 function MyProfile() {
     const [userData, setUserData] = useState();
