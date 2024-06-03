@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import './StudyBlockOrdering.css';
 
-function StudyBlockOrdering() {
+function StudyBlockOrdering({problemCode}) {
     const [codeData, setCodeData] = useState(null);
     const [userInput, setUserInput] = useState([]);
     const [finalCode, setFinalCode] = useState("");
 
     useEffect(() => {
-        const code = {
-            "level": 1,
-            "text" : '#include <bits/stdc++.h>\n#define ll long long\nusing namespace std;\nll N, M;\nll arr[100005];\nvector<ll> SegTree;\nll Query(ll n, ll l, ll r, ll st, ll ed) {\n    if (l > $ed$ || r < $st$) // 탐색 범위를 벗어나는 경우\n        return $0$;\n    if (l >= $st$ && r <= $ed$) // 목표 범위에 속하는 경우\n        return $SegTree[n]$;\n    ll mid = $(l + r) / 2$; // 중심값 선언\n    return Query($n * 2$, $l$, $mid$, $st$, $ed$) + Query($n * 2 + 1$, $mid + 1$, $r$, $st$, $ed$); // 왼쪽 구간과 오른쪽 구간을 탐색\n}\n\nll Update(ll n, ll l, ll r, ll pos, ll x) {\n    if (l > $pos$ || r < $pos$) // 탐색범위를 벗어나면\n    return $SegTree[n]$; // 해당 세그먼트 트리의 값을 반환\n    if (l == $r$) { // leaf node에 도달하면\n    SegTree[n] = $x$;\n    return $SegTree[n]$; // 새로 입력받은 값을 반환\n    }\n    ll mid = $(l + r) / 2$; // 중심값 선언\n    SegTree[n] = Update($n * 2$, $l$, $mid$, $pos$, $x$) + Update($n * 2 + 1$, $mid + 1$, $r$, $pos$, $x$); // 왼쪽 구간과 오른쪽 구간을 탐색\n    return $SegTree[n]$;\n}\n\nll Init(ll n, ll l, ll r) {\n    if (l == $r$) { // leaf node에 도달하면\n    SegTree[n] = $arr[l]$; // arr[l] 값이 상위노드로 넘어감\n    return $SegTree[n]$;\n    }\n    ll mid = $(l + r) / 2$; // 중심값 선언\n    SegTree[n] = Init($n * 2$, $l$, $mid$) + Init($n * 2 + 1$, $mid + 1$, $r$); // 왼쪽 구간과 오른쪽 구간으로 분할\n    return $SegTree[n]$;\n}\n\nint main() {\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n\n    cin >> N >> M;\n    for (int i = 1; i <= N; i++)\n    cin >> arr[i]; // 원소 입력 받음\n\n    SegTree.resize(4 * N); // 세그먼트 트리 크기가 4*N 인 벡터 생성\n    Init(1, 1, N); // 세그먼트 트리 초기화\n\n    for (int i = 0; i < M; i++) {\n        ll x, a, b;\n        cin >> x >> a >> b;\n    if (x) // x가 1이면\n            cout << Query(1, 1, N, a, b) << "\\n"; // a번째부터 b번째까지의 합 출력\n        else // x가 0이면\n            Update(1, 1, N, a, b); // a번째 원소를 b로 변경\n    }\n\n    return 0;\n}',
-        };
-
         function preprocessCode(code) {
             function getRandomNumbers(blockData, level) {
                 let result = blockData.slice();
@@ -33,7 +28,7 @@ function StudyBlockOrdering() {
             let lines = code.split("\n");
 
             function extractCode(line) {
-                let codeWithoutComment = line.split("//")[0];
+                let codeWithoutComment = line.split(problemCode.language === "PYTHON" ? "#" : "//")[0];
                 let tmpCode = codeWithoutComment.replace(/\s+$/, '');
                 trimmedCode += tmpCode + "\n";
             }
@@ -89,9 +84,9 @@ function StudyBlockOrdering() {
             return finalCode;
         }
 
-        const preprocessedCode = preprocessCode(code.text);
+        const preprocessedCode = preprocessCode(problemCode.content);
         setCodeData(preprocessedCode);
-    }, []);
+    }, [problemCode]);
 
     useEffect(() => {
         if (codeData) {
@@ -205,39 +200,43 @@ function StudyBlockOrdering() {
 
         if (userInputtxt === blockDatatxt) {
             alert("정답입니다.");
-        }else{
+        } else {
             resetFn();
             alert("옳지 않은 답변입니다. 다시 작성해주세요");
         }
     }
 
+    if (!codeData) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div id="StudyBlockOrdering" style={{ marginBottom: countMarginBottom(userInput.length)}}>
+        <div id="StudyBlockOrdering" style={{ marginBottom: countMarginBottom(userInput.length) }}>
             <textarea readOnly
                 id="StudyBlockOrderingCodeArea"
                 rows={countRows(finalCode)}
                 cols={140}
                 value={finalCode}
             />
-            {userInput.length < 15 ? 
-            <div>
-                <div id="exampleBox">
-                    <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 보기 ]"} </p>
-                    <div id="exampleList">
-                        {codeData[1].map((eachBlock) =>
-                            <p
-                                key={eachBlock.num}
-                                onClick={() => exampleFn(eachBlock)}
-                            >
-                                {eachBlock.data}
-                            </p>
-                        )}
+            {userInput.length < 15 ?
+                <div>
+                    <div id="exampleBox">
+                        <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 보기 ]"} </p>
+                        <div id="exampleList">
+                            {codeData[1].map((eachBlock) =>
+                                <p
+                                    key={eachBlock.num}
+                                    onClick={() => exampleFn(eachBlock)}
+                                >
+                                    {eachBlock.data}
+                                </p>
+                            )}
+                        </div>
                     </div>
-                </div>
-            </div> : null}
+                </div> : null}
             <div id="BlockOrderingBtnContainer">
                 <button id="BlockOrderingBtn" style={{ borderColor: "#EF4949" }} onClick={resetFn}>초기화</button>
-                <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF"}} onClick={() => checkCompleteFn()}>완료</button>
+                <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF" }} onClick={() => checkCompleteFn()}>완료</button>
             </div>
         </div>
     );
