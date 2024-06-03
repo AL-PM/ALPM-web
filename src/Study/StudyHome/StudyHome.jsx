@@ -97,6 +97,7 @@ function StudyHome() {
                 codegrouplist={searchResult.content}
                 problem={problem}
                 method={method}
+                level={level}
                 fetchProblemCode={fetchProblemCode}
                 resetProblemCode={resetProblemCode}
             />
