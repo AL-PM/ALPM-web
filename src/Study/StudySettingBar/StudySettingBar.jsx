@@ -1,14 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language ,problem, method, level, fetchProblemCode, resetProblemCode }) {
+function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, codegroup, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
 
-    const[codeGroupName, setCodeGroupName] = useState("");
+    const [codeGroupName, setCodeGroupName] = useState("");
+
+    useEffect(() => {
+        // 코드 그룹 이름을 설정
+        const selectedCodeGroup = codegrouplist.find(codeGroup => codeGroup.id === codegroup);
+        if (selectedCodeGroup) {
+            setCodeGroupName(selectedCodeGroup.name);
+        }
+    }, [codegroup, codegrouplist]);
 
     function setCodeGroupSetting(event) {
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
-        setCodeGroupName(codeGroupTag.name);
         setLanguage(codeGroupTag.language);
     }
 
@@ -62,11 +69,11 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
                     ))}
                 </select>
             )}
-            {problem ? 
+            {problem ?
                 <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn}>
-                    <span>초기화</span> 
+                    <span>초기화</span>
                 </button>
-            :
+                :
                 <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn}>
                     <span>문제 출제하기</span>
                 </button>

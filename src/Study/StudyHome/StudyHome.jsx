@@ -96,6 +96,7 @@ function StudyHome() {
                 setLevel={setLevel} 
                 codegrouplist={searchResult.content}
                 problem={problem}
+                codegroup={codegroup}
                 language={language}
                 method={method}
                 level={level}
