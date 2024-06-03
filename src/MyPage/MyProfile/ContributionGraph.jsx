@@ -3,6 +3,9 @@ import './ContributionGraph.css';
 
 function ContributionGraph({ historyList }) {
     // Prepare data for the contribution graph
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentDayOfYear = Math.floor((currentDate - new Date(currentYear, 0, 0)) / 86400000);
     const contributions = Array(Math.ceil(historyList.length / 14)).fill().map(() => Array(14).fill(0));
 
     historyList.forEach((item, index) => {
@@ -22,10 +25,12 @@ function ContributionGraph({ historyList }) {
                         const item = historyList[dataIndex];
                         const date = new Date(item.date);
                         const dateString = date.toISOString().split('T')[0];
+                        const isToday = date.getFullYear() === currentYear && Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000) === currentDayOfYear;
+                        const dayClass = isToday ? `day-${Math.max(1, day)}` : `day-${day}`;
                         return (
                             <div 
                                 key={dayIndex} 
-                                className={`day day-${day}`} 
+                                className={`day ${dayClass}`} 
                                 title={`${dateString} | 학습 포인트: ${day}`}
                             >
                             </div>
