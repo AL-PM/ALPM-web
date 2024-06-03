@@ -31,6 +31,7 @@ function StudyHome() {
         const fetchUserData = async () => {
             try {
                 const access_token = localStorage.getItem("access_token");
+                console.log("access token : " + access_token);
                 const uid = localStorage.getItem("uid");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/user/${uid}`, {
@@ -98,7 +99,6 @@ function StudyHome() {
                 setLevel={setLevel} 
                 codegrouplist={searchResult.content}
                 problem={problem}
-                codegroup={codegroup}
                 language={language}
                 method={method}
                 level={level}

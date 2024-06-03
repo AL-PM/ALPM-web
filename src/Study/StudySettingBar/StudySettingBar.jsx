@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, codeGroup ,method, level, fetchProblemCode, resetProblemCode , problemCode}) {
+function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, problem ,method, level, fetchProblemCode, resetProblemCode , problemCode}) {
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
+    const [checkDefault, setCheckDefault] = useState(-1);
 
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
     const filteredCodeGroupList = [
@@ -16,8 +17,9 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     const setCodeGroupSetting = useCallback((event) => {
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
+        setCheckDefault(codeGroupTag.id);
         setLanguage(codeGroupTag.language);
-    }, [setCodeGroup, setLanguage]);
+    }, [setCodeGroup, setLanguage, setCheckDefault]);
 
     useEffect(() => {
         // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
@@ -25,8 +27,8 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     }, [method]);
 
     const StudySettingBarBtnFn = () => {
-        console.log(codeGroup);
-        if (codeGroup === -1) {
+        console.log(checkDefault);
+        if (checkDefault === -1) {
             alert("코드 그룹을 올바르게 선택해주세요");
         } else {
             fetchProblemCode();
