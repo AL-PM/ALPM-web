@@ -18,16 +18,65 @@ function StudyLineOrdering({problemCode}) {
         let lines = code.split("\n");
         let processedCode = [];
     
+        let currentSection = 0;
+        let numOfOpenBracket = 0;
+        let inFunction = false;
+        let lineNumberInFunction = 0;
+    
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i];
             let trimmedLine = line.trim();
-            let indentLevel = line.search(/\S/);
-
+    
             if (trimmedLine !== "") {
-                processedCode.push({
-                    data: trimmedLine,
-                    indentLevel: indentLevel
-                });
+                let commentIndex = trimmedLine.indexOf("//");
+                let codeWithoutComment = commentIndex !== -1 ? trimmedLine.slice(0, commentIndex) : trimmedLine;
+                let tmpCode = codeWithoutComment.trim()
+    
+                if (tmpCode !== "") {
+                    if (tmpCode.match("{")) {
+                        if (numOfOpenBracket === 0) {
+                            processedCode.push({
+                                data: tmpCode,
+                                num: 0,
+                                codeSection: 0,
+                            });
+                            currentSection += 1;
+                            numOfOpenBracket += 1;
+                            inFunction = true;
+                        } else {
+                            numOfOpenBracket += 1;
+                            inFunction = true;
+                            processedCode.push({
+                                data: tmpCode,
+                                num: lineNumberInFunction,
+                                codeSection: currentSection,
+                            });
+                            lineNumberInFunction += 1;
+                        }
+                    } else if (tmpCode === "}" || tmpCode === "};") {
+                        numOfOpenBracket -= 1;
+                        processedCode.push({
+                            data: tmpCode,
+                            num: lineNumberInFunction,
+                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
+                        });
+                        if (numOfOpenBracket === 0) {
+                            inFunction = false;
+                            lineNumberInFunction = 0;
+                        } else {
+                            lineNumberInFunction += 1;
+                        }
+                    } else {
+                        processedCode.push({
+                            data: tmpCode,
+                            num: inFunction ? lineNumberInFunction : 0,
+                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
+                        });
+                        if (inFunction) {
+                            lineNumberInFunction += 1;
+                        }
+                    }
+                }
             }
         }
     
@@ -37,13 +86,16 @@ function StudyLineOrdering({problemCode}) {
     function devideFn(processedCode) {
         let finalCode = [];
         let tmpCode = [];
+        let nowCodeSection = 1;
 
         processedCode.forEach((element, index) => {
-            if (index === 0 || element.indentLevel === processedCode[index - 1].indentLevel) {
+            if (element.codeSection === nowCodeSection) {
                 tmpCode.push(element);
-            } else {
+            } else if (element.codeSection > nowCodeSection) {
                 finalCode.push(tmpCode);
-                tmpCode = [element];
+                tmpCode = [];
+                nowCodeSection = element.codeSection;
+                tmpCode.push(element);
             }
 
             // Ensure the last section is added
@@ -97,7 +149,7 @@ function StudyLineOrdering({problemCode}) {
 
         setRandomFinalCode(prevRandomFinalCode => {
             const updatedRandomFinalCode = [...prevRandomFinalCode];
-            updatedRandomFinalCode[currentPage] = prevRandomFinalCode[currentPage].filter(block => block.data !== eachBlock.data);
+            updatedRandomFinalCode[currentPage] = prevRandomFinalCode[currentPage].filter(block => block.num !== eachBlock.num);
             return updatedRandomFinalCode;
         });
     }
@@ -135,14 +187,25 @@ function StudyLineOrdering({problemCode}) {
                 <div id="StudyLineOrderingTextContainer">
                     {processedData && processedData.map((codeData, index) =>
                         <div key={index} >
-                            <textarea
-                                readOnly
-                                id="StudyLineOrderingCodeArea"
-                                rows={1}
-                                cols={130}
-                                value={codeData.data}
-                                tabIndex={-1}
-                            />
+                            {codeData.codeSection === 0 ? (
+                                <textarea
+                                    readOnly
+                                    id="StudyLineOrderingCodeArea"
+                                    rows={1}
+                                    cols={130}
+                                    value={codeData.data}
+                                    tabIndex={-1}
+                                />
+                            ) : (
+                                <textarea
+                                    readOnly
+                                    id="StudyLineOrderingCodeArea"
+                                    rows={1}
+                                    cols={130}
+                                    value={userInput[codeData.codeSection - 1][codeData.num] ? userInput[codeData.codeSection - 1][codeData.num].data : `[__${codeData.codeSection},${codeData.num + 1}__]`}
+                                    tabIndex={-1}
+                                />
+                            )}
                         </div>
                     )}
                 </div>
@@ -153,7 +216,7 @@ function StudyLineOrdering({problemCode}) {
                     <div id="LineOrderingExampleList">
                         {randomFinalCode[currentPage] && randomFinalCode[currentPage].map((eachBlock) =>
                             <p
-                                key={eachBlock.data}
+                                key={eachBlock.num}
                                 id="LineOredringExampleList"
                                 onClick={() => exampleFn(eachBlock)}
                             >
