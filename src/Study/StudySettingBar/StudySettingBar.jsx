@@ -19,16 +19,6 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     }, [setCodeGroup, setLanguage]);
 
     useEffect(() => {
-        // Set initial code group only if not already set
-        if (filteredCodeGroupList.length > 0 && !codeGroupName) {
-            const initialCodeGroup = filteredCodeGroupList[0];
-            setCodeGroup(initialCodeGroup.id);
-            setLanguage(initialCodeGroup.language);
-            setCodeGroupName(initialCodeGroup.name);
-        }
-    }, [filteredCodeGroupList, setCodeGroup, setLanguage, codeGroupName]);
-
-    useEffect(() => {
         // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
         setLevelDisabled(method === "따라치기" || method === "줄별 순서맞추기");
     }, [method]);
@@ -42,13 +32,6 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
         setCodeGroupName(""); // codeGroupName 초기화
         setLevel(1); // 난이도 초기화
         setMethod("따라치기");
-        // Reset to the first valid code group
-        if (filteredCodeGroupList.length > 0) {
-            const initialCodeGroup = filteredCodeGroupList[0];
-            setCodeGroup(initialCodeGroup.id);
-            setLanguage(initialCodeGroup.language);
-            setCodeGroupName(initialCodeGroup.name);
-        }
     };
 
     return (
