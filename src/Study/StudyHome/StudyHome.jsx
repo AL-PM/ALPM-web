@@ -25,6 +25,7 @@ function StudyHome() {
     const [problem, setProblem] = useState(false);
     const [searchResult, setSearchResult] = useState();
     const [problemCode, setProblemCode] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);  // Add loading state
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -52,7 +53,33 @@ function StudyHome() {
 
     }, []);
 
-    if (!searchResult) {
+    const fetchProblemCode = async () => {
+        setIsLoading(true);
+        try {
+            const access_token = localStorage.getItem("access_token");
+
+            const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/${codegroup}/random`, {
+                withCredentials: true,
+                headers: {
+                    'Authorization': `Bearer ${access_token}`
+                }
+            });
+
+            setProblemCode(response.data);
+            console.log(response.data);
+            setProblem(true);
+        } catch (error) {
+            console.error(error);
+        }
+        setIsLoading(false);
+    };
+
+    const resetProblemCode = () => {
+        setProblem(false);
+        setProblemCode(null);
+    };
+
+    if (!searchResult || isLoading) {
         return (
             <div id="MyCodeGroup">
                 <MainMenuBar page={"Study"} />
@@ -60,6 +87,8 @@ function StudyHome() {
             </div>
         );
     }
+
+    console.log(problemCode);
 
     return (
         <div id="StudyHome">
@@ -69,13 +98,11 @@ function StudyHome() {
                 setMethod={setMethod} 
                 setCodeGroup={setCodeGroup} 
                 setLevel={setLevel} 
-                setProblem={setProblem} 
                 codegrouplist={searchResult.content}
                 problem={problem}
                 method={method}
-                codegroup={codegroup}
-                setProblemCode={setProblemCode}
-                problemCode={problemCode}
+                fetchProblemCode={fetchProblemCode}  // Pass fetch function
+                resetProblemCode={resetProblemCode}  // Pass reset function
             />
             {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
             {method === "따라치기" && problem ? <StudyTracking /> : null}

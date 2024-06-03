@@ -1,42 +1,12 @@
 import React from "react";
 import './StudySettingBar.css';
-import axios from 'axios';
 
-function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist, codegroup ,problem, method, setProblemCode, problemCode}){
+function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist ,problem, method, fetchProblemCode, resetProblemCode}){
 
     function setCodeGroupSetting(event){
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
         setLanguage(codeGroupTag.language);
-    }
-
-    function StudySettingBarBtnFn(){
-        setProblem(true);
-        const fetchcodeGroupInfo = async () => {
-            try {
-                const access_token = localStorage.getItem("access_token");
-
-                const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/${codegroup}/random`, {
-                    withCredentials: true,
-                    headers: {
-                        'Authorization': `Bearer ${access_token}`
-                    }
-                });
-
-                setProblemCode(response.data);
-                console.log(response.data);
-
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchcodeGroupInfo();
-
-    }
-
-    function StudySettingBarResetFn(){
-        setProblem(false);
     }
 
     const filteredCodeGroupList = method === "줄별 순서맞추기"
@@ -68,15 +38,14 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 )}
             </select>
             { problem ? 
-            <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn} >
+            <button id="ProblemSettingIcon" onClick={resetProblemCode} >
                 <span>초기화</span> 
             </button>
             :
-            <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn} >
+            <button id="ProblemSettingIcon" onClick={fetchProblemCode} >
                 <span>문제 출제하기</span>
             </button>
         }
-            
         </div>
     )
 }
