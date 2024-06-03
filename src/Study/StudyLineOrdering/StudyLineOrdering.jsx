@@ -17,10 +17,8 @@ function StudyLineOrdering({problemCode}) {
     function preprocessCode(code) {
         let lines = code.split("\n");
         let processedCode = [];
-    
         let currentSection = 0;
         let numOfOpenBracket = 0;
-        let targetNumOfOpenBracket = code.language === "JAVA" ? 1 : 0; 
         let inFunction = false;
         let lineNumberInFunction = 0;
     
@@ -43,7 +41,7 @@ function StudyLineOrdering({problemCode}) {
     
                 if (tmpCode !== "") {
                     if (tmpCode.match("{")) {
-                        if (numOfOpenBracket === targetNumOfOpenBracket) {
+                        if (numOfOpenBracket === 0) {
                             processedCode.push({
                                 data: tmpCode,
                                 num: 0,
@@ -67,9 +65,9 @@ function StudyLineOrdering({problemCode}) {
                         processedCode.push({
                             data: tmpCode,
                             num: lineNumberInFunction,
-                            codeSection: numOfOpenBracket === targetNumOfOpenBracket ? 0 : currentSection,
+                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
                         });
-                        if (numOfOpenBracket === targetNumOfOpenBracket) {
+                        if (numOfOpenBracket === 0) {
                             inFunction = false;
                             lineNumberInFunction = 0;
                         } else {
@@ -79,7 +77,7 @@ function StudyLineOrdering({problemCode}) {
                         processedCode.push({
                             data: tmpCode,
                             num: inFunction ? lineNumberInFunction : 0,
-                            codeSection: numOfOpenBracket === targetNumOfOpenBracket ? 0 : currentSection,
+                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
                         });
                         if (inFunction) {
                             lineNumberInFunction += 1;
