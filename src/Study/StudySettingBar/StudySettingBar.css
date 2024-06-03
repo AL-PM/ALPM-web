@@ -1,10 +1,11 @@
 #StudySettingBar{
     width: 85%;
+    height: 3vh;
     margin-top: 7.5vh;    
     margin-left : 7.5vw;
     margin-right: 7.5vw;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr 0.5fr 0.75fr 0.5fr 1fr 0.5fr 1fr 0.5fr 1fr 1fr ;
+    grid-template-columns: 1fr 0.5fr 1fr 0.5fr 0.75fr 0.5fr 1fr 0.5fr 1fr 0.5fr 1fr 0.5fr 1fr ;
     justify-items: center;
     align-items: center;
     font-size: medium;
@@ -21,6 +22,8 @@
 }
 
 #ProblemSettingIcon{
+    width: 15%;
+    height: 3vh;
     display: flex;
     justify-content: center;
     align-items: center;
