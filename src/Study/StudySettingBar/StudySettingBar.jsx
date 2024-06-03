@@ -61,7 +61,9 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
                     <option value="3">3 레벨</option>
                 </select>
             )}
-            <span id="SettingBarSetting">{problem ? "코드 그룹" : "코드 정보"}</span>:
+            {problem ?
+            <span id="SettingBarSetting">코드 정보</span> :
+            <span id="SettingBarSetting">코드 그룹</span>}
             <span>|</span>
             {problem ? (
                 <span>{problemCode.name} / {problemCode.language} / {problemCode.owner.name}</span>
