@@ -7,11 +7,13 @@ import CodeDetailInfo from '../../Etc/CodeDetailInfo/CodeDetailInfo.jsx';
 import CodeDetailBody from '../../Etc/CodeDetailBody/CodeDetailBody.jsx';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
-function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
+function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
     const [target, setTarget] = useState(0);
 
     const defaultCodeGroup = { id: 0, name: "Default", language: "Default", algorithm_count: 1 };
-    const filteredCodeGroupList = [defaultCodeGroup, ...codeGroupInfo];
+
+    // 원하는 언어와 일치하는 코드 그룹 정보를 필터링하여 추가
+    const filteredCodeGroupList = [defaultCodeGroup, ...codeGroupInfo.filter(group => group.language === language)];
 
 
     const codeFollowFn = async () => {
@@ -135,7 +137,7 @@ function CodeDetail() {
             <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.name} name={codeInfo.name} />
             <CodeDetailBody content={codeInfo.original} description={codeInfo.description} owner={codeInfo.owner} />
-            <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo.content} codeId={state.id} />
+            <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo.content} codeId={state.id} language={codeInfo.language}/>
         </div>
     );
 }
