@@ -19,7 +19,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
         setCodeGroup(codeGroupTag.id);
         setLanguage(codeGroupTag.language);
         setCodeGroupName(codeGroupTag.name);
-    }, [setCodeGroup, setLanguage]);
+    }, [setCodeGroup, setLanguage, setCodeGroupName]);
 
     useEffect(() => {
         // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
