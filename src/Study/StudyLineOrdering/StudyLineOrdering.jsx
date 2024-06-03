@@ -244,8 +244,8 @@ function StudyLineOrdering({problemCode}) {
                         ))}
                     </div>
                     <div id="BlockOrderingBtnContainer">
-                        <button id="BlockOrderingBtn" style={{ borderColor: "#EF4949" }} onClick={resetFn}>초기화</button>
-                        <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF" }} onClick={completeFn}>완료</button>
+                        <button id="BlockOrderingBtn" onClick={resetFn}>초기화</button>
+                        <button id="BlockOrderingBtn" onClick={completeFn}>완료</button>
                     </div>
                 </div>
             </div>
