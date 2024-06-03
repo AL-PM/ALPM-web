@@ -70,6 +70,8 @@ function StudyHome() {
                 setLevel={setLevel} 
                 setProblem={setProblem} 
                 codegrouplist={searchResult.content}
+                problem={problem}
+                method={method}
             />
             {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
             {method === "따라치기" && problem ? <StudyTracking /> : null}
@@ -79,6 +81,5 @@ function StudyHome() {
         </div>
     );
 }
-
 
 export default StudyHome;

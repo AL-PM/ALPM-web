@@ -2,9 +2,10 @@ import React from "react";
 import './StudySettingBar.css';
 import ProblemSettingIcon from "./img/SearchIcon.png";
 
-function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist}){
+function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist, problem, method}){
 
-    function setCodeGroupSetting(codeGroupTag){
+    function setCodeGroupSetting(event){
+        const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
         setLanguage(codeGroupTag.language);
     }
@@ -12,31 +13,36 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
     function StudySettingBarBtnFn(){
         setProblem(true);
     }
+
+    const filteredCodeGroupList = method === "줄별 순서맞추기"
+        ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON")
+        : codegrouplist;
+
     return(
         <div id="StudySettingBar">
-            <span id = "SettingBarSetting" >학습 방법</span>
+            <span id="SettingBarSetting">학습 방법</span>
             <span>|</span>
-            <select id="CodeGroupSetting" onChange={(event)=>setMethod(event.target.value)}>
-                <option id="CodeGroupSettingList" value={"따라치기"} >따라치기</option>
-                <option id="CodeGroupSettingList" value={"줄별 순서맞추기"} >줄별 순서맞추기</option>
-                <option id="CodeGroupSettingList" value={"블록 순서맞추기"} >블록 순서맞추기</option>
-                <option id="CodeGroupSettingList" value={"빈칸 채우기"} >빈칸 채우기</option>
+            <select id="MethodSetting" onChange={(event)=>setMethod(event.target.value)} disabled={problem}>
+                <option value="따라치기">따라치기</option>
+                <option value="줄별 순서맞추기">줄별 순서맞추기</option>
+                <option value="블록 순서맞추기">블록 순서맞추기</option>
+                <option value="빈칸 채우기">빈칸 채우기</option>
             </select>
-            <span id = "SettingBarSetting" >난이도</span>
+            <span id="SettingBarSetting">난이도</span>
             <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setLevel(event.target.value)}>
-                <option id="CodeGroupSettingList" value={"1"} >1 레벨</option>
-                <option id="CodeGroupSettingList" value={"2"} >2 레벨</option>
-                <option id="CodeGroupSettingList" value={"3"} >3 레벨</option>
+            <select name="LevelSetting" id="LevelSetting" onChange={(event)=>setLevel(event.target.value)} disabled={problem}>
+                <option value="1">1 레벨</option>
+                <option value="2">2 레벨</option>
+                <option value="3">3 레벨</option>
             </select>
-            <span id = "SettingBarSetting" >코드그룹</span>
+            <span id="SettingBarSetting">코드그룹</span>
             <span>|</span>
-            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setCodeGroupSetting(event.target.value)}>
-                {codegrouplist.map((codegrouptag)=>
-                <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag}> {codegrouptag.name} / {codegrouptag.language} </option>
+            <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
+                {filteredCodeGroupList.map((codegrouptag) =>
+                    <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>{codegrouptag.name} / {codegrouptag.language}</option>
                 )}
             </select>
-            <button id = "ProblemSettingIcon" onClick={()=>StudySettingBarBtnFn(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon">
+            <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn} src={ProblemSettingIcon} alt="ProblemSettingIcon" disabled={problem}>
                 <span>문제 출제하기</span>
             </button>
         </div>
