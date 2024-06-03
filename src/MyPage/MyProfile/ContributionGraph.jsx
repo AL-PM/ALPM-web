@@ -2,16 +2,12 @@ import React from 'react';
 import './ContributionGraph.css';
 
 function ContributionGraph({ historyList }) {
-    // Filter out dates after the current date
-    const currentDate = new Date();
-    const filteredHistoryList = historyList.filter(item => new Date(item.date) <= currentDate);
-
     // Prepare data for the contribution graph
-    const contributions = Array(Math.ceil(filteredHistoryList.length / 7)).fill().map(() => Array(7).fill(0));
+    const contributions = Array(Math.ceil(historyList.length / 14)).fill().map(() => Array(14).fill(0));
 
-    filteredHistoryList.forEach((item, index) => {
-        const week = Math.floor(index / 7);
-        const day = index % 7;
+    historyList.forEach((item, index) => {
+        const week = Math.floor(index / 14);
+        const day = index % 14;
         contributions[week][day] = item.size;
     });
 
@@ -20,8 +16,11 @@ function ContributionGraph({ historyList }) {
             {contributions.map((week, weekIndex) => (
                 <div key={weekIndex} className="week">
                     {week.map((day, dayIndex) => {
-                        const date = new Date(currentDate.getFullYear(), 0, 1);
-                        date.setDate(date.getDate() + (weekIndex * 7) + dayIndex);
+                        const dataIndex = weekIndex * 14 + dayIndex;
+                        if (dataIndex >= historyList.length) return null;
+
+                        const item = historyList[dataIndex];
+                        const date = new Date(item.date);
                         const dateString = date.toISOString().split('T')[0];
                         return (
                             <div 
