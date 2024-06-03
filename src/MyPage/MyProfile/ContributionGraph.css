@@ -12,15 +12,8 @@
     width: 15px; /* Adjusted width */
     height: 15px; /* Adjusted height */
     margin: 3px 0; /* Adjust margin for spacing between days */
+    background-color: #ebedf0;
     position: relative;
-    border: 1px solid #ddd; /* 연한 회색 경계선 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
-    background-color: #fff; /* 배경색을 흰색으로 */
-    transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
-}
-
-.day:hover{
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
 }
 
 .day:hover::after {

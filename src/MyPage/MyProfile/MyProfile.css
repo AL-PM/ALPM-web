@@ -62,8 +62,8 @@
 }
 
 #MyProfileStudyHistoryNumeric{
-    height : 35vh;
-    width: 15vw;
+    height : 30vh;
+    width: 20vw;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
