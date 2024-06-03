@@ -1,5 +1,6 @@
 .contribution-graph {
     display: flex;
+    flex-direction: column;
 }
 
 .week {

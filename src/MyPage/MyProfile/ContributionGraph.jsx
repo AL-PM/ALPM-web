@@ -7,12 +7,14 @@ function ContributionGraph({ historyList }) {
     const filteredHistoryList = historyList.filter(item => new Date(item.date) <= currentDate);
 
     // Prepare data for the contribution graph
-    const contributions = Array(Math.ceil(filteredHistoryList.length / 7)).fill().map(() => Array(7).fill(0));
-
+    const contributions = [];
+    let currentWeek = [];
     filteredHistoryList.forEach((item, index) => {
-        const week = Math.floor(index / 7);
-        const day = index % 7;
-        contributions[week][day] = item.size;
+        currentWeek.push(item.size);
+        if ((index + 1) % 7 === 0 || index === filteredHistoryList.length - 1) {
+            contributions.push(currentWeek);
+            currentWeek = [];
+        }
     });
 
     return (
