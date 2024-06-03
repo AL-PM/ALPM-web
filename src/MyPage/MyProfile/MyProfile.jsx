@@ -42,7 +42,7 @@ function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_
     return (
         <div id="MyProfileStudyHistory">
             <div id="MyProfileStudyHistoryBody">
-                <div id='MyProfileStudyHistoryContainer'>
+                <div >
                     <TextContainerVer2 keyword={"사용자 학습 통계"} />
                     <div id="MyProfileStudyHistoryNumeric">
                         <TextContainerVer1 keyword={"따라친 글자의 수"} content={trace_point} />
@@ -51,7 +51,7 @@ function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_
                         <TextContainerVer1 keyword={"채운 빈칸의 수"} content={fill_point} />
                     </div>
                 </div>
-                <div id='MyProfileStudyHistoryContainer'>
+                <div >
                     <TextContainerVer2 keyword={"사용자 학습 통계"} />
                     <div id="MyProfileStudyHistoryGrass">
                         <ContributionGraph historyList={history_list} />
