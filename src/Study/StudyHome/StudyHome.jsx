@@ -102,10 +102,10 @@ function StudyHome() {
                 fetchProblemCode={fetchProblemCode}  // Pass fetch function
                 resetProblemCode={resetProblemCode}  // Pass reset function
             />
-            {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
-            {method === "따라치기" && problem ? <StudyTracking /> : null}
-            {method === "블록 순서맞추기" && problem ? <StudyBlockOrdering problemCode={problemCode} /> : null}
-            {method === "빈칸 채우기" && problem ? <StudyBlockWriting /> : null}
+            {method === "줄별 순서맞추기" && problem && problemCode ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
+            {method === "따라치기" && problem && problemCode ? <StudyTracking /> : null}
+            {method === "블록 순서맞추기" && problem && problemCode ? <StudyBlockOrdering problemCode={problemCode} /> : null}
+            {method === "빈칸 채우기" && problem && problemCode ? <StudyBlockWriting /> : null}
             {!problem ? <StudyHomeBody /> : null}
         </div>
     );
