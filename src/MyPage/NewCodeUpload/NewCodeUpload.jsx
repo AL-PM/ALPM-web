@@ -101,7 +101,7 @@ function NewCodeUpload() {
       name: codeName,
       language: language,
       content: code.replace(/\t/g, "    "),
-      description: description.replace(/\$/g, "").replace(/```/g, "\n")
+      description: description
     });
   }
 
