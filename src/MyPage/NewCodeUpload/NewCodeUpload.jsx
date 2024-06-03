@@ -83,6 +83,7 @@ function NewCodeUpload() {
       });
 
       if (response.status === 200) {
+        console.log(response);
         alert('업로드가 완료되었습니다');
       } else {
         alert('업로드에 실패했습니다');
