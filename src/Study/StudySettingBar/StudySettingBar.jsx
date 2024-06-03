@@ -1,6 +1,5 @@
 import React from "react";
 import './StudySettingBar.css';
-import ProblemSettingIcon from "./img/SearchIcon.png";
 
 function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist, problem, method}){
 
@@ -12,6 +11,10 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
 
     function StudySettingBarBtnFn(){
         setProblem(true);
+    }
+
+    function StudySettingBarResetFn(){
+        setProblem(false);
     }
 
     const filteredCodeGroupList = method === "줄별 순서맞추기"
@@ -42,9 +45,14 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                     <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>{codegrouptag.name} / {codegrouptag.language}</option>
                 )}
             </select>
-            <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn} src={ProblemSettingIcon} alt="ProblemSettingIcon" disabled={problem}>
+            { problem ? 
+            <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn} >
                 <span>문제 출제하기</span>
-            </button>
+            </button> : 
+            <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn} >
+            <span>초기화</span>
+        </button>}
+            
         </div>
     )
 }
