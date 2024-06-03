@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import './StudySettingBar.css';
 
 function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, codegroup, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
@@ -6,24 +6,33 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     const [codeGroupName, setCodeGroupName] = useState("");
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
+    // Filter out code groups with algorithm_count of 0
+    const filteredCodeGroupList = method === "줄별 순서맞추기"
+        ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
+        : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0);
+
+    // useCallback to memoize setCodeGroupSetting function
+    const setCodeGroupSetting = useCallback((event) => {
+        const codeGroupTag = JSON.parse(event.target.value);
+        setCodeGroup(codeGroupTag.id);
+        setLanguage(codeGroupTag.language);
+        setCodeGroupName(codeGroupTag.name);
+    }, [setCodeGroup, setLanguage]);
+
     useEffect(() => {
-        // 코드 그룹 이름을 설정
-        const selectedCodeGroup = codegrouplist.find(codeGroup => codeGroup.id === codegroup);
-        if (selectedCodeGroup) {
-            setCodeGroupName(selectedCodeGroup.name);
+        // Set initial code group
+        if (filteredCodeGroupList.length > 0) {
+            const initialCodeGroup = filteredCodeGroupList[0];
+            setCodeGroup(initialCodeGroup.id);
+            setLanguage(initialCodeGroup.language);
+            setCodeGroupName(initialCodeGroup.name);
         }
-    }, [codegroup, codegrouplist]);
+    }, [filteredCodeGroupList, setCodeGroup, setLanguage]);
 
     useEffect(() => {
         // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
         setLevelDisabled(method === "따라치기" || method === "줄별 순서맞추기");
     }, [method]);
-
-    function setCodeGroupSetting(event) {
-        const codeGroupTag = JSON.parse(event.target.value);
-        setCodeGroup(codeGroupTag.id);
-        setLanguage(codeGroupTag.language);
-    }
 
     const StudySettingBarBtnFn = () => {
         fetchProblemCode();
@@ -34,12 +43,14 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
         setCodeGroupName(""); // codeGroupName 초기화
         setLevel(1); // 난이도 초기화
         setMethod("따라치기");
+        // Reset to the first valid code group
+        if (filteredCodeGroupList.length > 0) {
+            const initialCodeGroup = filteredCodeGroupList[0];
+            setCodeGroup(initialCodeGroup.id);
+            setLanguage(initialCodeGroup.language);
+            setCodeGroupName(initialCodeGroup.name);
+        }
     };
-
-    // filter 함수를 사용하여 algorithm_count가 0인 코드 그룹들을 제외함
-    const filteredCodeGroupList = method === "줄별 순서맞추기"
-        ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
-        : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0);
 
     return (
         <div id="StudySettingBar">
