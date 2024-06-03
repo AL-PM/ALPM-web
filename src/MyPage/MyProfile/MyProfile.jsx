@@ -51,7 +51,7 @@ function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_
                         <TextContainerVer1 keyword={"채운 빈칸의 수"} content={fill_point} />
                     </div>
                 </div>
-                <div style={{marginLeft : "10vw"}} >
+                <div style={{marginLeft : "7.5vw"}} >
                     <TextContainerVer2 keyword={"사용자 학습 통계"} />
                     <div id="MyProfileStudyHistoryGrass">
                         <ContributionGraph historyList={history_list} />
