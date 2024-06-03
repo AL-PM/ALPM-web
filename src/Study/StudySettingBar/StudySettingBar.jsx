@@ -4,6 +4,7 @@ import './StudySettingBar.css';
 function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, codegroup, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
 
     const [codeGroupName, setCodeGroupName] = useState("");
+    const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
     useEffect(() => {
         // 코드 그룹 이름을 설정
@@ -12,6 +13,11 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             setCodeGroupName(selectedCodeGroup.name);
         }
     }, [codegroup, codegrouplist]);
+
+    useEffect(() => {
+        // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
+        setLevelDisabled(method === "따라치기" || method === "줄별 순서맞추기");
+    }, [method]);
 
     function setCodeGroupSetting(event) {
         const codeGroupTag = JSON.parse(event.target.value);
@@ -53,7 +59,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{level} 레벨</span>
             ) : (
-                <select name="LevelSetting" id="CodeGroupSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem}>
+                <select name="LevelSetting" id="CodeGroupSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
                     <option value="1">1 레벨</option>
                     <option value="2">2 레벨</option>
                     <option value="3">3 레벨</option>
