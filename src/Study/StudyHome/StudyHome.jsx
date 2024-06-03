@@ -86,6 +86,8 @@ function StudyHome() {
         );
     }
 
+    console.log(searchResult);
+
     return (
         <div id="StudyHome">
             <MainMenuBar page={"Study"} />
