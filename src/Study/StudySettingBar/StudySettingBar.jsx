@@ -22,7 +22,7 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
         <div id="StudySettingBar">
             <span id="SettingBarSetting">학습 방법</span>
             <span>|</span>
-            <select id="MethodSetting" onChange={(event)=>setMethod(event.target.value)} disabled={problem}>
+            <select id="CodeGroupSetting" onChange={(event)=>setMethod(event.target.value)} disabled={problem}>
                 <option value="따라치기">따라치기</option>
                 <option value="줄별 순서맞추기">줄별 순서맞추기</option>
                 <option value="블록 순서맞추기">블록 순서맞추기</option>
@@ -30,7 +30,7 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
             </select>
             <span id="SettingBarSetting">난이도</span>
             <span>|</span>
-            <select name="LevelSetting" id="LevelSetting" onChange={(event)=>setLevel(event.target.value)} disabled={problem}>
+            <select name="LevelSetting" id="CodeGroupSetting" onChange={(event)=>setLevel(event.target.value)} disabled={problem}>
                 <option value="1">1 레벨</option>
                 <option value="2">2 레벨</option>
                 <option value="3">3 레벨</option>
