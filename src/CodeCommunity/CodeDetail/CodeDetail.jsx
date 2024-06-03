@@ -39,8 +39,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
                 alert('추가가 실패했습니다\n코드 그룹을 올바르게 선택하고 다시 시도해주세요');
             }
         } catch (error) {
-            console.error(error);
-            alert('코드 추가 중 오류가 발생했습니다');
+            alert('추가가 실패했습니다\n코드 그룹을 올바르게 선택하고 다시 시도해주세요');
         }
     }
 
