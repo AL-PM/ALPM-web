@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 import './StudyBlockWriting.css';
 
-function StudyBlockWriting({problemCode}) {
+function StudyBlockWriting({problemCode, level}) {
     const [codeData, setCodeData] = useState(null);
     const [userInput, setUserInput] = useState([]);
     const [finalCode, setFinalCode] = useState("");
 
     useEffect(() => {
         const code = {
-            text : problemCode.content,
-            language : problemCode.language
+            text: problemCode.content,
+            language: problemCode.language
         };
 
         // UserInput 초기화
-        let tmpUserInput = [];
-
-        for(let i = 0 ; i < 15 ; i++){
-            tmpUserInput.push({
-                num : i + 1,
-                data : "",
-            })
-        }
+        const numOfBlanks = level * 5;
+        let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
+            num: i + 1,
+            data: "",
+        }));
 
         setUserInput(tmpUserInput);
 
@@ -35,7 +32,7 @@ function StudyBlockWriting({problemCode}) {
                 result.splice(numOfBlank);
                 return result;
             }
-        
+
             let finalCode = [];
             let trimmedCode = "";
             let processedCode = [];
@@ -43,7 +40,7 @@ function StudyBlockWriting({problemCode}) {
             let sortedblockData = [];
             let sortedlineupblockData = [];
             let lines = code.split("\n");
-        
+
             function extractCode(line) {
                 let codeWithoutComment = line.split("//")[0];
                 let tmpCode = codeWithoutComment.replace(/\s+$/, '');
@@ -52,13 +49,13 @@ function StudyBlockWriting({problemCode}) {
                 }
                 trimmedCode += tmpCode + "\n";
             }
-        
+
             for (let i = 0; i < lines.length; i++) {
                 extractCode(lines[i]);
             }
-        
+
             let dollarSplitted = trimmedCode.split("$");
-        
+
             for (let i = 0; i < dollarSplitted.length; i++) {
                 let blank = 0;
                 if (i % 2 === 1) {
@@ -75,9 +72,9 @@ function StudyBlockWriting({problemCode}) {
                     blank: blank,
                 });
             }
-        
-            blockData = getRandomNumbers(blockData, 3);
-        
+
+            blockData = getRandomNumbers(blockData, level);
+
             blockData.forEach((element) => {
                 sortedblockData.push({
                     data: element.data,
@@ -85,10 +82,10 @@ function StudyBlockWriting({problemCode}) {
                     blank: element.blank,
                 });
             });
-        
+
             let lineUp = 0;
             sortedblockData.sort((a, b) => a.num - b.num);
-        
+
             sortedblockData.forEach((element) => {
                 sortedlineupblockData.push({
                     data: element.data,
@@ -98,17 +95,16 @@ function StudyBlockWriting({problemCode}) {
                 });
                 lineUp++;
             });
-        
+
             finalCode = [processedCode, blockData, sortedlineupblockData];
-        
+
             return finalCode;
         }
-        
 
         const preprocessedCode = preprocessCode(code.text);
         setCodeData(preprocessedCode);
 
-    }, [problemCode]);
+    }, [problemCode, level]);
 
     useEffect(() => {
         if (codeData) {
@@ -183,14 +179,11 @@ function StudyBlockWriting({problemCode}) {
     }
 
     function resetFn() {
-        let tmpUserInput = [];
-
-        for(let i = 0 ; i < 15 ; i++){
-            tmpUserInput.push({
-                num : i + 1,
-                data : "",
-            })
-        }
+        const numOfBlanks = level * 5;
+        let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
+            num: i + 1,
+            data: "",
+        }));
 
         setUserInput(tmpUserInput);
         setCodeData(prevCodeData => {
@@ -238,21 +231,21 @@ function StudyBlockWriting({problemCode}) {
                     <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 답변 작성란 ] : 각 빈칸의 번호에 맞게 작성후 완료 버튼을 눌러주세요 "} </p>
                     <div id="exampleList">
                         {userInput.map((eachBlock, index) =>
-                        <div key={eachBlock.num} id="exampleListBlock">
-                            <p style={{width:"10px"}}>{eachBlock.num}</p>
-                            <input 
-                                id="exampleInput" 
-                                value={eachBlock.data} 
-                                onChange={(e) => handleInputChange(index, e.target.value)}
-                            />
-                        </div>
+                            <div key={eachBlock.num} id="exampleListBlock">
+                                <p style={{ width: "10px" }}>{eachBlock.num}</p>
+                                <input 
+                                    id="exampleInput" 
+                                    value={eachBlock.data} 
+                                    onChange={(e) => handleInputChange(index, e.target.value)}
+                                />
+                            </div>
                         )}
                     </div>
                 </div>
             </div> 
             <div id="BlockOrderingBtnContainer">
                 <button id="BlockOrderingBtn" style={{ borderColor: "#EF4949" }} onClick={resetFn}>초기화</button>
-                <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF"}} onClick={() => checkCompleteFn()}>완료</button>
+                <button id="BlockOrderingBtn" style={{ borderColor: "#5C4EFF" }} onClick={() => checkCompleteFn()}>완료</button>
             </div>
         </div>
     );

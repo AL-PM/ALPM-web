@@ -107,7 +107,7 @@ function StudyHome() {
             />
             {method === "줄별 순서맞추기" && problem && problemCode ? <StudyLineOrdering problemCode={problemCode}  /> : null}
             {method === "따라치기" && problem && problemCode ? <StudyTracking problemCode={problemCode} /> : null}
-            {method === "블록 순서맞추기" && problem && problemCode ? <StudyBlockOrdering problemCode={problemCode} /> : null}
+            {method === "블록 순서맞추기" && problem && problemCode ? <StudyBlockOrdering problemCode={problemCode} level={level} /> : null}
             {method === "빈칸 채우기" && problem && problemCode ? <StudyBlockWriting problemCode={problemCode} /> : null}
             {!problem ? <StudyHomeBody /> : null}
         </div>
