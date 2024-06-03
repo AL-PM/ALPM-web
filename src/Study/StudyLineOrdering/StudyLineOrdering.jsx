@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import './StudyLineOrdering.css';
 
-function StudyLineOrdering() {
+function StudyLineOrdering({problemCode}) {
     const [currentPage, setCurrentPage] = useState(0);
     const [userInput, setUserInput] = useState([]);
     const [randomFinalCode, setRandomFinalCode] = useState([]);
@@ -10,73 +10,87 @@ function StudyLineOrdering() {
     const [finalCode, setFinalCode] = useState([]);
 
     const code = {
-        "level": 1,
-        "text" : '#include <bits/stdc++.h>\n#define ll long long\nusing namespace std;\nll N, M;\nll arr[100005];\nvector<ll> SegTree;\nll Query(ll n, ll l, ll r, ll st, ll ed) {\n\tif (l > $ed$ || r < $st$) // 탐색 범위를 벗어나는 경우\n\t\treturn $0$;\n\tif (l >= $st$ && r <= $ed$) // 목표 범위에 속하는 경우\n\t\treturn $SegTree[n]$;\n\tll mid = $(l + r) / 2$; // 중심값 선언\n\treturn Query($n * 2$, $l$, $mid$, $st$, $ed$) + Query($n * 2 + 1$, $mid + 1$, $r$, $st$, $ed$); // 왼쪽 구간과 오른쪽 구간을 탐색\n}\n\nll Update(ll n, ll l, ll r, ll pos, ll x) {\n\tif (l > $pos$ || r < $pos$) // 탐색범위를 벗어나면\n\t\treturn $SegTree[n]$; // 해당 세그먼트 트리의 값을 반환\n\tif (l == $r$) { // leaf node에 도달하면\n\t\tSegTree[n] = $x$;\n\t\treturn $SegTree[n]$; // 새로 입력받은 값을 반환\n\t}\n\tll mid = $(l + r) / 2$; // 중심값 선언\n\tSegTree[n] = Update($n * 2$, $l$, $mid$, $pos$, $x$) + Update($n * 2 + 1$, $mid + 1$, $r$, $pos$, $x$); // 왼쪽 구간과 오른쪽 구간을 탐색\n\treturn $SegTree[n]$;\n}\n\nll Init(ll n, ll l, ll r) {\n\tif (l == $r$) { // leaf node에 도달하면\n\t\tSegTree[n] = $arr[l]$; // arr[l] 값이 상위노드로 넘어감\n\t\treturn $SegTree[n]$;\n\t}\n\tll mid = $(l + r) / 2$; // 중심값 선언\n\tSegTree[n] = Init($n * 2$, $l$, $mid$) + Init($n * 2 + 1$, $mid + 1$, $r$); // 왼쪽 구간과 오른쪽 구간으로 분할\n\treturn $SegTree[n]$;\n}\n\nint main() {\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\n\tcin >> N >> M;\n\tfor (int i = 1; i <= N; i++)\n\t\tcin >> arr[i]; // 원소 입력 받음\n\n\tSegTree.resize(4 * N); // 세그먼트 트리 크기가 4*N 인 벡터 생성\n\tInit(1, 1, N); // 세그먼트 트리 초기화\n\n\tfor (int i = 0; i < M; i++) {\n\t\tll x, a, b;\n\t\tcin >> x >> a >> b;\n\t\tif (x) // x가 1이면\n\t\t\tcout << Query(1, 1, N, a, b) << "\\n"; // a번째부터 b번째까지의 합 출력\n\t\telse // x가 0이면\n\t\t\tUpdate(1, 1, N, a, b); // a번째 원소를 b로 변경\n\t}\n\n\treturn 0;\n}'
+        text : problemCode.original ,
+        language : problemCode.language
     };
 
     function preprocessCode(code) {
         let lines = code.split("\n");
         let processedCode = [];
-
+    
         let currentSection = 0;
         let numOfOpenBracket = 0;
         let inFunction = false;
         let lineNumberInFunction = 0;
-
+    
         for (let i = 0; i < lines.length; i++) {
             let line = lines[i];
             let trimmedLine = line.trim();
-
+    
             if (trimmedLine !== "") {
-                if (trimmedLine.match("{")) {
-                    if (numOfOpenBracket === 0) {
+                let commentIndex = trimmedLine.indexOf("//");
+                let codeWithoutComment = commentIndex !== -1 ? trimmedLine.slice(0, commentIndex) : trimmedLine;
+                let tmpCode = codeWithoutComment.trim();
+    
+                // Check for language-specific comments
+                if (code.language === "PYTHON") {
+                    let commentIndexPython = trimmedLine.indexOf("#");
+                    if (commentIndexPython !== -1 && (commentIndex === -1 || commentIndexPython < commentIndex)) {
+                        tmpCode = trimmedLine.slice(0, commentIndexPython).trim();
+                    }
+                }
+    
+                if (tmpCode !== "") {
+                    if (tmpCode.match("{")) {
+                        if (numOfOpenBracket === 0) {
+                            processedCode.push({
+                                data: tmpCode,
+                                num: 0,
+                                codeSection: 0,
+                            });
+                            currentSection += 1;
+                            numOfOpenBracket += 1;
+                            inFunction = true;
+                        } else {
+                            numOfOpenBracket += 1;
+                            inFunction = true;
+                            processedCode.push({
+                                data: tmpCode,
+                                num: lineNumberInFunction,
+                                codeSection: currentSection,
+                            });
+                            lineNumberInFunction += 1;
+                        }
+                    } else if (tmpCode === "}") {
+                        numOfOpenBracket -= 1;
                         processedCode.push({
-                            data: line.split("//")[0],
-                            num: 0,
-                            codeSection: 0,
-                        });
-                        currentSection += 1;
-                        numOfOpenBracket += 1;
-                        inFunction = true;
-                    } else {
-                        numOfOpenBracket += 1;
-                        inFunction = true;
-                        processedCode.push({
-                            data: line.split("//")[0],
+                            data: tmpCode,
                             num: lineNumberInFunction,
-                            codeSection: currentSection,
+                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
                         });
-                        lineNumberInFunction += 1;
-                    }
-                } else if (trimmedLine === "}") {
-                    numOfOpenBracket -= 1;
-                    processedCode.push({
-                        data: line.split("//")[0],
-                        num: lineNumberInFunction,
-                        codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
-                    });
-                    if (numOfOpenBracket === 0) {
-                        inFunction = false;
-                        lineNumberInFunction = 0;
+                        if (numOfOpenBracket === 0) {
+                            inFunction = false;
+                            lineNumberInFunction = 0;
+                        } else {
+                            lineNumberInFunction += 1;
+                        }
                     } else {
-                        lineNumberInFunction += 1;
-                    }
-                } else {
-                    processedCode.push({
-                        data: line.split("//")[0],
-                        num: inFunction ? lineNumberInFunction : 0,
-                        codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
-                    });
-                    if (inFunction) {
-                        lineNumberInFunction += 1;
+                        processedCode.push({
+                            data: tmpCode,
+                            num: inFunction ? lineNumberInFunction : 0,
+                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
+                        });
+                        if (inFunction) {
+                            lineNumberInFunction += 1;
+                        }
                     }
                 }
             }
         }
-
+    
         return processedCode;
     }
-
+    
     function devideFn(processedCode) {
         let finalCode = [];
         let tmpCode = [];
