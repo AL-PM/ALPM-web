@@ -10,6 +10,9 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
     const [target, setTarget] = useState(0);
 
+    const filteredCodeGroupList = [
+        { id: -1, name: "Default", language: "Default", algorithm_count: 1 }, codeGroupInfo]
+
     const codeFollowFn = async () => {
 
         console.log("codeId : " + codeId + " codeGroupID : " + target);
@@ -50,7 +53,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
                 <span id="SettingBarSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }}>추가할 코드 그룹</span>
                 <span>|</span>
                 <select name="CodeGroupSetting" id="CodeGroupSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }} onChange={(event) => valueChangeFn(event.target.value)}>
-                    {codeGroupInfo.map((codegrouptag) =>
+                    {filteredCodeGroupList.map((codegrouptag) =>
                         <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
                     )}
                 </select>
