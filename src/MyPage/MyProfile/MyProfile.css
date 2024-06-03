@@ -80,6 +80,8 @@
     justify-items: start;
     margin-top:1.5vh;
     padding-left:5%;
+    padding-top : 10%;
+    padding-bottom: 10%;
 }
 
 #MyProfileStudyHistoryGrass {
@@ -92,7 +94,6 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    margin-left: 5vw;
     margin-top:1.5vh;
 }
 
