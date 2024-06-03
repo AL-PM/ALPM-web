@@ -67,7 +67,7 @@
 }
 
 #MyProfileStudyHistoryNumeric{
-    height : 40vh;
+    height : 35vh;
     width: 30vh;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
@@ -82,7 +82,7 @@
 }
 
 #MyProfileStudyHistoryGrass {
-    height: 100%;
+    height: 35;
     width: 40vh;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
@@ -91,6 +91,7 @@
     display: grid;
     align-items: center;
     justify-content: center;
+    margin-top:1.5vh;
 }
 
 #grass {
