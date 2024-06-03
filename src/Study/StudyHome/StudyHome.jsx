@@ -104,6 +104,7 @@ function StudyHome() {
                 level={level}
                 fetchProblemCode={fetchProblemCode}
                 resetProblemCode={resetProblemCode}
+                problemCode={problemCode}
             />
             {method === "줄별 순서맞추기" && problem && problemCode ? <StudyLineOrdering problemCode={problemCode}  /> : null}
             {method === "따라치기" && problem && problemCode ? <StudyTracking problemCode={problemCode} /> : null}

@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
-    const [codeGroupName, setCodeGroupName] = useState("Default");
+function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, method, level, fetchProblemCode, resetProblemCode , problemCode}) {
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
@@ -18,8 +17,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
         const codeGroupTag = JSON.parse(event.target.value);
         setCodeGroup(codeGroupTag.id);
         setLanguage(codeGroupTag.language);
-        setCodeGroupName(codeGroupTag.name);
-    }, [setCodeGroup, setLanguage, setCodeGroupName]);
+    }, [setCodeGroup, setLanguage]);
 
     useEffect(() => {
         // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
@@ -32,7 +30,6 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
 
     const StudySettingBarResetFn = () => {
         resetProblemCode();
-        setCodeGroupName("Default"); // codeGroupName 초기화
         setLevel(1); // 난이도 초기화
         setMethod("따라치기");
         setCodeGroup(-1); // Default group
@@ -67,7 +64,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             <span id="SettingBarSetting">코드그룹</span>
             <span>|</span>
             {problem ? (
-                <span>{codeGroupName} / {language}</span>
+                <span>{problemCode.name} / {problemCode.language}</span>
             ) : (
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
                     {filteredCodeGroupList.map((codegrouptag) => (
