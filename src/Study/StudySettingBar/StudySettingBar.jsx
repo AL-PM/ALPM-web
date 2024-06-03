@@ -24,6 +24,7 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 });
 
                 setProblemCode(response.data);
+                console.log(response.data);
 
             } catch (error) {
                 console.error(error);
@@ -32,7 +33,6 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
 
         fetchcodeGroupInfo();
 
-        console.log(problemCode);
     }
 
     function StudySettingBarResetFn(){
