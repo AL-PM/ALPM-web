@@ -3,9 +3,9 @@ import './StudyTracking.css';
 
 function StudyTracking({problemCode}) {
 
-    function preprocessCode(code) {
+    function preprocessCode(problemCode) {
         // 코드 줄별로 분리
-        let lines = code.split("\n");
+        let lines = problemCode.split("\n");
     
         // 각 줄을 객체로 변환하여 저장할 배열
         let processedCode = [];
