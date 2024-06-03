@@ -10,7 +10,7 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
     const [target, setTarget] = useState(0);
 
-    const defaultCodeGroup = { id: -1, name: "Default", language: "Default", algorithm_count: 1 };
+    const defaultCodeGroup = { id: 0, name: "Default", language: "Default", algorithm_count: 1 };
     const filteredCodeGroupList = [defaultCodeGroup, ...codeGroupInfo];
 
 
@@ -18,27 +18,29 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId }) {
 
         console.log("codeId : " + codeId + " codeGroupID : " + target);
 
-        try {
-            const access_token = localStorage.getItem("access_token");
+        if(target > 0){
+            try {
+                const access_token = localStorage.getItem("access_token");
 
-            const response = await axios.patch(
-                `https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`, 
-                {}, // 빈 객체를 두 번째 인수로 보냅니다
-                {
-                    headers: {
-                        'Authorization': `Bearer ${access_token}`,
-                        'Content-Type': 'application/json'
-                    },
-                    withCredentials: true
+                const response = await axios.patch(
+                    `https://alpm.duckdns.org:8080/codeGroup/import/${target}/${codeId}`, 
+                    {}, // 빈 객체를 두 번째 인수로 보냅니다
+                    {
+                        headers: {
+                            'Authorization': `Bearer ${access_token}`,
+                            'Content-Type': 'application/json'
+                        },
+                        withCredentials: true
+                    }
+                );
+
+                if (response.status === 200) {
+                    alert('추가가 완료되었습니다');
                 }
-            );
-
-            if (response.status === 200) {
-                alert('추가가 완료되었습니다');
-            } else {
+            } catch (error) {
                 alert('추가가 실패했습니다\n코드 그룹을 올바르게 선택하고 다시 시도해주세요');
             }
-        } catch (error) {
+        }else{
             alert('추가가 실패했습니다\n코드 그룹을 올바르게 선택하고 다시 시도해주세요');
         }
     }
