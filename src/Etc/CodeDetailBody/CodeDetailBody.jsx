@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 import './CodeDetailBody.css';
 
 function CodeDetailTitle({Title}){
@@ -51,6 +52,7 @@ function CodeDetailBody({content, description, owner}){
                 <img id="CodeDetailUserProfile" src={owner.profile} alt="User Profile" />
                 <span>{owner.name}</span>
             </div>
+            <ReactMarkdown>{description}</ReactMarkdown>
         </div>
     )
 }
