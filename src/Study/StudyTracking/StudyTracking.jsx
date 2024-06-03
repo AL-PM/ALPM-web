@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './StudyTracking.css';
 
-function StudyTracking() {
-    const code = {
-        "level": 1,
-        "text": '#include <bits/stdc++.h>\n#define ll long long\nusing namespace std;\n\nstruct Dot { // 점 구조체 정의\n\tll x, y;\n};\n\nbool cmp(Dot x, Dot y) { // 비교 함수 작성\n\tif (x.x != y.x) // x좌표가 다르면\n\t\treturn x.x < y.x; // x좌표가 작은 순으로 정렬\n\treturn x.y < y.y; // x좌표가 같을 경우 y좌표가 작은 순으로 정렬\n}\n\nll N; // 점의 개수\nvector<Dot> arr; // 입력받은 점들을 저장하는 배열\ndeque<Dot> CW, ACW; // Clockwise, Anti-Clockwise 방향의 덱\n\nll CCW(Dot a, Dot b, Dot c) { // CCW 함수 구현\n\treturn (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x); // CCW 공식 계산\n}\n\nll ConvexHull() { // 볼록 껍질 구하는 함수\n\tfor (int i = 0; i < arr.size(); i++) { // 모든 점에 대해서 반복\n\t\twhile (CW.size() >= 2 && CCW(CW[1], CW[0], arr[i]) >= 0) // 시계방향인 경우\n\t\t\tCW.pop_front(); // 가장 오른쪽 점 제거\n\t\tCW.push_front(arr[i]); // 현재 점 추가\n\n\t\twhile (ACW.size() >= 2 && CCW(ACW[1], ACW[0], arr[i]) <= 0) // 반시계방향인 경우\n\t\t\tACW.pop_front(); // 가장 왼쪽 점 제거\n\t\tACW.push_front(arr[i]); // 현재 점 추가\n\t}\n\treturn (CW.size() + ACW.size() - 2); // 볼록 껍질을 이루는 점의 개수 반환\n}\n\nint main() {\n\tios::sync_with_stdio(0);\n\tcin.tie(0);\n\n\tcin >> N; // 점의 개수 입력\n\tfor (int i = 0; i < N; i++) {\n\t\tll a, b;\n\t\tcin >> a >> b; // 점의 좌표 입력\n\t\tarr.push_back({a, b}); // 배열에 좌표 추가\n\t}\n\n\tsort(arr.begin(), arr.end(), cmp); // x좌표가 증가하는 순으로 정렬\n\tcout << ConvexHull(); // 볼록 껍질의 점 개수 출력\n\n\treturn 0;\n}',
-    };
+function StudyTracking({problemCode}) {
 
     function preprocessCode(code) {
         // 코드 줄별로 분리
@@ -54,7 +50,7 @@ function StudyTracking() {
     const [isCompleted, setIsCompleted] = useState(false); // 완료 상태를 추적하는 상태
 
     // preprocessCode 함수를 이용하여 코드 전처리
-    let processedData = preprocessCode(code.text);
+    let processedData = preprocessCode(problemCode.content);
 
     // 입력된 값을 추적하고 상태에 따라 색상을 변경하는 함수
     function handleInputChange(event, num) {
