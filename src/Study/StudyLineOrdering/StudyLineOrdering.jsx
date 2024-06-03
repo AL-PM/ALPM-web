@@ -19,7 +19,7 @@ function StudyLineOrdering({problemCode}) {
         let processedCode = [];
     
         let currentSection = 0;
-        let numOfOpenBracket = 0;
+        let numOfOpenBracket = code.language === "JAVA" ? -1 : 0; 
         let inFunction = false;
         let lineNumberInFunction = 0;
     
