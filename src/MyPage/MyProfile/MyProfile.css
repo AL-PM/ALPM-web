@@ -58,8 +58,9 @@
     margin-bottom: 2.5vh;
 }
 
+
 #MyProfileStudyHistoryBody{
-    width : 100%;
+    width : 70vw;
     height: 35vh;
     display: flex;
     justify-content: space-between;
