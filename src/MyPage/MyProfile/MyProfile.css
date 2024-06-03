@@ -64,7 +64,6 @@
     width : 70vw;
     height: 35vh;
     display: flex;
-    justify-content: space-between;
 }
 
 #MyProfileStudyHistoryNumeric{
@@ -80,8 +79,6 @@
     justify-items: start;
     margin-top:1.5vh;
     padding-left:5%;
-    padding-top: 1.5vh;
-    padding-bottom: 1.5vh;
 }
 
 #MyProfileStudyHistoryGrass {
