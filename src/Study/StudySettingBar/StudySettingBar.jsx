@@ -25,6 +25,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     }, [method]);
 
     const StudySettingBarBtnFn = () => {
+        console.log(codeGroup);
         if (codeGroup === -1) {
             alert("코드 그룹을 올바르게 선택해주세요");
         } else {
