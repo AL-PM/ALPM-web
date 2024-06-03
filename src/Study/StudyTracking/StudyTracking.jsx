@@ -1,29 +1,39 @@
 import React, { useState, useEffect } from "react";
 import './StudyTracking.css';
 
-function StudyTracking({problemCode}) {
-
+function StudyTracking({ problemCode }) {
+    
     function preprocessCode(problemCode) {
-        let lines = problemCode.split("\n");
+        let lines = problemCode.content.split("\n");
         let processedCode = [];
-        
+        const isPython = problemCode.language === "PYTHON";
+
+        // Remove leading and trailing ``` tags if present
+        if (lines[0].startsWith("```")) {
+            lines.shift();
+        }
+        if (lines[lines.length - 1].startsWith("```")) {
+            lines.pop();
+        }
+
         function extractExplain(line) {
-            let parts = line.split("//");
+            let parts = isPython ? line.split("#") : line.split("//");
             return parts.length > 1 ? parts[1].trim() : "";
         }
 
         function extractCode(line) {
-            let codeWithoutComment = line.split("//")[0]; // 주석 제거
-            let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // 뒤쪽 공백 제거
+            let codeWithoutComment = isPython ? line.split("#")[0] : line.split("//")[0];
+            let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // Remove trailing whitespace
             return trimmedCode;
         }
 
         for (let i = 0; i < lines.length; i++) {
-            if (extractCode(lines[i]) !== "") {
+            const codePart = extractCode(lines[i]);
+            if (codePart !== "") {
                 processedCode.push({
-                    data: extractCode(lines[i]),
+                    data: codePart,
                     explain: extractExplain(lines[i]),
-                    num: i + 1, // 줄 수는 1부터 시작
+                    num: i + 1, // Line number starts from 1
                     tabCount: lines[i].search(/\S|$/)
                 });
             }
@@ -43,7 +53,7 @@ function StudyTracking({problemCode}) {
     const [currentExplanation, setCurrentExplanation] = useState("");
     const [isCompleted, setIsCompleted] = useState(false);
 
-    let processedData = preprocessCode(problemCode.content);
+    let processedData = preprocessCode(problemCode);
 
     function handleInputChange(event, num) {
         setInputData({
@@ -78,34 +88,34 @@ function StudyTracking({problemCode}) {
 
     return (
         <div id="StudyTracking">
-            {processedData.map((codeData) => 
-            <div key={codeData.num}>
-                {codeData.data === inputData[codeData.num] ? null : 
-                <textarea readOnly id="StudyTrackingBackground" style={{color:"gray"}} 
-                rows={1}
-                cols={130}
-                defaultValue={codeData.data} 
-                tabIndex={-1}
-                />}
+            {processedData.map((codeData) =>
+                <div key={codeData.num}>
+                    {codeData.data === inputData[codeData.num] ? null :
+                        <textarea readOnly id="StudyTrackingBackground" style={{ color: "gray" }}
+                            rows={1}
+                            cols={130}
+                            defaultValue={codeData.data}
+                            tabIndex={-1}
+                        />}
 
-                <textarea id={`textarea-line-${codeData.num}`} style={{color: codeData.data === inputData[codeData.num] ? "blue" : "red"}} 
-                rows={1}
-                cols={130}
-                value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
-                onChange={(event) => handleInputChange(event, codeData.num)}
-                onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
-                readOnly={codeData.data === inputData[codeData.num]}
-                />
+                    <textarea id={`textarea-line-${codeData.num}`} style={{ color: codeData.data === inputData[codeData.num] ? "blue" : "red" }}
+                        rows={1}
+                        cols={130}
+                        value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
+                        onChange={(event) => handleInputChange(event, codeData.num)}
+                        onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
+                        readOnly={codeData.data === inputData[codeData.num]}
+                    />
                 </div>
-            )} 
-                {currentExplanation === "" ? null : 
+            )}
+            {currentExplanation === "" ? null :
                 <div id="explainationBox">
                     <p>현재 작성중인 라인에 대한 설명</p>
-                    <p style={{fontWeight:"bold"}}>:</p>
-                    <p>{currentExplanation}</p> 
+                    <p style={{ fontWeight: "bold" }}>:</p>
+                    <p>{currentExplanation}</p>
                 </div>
-                }
-            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={()=> alert("따라치기 학습을 종료합니다.")}> 완료 </button>
+            }
+            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={() => alert("따라치기 학습을 종료합니다.")}> 완료 </button>
         </div>
     )
 }
