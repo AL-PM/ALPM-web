@@ -14,7 +14,6 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
     }
     return(
         <div id="StudySettingBar">
-            <span></span>
             <span id = "SettingBarSetting" >학습 방법</span>
             <span>|</span>
             <select id="CodeGroupSetting" onChange={(event)=>setMethod(event.target.value)}>
