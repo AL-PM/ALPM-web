@@ -41,19 +41,25 @@ function MyProfileUserInfo({ profile, name }) {
 function MyProfileStudyHistory({ trace_point, fill_point, block_point, sequence_point, history_list }) {
     return (
         <div id="MyProfileStudyHistory">
-            <div id="MyProfileStudyHistoryLogo">
-                <TextContainerVer2 keyword={"사용자 학습 통계"} />
-            </div>
             <div id="MyProfileStudyHistoryBody">
-                <div id="MyProfileStudyHistoryNumeric">
-                    <TextContainerVer1 keyword={"따라친 글자의 수"} content={trace_point} />
-                    <TextContainerVer1 keyword={"순서를 맞춘 줄의 수"} content={sequence_point} />
-                    <TextContainerVer1 keyword={"순서를 맞춘 빈칸의 수"} content={block_point} />
-                    <TextContainerVer1 keyword={"채운 빈칸의 수"} content={fill_point} />
+                <div>
+                    
+                    <div id="MyProfileStudyHistoryNumeric">
+                        <TextContainerVer1 keyword={"따라친 글자의 수"} content={trace_point} />
+                        <TextContainerVer1 keyword={"순서를 맞춘 줄의 수"} content={sequence_point} />
+                        <TextContainerVer1 keyword={"순서를 맞춘 빈칸의 수"} content={block_point} />
+                        <TextContainerVer1 keyword={"채운 빈칸의 수"} content={fill_point} />
+                    </div>
                 </div>
-                <div id="MyProfileStudyHistoryGrass">
-                    <ContributionGraph historyList={history_list} />
+                <div>
+                    <div id="MyProfileStudyHistoryLogo">
+                            <TextContainerVer2 keyword={"사용자 학습 통계"} />
+                        </div>
+                    <div id="MyProfileStudyHistoryGrass">
+                        <ContributionGraph historyList={history_list} />
+                    </div>
                 </div>
+                
             </div>
         </div>
     );
