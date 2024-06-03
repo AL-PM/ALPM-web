@@ -5,18 +5,12 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
-    const filteredCodeGroupList = (method === "줄별 순서맞추기"
+    const filteredCodeGroupList = [
+        { id: -1, name: "Default", language: "Default", algorithm_count: 1 },
+        ...(method === "줄별 순서맞추기"
             ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
-            : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0));
-
-    // Automatically select the first remaining code group
-    useEffect(() => {
-        if (filteredCodeGroupList.length > 0) {
-            const firstCodeGroup = filteredCodeGroupList[0];
-            setCodeGroup(firstCodeGroup.id);
-            setLanguage(firstCodeGroup.language);
-        }
-    }, [filteredCodeGroupList, setCodeGroup, setLanguage]);
+            : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0))
+    ];
 
     // useCallback to memoize setCodeGroupSetting function
     const setCodeGroupSetting = useCallback((event) => {
@@ -49,7 +43,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{method}</span>
             ) : (
-                <select id="CodeGroupSetting" onChange={(event) => setMethod(event.target.value)} disabled={problem}>
+                <select id="MethodSetting" onChange={(event) => setMethod(event.target.value)} disabled={problem}>
                     <option value="따라치기">따라치기</option>
                     <option value="줄별 순서맞추기">줄별 순서맞추기</option>
                     <option value="블록 순서맞추기">블록 순서맞추기</option>
@@ -61,7 +55,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{level} 레벨</span>
             ) : (
-                <select name="LevelSetting" id="CodeGroupSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
+                <select name="LevelSetting" id="LevelSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
                     <option value="1">1 레벨</option>
                     <option value="2">2 레벨</option>
                     <option value="3">3 레벨</option>
