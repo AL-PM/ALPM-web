@@ -17,6 +17,7 @@ function StudyLineOrdering({problemCode}) {
     function preprocessCode(code) {
         let lines = code.split("\n");
         let processedCode = [];
+    
         let currentSection = 0;
         let numOfOpenBracket = 0;
         let inFunction = false;
