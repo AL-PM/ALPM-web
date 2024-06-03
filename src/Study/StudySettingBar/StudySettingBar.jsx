@@ -25,6 +25,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
 
     const StudySettingBarResetFn = () => {
         resetProblemCode();
+        setCodeGroupName(""); // codeGroupName 초기화
     };
 
     const filteredCodeGroupList = method === "줄별 순서맞추기"
