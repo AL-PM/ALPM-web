@@ -39,7 +39,9 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 )}
             </select>
             
-            <img id = "ProblemSettingIcon" onClick={()=>StudySettingBarBtnFn(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon"></img>
+            <button id = "ProblemSettingIcon" onClick={()=>StudySettingBarBtnFn(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon">
+                <span>문제 출제하기</span>
+            </button>
         </div>
     )
 }
