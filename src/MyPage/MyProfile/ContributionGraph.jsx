@@ -30,7 +30,7 @@ function ContributionGraph({ historyList }) {
                         return (
                             <div 
                                 key={dayIndex} 
-                                className={`day ${dayClass}`} 
+                                className={`day ${isToday ? 'today' : ''} ${dayClass}`} 
                                 title={`${dateString} | 학습 포인트: ${day}`}
                             >
                             </div>
