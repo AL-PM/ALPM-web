@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, method, level, fetchProblemCode, resetProblemCode , problemCode}) {
+function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, codeGroup ,method, level, fetchProblemCode, resetProblemCode , problemCode}) {
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
@@ -25,7 +25,11 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     }, [method]);
 
     const StudySettingBarBtnFn = () => {
-        fetchProblemCode();
+        if (codeGroup === -1) {
+            alert("코드 그룹을 올바르게 선택해주세요");
+        } else {
+            fetchProblemCode();
+        }
     };
 
     const StudySettingBarResetFn = () => {
