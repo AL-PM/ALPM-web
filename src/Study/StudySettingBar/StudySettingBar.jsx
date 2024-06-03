@@ -5,12 +5,18 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
-    const filteredCodeGroupList = [
-        { id: -1, name: "Default", language: "Default", algorithm_count: 1 },
-        ...(method === "줄별 순서맞추기"
+    const filteredCodeGroupList = (method === "줄별 순서맞추기"
             ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
-            : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0))
-    ];
+            : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0));
+
+    // Automatically select the first remaining code group
+    useEffect(() => {
+        if (filteredCodeGroupList.length > 0) {
+            const firstCodeGroup = filteredCodeGroupList[0];
+            setCodeGroup(firstCodeGroup.id);
+            setLanguage(firstCodeGroup.language);
+        }
+    }, [filteredCodeGroupList, setCodeGroup, setLanguage]);
 
     // useCallback to memoize setCodeGroupSetting function
     const setCodeGroupSetting = useCallback((event) => {
