@@ -24,6 +24,7 @@ function StudyHome() {
     const [level, setLevel] = useState(1);
     const [problem, setProblem] = useState(false);
     const [searchResult, setSearchResult] = useState();
+    const [problemCode, setProblemCode] = useState(null);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -72,6 +73,9 @@ function StudyHome() {
                 codegrouplist={searchResult.content}
                 problem={problem}
                 method={method}
+                codegroup={codegroup}
+                setProblemCode={setProblemCode}
+                problemCode={problemCode}
             />
             {method === "줄별 순서맞추기" && problem ? <StudyLineOrdering language={language} method={method} level={level} codegroup={codegroup} problem={problem} /> : null}
             {method === "따라치기" && problem ? <StudyTracking /> : null}

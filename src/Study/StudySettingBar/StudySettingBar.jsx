@@ -1,7 +1,8 @@
 import React from "react";
 import './StudySettingBar.css';
+import axios from 'axios';
 
-function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist, problem, method}){
+function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setProblem, codegrouplist, codegroup ,problem, method, setProblemCode, problemCode}){
 
     function setCodeGroupSetting(event){
         const codeGroupTag = JSON.parse(event.target.value);
@@ -11,6 +12,27 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
 
     function StudySettingBarBtnFn(){
         setProblem(true);
+        const fetchcodeGroupInfo = async () => {
+            try {
+                const access_token = localStorage.getItem("access_token");
+
+                const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/${codegroup}`, {
+                    withCredentials: true,
+                    headers: {
+                        'Authorization': `Bearer ${access_token}`
+                    }
+                });
+
+                setProblemCode(response.data);
+
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchcodeGroupInfo();
+
+        console.log(problemCode);
     }
 
     function StudySettingBarResetFn(){
@@ -47,7 +69,7 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
             </select>
             { problem ? 
             <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn} >
-            <span>초기화</span> 
+                <span>초기화</span> 
             </button>
             :
             <button id="ProblemSettingIcon" onClick={StudySettingBarBtnFn} >
