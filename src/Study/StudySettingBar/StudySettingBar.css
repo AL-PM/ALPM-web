@@ -5,7 +5,7 @@
     margin-left : 7.5vw;
     margin-right: 7.5vw;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr 1fr 0.5fr 1fr 1fr 0.5fr 2fr 2fr ;
+    grid-template-columns: 1fr 0.5fr 1fr 1fr 0.5fr 1fr 1fr 0.5fr 3fr 2fr ;
     justify-items: center;
     align-items: center;
     font-size: medium;
