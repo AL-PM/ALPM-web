@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import './StudySettingBar.css';
 
-function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, codegroup, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
-
+function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codegrouplist, language, problem, method, level, fetchProblemCode, resetProblemCode }) {
     const [codeGroupName, setCodeGroupName] = useState("");
-    const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
+    const [levelDisabled, setLevelDisabled] = useState(false);
 
     // Filter out code groups with algorithm_count of 0
     const filteredCodeGroupList = method === "줄별 순서맞추기"
@@ -20,17 +19,16 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     }, [setCodeGroup, setLanguage]);
 
     useEffect(() => {
-        // Set initial code group
-        if (filteredCodeGroupList.length > 0) {
+        if (filteredCodeGroupList.length > 0 && !codeGroupName) {
             const initialCodeGroup = filteredCodeGroupList[0];
             setCodeGroup(initialCodeGroup.id);
             setLanguage(initialCodeGroup.language);
             setCodeGroupName(initialCodeGroup.name);
         }
-    }, [filteredCodeGroupList, setCodeGroup, setLanguage]);
+    }, [filteredCodeGroupList, setCodeGroup, setLanguage, codeGroupName]);
 
     useEffect(() => {
-        // 학습 방법이 따라치기 또는 줄별 순서맞추기인 경우에만 난이도 선택 창 비활성화
+        // Disable level selection if method is 따라치기 or 줄별 순서맞추기
         setLevelDisabled(method === "따라치기" || method === "줄별 순서맞추기");
     }, [method]);
 
@@ -59,7 +57,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{method}</span>
             ) : (
-                <select id="CodeGroupSetting" onChange={(event) => setMethod(event.target.value)} disabled={problem}>
+                <select id="MethodSetting" onChange={(event) => setMethod(event.target.value)} disabled={problem}>
                     <option value="따라치기">따라치기</option>
                     <option value="줄별 순서맞추기">줄별 순서맞추기</option>
                     <option value="블록 순서맞추기">블록 순서맞추기</option>
@@ -71,7 +69,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{level} 레벨</span>
             ) : (
-                <select name="LevelSetting" id="CodeGroupSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
+                <select name="LevelSetting" id="LevelSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
                     <option value="1">1 레벨</option>
                     <option value="2">2 레벨</option>
                     <option value="3">3 레벨</option>
@@ -80,7 +78,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             <span id="SettingBarSetting">코드그룹</span>
             <span>|</span>
             {problem ? (
-                <span>{codeGroupName + "/" + language}</span>
+                <span>{codeGroupName} / {language}</span>
             ) : (
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
                     {filteredCodeGroupList.map((codegrouptag) => (
