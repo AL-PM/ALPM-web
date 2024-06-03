@@ -4,7 +4,7 @@ import './StudyTracking.css';
 function StudyTracking({ problemCode }) {
     
     function preprocessCode(problemCode) {
-        let lines = problemCode.content.split("\n");
+        let lines = problemCode.original.split("\n");
         let processedCode = [];
         const isPython = problemCode.language === "PYTHON";
 
