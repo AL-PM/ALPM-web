@@ -22,7 +22,6 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 <option id="CodeGroupSettingList" value={"블록 순서맞추기"} >블록 순서맞추기</option>
                 <option id="CodeGroupSettingList" value={"빈칸 채우기"} >빈칸 채우기</option>
             </select>
-            <span></span>
             <span id = "SettingBarSetting" >난이도</span>
             <span>|</span>
             <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setLevel(event.target.value)}>
@@ -30,7 +29,6 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 <option id="CodeGroupSettingList" value={"2"} >2 레벨</option>
                 <option id="CodeGroupSettingList" value={"3"} >3 레벨</option>
             </select>
-            <span></span>
             <span id = "SettingBarSetting" >코드그룹</span>
             <span>|</span>
             <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={(event)=>setCodeGroupSetting(event.target.value)}>
@@ -38,7 +36,6 @@ function StudySettingBar({setLanguage, setMethod, setLevel, setCodeGroup, setPro
                 <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag}> {codegrouptag.name} / {codegrouptag.language} </option>
                 )}
             </select>
-            
             <button id = "ProblemSettingIcon" onClick={()=>StudySettingBarBtnFn(true)} src={ProblemSettingIcon} alt="ProblemSettingIcon">
                 <span>문제 출제하기</span>
             </button>
