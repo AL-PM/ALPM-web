@@ -19,7 +19,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     }, [setCodeGroup, setLanguage]);
 
     useEffect(() => {
-        // Set initial code group
+        // Set initial code group only if not already set
         if (filteredCodeGroupList.length > 0 && !codeGroupName) {
             const initialCodeGroup = filteredCodeGroupList[0];
             setCodeGroup(initialCodeGroup.id);
@@ -58,7 +58,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{method}</span>
             ) : (
-                <select id="CodeGroupSetting" onChange={(event) => setMethod(event.target.value)} disabled={problem}>
+                <select id="MethodSetting" onChange={(event) => setMethod(event.target.value)} disabled={problem}>
                     <option value="따라치기">따라치기</option>
                     <option value="줄별 순서맞추기">줄별 순서맞추기</option>
                     <option value="블록 순서맞추기">블록 순서맞추기</option>
@@ -70,7 +70,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             {problem ? (
                 <span>{level} 레벨</span>
             ) : (
-                <select name="LevelSetting" id="CodeGroupSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
+                <select name="LevelSetting" id="LevelSetting" onChange={(event) => setLevel(event.target.value)} disabled={problem || levelDisabled}>
                     <option value="1">1 레벨</option>
                     <option value="2">2 레벨</option>
                     <option value="3">3 레벨</option>
