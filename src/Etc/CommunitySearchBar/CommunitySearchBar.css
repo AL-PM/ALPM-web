@@ -4,7 +4,7 @@
     margin-left : 7.5vw;
     margin-right: 7.5vw;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1.3fr 0.8fr 0.8fr 0.5fr 1fr 0.5fr 0.7fr 1.5fr 1.5fr 0.5fr 1fr 0.5fr 2fr 0.5fr ;
+    grid-template-columns: 1fr 0.5fr 1.3fr 0.8fr 0.8fr 1fr 0.5fr 0.7fr 1.5fr 1.5fr 1fr 0.5fr 2fr 2fr ;
     justify-items: center;
     align-items: center;
     font-size: medium;
@@ -20,7 +20,19 @@
 }
 
 #DataLoadbutton{
-    height: 15px;
+    width: 10vw;
+    height: 3vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd; /* 연한 회색 경계선 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    background-color: #fff; /* 배경색을 흰색으로 */
+    transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
     font-family: 'SUITE-Regular';
 }
 
+#DataLoadbutton:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
+}
