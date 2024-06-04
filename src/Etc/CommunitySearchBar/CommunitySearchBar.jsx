@@ -23,7 +23,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             <span>|</span>
             <button 
                 className={`menu-button ${language === "PYTHON" ? "active" : ""}`} 
-                style={{ color: language === "PYTHON" ? colorInvertor(secondTag) : "black" }}
                 onClick={() => setLanguage("PYTHON")}
                 data-tag={secondTag}
             >
@@ -31,7 +30,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${language === "JAVA" ? "active" : ""}`} 
-                style={{ color: language === "JAVA" ? colorInvertor(secondTag) : "black" }}
                 onClick={() => setLanguage("JAVA")}
                 data-tag={secondTag}
             >
@@ -39,7 +37,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${language === "C" ? "active" : ""}`} 
-                style={{ color: language === "C" ? colorInvertor(secondTag) : null }}
                 onClick={() => setLanguage("C")}
                 data-tag={secondTag}
             >
