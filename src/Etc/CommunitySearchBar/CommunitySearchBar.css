@@ -52,7 +52,7 @@
     color: #FFB380; /* 코드 유형 hover 색상 */
 }
 
-.menu-button:hover[data-tag="기타"] {
+.menu-button:hover[data-tag="제작자 유형"] {
     color: #66CC99; /* 기타 hover 색상 */
 }
 
@@ -64,6 +64,6 @@
     color: #FF6B00;
 }
 
-.menu-button.active[data-tag="기타"] {
+.menu-button.active[data-tag="제작자 유형"] {
     color: #009418;
 }
