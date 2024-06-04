@@ -15,15 +15,12 @@ function CodeDetailInfo({verified, language, owner, name}){
                 <span style={{fontWeight:"bold"}}>학습 언어</span>
                 <span>|</span>
                 <span>{language}</span>
-                <span></span>
                 <span style={{fontWeight:"bold"}}>코드 유형</span>
                 <span>|</span>
                 <span>{verifiedInvertor(verified)}</span>
-                <span></span>
                 <span style={{fontWeight:"bold"}}>작성자</span>
                 <span>|</span>
                 <span>{owner}</span>
-                <span></span>
                 <span style={{fontWeight:"bold"}}>제목</span>
                 <span>|</span>
                 <span>{name}</span>
