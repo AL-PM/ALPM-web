@@ -14,7 +14,7 @@ function StudyLineOrdering({ problemCode }) {
         language: problemCode.language
     };
 
-    function preprocessCode(code) {
+    function preprocessCode(code, language) {
         let lines = code.split("\n");
         let processedCode = [];
         let currentSection = 0;
@@ -25,12 +25,22 @@ function StudyLineOrdering({ problemCode }) {
             if (trimmedLine !== "") {
                 let tabCount = line.search(/\S|$/); // count leading tabs
 
-                if (tabCount === 0) {
-                    currentSection = 0;
-                    inSection = false;
-                } else if (tabCount > 0 && !inSection) {
-                    currentSection += 1;
-                    inSection = true;
+                if (language === 'JAVA') {
+                    if (tabCount <= 1) {
+                        currentSection = 0;
+                        inSection = false;
+                    } else if (tabCount === 2 && !inSection) {
+                        currentSection += 1;
+                        inSection = true;
+                    }
+                } else { // for C and Python
+                    if (tabCount === 0) {
+                        currentSection = 0;
+                        inSection = false;
+                    } else if (tabCount === 1 && !inSection) {
+                        currentSection += 1;
+                        inSection = true;
+                    }
                 }
 
                 processedCode.push({
@@ -87,7 +97,7 @@ function StudyLineOrdering({ problemCode }) {
     }, [shuffle]);
 
     useEffect(() => {
-        let processedData = preprocessCode(code.text);
+        let processedData = preprocessCode(code.text, code.language);
         setProcessedData(processedData);
         let finalCode = devideFn(processedData);
         let randomfinalCode = randomFn(finalCode);
@@ -95,7 +105,7 @@ function StudyLineOrdering({ problemCode }) {
         setUserInput(new Array(randomfinalCode.length).fill([]));
         setRandomFinalCode(randomfinalCode);
         setInitialRandomFinalCode(randomfinalCode); // Save the initial random code
-    }, [code.text, randomFn]);
+    }, [code.text, code.language, randomFn]);
 
     useEffect(() => {
         // This effect runs whenever userInput is updated to trigger re-render
