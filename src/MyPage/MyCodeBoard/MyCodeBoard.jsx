@@ -6,8 +6,8 @@ import MyPageMenuBar from "../MyPageMenuBar/MyPageMenuBar";
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
 
 function MyCodeBoard(){
-
     const [searchResult, setSearchResult] = useState();
+    const [currentPage, setCurrentPage] = useState(0); // Current page state
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -16,6 +16,10 @@ function MyCodeBoard(){
                 const uid = localStorage.getItem("uid");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/user/${uid}`, {
+                    params: {
+                        page: currentPage, // Use currentPage state
+                        size: 6
+                    },
                     withCredentials: true,
                     headers: {
                         'Authorization': `Bearer ${access_token}`
@@ -31,7 +35,19 @@ function MyCodeBoard(){
 
         fetchUserData();
 
-    }, []);
+    }, [currentPage]);
+
+    const handleNextPage = () => {
+        if (currentPage < searchResult.total_pages - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePreviousPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
 
     if (!searchResult) {
         return (
@@ -49,7 +65,12 @@ function MyCodeBoard(){
         <div id="MyCodeBoard">
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"2"}/>
-            <CodeSearchResult searchData={searchResult.content} bodyHeight={"66vh"} siteTag={"MyPage"}/>
+            <CodeSearchResult searchData={searchResult.content} bodyHeight={"55vh"} siteTag={"MyPage"}/>
+            <div id="pagination">
+                <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
+                <span id='paginationTxt'> {currentPage + 1} / {searchResult.total_pages}</span>
+                <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>Next</button>
+            </div>
         </div>
     )
 }
