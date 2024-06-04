@@ -40,10 +40,10 @@ textarea[id^="textarea-line-"] {
     position: fixed;
     width: 80vw;
     bottom : 5vh;
-    background-color: white;
-    border: 1px solid;
-    border-color: #5C4EFF;
-    border-radius: 10px;
+    border: 1px solid #ddd; /* 연한 회색 경계선 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    background-color: #fff; /* 배경색을 흰색으로 */
     display: flex;
     gap : 20px;
     justify-content: center;
@@ -62,4 +62,13 @@ textarea[id^="textarea-line-"] {
     margin-left: 1.5vw;
     margin-right: 1.5vw;
     margin-bottom: 2vh;
+    border: 1px solid #ddd; /* 연한 회색 경계선 */
+    border-radius: 8px; /* 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    background-color: #fff; /* 배경색을 흰색으로 */
+    transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
+}
+
+#StudyTrackingCompleteBtn:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
 }
