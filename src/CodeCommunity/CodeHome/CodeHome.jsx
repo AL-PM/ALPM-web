@@ -62,10 +62,9 @@ function CodeCommunity() {
                 console.error(error);
             }
         };
-        if(searchIsOn){
+        if (searchIsOn) {
             fetchSearchCode();
-        }
-        else{
+        } else {
             fetchTotalCode();
         }
     }, [currentPage, searchIsOn, language, reference, searchKeyword]); // Dependency array includes currentPage
@@ -86,18 +85,18 @@ function CodeCommunity() {
         return (
             <div id="MyCodeGroup">
                 <MainMenuBar page={"Code"} />
-                <CommunitySearchBar 
-                    secondTag={"코드 유형"} 
-                    language={language} 
-                    setLanguage={setLanguage} 
-                    reference={reference} 
-                    setReference={setReference} 
-                    setKeyword={setKeyword} 
+                <CommunitySearchBar
+                    secondTag={"코드 유형"}
+                    language={language}
+                    setLanguage={setLanguage}
+                    reference={reference}
+                    setReference={setReference}
+                    setKeyword={setKeyword}
                     searchKeyword={searchKeyword}
                     setSearchIsOn={setSearchIsOn}
                     searchIsOn={searchIsOn}
                     setCurrentPage={setCurrentPage}
-                    />
+                />
                 <LoadingSpinner color={"#FF6B00"} comment={"코드 정보 불러오는 중"} />
             </div>
         );
@@ -108,7 +107,18 @@ function CodeCommunity() {
     return (
         <div id="Codehome">
             <MainMenuBar page={"Code"} />
-            <CommunitySearchBar secondTag={"코드 유형"} language={language} setLanguage={setLanguage} reference={reference} setReference={setReference} setKeyword={setKeyword} searchKeyword={searchKeyword} />
+            <CommunitySearchBar
+                secondTag={"코드 유형"}
+                language={language}
+                setLanguage={setLanguage}
+                reference={reference}
+                setReference={setReference}
+                setKeyword={setKeyword}
+                searchKeyword={searchKeyword}
+                setSearchIsOn={setSearchIsOn}
+                searchIsOn={searchIsOn}
+                setCurrentPage={setCurrentPage}
+            />
             <CodeSearchResult searchData={searchResult.content} bodyHeight={"55vh"} siteTag={"Code"} />
             <div className="pagination">
                 <button onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
