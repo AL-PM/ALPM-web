@@ -107,8 +107,8 @@ function StudyTracking({ problemCode }) {
         try {
           const access_token = localStorage.getItem("access_token");
     
-          const response = await axios.post(`https://alpm.duckdns.org:8080/algorithm/create`, {
-                problemType: "따라치기",
+          const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
+                problemType: "TRACE",
                 point: numOfWords,
                 algorithmId: problemCode.id 
           }, {
