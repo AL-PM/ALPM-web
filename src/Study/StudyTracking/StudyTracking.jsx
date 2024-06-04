@@ -104,6 +104,8 @@ function StudyTracking({ problemCode }) {
             numOfWords += element.data.length;
         })
 
+        console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
+        
         try {
           const access_token = localStorage.getItem("access_token");
     

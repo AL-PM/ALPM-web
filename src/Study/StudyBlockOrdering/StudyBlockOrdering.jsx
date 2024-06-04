@@ -198,8 +198,10 @@ function StudyBlockOrdering({problemCode, level}) {
         const userInputtxt = userInput.map(element => element.data).join('');
         const blockDatatxt = codeData[2].map(element => element.data).join('');
 
+        console.log(codeData[2]);
+
         if (userInputtxt === blockDatatxt) {
-            alert("정답입니다.");
+            alert("정답입니다. 총 맞춘 블록의 수 : " + codeData[2].length);
         } else {
             resetFn();
             alert("옳지 않은 답변입니다. 다시 작성해주세요");
