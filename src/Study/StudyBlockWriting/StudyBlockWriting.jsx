@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './StudyBlockWriting.css';
 
 function StudyBlockWriting({problemCode, level}) {
@@ -11,15 +12,6 @@ function StudyBlockWriting({problemCode, level}) {
             text: problemCode.content,
             language: problemCode.language
         };
-
-        // UserInput 초기화
-        const numOfBlanks = level * 5;
-        let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
-            num: i + 1,
-            data: "",
-        }));
-
-        setUserInput(tmpUserInput);
 
         function preprocessCode(code) {
             function getRandomNumbers(blockData, level) {
@@ -131,6 +123,15 @@ function StudyBlockWriting({problemCode, level}) {
                 return totalCode;
             }
 
+            // UserInput 초기화
+            const numOfBlanks = codeData[2].length;
+            let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
+                num: i + 1,
+                data: "",
+            }));
+
+            setUserInput(tmpUserInput);
+
             const newFinalCode = totalTextMaker(codeData[0], codeData[2], userInput);
             setFinalCode(newFinalCode);
         }
@@ -179,7 +180,7 @@ function StudyBlockWriting({problemCode, level}) {
     }
 
     function resetFn() {
-        const numOfBlanks = level * 5;
+        const numOfBlanks = codeData[2].length;
         let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
             num: i + 1,
             data: "",
@@ -193,7 +194,7 @@ function StudyBlockWriting({problemCode, level}) {
         setFinalCode(totalTextMaker(codeData[0], codeData[1], []));
     }
 
-    function checkCompleteFn() {
+    const checkCompleteFn = async() => {
         const removeSpaces = str => str.replace(/\s+/g, '');
 
         const userInputtxt = removeSpaces(userInput.map(element => element.data).join(''));
@@ -202,7 +203,31 @@ function StudyBlockWriting({problemCode, level}) {
         console.log(codeData[2]);
 
         if (userInputtxt === blockDatatxt) {
-            alert("정답입니다. 맞춘 블럭 수 : " + codeData[2].length);
+            try {
+                const access_token = localStorage.getItem("access_token");
+                const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
+                      "problemType": "FILL",
+                      "point": codeData[2].length,
+                      "algorithmId": problemCode.id 
+                }, {
+                  headers: {
+                    'Authorization': `Bearer ${access_token}`,
+                    'Content-Type': 'application/json'
+                  },
+                  withCredentials: true
+                });
+          
+                if (response.status === 200) {
+                    console.log(response);
+                    alert("정답입니다. 맞춘 블럭 수 : " + codeData[2].length);
+                    window.location.reload(); // Refresh the page
+                } else {
+                    alert('학습 완료에 실패하였습니다.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('업로드 중 오류가 발생했습니다');
+            } 
         } else {
             resetFn();
             alert("옳지 않은 답변입니다. 다시 작성해주세요");

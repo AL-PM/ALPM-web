@@ -205,9 +205,9 @@ function StudyBlockOrdering({problemCode, level}) {
             try {
                 const access_token = localStorage.getItem("access_token");
                 const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
-                      problemType: "BLOCK",
-                      point: codeData[2].length,
-                      algorithmId: problemCode.id 
+                      "problemType": "BLOCK",
+                      "point": codeData[2].length,
+                      "algorithmId": problemCode.id 
                 }, {
                   headers: {
                     'Authorization': `Bearer ${access_token}`,
