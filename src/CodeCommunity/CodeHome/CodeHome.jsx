@@ -119,7 +119,7 @@ function CodeCommunity() {
                 searchIsOn={searchIsOn}
                 setCurrentPage={setCurrentPage}
             />
-            <CodeSearchResult searchData={searchResult.content} bodyHeight={"52.5vh"} siteTag={"Code"} />
+            <CodeSearchResult searchData={searchResult.content} bodyHeight={"50vh"} siteTag={"Code"} />
             <div className="pagination">
                 <button onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
                 <span>Page {currentPage + 1} of {searchResult.total_pages}</span>
