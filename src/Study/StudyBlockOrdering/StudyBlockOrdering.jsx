@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './StudyBlockOrdering.css';
 
 function StudyBlockOrdering({problemCode, level}) {
@@ -194,14 +195,39 @@ function StudyBlockOrdering({problemCode, level}) {
         }
     }
 
-    function checkCompleteFn() {
+    const checkCompleteFn = async () => {
         const userInputtxt = userInput.map(element => element.data).join('');
         const blockDatatxt = codeData[2].map(element => element.data).join('');
 
         console.log(codeData[2]);
 
         if (userInputtxt === blockDatatxt) {
-            alert("정답입니다. 총 맞춘 블록의 수 : " + codeData[2].length);
+            try {
+                const access_token = localStorage.getItem("access_token");
+                const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
+                      problemType: "BLOCK",
+                      point: codeData[2].length,
+                      algorithmId: problemCode.id 
+                }, {
+                  headers: {
+                    'Authorization': `Bearer ${access_token}`,
+                    'Content-Type': 'application/json'
+                  },
+                  withCredentials: true
+                });
+          
+                if (response.status === 200) {
+                    console.log(response);
+                    alert("정답입니다. 총 맞춘 블록의 수 : " + codeData[2].length);
+                    window.location.reload(); // Refresh the page
+                } else {
+                    alert('학습 완료에 실패하였습니다.');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('업로드 중 오류가 발생했습니다');
+            } 
+                
         } else {
             resetFn();
             alert("옳지 않은 답변입니다. 다시 작성해주세요");
