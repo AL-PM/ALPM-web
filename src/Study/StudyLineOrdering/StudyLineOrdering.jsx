@@ -19,6 +19,7 @@ function StudyLineOrdering({ problemCode }) {
         let processedCode = [];
         let currentSection = 0;
         let inSection = false;
+        let sectionNum = {}; // to keep track of num within each section
 
         lines.forEach((line, index) => {
             let trimmedLine = line.trim();
@@ -43,9 +44,14 @@ function StudyLineOrdering({ problemCode }) {
                     }
                 }
 
+                // Initialize the section number tracker if it doesn't exist
+                if (!sectionNum[currentSection]) {
+                    sectionNum[currentSection] = 0;
+                }
+
                 processedCode.push({
                     data: trimmedLine,
-                    num: index,
+                    num: sectionNum[currentSection]++, // Increment num within the section
                     codeSection: currentSection,
                 });
             }
