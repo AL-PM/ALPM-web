@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import './StudyLineOrdering.css';
 
-function StudyLineOrdering({problemCode}) {
+function StudyLineOrdering({ problemCode }) {
     const [currentPage, setCurrentPage] = useState(0);
     const [userInput, setUserInput] = useState([]);
     const [randomFinalCode, setRandomFinalCode] = useState([]);
@@ -10,79 +10,40 @@ function StudyLineOrdering({problemCode}) {
     const [finalCode, setFinalCode] = useState([]);
 
     const code = {
-        text : problemCode.original ,
-        language : problemCode.language
+        text: problemCode.original,
+        language: problemCode.language
     };
 
     function preprocessCode(code) {
         let lines = code.split("\n");
         let processedCode = [];
-    
         let currentSection = 0;
-        let numOfOpenBracket = 0;
-        let inFunction = false;
-        let lineNumberInFunction = 0;
-    
-        for (let i = 0; i < lines.length; i++) {
-            let line = lines[i];
+        let inSection = false;
+
+        lines.forEach((line, index) => {
             let trimmedLine = line.trim();
-    
             if (trimmedLine !== "") {
-                let commentIndex = trimmedLine.indexOf("//");
-                let codeWithoutComment = commentIndex !== -1 ? trimmedLine.slice(0, commentIndex) : trimmedLine;
-                let tmpCode = codeWithoutComment.trim()
-    
-                if (tmpCode !== "") {
-                    if (tmpCode.match("{")) {
-                        if (numOfOpenBracket === 0) {
-                            processedCode.push({
-                                data: tmpCode,
-                                num: 0,
-                                codeSection: 0,
-                            });
-                            currentSection += 1;
-                            numOfOpenBracket += 1;
-                            inFunction = true;
-                        } else {
-                            numOfOpenBracket += 1;
-                            inFunction = true;
-                            processedCode.push({
-                                data: tmpCode,
-                                num: lineNumberInFunction,
-                                codeSection: currentSection,
-                            });
-                            lineNumberInFunction += 1;
-                        }
-                    } else if (tmpCode === "}" || tmpCode === "};") {
-                        numOfOpenBracket -= 1;
-                        processedCode.push({
-                            data: tmpCode,
-                            num: lineNumberInFunction,
-                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
-                        });
-                        if (numOfOpenBracket === 0) {
-                            inFunction = false;
-                            lineNumberInFunction = 0;
-                        } else {
-                            lineNumberInFunction += 1;
-                        }
-                    } else {
-                        processedCode.push({
-                            data: tmpCode,
-                            num: inFunction ? lineNumberInFunction : 0,
-                            codeSection: numOfOpenBracket === 0 ? 0 : currentSection,
-                        });
-                        if (inFunction) {
-                            lineNumberInFunction += 1;
-                        }
-                    }
+                let tabCount = line.search(/\S|$/); // count leading tabs
+
+                if (tabCount === 0) {
+                    currentSection = 0;
+                    inSection = false;
+                } else if (tabCount > 0 && !inSection) {
+                    currentSection += 1;
+                    inSection = true;
                 }
+
+                processedCode.push({
+                    data: trimmedLine,
+                    num: index,
+                    codeSection: currentSection,
+                });
             }
-        }
-    
+        });
+
         return processedCode;
     }
-    
+
     function devideFn(processedCode) {
         let finalCode = [];
         let tmpCode = [];
