@@ -56,7 +56,10 @@ function Login() {
       <span id='LoginMainLogo'>AL-PM</span>
       <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
       {loading ?
-            <HashLoader color={"red"} speedMultiplier={0.8} />
+            <div>
+              <HashLoader color={"red"} speedMultiplier={0.8} />
+              <span>로그인 시도중</span>
+            </div>
            : 
           <div id='GoogleBtnContainer'>
             <button id='GoogleBtn' onClick={handleLogin} disabled={loading}>
