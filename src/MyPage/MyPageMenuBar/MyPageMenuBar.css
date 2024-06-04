@@ -1,9 +1,17 @@
-#MyPageMenuBar{
+#MyPageMenuBar {
     width: 60vw;
-    margin-top : 5vh;  
-    margin-left : 20vw;
+    margin-top: 5vh;
+    margin-left: 20vw;
     margin-right: 20vw;
     display: flex;
     justify-content: space-around;
     font-size: small;
+}
+
+#MyPageMenuBar span {
+    cursor: pointer; /* 커서가 포인터 모양으로 변경되도록 설정 */
+}
+
+#MyPageMenuBar span:hover {
+    color: #FF7F7F; /* 커서를 올렸을 때 연한 빨간색으로 변경 */
 }
