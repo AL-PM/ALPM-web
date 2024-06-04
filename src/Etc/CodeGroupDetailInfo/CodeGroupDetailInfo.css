@@ -6,7 +6,7 @@
     margin-right: 5%;
     margin-top: 7.5vh;    
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr 2fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 0.5fr 2fr 0.5fr 1fr 0.5fr 1fr ;
+    grid-template-columns: 1fr 0.5fr 1fr 2fr 1fr 0.5fr 2fr 1fr 0.5fr 2fr 1fr 0.5fr 1fr ;
     justify-items: center;
     font-size: medium;
 }
