@@ -27,18 +27,18 @@ function StudyLineOrdering({ problemCode }) {
                 let tabCount = line.search(/\S|$/); // count leading tabs
 
                 if (language === 'JAVA') {
-                    if (tabCount <= 1) {
+                    if (tabCount < 2) {
                         currentSection = 0;
                         inSection = false;
-                    } else if (tabCount === 2 && !inSection) {
+                    } else if (tabCount >= 2 && !inSection) {
                         currentSection += 1;
                         inSection = true;
                     }
                 } else { // for C and Python
-                    if (tabCount === 0) {
+                    if (tabCount < 1) {
                         currentSection = 0;
                         inSection = false;
-                    } else if (tabCount === 1 && !inSection) {
+                    } else if (tabCount >= 1 && !inSection) {
                         currentSection += 1;
                         inSection = true;
                     }
@@ -63,7 +63,7 @@ function StudyLineOrdering({ problemCode }) {
     function devideFn(processedCode) {
         let finalCode = [];
         let tmpCode = [];
-        let nowCodeSection = 1;
+        let nowCodeSection = 0;
 
         processedCode.forEach((element, index) => {
             if (element.codeSection === nowCodeSection) {
