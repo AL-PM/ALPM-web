@@ -121,9 +121,9 @@ function CodeCommunity() {
             />
             <CodeSearchResult searchData={searchResult.content} bodyHeight={"50vh"} siteTag={"Code"} />
             <div className="pagination">
-                <button onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
+                <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
                 <span>Page {currentPage + 1} of {searchResult.total_pages}</span>
-                <button onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>Next</button>
+                <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>Next</button>
             </div>
             <CodeHomeUploadButton />
         </div>
