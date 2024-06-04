@@ -17,15 +17,12 @@ function CodeGroupDetailInfo({language, verified, owner, name, numOfAlgorithm}){
                 <span>|</span>
                 <span>{language}</span>
                 <span>{verifiedInvertor(verified)}</span>
-                <span></span>
                 <span id="CodeGroupDetialInfoKeyWord" >작성자</span>
                 <span>|</span>
                 <span>{owner}</span>
-                <span></span>
                 <span id="CodeGroupDetialInfoKeyWord" >그룹 이름</span>
                 <span>|</span>
                 <span>{name}</span>
-                <span></span>
                 <span id="CodeGroupDetialInfoKeyWord" >코드 개수</span>
                 <span>|</span>
                 <span>{numOfAlgorithm} 개</span>
