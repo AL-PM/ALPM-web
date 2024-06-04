@@ -120,9 +120,9 @@ function CodeCommunity() {
                 setCurrentPage={setCurrentPage}
             />
             <CodeSearchResult searchData={searchResult.content} bodyHeight={"50vh"} siteTag={"Code"} />
-            <div className="pagination">
+            <div id="pagination">
                 <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
-                <span>Page {currentPage + 1} of {searchResult.total_pages}</span>
+                <span id='paginationTxt'>Page {currentPage + 1} of {searchResult.total_pages}</span>
                 <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>Next</button>
             </div>
             <CodeHomeUploadButton />

@@ -24,15 +24,22 @@
     flex-direction: column;
 }
 
-.pagination{
+#pagination{
     height : 2.5vh;
-    width: 20vw;
+    width: 30vw;
     margin-bottom : 2.5vh;
     margin-left: 40vw;
     margin-right: 40vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
+    align-items: center;
+}
+
+#paginationTxt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #paginationBtn{
