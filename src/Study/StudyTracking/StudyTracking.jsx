@@ -96,6 +96,14 @@ function StudyTracking({ problemCode }) {
         setIsCompleted(allMatch);
     }, [inputData, processedData]);
 
+    function completeFn(){
+        let numOfWords = 0;
+        preprocessCode.forEach((element)=>{
+            numOfWords += element.data.length;
+        })
+        alert("따라치기 학습을 종료합니다. \n총 작성한 코드 : " + numOfWords + "개 ");
+    }
+
     return (
         <div id="StudyTracking">
             {processedData.map((codeData) =>
@@ -125,7 +133,7 @@ function StudyTracking({ problemCode }) {
                     <p>{currentExplanation}</p>
                 </div>
             }
-            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={() => alert("따라치기 학습을 종료합니다.")}> 완료 </button>
+            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={() => completeFn()}> 완료 </button>
         </div>
     )
 }
