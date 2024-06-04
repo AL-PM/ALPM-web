@@ -39,7 +39,7 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${language === "C" ? "active" : ""}`} 
-                style={{ color: language === "C" ? colorInvertor(secondTag) : "black" }}
+                style={{ color: language === "C" ? colorInvertor(secondTag) : null }}
                 onClick={() => setLanguage("C")}
                 data-tag={secondTag}
             >
@@ -49,7 +49,7 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             <span>|</span>
             <button 
                 className={`menu-button ${reference === null ? "active" : ""}`} 
-                style={{ color: reference === null ? colorInvertor(secondTag) : "black" }}
+                style={{ color: reference === null ? colorInvertor(secondTag) : null }}
                 onClick={() => setReference(null)}
                 data-tag={secondTag}
             >
@@ -57,7 +57,7 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${reference === true ? "active" : ""}`} 
-                style={{ color: reference === true ? colorInvertor(secondTag) : "black" }}
+                style={{ color: reference === true ? colorInvertor(secondTag) : null }}
                 onClick={() => setReference(true)}
                 data-tag={secondTag}
             >
@@ -65,7 +65,7 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${reference === false ? "active" : ""}`} 
-                style={{ color: reference === false ? colorInvertor(secondTag) : "black" }}
+                style={{ color: reference === false ? colorInvertor(secondTag) : null }}
                 onClick={() => setReference(false)}
                 data-tag={secondTag}
             >
