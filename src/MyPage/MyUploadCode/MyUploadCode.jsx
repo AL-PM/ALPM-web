@@ -8,6 +8,7 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
 function MyUploadCode(){
 
     const [searchResult, setSearchResult] = useState();
+    const [currentPage, setCurrentPage] = useState(0); // Current page state
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -16,6 +17,10 @@ function MyUploadCode(){
                 const uid = localStorage.getItem("uid");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/owner/${uid}`, {
+                    params: {
+                        page: currentPage, // Use currentPage state
+                        size: 6
+                    },
                     withCredentials: true,
                     headers: {
                         'Authorization': `Bearer ${access_token}`
@@ -31,7 +36,19 @@ function MyUploadCode(){
 
         fetchUserData();
 
-    }, []);
+    }, [currentPage]);
+
+    const handleNextPage = () => {
+        if (currentPage < searchResult.total_pages - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePreviousPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
 
     if (!searchResult) {
         return (
@@ -49,7 +66,12 @@ function MyUploadCode(){
         <div id="MyUploadCode">
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"4"}/>
-            <CodeSearchResult searchData={searchResult.content} bodyHeight={"66vh"}/>
+            <CodeSearchResult searchData={searchResult.content} bodyHeight={"55vh"}/>
+            <div id="pagination">
+                <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>{"<"}</button>
+                <span id='paginationTxt'> {currentPage + 1} / {searchResult.total_pages}</span>
+                <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>{">"}</button>
+            </div>
         </div>
     )
 }
