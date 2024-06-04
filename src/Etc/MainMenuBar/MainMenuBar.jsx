@@ -9,28 +9,28 @@ function MainMenuBar({ page }) {
             <span id="MainMenuBarLogo">A.L.P.M</span>
             <span>|</span>
             <button 
-                className={`menu-button ${page === "Study" ? "active-study" : ""}`} 
+                className={`menu-button study ${page === "Study" ? "active-study" : ""}`} 
                 onClick={() => navigator('/study')}
             >
                 STUDY HOME
             </button>
             <span>|</span>
             <button 
-                className={`menu-button ${page === "Code" ? "active-code" : ""}`} 
+                className={`menu-button code ${page === "Code" ? "active-code" : ""}`} 
                 onClick={() => navigator('/code')}
             >
                 CODE COMMUNITY
             </button>
             <span>|</span>
             <button 
-                className={`menu-button ${page === "CodeGroup" ? "active-codegroup" : ""}`} 
+                className={`menu-button codegroup ${page === "CodeGroup" ? "active-codegroup" : ""}`} 
                 onClick={() => navigator('/codegroup')}
             >
                 CODE GROUP COMMUNITY
             </button>
             <span>|</span>
             <button 
-                className={`menu-button ${page === "MyPage" ? "active-mypage" : ""}`} 
+                className={`menu-button mypage ${page === "MyPage" ? "active-mypage" : ""}`} 
                 onClick={() => navigator('/mypage')}
             >
                 MY PAGE
