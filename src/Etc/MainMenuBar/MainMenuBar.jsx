@@ -6,7 +6,7 @@ function MainMenuBar({ page }) {
     const navigator = useNavigate();
     return (
         <div id="MainMenubar">
-            <span id="MainMenuBarLogo">A.L.P.M</span>
+            <span id="MainMenuBarLogo">AL-PM</span>
             <span>|</span>
             <button 
                 className={`menu-button study ${page === "Study" ? "active-study" : ""}`} 
