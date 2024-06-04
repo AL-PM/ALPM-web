@@ -7,9 +7,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
     const filteredCodeGroupList = [
         { id: -1, name: "Default", language: "Default", algorithm_count: 1 },
-        ...(method === "줄별 순서맞추기"
-            ? codegrouplist.filter(codegrouptag => codegrouptag.language !== "PYTHON" && codegrouptag.algorithm_count !== 0)
-            : codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0))
+        ...codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0)
     ];
 
     // useCallback to memoize setCodeGroupSetting function
