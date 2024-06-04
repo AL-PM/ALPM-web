@@ -94,6 +94,16 @@ function StudyBlockWriting({problemCode, level}) {
         }
 
         const preprocessedCode = preprocessCode(code.text);
+
+        // UserInput 초기화
+        const numOfBlanks = preprocessedCode[2].length;
+        let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
+            num: i + 1,
+            data: "",
+        }));
+
+        setUserInput(tmpUserInput);
+
         setCodeData(preprocessedCode);
 
     }, [problemCode, level]);
@@ -122,15 +132,6 @@ function StudyBlockWriting({problemCode, level}) {
 
                 return totalCode;
             }
-
-            // UserInput 초기화
-            const numOfBlanks = codeData[2].length;
-            let tmpUserInput = Array.from({ length: numOfBlanks }, (_, i) => ({
-                num: i + 1,
-                data: "",
-            }));
-
-            setUserInput(tmpUserInput);
 
             const newFinalCode = totalTextMaker(codeData[0], codeData[2], userInput);
             setFinalCode(newFinalCode);
