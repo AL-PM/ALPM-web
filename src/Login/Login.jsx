@@ -57,8 +57,8 @@ function Login() {
       <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
       {loading ?
             <div style={{display : "flex", flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
-              <HashLoader color={"red"} speedMultiplier={0.8} />
-              <span style={{marginTop : "30px", color:"red"}}>로그인 시도중</span>
+              <HashLoader color={"black"} speedMultiplier={0.8} />
+              <span style={{marginTop : "30px", color:"black"}}>로그인 시도중</span>
             </div>
            : 
           <div id='GoogleBtnContainer'>
