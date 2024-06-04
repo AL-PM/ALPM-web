@@ -18,6 +18,7 @@ function StudyLineOrdering({ problemCode }) {
         let lines = code.split("\n");
         let processedCode = [];
         let currentSection = 0;
+        let tmpSection;
         let inSection = false;
         let sectionNum = {}; // to keep track of num within each section
 
@@ -28,31 +29,32 @@ function StudyLineOrdering({ problemCode }) {
 
                 if (language === 'JAVA') {
                     if (tabCount < 2) {
-                        currentSection = 0;
+                        tmpSection = 0;
                         inSection = false;
                     } else if (tabCount >= 2 && !inSection) {
                         currentSection += 1;
+                        tmpSection = currentSection;
                         inSection = true;
                     }
                 } else { // for C and Python
                     if (tabCount < 1) {
-                        currentSection = 0;
+                        tmpSection = 0;
                         inSection = false;
                     } else if (tabCount >= 1 && !inSection) {
-                        currentSection += 1;
+                        tmpSection = currentSection;
                         inSection = true;
                     }
                 }
 
                 // Initialize the section number tracker if it doesn't exist
-                if (!sectionNum[currentSection]) {
-                    sectionNum[currentSection] = 0;
+                if (!sectionNum[tmpSection]) {
+                    sectionNum[tmpSection] = 0;
                 }
 
                 processedCode.push({
                     data: trimmedLine,
-                    num: sectionNum[currentSection]++, // Increment num within the section
-                    codeSection: currentSection,
+                    num: sectionNum[tmpSection]++, // Increment num within the section
+                    codeSection: tmpSection,
                 });
             }
         });
