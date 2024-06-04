@@ -23,7 +23,7 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             <span>|</span>
             <span onClick={() => setLanguage("PYTHON")} style={{ fontWeight: language === "PYTHON" ? "bold" : "normal", color: language === "PYTHON" ? colorInvertor(secondTag) : "black" }}>PYTHON </span>
             <span onClick={() => setLanguage("JAVA")} style={{ fontWeight: language === "JAVA" ? "bold" : "normal", color: language === "JAVA" ? colorInvertor(secondTag) : "black" }}>JAVA</span>
-            <span onClick={() => setLanguage("C++")} style={{ fontWeight: language === "C++" ? "bold" : "normal", color: language === "C++" ? colorInvertor(secondTag) : "black" }}>C++</span>
+            <span onClick={() => setLanguage("C")} style={{ fontWeight: language === "C" ? "bold" : "normal", color: language === "C" ? colorInvertor(secondTag) : "black" }}>C++</span>
             <span id="SearchBarSetting">{secondTag}</span>
             <span>|</span>
             <span onClick={() => setReference(null)} style={{ fontWeight: reference === null ? "bold" : "normal", color: reference === null ? colorInvertor(secondTag) : "black" }}>ALL</span>
