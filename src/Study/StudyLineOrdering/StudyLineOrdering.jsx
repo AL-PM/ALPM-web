@@ -148,25 +148,30 @@ function StudyLineOrdering({ problemCode }) {
     }
 
     function completeFn() {
+        let correctBlocks = 0;
         let isCorrect = true;
-
+      
         for (let i = 0; i < finalCode.length; i++) {
-            for (let j = 0; j < finalCode[i].length; j++) {
-                if (!userInput[i][j] || userInput[i][j].data !== finalCode[i][j].data) {
-                    isCorrect = false;
-                    break;
-                }
+          for (let j = 0; j < finalCode[i].length; j++) {
+            if (!userInput[i][j] || userInput[i][j].data !== finalCode[i][j].data) {
+              isCorrect = false;
+              break;
+            } else {
+              correctBlocks++;
             }
-            if (!isCorrect) break;
+          }
+          if (!isCorrect) break;
         }
-
+      
         if (isCorrect) {
-            alert("정답입니다");
+          alert(`정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`);
         } else {
-            alert("틀렸습니다. 정답을 다시 작성해주세요.");
-            resetFn();
+          alert("틀렸습니다. 정답을 다시 작성해주세요.");
+          console.log(finalCode);
+          resetFn();
         }
-    }
+      }
+      
 
     return (
         <div>
