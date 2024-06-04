@@ -202,6 +202,7 @@ function StudyBlockOrdering({problemCode, level}) {
         console.log(codeData[2]);
 
         if (userInputtxt === blockDatatxt) {
+            console.log("정답입니다. 총 맞춘 블록의 수 : " + codeData[2].length);
             try {
                 const access_token = localStorage.getItem("access_token");
                 const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
