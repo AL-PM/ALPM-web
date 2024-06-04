@@ -1,14 +1,63 @@
-#MainMenubar{
+#MainMenubar {
     width: 70vw;
-    margin-top : 10vh;  
-    margin-left : 15vw;
+    margin-top: 10vh;  
+    margin-left: 15vw;
     margin-right: 15vw;
     display: grid;
-    grid-template-columns : 1fr 0.5fr 1.65fr 0.45fr 2.05fr 0.45fr 2.8fr 0.4fr 1fr  ;
+    grid-template-columns: 1fr 0.5fr 1.65fr 0.45fr 2.05fr 0.45fr 2.8fr 0.4fr 1fr;
     justify-items: center;
     font-size: larger;
 }
 
-#MainMenuBarLogo{
+#MainMenuBarLogo {
     font-weight: bold;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.menu-button:hover {
+    color: #B3B3B3; /* 기본 hover 색상 */
+}
+
+.menu-button.active-study {
+    font-weight: bold;
+    color: #5C4EFF;
+}
+
+.menu-button.active-code {
+    font-weight: bold;
+    color: #FF6B00;
+}
+
+.menu-button.active-codegroup {
+    font-weight: bold;
+    color: #009418;
+}
+
+.menu-button.active-mypage {
+    font-weight: bold;
+    color: #EF4949;
+}
+
+.menu-button:hover.active-study {
+    color: #AFA6FF; /* STUDY HOME hover 색상 */
+}
+
+.menu-button:hover.active-code {
+    color: #FFB380; /* CODE COMMUNITY hover 색상 */
+}
+
+.menu-button:hover.active-codegroup {
+    color: #66CC99; /* CODE GROUP COMMUNITY hover 색상 */
+}
+
+.menu-button:hover.active-mypage {
+    color: #FF7F7F; /* MY PAGE hover 색상 */
 }

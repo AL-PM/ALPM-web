@@ -1,22 +1,42 @@
 import React from "react";
 import './MainMenuBar.css';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-function MainMenuBar({page}){
+function MainMenuBar({ page }) {
     const navigator = useNavigate();
-    return(
+    return (
         <div id="MainMenubar">
             <span id="MainMenuBarLogo">A.L.P.M</span>
             <span>|</span>
-            <span style={{fontWeight:page ==="Study" ? "bold" : "normal", color:page ==="Study" ? "#5C4EFF" : "Black"}} onClick={()=>navigator('/study')} >STUDY HOME</span>
+            <button 
+                className={`menu-button ${page === "Study" ? "active-study" : ""}`} 
+                onClick={() => navigator('/study')}
+            >
+                STUDY HOME
+            </button>
             <span>|</span>
-            <span style={{fontWeight:page ==="Code" ? "bold" : "normal", color:page ==="Code" ? "#FF6B00" : "Black"}} onClick={()=>navigator('/code')} >CODE COMMUNITY</span>
+            <button 
+                className={`menu-button ${page === "Code" ? "active-code" : ""}`} 
+                onClick={() => navigator('/code')}
+            >
+                CODE COMMUNITY
+            </button>
             <span>|</span>
-            <span style={{fontWeight:page ==="CodeGroup" ? "bold" : "normal", color:page ==="CodeGroup" ? "#009418" : "Black"}} onClick={()=>navigator('/codegroup')}>CODE GROUP COMMUNITY</span>
+            <button 
+                className={`menu-button ${page === "CodeGroup" ? "active-codegroup" : ""}`} 
+                onClick={() => navigator('/codegroup')}
+            >
+                CODE GROUP COMMUNITY
+            </button>
             <span>|</span>
-            <span style={{fontWeight:page ==="MyPage" ? "bold" : "normal", color:page ==="MyPage" ? "#EF4949" : "Black"}} onClick={()=>navigator('/mypage')}>MY PAGE</span>
+            <button 
+                className={`menu-button ${page === "MyPage" ? "active-mypage" : ""}`} 
+                onClick={() => navigator('/mypage')}
+            >
+                MY PAGE
+            </button>
         </div>
-    )
+    );
 }
 
-export default MainMenuBar; 
+export default MainMenuBar;
