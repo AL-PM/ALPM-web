@@ -19,15 +19,12 @@ return(
                 <span>학습 언어</span>
                 <span>|</span>
                 <span>{Data.language}</span>
-                <span></span>
                 <span>코드 유형</span>
                 <span>|</span>
                 <span>{verifiedInvertor(Data.verified)}</span>
-                <span></span>
                 <span>작성자</span>
                 <span>|</span>
                 <span>{Data.owner.name}</span>
-                <span></span>
                 <span>제목</span>
                 <span>|</span>
                 <span>{Data.name}</span>
