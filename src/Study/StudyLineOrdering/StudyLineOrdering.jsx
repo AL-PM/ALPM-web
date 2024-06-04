@@ -41,6 +41,7 @@ function StudyLineOrdering({ problemCode }) {
                         tmpSection = 0;
                         inSection = false;
                     } else if (tabCount >= 1 && !inSection) {
+                        currentSection += 1;
                         tmpSection = currentSection;
                         inSection = true;
                     }
