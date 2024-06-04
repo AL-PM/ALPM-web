@@ -55,19 +55,17 @@ function Login() {
     <div id='Login'>
       <span id='LoginMainLogo'>AL-PM</span>
       <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
-      <div id='GoogleBtnContainer'>
-        <button id='GoogleBtn' onClick={handleLogin} disabled={loading}>
-          {loading ? (
+      {loading ?
             <HashLoader color={"red"} speedMultiplier={0.8} />
-          ) : (
-            <>
+           : 
+          <div id='GoogleBtnContainer'>
+            <button id='GoogleBtn' onClick={handleLogin} disabled={loading}>
               <img id='loginGoogleLogo' src={googleLogo} alt="googleLogo" />
               <span> 구글로 로그인하기 </span>
-            </>
-          )}
-        </button>
-      </div>
-    </div>
+            </button>
+          </div>  
+          }
+     </div> 
   );
 }
 
