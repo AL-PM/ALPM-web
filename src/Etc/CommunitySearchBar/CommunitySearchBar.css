@@ -48,15 +48,11 @@
     font-family: 'SUITE-Regular';
 }
 
-.menu-button:hover {
-    color: #B3B3B3; /* 기본 hover 색상 */
-}
-
-.menu-button[data-tag="코드 유형"]:hover {
+.menu-button:hover[data-tag="코드 유형"] {
     color: #FFB380; /* 코드 유형 hover 색상 */
 }
 
-.menu-button[data-tag="기타"]:hover {
+.menu-button:hover[data-tag="기타"] {
     color: #66CC99; /* 기타 hover 색상 */
 }
 
@@ -70,16 +66,4 @@
 
 .menu-button.active[data-tag="기타"] {
     color: #009418;
-}
-
-.menu-button.active:hover {
-    color: #FFB380; /* 활성화된 상태에서 hover 색상 변경 */
-}
-
-.menu-button[data-tag="코드 유형"]:hover.active {
-    color: #FFB380; /* 코드 유형 활성화된 상태에서 hover 색상 */
-}
-
-.menu-button[data-tag="기타"]:hover.active {
-    color: #66CC99; /* 기타 활성화된 상태에서 hover 색상 */
 }
