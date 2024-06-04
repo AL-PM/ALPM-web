@@ -7,40 +7,40 @@ function MyPageMenuBar({ MyPage }) {
     return (
         <div>
             <div id="MyPageMenuBar">
-                <span 
-                    style={{ fontWeight: MyPage === "1" ? "bold" : "normal", color: MyPage === "1" ? "#EF4949" : "black" }} 
+                <button 
+                    className={`menu-button ${MyPage === "1" ? "active" : ""}`} 
                     onClick={() => navigator('/mypage/')}
                 >
                     내 정보
-                </span>
+                </button>
                 <span>|</span>
-                <span 
-                    style={{ fontWeight: MyPage === "2" ? "bold" : "normal", color: MyPage === "2" ? "#EF4949" : "black" }} 
+                <button 
+                    className={`menu-button ${MyPage === "2" ? "active" : ""}`} 
                     onClick={() => navigator('/mypage/MyCodeBoard')}
                 >
                     내 코드 보드 관리
-                </span>
+                </button>
                 <span>|</span>
-                <span 
-                    style={{ fontWeight: MyPage === "3" ? "bold" : "normal", color: MyPage === "3" ? "#EF4949" : "black" }} 
+                <button 
+                    className={`menu-button ${MyPage === "3" ? "active" : ""}`} 
                     onClick={() => navigator('/mypage/MyCodeGroup')}
                 >
                     내 코드 그룹 관리
-                </span>
+                </button>
                 <span>|</span>
-                <span 
-                    style={{ fontWeight: MyPage === "4" ? "bold" : "normal", color: MyPage === "4" ? "#EF4949" : "black" }} 
+                <button 
+                    className={`menu-button ${MyPage === "4" ? "active" : ""}`} 
                     onClick={() => navigator('/mypage/MyUploadCode')}
                 >
                     내가 작성한 코드 관리
-                </span>
+                </button>
                 <span>|</span>
-                <span 
-                    style={{ fontWeight: MyPage === "5" ? "bold" : "normal", color: MyPage === "5" ? "#EF4949" : "black" }} 
+                <button 
+                    className={`menu-button ${MyPage === "5" ? "active" : ""}`} 
                     onClick={() => navigator('/mypage/NewCode')}
                 >
                     새로운 코드 업로드
-                </span>
+                </button>
             </div>
         </div>
     );
