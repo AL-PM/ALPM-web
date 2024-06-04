@@ -23,7 +23,7 @@ function StudyLineOrdering({ problemCode }) {
         let sectionNum = {}; // to keep track of num within each section
 
         lines.forEach((line, index) => {
-            let trimmedLine = line.trim();
+            let trimmedLine = line.split("//")[0];
             if (trimmedLine !== "") {
                 let tabCount = line.search(/\S|$/); // count leading tabs
 
@@ -65,7 +65,7 @@ function StudyLineOrdering({ problemCode }) {
     function devideFn(processedCode) {
         let finalCode = [];
         let tmpCode = [];
-        let nowCodeSection = 0;
+        let nowCodeSection = 1;
 
         processedCode.forEach((element, index) => {
             if (element.codeSection === nowCodeSection) {
