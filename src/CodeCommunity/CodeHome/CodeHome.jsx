@@ -28,6 +28,10 @@ function CodeCommunity(){
                 const access_token = localStorage.getItem("access_token");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/`, {
+                    params : {
+                        page: 0,
+                        size: 7
+                      },
                     withCredentials: true,
                     headers: {
                         'Authorization': `Bearer ${access_token}`
