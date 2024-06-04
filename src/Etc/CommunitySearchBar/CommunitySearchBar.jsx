@@ -23,7 +23,7 @@ function CommunitySearchBar({secondTag, language, setlanguage, reference, setref
             <span id = "SearchBarSetting" >검색어</span>
             <span>|</span>
             <input id = "SearchKeywordInput" value={searchkeyword} onChange={(event)=>setkeword(event.target.value)} type="text" name="CodeHomeSearchKeyword" placeholder="키워드를 입력해주세요"></input>
-            <button id = "DataLoadbutton" onClick={searchButton} ></button>
+            <button id = "DataLoadbutton" onClick={searchButton}> 검색하기 </button>
         </div>
     )
 }
