@@ -1,25 +1,27 @@
-#CommunitySearchBar{
+@import url('https://fonts.googleapis.com/css2?family=SUITE:wght@400&display=swap');
+
+#CommunitySearchBar {
     width: 85%;
     margin-top: 7.5vh;    
-    margin-left : 7.5vw;
+    margin-left: 7.5vw;
     margin-right: 7.5vw;
     display: grid;
-    grid-template-columns: 1fr 0.5fr 1.3fr 0.8fr 0.8fr 1fr 0.5fr 0.7fr 1.5fr 1.5fr 1fr 0.5fr 2fr 2fr ;
+    grid-template-columns: 1fr 0.5fr 1.3fr 0.8fr 0.8fr 1fr 0.5fr 0.7fr 1.5fr 1.5fr 1fr 0.5fr 2fr 2fr;
     justify-items: center;
     align-items: center;
     font-size: medium;
 }
 
-#SearchBarSetting{
+#SearchBarSetting {
     font-weight: bold;
 }
 
-#SearchKeywordInput{
+#SearchKeywordInput {
     font-family: 'SUITE-Regular';
     border: 0px;
 }
 
-#DataLoadbutton{
+#DataLoadbutton {
     width: 10vw;
     height: 3vh;
     display: flex;
@@ -33,6 +35,35 @@
     font-family: 'SUITE-Regular';
 }
 
-#DataLoadbutton:hover{
+#DataLoadbutton:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    transition: color 0.3s ease;
+    font-family: 'SUITE-Regular';
+}
+
+.menu-button:hover {
+    color: #B3B3B3; /* 기본 hover 색상 */
+}
+
+.menu-button.active {
+    font-weight: bold;
+}
+
+.menu-button:hover.active {
+    color: inherit; /* 활성화된 버튼의 hover 색상을 유지 */
+}
+
+.menu-button[data-tag="코드 유형"]:hover {
+    color: #FFB380; /* 코드 유형에 대한 hover 색상 */
+}
+
+.menu-button[data-tag="기타"]:hover {
+    color: #66CC99; /* 기타에 대한 hover 색상 */
 }
