@@ -52,18 +52,34 @@
     color: #B3B3B3; /* 기본 hover 색상 */
 }
 
+.menu-button[data-tag="코드 유형"]:hover {
+    color: #FFB380; /* 코드 유형 hover 색상 */
+}
+
+.menu-button[data-tag="기타"]:hover {
+    color: #66CC99; /* 기타 hover 색상 */
+}
+
 .menu-button.active {
     font-weight: bold;
 }
 
-.menu-button:hover.active {
-    color: inherit; /* 활성화된 버튼의 hover 색상을 유지 */
+.menu-button.active[data-tag="코드 유형"] {
+    color: #FF6B00;
 }
 
-.menu-button[data-tag="코드 유형"]:hover {
-    color: #FFB380; /* 코드 유형에 대한 hover 색상 */
+.menu-button.active[data-tag="기타"] {
+    color: #009418;
 }
 
-.menu-button[data-tag="기타"]:hover {
-    color: #66CC99; /* 기타에 대한 hover 색상 */
+.menu-button.active:hover {
+    color: #FFB380; /* 활성화된 상태에서 hover 색상 변경 */
+}
+
+.menu-button[data-tag="코드 유형"]:hover.active {
+    color: #FFB380; /* 코드 유형 활성화된 상태에서 hover 색상 */
+}
+
+.menu-button[data-tag="기타"]:hover.active {
+    color: #66CC99; /* 기타 활성화된 상태에서 hover 색상 */
 }
