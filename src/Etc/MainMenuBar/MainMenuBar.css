@@ -26,6 +26,22 @@
     color: #B3B3B3; /* 기본 hover 색상 */
 }
 
+.menu-button.study:hover {
+    color: #AFA6FF; /* STUDY HOME hover 색상 */
+}
+
+.menu-button.code:hover {
+    color: #FFB380; /* CODE COMMUNITY hover 색상 */
+}
+
+.menu-button.codegroup:hover {
+    color: #66CC99; /* CODE GROUP COMMUNITY hover 색상 */
+}
+
+.menu-button.mypage:hover {
+    color: #FF7F7F; /* MY PAGE hover 색상 */
+}
+
 .menu-button.active-study {
     font-weight: bold;
     color: #5C4EFF;
@@ -44,20 +60,4 @@
 .menu-button.active-mypage {
     font-weight: bold;
     color: #EF4949;
-}
-
-.menu-button:hover.active-study {
-    color: #AFA6FF; /* STUDY HOME hover 색상 */
-}
-
-.menu-button:hover.active-code {
-    color: #FFB380; /* CODE COMMUNITY hover 색상 */
-}
-
-.menu-button:hover.active-codegroup {
-    color: #66CC99; /* CODE GROUP COMMUNITY hover 색상 */
-}
-
-.menu-button:hover.active-mypage {
-    color: #FF7F7F; /* MY PAGE hover 색상 */
 }
