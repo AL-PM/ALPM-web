@@ -189,7 +189,7 @@ function StudyLineOrdering({ problemCode }) {
                                     id="StudyLineOrderingCodeArea"
                                     rows={1}
                                     cols={130}
-                                    value={userInput[codeData.codeSection - 1] && userInput[codeData.codeSection - 1][codeData.num] ? userInput[codeData.codeSection - 1][codeData.num].data : `[__${codeData.codeSection},${codeData.num + 1}__]`}
+                                    value={userInput[codeData.codeSection - 1] && userInput[codeData.codeSection - 1][codeData.num] ? userInput[codeData.codeSection - 1][codeData.num].data : `\t[__${codeData.codeSection},${codeData.num + 1}__]`}
                                     tabIndex={-1}
                                 />
                             )}
