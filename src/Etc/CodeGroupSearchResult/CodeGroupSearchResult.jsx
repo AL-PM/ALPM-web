@@ -20,15 +20,12 @@ return(
                 <span>|</span>
                 <span>{Data.language}</span>
                 <span>{verifiedInvertor(Data.verified)}</span>
-                <span></span>
                 <span>작성자</span>
                 <span>|</span>
                 <span>{Data.owner.name}</span>
-                <span></span>
                 <span>그룹 이름</span>
                 <span>|</span>
                 <span>{Data.name}</span>
-                <span></span>
                 <span>코드 개수</span>
                 <span>|</span>
                 <span>{Data.algorithm_count} 개</span>
