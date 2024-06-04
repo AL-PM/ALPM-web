@@ -58,7 +58,7 @@ function Login() {
       {loading ?
             <div style={{display : "flex", flexDirection:'row', justifyContent:'center', alignItems:'center'}}>
               <HashLoader color={"red"} speedMultiplier={0.8} />
-              <span style={{marginTop : "30px"}}>로그인 시도중</span>
+              <span style={{marginTop : "30px", color:"red"}}>로그인 시도중</span>
             </div>
            : 
           <div id='GoogleBtnContainer'>
