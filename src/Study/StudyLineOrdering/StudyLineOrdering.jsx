@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import axios from 'axios';
 import './StudyLineOrdering.css';
 
 function StudyLineOrdering({ problemCode }) {
@@ -147,7 +148,7 @@ function StudyLineOrdering({ problemCode }) {
         setCurrentPage(0);
     }
 
-    function completeFn() {
+    const completeFn = async() => {
         let correctBlocks = 0;
         let isCorrect = true;
       
@@ -164,13 +165,39 @@ function StudyLineOrdering({ problemCode }) {
         }
       
         if (isCorrect) {
-          alert(`정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`);
-        } else {
-          alert("틀렸습니다. 정답을 다시 작성해주세요.");
-          console.log(finalCode);
-          resetFn();
+            console.log(`정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`);
+            try {
+                const access_token = localStorage.getItem("access_token");
+                const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
+                      "problemType": "SEQUENCE",
+                      "point": correctBlocks,
+                      "algorithmId": problemCode.id 
+                }, {
+                  headers: {
+                    'Authorization': `Bearer ${access_token}`,
+                    'Content-Type': 'application/json'
+                  },
+                  withCredentials: true
+                });
+          
+                if (response.status === 200) {
+                    console.log(response);
+                    alert(`정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`);
+                    window.location.reload(); // Refresh the page
+                } else {
+                    alert('학습 완료에 실패하였습니다.');
+                }
+                } catch (error) {
+                    console.error(error);
+                    alert('업로드 중 오류가 발생했습니다');
+                } 
+
+            } else {
+                alert("틀렸습니다. 정답을 다시 작성해주세요.");
+                console.log(finalCode);
+                resetFn();
         }
-      }
+    }
       
 
     return (
