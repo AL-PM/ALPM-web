@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './StudyTracking.css';
 
 function StudyTracking({ problemCode }) {
@@ -96,13 +97,40 @@ function StudyTracking({ problemCode }) {
         setIsCompleted(allMatch);
     }, [inputData, processedData]);
 
-    function completeFn(processedData){
+    const completeFn = async (processedData) => {
+
         let numOfWords = 0;
         processedData.forEach((element)=>{
             numOfWords += element.data.length;
         })
-        alert("따라치기 학습을 종료합니다. \n총 작성한 코드 : " + numOfWords + "개 ");
-    }
+
+        try {
+          const access_token = localStorage.getItem("access_token");
+    
+          const response = await axios.post(`https://alpm.duckdns.org:8080/algorithm/create`, {
+                problemType: "따라치기",
+                point: numOfWords,
+                algorithmId: problemCode.id 
+          }, {
+            headers: {
+              'Authorization': `Bearer ${access_token}`,
+              'Content-Type': 'application/json'
+            },
+            withCredentials: true
+          });
+    
+          if (response.status === 200) {
+            console.log(response);
+            alert('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
+            window.location.reload(); // Refresh the page
+          } else {
+            alert('학습 완료에 실패하였습니다.');
+          }
+        } catch (error) {
+          console.error(error);
+          alert('업로드 중 오류가 발생했습니다');
+        } 
+    };
 
     return (
         <div id="StudyTracking">
