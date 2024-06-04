@@ -29,14 +29,12 @@ function StudyTracking({ problemCode }) {
 
         for (let i = 0; i < lines.length; i++) {
             const codePart = extractCode(lines[i]);
-            if (codePart !== "") {
                 processedCode.push({
                     data: codePart,
                     explain: extractExplain(lines[i]),
                     num: i + 1, // Line number starts from 1
                     tabCount: lines[i].search(/\S|$/)
                 });
-            }
         }
         return processedCode;
     }
