@@ -28,14 +28,16 @@ function StudyTracking({ problemCode }) {
         }
 
         for (let i = 0; i < lines.length; i++) {
-            const codePart = extractCode(lines[i]);
                 processedCode.push({
-                    data: codePart,
+                    data: extractCode(lines[i]),
                     explain: extractExplain(lines[i]),
                     num: i + 1, // Line number starts from 1
                     tabCount: lines[i].search(/\S|$/)
                 });
         }
+
+        // 데이터가 비어있는 요소를 필터링하여 제거합니다.
+        processedCode = processedCode.filter(item => item.data !== "");
         return processedCode;
     }
 
