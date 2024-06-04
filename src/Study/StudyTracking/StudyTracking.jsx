@@ -7,7 +7,7 @@ function StudyTracking({ problemCode }) {
         let lines = problemCode.original.split("\n");
         let processedCode = [];
         const isPython = problemCode.language === "PYTHON";
-
+    
         // Remove leading and trailing ``` tags if present
         if (lines[0].startsWith("```")) {
             lines.shift();
@@ -15,31 +15,38 @@ function StudyTracking({ problemCode }) {
         if (lines[lines.length - 1].startsWith("```")) {
             lines.pop();
         }
-
+    
         function extractExplain(line) {
             let parts = isPython ? line.split("#") : line.split("//");
             return parts.length > 1 ? parts[1].trim() : "";
         }
-
+    
         function extractCode(line) {
             let codeWithoutComment = isPython ? line.split("#")[0] : line.split("//")[0];
             let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // Remove trailing whitespace
             return trimmedCode;
         }
-
+    
         for (let i = 0; i < lines.length; i++) {
-                processedCode.push({
-                    data: extractCode(lines[i]),
-                    explain: extractExplain(lines[i]),
-                    num: i + 1, // Line number starts from 1
-                    tabCount: lines[i].search(/\S|$/)
-                });
+            processedCode.push({
+                data: extractCode(lines[i]),
+                explain: extractExplain(lines[i]),
+                num: i + 1, // Line number starts from 1
+                tabCount: lines[i].search(/\S|$/)
+            });
         }
-
+    
         // 데이터가 비어있는 요소를 필터링하여 제거합니다.
         processedCode = processedCode.filter(item => item.data !== "");
+    
+        // 필터링 후 각 객체의 num을 다시 매깁니다.
+        processedCode.forEach((item, index) => {
+            item.num = index + 1; // Line number starts from 1
+        });
+    
         return processedCode;
     }
+    
 
     function setTabFunt(tabCount) {
         let defaultTab = "";
