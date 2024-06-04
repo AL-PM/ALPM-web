@@ -5,6 +5,7 @@ function CommunitySearchBar({secondTag, language, setlanguage, reference, setref
     function searchButton(){
         setCurrentPage(0);
         setSearchIsOn(true);
+        console.log(language, reference, searchkeyword, searchIsOn);
     }
     function searchResetBtn(){
         setCurrentPage(0);
