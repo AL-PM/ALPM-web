@@ -13,10 +13,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
         setSearchIsOn(false);
     };
 
-    const colorInvertor = (secondTag) => {
-        return secondTag === "코드 유형" ? "#FF6B00" : "#009418";
-    };
-
     return (
         <div id="CommunitySearchBar">
             <span id="SearchBarSetting">학습 언어</span>
@@ -46,7 +42,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             <span>|</span>
             <button 
                 className={`menu-button ${reference === null ? "active" : ""}`} 
-                style={{ color: reference === null ? colorInvertor(secondTag) : null }}
                 onClick={() => setReference(null)}
                 data-tag={secondTag}
             >
@@ -54,7 +49,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${reference === true ? "active" : ""}`} 
-                style={{ color: reference === true ? colorInvertor(secondTag) : null }}
                 onClick={() => setReference(true)}
                 data-tag={secondTag}
             >
@@ -62,7 +56,6 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
             </button>
             <button 
                 className={`menu-button ${reference === false ? "active" : ""}`} 
-                style={{ color: reference === false ? colorInvertor(secondTag) : null }}
                 onClick={() => setReference(false)}
                 data-tag={secondTag}
             >
