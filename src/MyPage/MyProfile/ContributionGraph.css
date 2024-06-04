@@ -5,12 +5,12 @@
 .week {
     display: flex;
     flex-direction: column;
-    margin-right: 15px; /* Adjust margin for spacing between weeks */
+    margin-right: 10px; /* Adjust margin for spacing between weeks */
 }
 
 .day {
-    width: 15px; /* Adjusted width */
-    height: 15px; /* Adjusted height */
+    width: 10px; /* Adjusted width */
+    height: 10px; /* Adjusted height */
     margin: 3px 0; /* Adjust margin for spacing between days */
     background-color: #ebedf0;
     position: relative;
