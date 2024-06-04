@@ -96,9 +96,9 @@ function StudyTracking({ problemCode }) {
         setIsCompleted(allMatch);
     }, [inputData, processedData]);
 
-    function completeFn(){
+    function completeFn(processedData){
         let numOfWords = 0;
-        preprocessCode.forEach((element)=>{
+        processedData.forEach((element)=>{
             numOfWords += element.data.length;
         })
         alert("따라치기 학습을 종료합니다. \n총 작성한 코드 : " + numOfWords + "개 ");
