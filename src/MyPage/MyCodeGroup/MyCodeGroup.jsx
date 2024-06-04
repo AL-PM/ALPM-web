@@ -112,6 +112,7 @@ function MyCodeGroupNew() {
 
 function MyCodeGroup() {
 
+    const [currentPage, setCurrentPage] = useState(0); // Current page state
     const [searchResult, setSearchResult] = useState();
 
     useEffect(() => {
@@ -121,14 +122,16 @@ function MyCodeGroup() {
                 const uid = localStorage.getItem("uid");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/user/${uid}`, {
+                    params: {
+                        page: currentPage, // Use currentPage state
+                        size: 6
+                    },
                     withCredentials: true,
                     headers: {
                         'Authorization': `Bearer ${access_token}`
                     }
                 });
-
                 setSearchResult(response.data);
-
             } catch (error) {
                 console.error(error);
             }
@@ -136,7 +139,7 @@ function MyCodeGroup() {
 
         fetchUserData();
 
-    }, []);
+    }, [currentPage]);
 
     if (!searchResult) {
         return (
@@ -148,13 +151,30 @@ function MyCodeGroup() {
         );
     }
 
+    const handleNextPage = () => {
+        if (currentPage < searchResult.total_pages - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    };
+
+    const handlePreviousPage = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    };
+
     console.log(searchResult);
 
     return (
         <div id="MyCodeGroup">
             <MainMenuBar page={"MyPage"} />
             <MyPageMenuBar MyPage={"3"} />
-            <CodeGroupSearchResult searchData={searchResult.content} bodyHeight={"55vh"} />
+            <CodeGroupSearchResult searchData={searchResult.content} bodyHeight={"50vh"} />
+            <div id="pagination">
+                <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>Previous</button>
+                <span id='paginationTxt'> {currentPage + 1} / {searchResult.total_pages}</span>
+                <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>Next</button>
+            </div>
             <MyCodeGroupNew />
         </div>
     );
