@@ -30,7 +30,7 @@ function CodeCommunity(){
                 const response = await axios.get(`https://alpm.duckdns.org:8080/algorithm/`, {
                     params : {
                         page: 0,
-                        size: 7
+                        size: 6
                       },
                     withCredentials: true,
                     headers: {
