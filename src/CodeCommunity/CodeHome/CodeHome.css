@@ -30,12 +30,12 @@
     margin-bottom : 2.5vh;
     margin-left: 40vw;
     margin-right: 40vw;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
 }
 
 #paginationBtn{
-    width: 5vh;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
