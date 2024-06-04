@@ -61,8 +61,11 @@ function StudyTracking({ problemCode }) {
             [num]: event.target.value
         });
 
-        const explanation = processedData[num - 1]?.explain || "";
-        setCurrentExplanation(explanation);
+        // 입력이 변경되었을 때만 설명을 업데이트합니다.
+        if (inputData[num] !== event.target.value) {
+            const explanation = processedData[num - 1]?.explain || "";
+            setCurrentExplanation(explanation);
+        }
     }
 
     function handleKeyPress(event, num, defaultEvent) {
