@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-//import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import './StudyTracking.css';
-import ReactCanvasConfetti from 'react-canvas-confetti';
 
 function TrackingBanner({ message, type, onClose }) {
     return (
@@ -13,14 +12,15 @@ function TrackingBanner({ message, type, onClose }) {
 }
 
 function StudyTracking({ problemCode }) {
+
     const [banner, setBanner] = useState({ show: false, message: '', type: '' });
-    const confettiRef = useRef(null);
 
     function preprocessCode(problemCode) {
         let lines = problemCode.original.split("\n");
         let processedCode = [];
         const isPython = problemCode.language === "PYTHON";
 
+        // Remove leading and trailing ``` tags if present
         if (lines[0].startsWith("```")) {
             lines.shift();
         }
@@ -35,7 +35,7 @@ function StudyTracking({ problemCode }) {
 
         function extractCode(line) {
             let codeWithoutComment = isPython ? line.split("#")[0] : line.split("//")[0];
-            let trimmedCode = codeWithoutComment.replace(/\s+$/, '');
+            let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // Remove trailing whitespace
             return trimmedCode;
         }
 
@@ -43,24 +43,27 @@ function StudyTracking({ problemCode }) {
             processedCode.push({
                 data: extractCode(lines[i]),
                 explain: extractExplain(lines[i]),
-                num: i + 1,
+                num: i + 1, // Line number starts from 1
                 tabCount: lines[i].search(/\S|$/)
             });
         }
 
+        // 데이터가 비어있는 요소를 필터링하여 제거합니다.
         processedCode = processedCode.filter(item => item.data !== "");
 
+        // 필터링 후 각 객체의 num을 다시 매깁니다.
         processedCode.forEach((item, index) => {
-            item.num = index + 1;
+            item.num = index + 1; // Line number starts from 1
         });
 
         return processedCode;
     }
 
+
     function setTabFunt(tabCount) {
         let defaultTab = "";
         for (let j = 0; j < tabCount; j++) {
-            defaultTab += "\t";
+            defaultTab = defaultTab + "\t";
         }
         return defaultTab;
     }
@@ -77,6 +80,7 @@ function StudyTracking({ problemCode }) {
             [num]: event.target.value
         });
 
+        // 입력이 변경되었을 때만 설명을 업데이트합니다.
         if (inputData[num] !== event.target.value) {
             const explanation = processedData[num - 1]?.explain || "";
             setCurrentExplanation(explanation);
@@ -105,23 +109,14 @@ function StudyTracking({ problemCode }) {
     }, [inputData, processedData]);
 
     const completeFn = async (processedData) => {
+
         let numOfWords = 0;
         processedData.forEach((element) => {
             numOfWords += element.data.length;
-        });
+        })
 
-        console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
+        console.log('따라치기 종료!! 따라친 총 글자 수 : ' + numOfWords);
 
-        setBanner({ show: true, message: '따라치기 종료!! 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
-                if (confettiRef.current) {
-                    confettiRef.current({
-                        particleCount: 100,
-                        spread: 70,
-                        origin: { y: 0.6 }
-                    });
-                }
-              
-                /*
         try {
             const access_token = localStorage.getItem("access_token");
 
@@ -140,13 +135,6 @@ function StudyTracking({ problemCode }) {
             if (response.status === 200) {
                 console.log(response);
                 setBanner({ show: true, message: '따라치기 종료!! 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
-                if (confettiRef.current) {
-                    confettiRef.current({
-                        particleCount: 100,
-                        spread: 70,
-                        origin: { y: 0.6 }
-                    });
-                }
             } else {
                 setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
             }
@@ -154,7 +142,6 @@ function StudyTracking({ problemCode }) {
             console.error(error);
             setBanner({ show: true, message: '정보 요청 중 오류가 발생했습니다', type: 'error' });
         }
-        */
     };
 
     const closeBanner = () => {
@@ -163,7 +150,6 @@ function StudyTracking({ problemCode }) {
 
     return (
         <div id="StudyTracking">
-            <ReactCanvasConfetti refConfetti={confettiRef} style={{ position: 'fixed', pointerEvents: 'none', width: '100%', height: '100%' }} />
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             {processedData.map((codeData) =>
                 <div key={codeData.num}>
@@ -194,7 +180,7 @@ function StudyTracking({ problemCode }) {
             }
             <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={() => completeFn(processedData)}> 완료 </button>
         </div>
-    );
+    )
 }
 
 export default StudyTracking;
