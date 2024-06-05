@@ -171,7 +171,7 @@ function StudyTracking({ problemCode }) {
                     />
                 </div>
             )}
-            {currentExplanation === "" ? null :
+            {currentExplanation === "" || isCompleted ? null :
                 <div id="explainationBox" disabled={!isCompleted} >
                     <p>현재 작성중인 라인에 대한 설명</p>
                     <p style={{ fontWeight: "bold" }}>:</p>
