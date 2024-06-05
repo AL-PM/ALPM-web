@@ -193,14 +193,14 @@ function StudyLineOrdering({ problemCode }) {
           
                 if (response.status === 200) {
                     console.log(response);
-                    setBanner({ show: true, message: `정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`, type: 'success' });
+                    setBanner({ show: true, message: `정답입니다. 맞춘 블럭 수 : ${correctBlocks}`, type: 'success' });
                     window.location.reload(); // Refresh the page
                 } else {
-                    setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
+                    setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
                 }
                 } catch (error) {
                     console.error(error);
-                    setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
+                    setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
                 } 
 
             } else {

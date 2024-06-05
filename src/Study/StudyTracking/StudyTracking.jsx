@@ -134,13 +134,13 @@ function StudyTracking({ problemCode }) {
 
             if (response.status === 200) {
                 console.log(response);
-                setBanner({ show: true, message: '따라치기 종료!! 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
+                setBanner({ show: true, message: '정답입니다. 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
             } else {
-                setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
+                setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
             }
         } catch (error) {
             console.error(error);
-            setBanner({ show: true, message: '정보 요청 중 오류가 발생했습니다', type: 'error' });
+            setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다', type: 'error' });
         }
     };
 

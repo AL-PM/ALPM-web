@@ -2,10 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './StudyBlockWriting.css';
 
+function TrackingBanner({ message, type, onClose }) {
+    return (
+        <div className={`trackingbanner ${type}`}>
+            {message}
+            <button onClick={onClose} className={`trackingbanner-close-btn ${type}`}>확인</button>
+        </div>
+    );
+}
+
 function StudyBlockWriting({problemCode, level}) {
     const [codeData, setCodeData] = useState(null);
     const [userInput, setUserInput] = useState([]);
     const [finalCode, setFinalCode] = useState("");
+    const [banner, setBanner] = useState({ show: false, message: '', type: '' });
 
     useEffect(() => {
         const code = {
@@ -221,20 +231,24 @@ function StudyBlockWriting({problemCode, level}) {
           
                 if (response.status === 200) {
                     console.log(response);
-                    alert("정답입니다. 맞춘 블럭 수 : " + codeData[2].length);
+                    setBanner({ show: true, message: "정답입니다. 맞춘 블럭 수 : " + codeData[2].length, type: 'success' });
                     window.location.reload(); // Refresh the page
                 } else {
-                    alert('학습 완료에 실패하였습니다.');
+                    setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
                 }
             } catch (error) {
                 console.error(error);
-                alert('업로드 중 오류가 발생했습니다');
+                setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
             } 
         } else {
+            setBanner({ show: true, message: '오답입니다. 다시 작성해주세요.', type: 'error' });
             resetFn();
-            alert("옳지 않은 답변입니다. 다시 작성해주세요");
         }
     }
+
+    const closeBanner = () => {
+        setBanner({ show: false, message: '', type: '' });
+    };
 
     const handleInputChange = (index, value) => {
         setUserInput(prevUserInput => {
@@ -247,6 +261,7 @@ function StudyBlockWriting({problemCode, level}) {
 
     return (
         <div id="StudyBlockOrdering" >
+            {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             <textarea readOnly
                 id="StudyBlockOrderingCodeArea"
                 rows={countRows(finalCode)}
