@@ -91,6 +91,7 @@
   
   #UploadSettingInfo button {
     background: none;
+    font-family: 'SUITE-Regular';
     border: none;
     cursor: pointer;
     font-size: 16px;
