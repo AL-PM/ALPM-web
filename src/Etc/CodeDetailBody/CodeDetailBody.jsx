@@ -17,10 +17,10 @@ function CodeDetailBody({ content, description, owner }) {
 
     const data = content.split("\n");
 
-    // Process the content to remove `//` comments and ` ``` ` lines
+    // Process the content to remove `//` comments and any lines containing ` ``` `
     for (let i = 0; i < data.length; i++) {
-        // Skip lines that are just ``` symbols
-        if (data[i].trim() === "```") {
+        // Skip lines that contain ``` symbols
+        if (data[i].includes("```")) {
             continue;
         }
         // Split by `//` to remove comments
