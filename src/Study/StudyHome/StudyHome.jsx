@@ -78,6 +78,9 @@ function StudyHome() {
             setProblem(true);
         } catch (error) {
             setBanner({ show: true, message: '올바른 코드그룹을 골라서 다시 시도해주세요.', type: 'error' });
+            setTimeout(() => {
+                setBanner({ show: false, message: '', type: '' });
+              }, 3000);
             console.error(error);
         }
         setIsLoading(false);
