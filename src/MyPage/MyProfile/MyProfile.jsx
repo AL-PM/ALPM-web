@@ -110,11 +110,11 @@ function MyProfile() {
                 profile={userData.profile} 
             />
             <MyProfileStudyHistory
-                trace_point={userData.trace_point}
-                fill_point={userData.fill_point}
-                sequence_point={userData.sequence_point}
-                block_point={userData.block_point}
-                history_list={userData.history_list} 
+                trace_point={userData.tracePoint}
+                fill_point={userData.fillPoint}
+                sequence_point={userData.sequencePoint}
+                block_point={userData.blockPoint}
+                history_list={userData.historyList} 
             />
         </div>
     );
