@@ -49,12 +49,11 @@
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
     background-color: #fff; /* 배경색을 흰색으로 */
-
     width: 95%;
-    padding-top:15px;
+    padding-top:30px;
     padding-left : 2.5%;
     padding-right : 2.5%;
-    padding-bottom: 15px;
+    padding-bottom: 30px;
     font-family: 'SUITE-Regular';
     margin-top: 15px;
     margin-bottom :15px;

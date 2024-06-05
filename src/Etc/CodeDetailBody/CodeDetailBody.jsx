@@ -16,15 +16,16 @@ function CodeDetailBody({ content, description, owner }) {
     let finalCode = "";
 
     const data = content.split("\n");
+
+    // Process the content to remove `//` comments and ` ``` ` lines
     for (let i = 0; i < data.length; i++) {
-        data[i] = data[i].split("//");
-    }
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].length === 2) {
-            finalCode = finalCode + data[i][0] + "\n";
-        } else {
-            finalCode = finalCode + data[i] + "\n";
+        // Skip lines that are just ``` symbols
+        if (data[i].trim() === "```") {
+            continue;
         }
+        // Split by `//` to remove comments
+        const codeLine = data[i].split("//")[0];
+        finalCode += codeLine + "\n";
     }
 
     // TextArea row 설정을 위해 코드 전체의 줄 수 계산
