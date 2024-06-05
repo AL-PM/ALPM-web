@@ -2,13 +2,24 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './StudyTracking.css';
 
+function Banner({ message, type, onClose }) {
+    return (
+        <div className={`banner ${type}`}>
+            {message}
+            <button onClick={onClose} className="banner-close-btn">확인</button>
+        </div>
+    );
+}
+
 function StudyTracking({ problemCode }) {
-    
+
+    const [banner, setBanner] = useState({ show: false, message: '', type: '' });
+
     function preprocessCode(problemCode) {
         let lines = problemCode.original.split("\n");
         let processedCode = [];
         const isPython = problemCode.language === "PYTHON";
-    
+
         // Remove leading and trailing ``` tags if present
         if (lines[0].startsWith("```")) {
             lines.shift();
@@ -16,18 +27,18 @@ function StudyTracking({ problemCode }) {
         if (lines[lines.length - 1].startsWith("```")) {
             lines.pop();
         }
-    
+
         function extractExplain(line) {
             let parts = isPython ? line.split("#") : line.split("//");
             return parts.length > 1 ? parts[1].trim() : "";
         }
-    
+
         function extractCode(line) {
             let codeWithoutComment = isPython ? line.split("#")[0] : line.split("//")[0];
             let trimmedCode = codeWithoutComment.replace(/\s+$/, ''); // Remove trailing whitespace
             return trimmedCode;
         }
-    
+
         for (let i = 0; i < lines.length; i++) {
             processedCode.push({
                 data: extractCode(lines[i]),
@@ -36,18 +47,18 @@ function StudyTracking({ problemCode }) {
                 tabCount: lines[i].search(/\S|$/)
             });
         }
-    
+
         // 데이터가 비어있는 요소를 필터링하여 제거합니다.
         processedCode = processedCode.filter(item => item.data !== "");
-    
+
         // 필터링 후 각 객체의 num을 다시 매깁니다.
         processedCode.forEach((item, index) => {
             item.num = index + 1; // Line number starts from 1
         });
-    
+
         return processedCode;
     }
-    
+
 
     function setTabFunt(tabCount) {
         let defaultTab = "";
@@ -100,42 +111,46 @@ function StudyTracking({ problemCode }) {
     const completeFn = async (processedData) => {
 
         let numOfWords = 0;
-        processedData.forEach((element)=>{
+        processedData.forEach((element) => {
             numOfWords += element.data.length;
         })
 
         console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
-        
+
         try {
-          const access_token = localStorage.getItem("access_token");
-    
-          const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
+            const access_token = localStorage.getItem("access_token");
+
+            const response = await axios.post(`https://alpm.duckdns.org:8080/history/create`, {
                 "problemType": "TRACE",
                 "point": numOfWords,
-                "algorithmId": problemCode.id 
-          }, {
-            headers: {
-              'Authorization': `Bearer ${access_token}`,
-              'Content-Type': 'application/json'
-            },
-            withCredentials: true
-          });
-    
-          if (response.status === 200) {
-            console.log(response);
-            alert('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
-            window.location.reload(); // Refresh the page
-          } else {
-            alert('학습 완료에 실패하였습니다.');
-          }
+                "algorithmId": problemCode.id
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${access_token}`,
+                    'Content-Type': 'application/json'
+                },
+                withCredentials: true
+            });
+
+            if (response.status === 200) {
+                console.log(response);
+                setBanner({ show: true, message: '따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
+            } else {
+                setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
+            }
         } catch (error) {
-          console.error(error);
-          alert('업로드 중 오류가 발생했습니다');
-        } 
+            console.error(error);
+            setBanner({ show: true, message: '정보 요청 중 오류가 발생했습니다', type: 'error' });
+        }
+    };
+
+    const closeBanner = () => {
+        setBanner({ show: false, message: '', type: '' });
     };
 
     return (
         <div id="StudyTracking">
+            {banner.show && <Banner message={banner.message} type={banner.type} onClose={closeBanner} />}
             {processedData.map((codeData) =>
                 <div key={codeData.num}>
                     {codeData.data === inputData[codeData.num] ? null :
