@@ -16,9 +16,9 @@ function CodeUploadTitle({ Title }) {
   );
 }
 
-function Banner({ message, type }) {
+function NewCodeBanner({ message, type }) {
   return (
-    <div className={`banner ${type}`}>
+    <div className={`new-code-banner ${type}`}>
       {message}
     </div>
   );
@@ -130,7 +130,7 @@ function NewCodeUpload() {
 
   return (
     <div>
-      {banner.show && <Banner message={banner.message} type={banner.type} />}
+      {banner.show && <NewCodeBanner message={banner.message} type={banner.type} />}
       <MainMenuBar page={"MyPage"} />
       <MyPageMenuBar MyPage={"5"} />
       <div id="CodeDetailBody">

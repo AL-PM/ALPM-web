@@ -1,3 +1,27 @@
+.new-code-banner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'SUITE-Regular';
+  font-size: medium;
+  z-index: 1000;
+}
+
+.new-code-banner.success {
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.new-code-banner.error {
+  border: 2px solid #F44336;
+  color: #F44336;
+}
+
 #UploadSettingInfo{
     display: flex;
     gap: 30px;
@@ -107,4 +131,3 @@
   #UploadSettingInfo button:hover {
     color: #F5A3A3; /* Lighter red for hover */
   }
-  
