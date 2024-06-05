@@ -13,13 +13,13 @@
 }
 
 .new-code-banner.success {
-  border: 2px solid #4CAF50;
-  color: #4CAF50;
+  border: 2px solid #4bc5fe;
+  color: #4bc5fe;
 }
 
 .new-code-banner.error {
-  border: 2px solid #F44336;
-  color: #F44336;
+  border: 2px solid #ff8f87;
+  color: #ff8f87;
 }
 
 #UploadSettingInfo{
