@@ -115,6 +115,8 @@ function StudyTracking({ problemCode }) {
             numOfWords += element.data.length;
         })
 
+        setBanner({ show: true, message: '따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
+        
         console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
 
         /*
