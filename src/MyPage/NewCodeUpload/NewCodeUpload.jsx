@@ -136,9 +136,24 @@ function NewCodeUpload() {
       <div id="CodeDetailBody">
         <CodeUploadTitle Title={"코드 언어"} />
         <div id="UploadSettingInfo">
-          <span onClick={() => setLanguage("PYTHON")} style={{ fontWeight: language === "PYTHON" ? "bold" : 'normal', color: language === "PYTHON" ? "#EF4949" : "black" }}>PYTHON</span>
-          <span onClick={() => setLanguage("JAVA")} style={{ fontWeight: language === "JAVA" ? "bold" : 'normal', color: language === "JAVA" ? "#EF4949" : "black" }}>JAVA</span>
-          <span onClick={() => setLanguage("C")} style={{ fontWeight: language === "C" ? "bold" : 'normal', color: language === "C" ? "#EF4949" : "black" }}>C++</span>
+          <button
+            onClick={() => setLanguage("PYTHON")}
+            className={language === "PYTHON" ? "selected" : ""}
+          >
+            PYTHON
+          </button>
+          <button
+            onClick={() => setLanguage("JAVA")}
+            className={language === "JAVA" ? "selected" : ""}
+          >
+            JAVA
+          </button>
+          <button
+            onClick={() => setLanguage("C")}
+            className={language === "C" ? "selected" : ""}
+          >
+            C++
+          </button>
         </div>
         <CodeUploadTitle Title={"코드 이름"} />
         <input id='UploadDescription'

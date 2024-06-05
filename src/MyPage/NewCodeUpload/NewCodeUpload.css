@@ -83,3 +83,27 @@
 #CodeUploadwBtn:hover{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
 }
+
+#UploadSettingInfo {
+    display: flex;
+    gap: 10px;
+  }
+  
+  #UploadSettingInfo button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    transition: color 0.3s;
+  }
+  
+  #UploadSettingInfo button.selected {
+    font-weight: bold;
+    color: #EF4949;
+  }
+  
+  #UploadSettingInfo button:hover {
+    color: #F5A3A3; /* Lighter red for hover */
+  }
+  
