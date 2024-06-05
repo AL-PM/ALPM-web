@@ -1,19 +1,40 @@
-#CodeGroupFollowBtn{
+.banner {
+    font-family: 'SUITE-Regular';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    font-size: 12px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.banner.success {
+    background-color: #009418; /* 성공: 초록색 배경 */
+    color: white;
+}
+
+.banner.error {
+    background-color: #ff8f87; /* 실패: 빨간색 배경 */
+    color: white;
+}
+
+#CodeGroupFollowBtn {
     width: 85vw;
-    height : 5vh;
+    height: 5vh;
     margin-left: 7.5vw;
     background-color: white;
     font-family: 'SUITE-Regular';
     font-weight: bold;
-    color : #009418;
-
-    border: 1px solid #ddd; /* 연한 회색 경계선 */
-    border-radius: 8px; /* 모서리를 둥글게 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
-    background-color: #fff; /* 배경색을 흰색으로 */
-    transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
+    color: #009418;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
 }
 
-#CodeGroupFollowBtn:hover{
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
+#CodeGroupFollowBtn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
