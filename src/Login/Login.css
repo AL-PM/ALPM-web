@@ -40,3 +40,25 @@
 #GoogleBtn:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Optional: Add a larger shadow on hover */
 }
+
+.banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    font-size: 18px;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .banner.success {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+  
+  .banner.error {
+    background-color: #f44336; /* Red */
+    color: white;
+  }
