@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import axios from 'axios';
+//import axios from 'axios';
 import './StudyTracking.css';
 import ReactCanvasConfetti from 'react-canvas-confetti';
 
@@ -112,6 +112,16 @@ function StudyTracking({ problemCode }) {
 
         console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
 
+        setBanner({ show: true, message: '따라치기 종료!! 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
+                if (confettiRef.current) {
+                    confettiRef.current({
+                        particleCount: 100,
+                        spread: 70,
+                        origin: { y: 0.6 }
+                    });
+                }
+              
+                /*
         try {
             const access_token = localStorage.getItem("access_token");
 
@@ -144,6 +154,7 @@ function StudyTracking({ problemCode }) {
             console.error(error);
             setBanner({ show: true, message: '정보 요청 중 오류가 발생했습니다', type: 'error' });
         }
+        */
     };
 
     const closeBanner = () => {
