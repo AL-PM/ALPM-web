@@ -41,8 +41,8 @@ function Login() {
           console.log(response);
           // Save access_token and refresh_token to localStorage
           localStorage.setItem('uid', response.data.user.id);
-          localStorage.setItem('access_token', response.data.access_token);
-          localStorage.setItem('refresh_token', response.data.refresh_token);
+          localStorage.setItem('access_token', response.data.accessToken);
+          localStorage.setItem('refresh_token', response.data.refreshToken);
 
           setBanner({ show: true, message: `안녕하세요 ${response.data.user.name} 사용자님! 정상적으로 로그인되었습니다.`, type: 'success' });
 
