@@ -56,10 +56,8 @@ function Login() {
           setTimeout(() => {
             window.location.reload();
           }, 2000);
-        })
-        .finally(() => {
-          setLoading(false); // Set loading to false after the response
         });
+        
     } else {
       setLoading(false); // Set loading to false if there is no code parameter
     }
