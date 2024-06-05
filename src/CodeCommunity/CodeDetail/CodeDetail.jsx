@@ -7,8 +7,18 @@ import CodeDetailInfo from '../../Etc/CodeDetailInfo/CodeDetailInfo.jsx';
 import CodeDetailBody from '../../Etc/CodeDetailBody/CodeDetailBody.jsx';
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
+function Banner({ message, type }) {
+    return (
+      <div className={`banner ${type}`}>
+        {message}
+      </div>
+    );
+  }
+
 function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
     const [target, setTarget] = useState(0);
+    const [banner, setBanner] = useState({ show: false, message: '', type: '' });
+
 
     const defaultCodeGroup = { id: 0, name: "Default", language: "Default", algorithm_count: 1 };
 
@@ -60,6 +70,7 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
 
     return (
         <div id='codeFollowBtnContainer'>
+            {banner.show && <Banner message={banner.message} type={banner.type} />}
             <div id='codeFollowGroupSetting'>
                 <span id="SettingBarSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }}>추가할 코드 그룹</span>
                 <span>|</span>

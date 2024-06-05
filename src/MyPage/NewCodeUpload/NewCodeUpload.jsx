@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './NewCodeUpload.css';
 import MainMenuBar from '../../Etc/MainMenuBar/MainMenuBar';
 import MyPageMenuBar from '../MyPageMenuBar/MyPageMenuBar';
@@ -15,6 +16,14 @@ function CodeUploadTitle({ Title }) {
   );
 }
 
+function Banner({ message, type }) {
+  return (
+    <div className={`banner ${type}`}>
+      {message}
+    </div>
+  );
+}
+
 function NewCodeUpload() {
   const [code, setCode] = useState("");
   const [description, setDescription] = useState("");
@@ -23,6 +32,8 @@ function NewCodeUpload() {
   const codeRef = useRef(null);
   const descriptionRef = useRef(null);
   const [upload, setUpload] = useState(false);
+  const navigator = useNavigate();
+  const [banner, setBanner] = useState({ show: false, message: '', type: '' });
 
   const codeKeyDown = (e) => {
     if (e.keyCode === 13 || e.keyCode === 9) {
@@ -84,13 +95,23 @@ function NewCodeUpload() {
 
       if (response.status === 200) {
         console.log(response);
-        alert('업로드가 완료되었습니다');
+        setBanner({ show: true, message: '업로드가 완료되었습니다', type: 'success' });
+        setTimeout(() => {
+          setBanner({ show: false, message: '', type: '' });
+        }, 3000);
+        navigator('/mypage/MyUploadCode');
       } else {
-        alert('업로드에 실패했습니다');
+        setBanner({ show: true, message: '업로드에 실패하였습니다.', type: 'error' });
+        setTimeout(() => {
+          setBanner({ show: false, message: '', type: '' });
+        }, 3000);
       }
     } catch (error) {
       console.error(error);
-      alert('업로드 중 오류가 발생했습니다');
+      setBanner({ show: true, message: '업로드 중 오류가 발생했습니다.', type: 'error' });
+      setTimeout(() => {
+      setBanner({ show: false, message: '', type: '' });
+      }, 3000);
     } finally {
       setUpload(false);
     }
@@ -109,6 +130,7 @@ function NewCodeUpload() {
 
   return (
     <div>
+      {banner.show && <Banner message={banner.message} type={banner.type} />}
       <MainMenuBar page={"MyPage"} />
       <MyPageMenuBar MyPage={"5"} />
       <div id="CodeDetailBody">

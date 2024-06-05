@@ -7,10 +7,20 @@ import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner';
 import './MyCodeGroup.css';
 import './MyCodeGroupNew.css'; // Create and import a CSS file for styling
 
+function Banner({ message, type }) {
+    return (
+      <div className={`banner ${type}`}>
+        {message}
+      </div>
+    );
+  }
+
 function MyCodeGroupNew() {
     const [groupName, setGroupName] = useState('');
     const [language, setLanguage] = useState('C');
     const [isPublic, setIsPublic] = useState(false);
+    const [banner, setBanner] = useState({ show: false, message: '', type: '' });
+
 
     const handleSubmit = async () => {
         try {
@@ -49,17 +59,29 @@ function MyCodeGroupNew() {
                 });
 
                 if (patchResponse.status === 200) {
-                    alert('코드 그룹 생성 및 업로드가 완료되었습니다');
+                    setBanner({ show: true, message: '코드 그룹 생성 및 업로드가 완료되었습니다', type: 'success' });
+                    setTimeout(() => {
+                    setBanner({ show: false, message: '', type: '' });
+                    }, 3000);
                     window.location.reload(); // Refresh the page
                 } else {
-                    alert('코드 그룹 업로드에 실패했습니다');
+                    setBanner({ show: true, message: '코드 그룹 업로드에 실패했습니다.', type: 'error' });
+                    setTimeout(() => {
+                    setBanner({ show: false, message: '', type: '' });
+                    }, 3000);
                 }
             } else {
-                alert('코드 그룹 생성에 실패했습니다');
+                setBanner({ show: true, message: '코드 그룹 업로드에 실패했습니다.', type: 'error' });
+                setTimeout(() => {
+                setBanner({ show: false, message: '', type: '' });
+                }, 3000);
             }
         } catch (error) {
             console.error(error);
-            alert('업로드 중 오류가 발생했습니다');
+            setBanner({ show: true, message: '업로드 중 오류가 발생했습니다.', type: 'error' });
+                setTimeout(() => {
+                setBanner({ show: false, message: '', type: '' });
+                }, 3000);
         }
     };
 
@@ -69,6 +91,7 @@ function MyCodeGroupNew() {
 
     return (
         <div className="code-group-container">
+            {banner.show && <Banner message={banner.message} type={banner.type} />}
             <div className="input-row">
                 <div className="input-group">
                     <label htmlFor="groupName">코드 그룹 이름</label>
