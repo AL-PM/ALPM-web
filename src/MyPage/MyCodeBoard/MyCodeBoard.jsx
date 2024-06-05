@@ -38,7 +38,7 @@ function MyCodeBoard(){
     }, [currentPage]);
 
     const handleNextPage = () => {
-        if (currentPage < searchResult.total_pages - 1) {
+        if (currentPage < searchResult.totalPages - 1) {
             setCurrentPage(currentPage + 1);
         }
     };
@@ -68,8 +68,8 @@ function MyCodeBoard(){
             <CodeSearchResult searchData={searchResult.content} bodyHeight={"55vh"} siteTag={"MyPage"}/>
             <div id="pagination">
                 <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>{"<"}</button>
-                <span id='paginationTxt'> {currentPage + 1} / {searchResult.total_pages}</span>
-                <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.total_pages - 1}>{">"}</button>
+                <span id='paginationTxt'> {currentPage + 1} / {searchResult.totalPages}</span>
+                <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.totalPages - 1}>{">"}</button>
             </div>
         </div>
     )
