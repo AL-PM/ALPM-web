@@ -33,33 +33,42 @@
     align-items: center;
     justify-items: center;
     background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add this line */
-    transition: box-shadow 0.3s ease; /* Optional: Add a transition for the shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
 
 #GoogleBtn:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Optional: Add a larger shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .banner {
     font-family: 'SUITE-Regular';
     position: fixed;
-    top: 0;
+    top: -100px;
     left: 0;
     width: 100%;
     padding: 10px;
     text-align: center;
     z-index: 1000;
-    font-size: 12ㄴpx;
+    font-size: 12px;
     transition: transform 0.5s ease-in-out;
-  }
-  
-  .banner.success {
+    transform: translateY(-100%);
+}
+
+.banner.success {
     background-color: #4CAF50; /* Green */
     color: white;
-  }
-  
-  .banner.error {
+}
+
+.banner.error {
     background-color: #f44336; /* Red */
     color: white;
-  }
+}
+
+.banner.show {
+    transform: translateY(0%);
+}
+
+.banner.hide {
+    transform: translateY(-100%);
+}

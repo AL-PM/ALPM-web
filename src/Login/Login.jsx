@@ -5,9 +5,9 @@ import googleLogo from './img/Google-Logo.png';
 import { HashLoader } from 'react-spinners';
 import './Login.css';
 
-function Banner({ message, type }) {
+function Banner({ message, type, show }) {
   return (
-    <div className={`banner ${type}`}>
+    <div className={`banner ${type} ${show ? 'show' : 'hide'}`}>
       {message}
     </div>
   );
@@ -44,17 +44,19 @@ function Login() {
 
           setBanner({ show: true, message: `안녕하세요 ${response.data.user.name} 사용자님! 정상적으로 로그인되었습니다.`, type: 'success' });
 
-          // Navigate to /study after 3 seconds
+          // Hide the banner after 3 seconds and then navigate
           setTimeout(() => {
-            navigate('/study');
+            setBanner(prev => ({ ...prev, show: false }));
+            setTimeout(() => navigate('/study'), 2000);
           }, 3000);
         })
         .catch(error => {
           setBanner({ show: true, message: '로그인에 실패하였습니다. 다시 시도해주세요.', type: 'error' });
 
-          // Reload the page after 3 seconds
+          // Hide the banner after 3 seconds and then reload the page
           setTimeout(() => {
-            window.location.reload();
+            setBanner(prev => ({ ...prev, show: false }));
+            setTimeout(() => window.location.reload(), 2000);
           }, 3000);
         })
         .finally(() => {
@@ -67,7 +69,7 @@ function Login() {
 
   return (
     <div id='Login'>
-      {banner.show && <Banner message={banner.message} type={banner.type} />}
+      {banner.show && <Banner message={banner.message} type={banner.type} show={banner.show} />}
       <span id='LoginMainLogo'>AL-PM</span>
       <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
       {loading ?
