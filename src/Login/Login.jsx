@@ -30,6 +30,7 @@ function Login() {
     const code = urlParams.get('code');
 
     if (code) {
+      setLoading(true); // Ensure loading is true while processing the login response
       // Use Axios to send the request
       axios.get(`https://alpm.duckdns.org:8080/oauth2/code/google`, {
         params: { code },
@@ -37,7 +38,6 @@ function Login() {
         withCredentials: true, // Include credentials if needed
       })
         .then(response => {
-
           console.log(response);
           // Save access_token and refresh_token to localStorage
           localStorage.setItem('uid', response.data.user.id);
@@ -54,13 +54,11 @@ function Login() {
         .catch(error => {
           setBanner({ show: true, message: '로그인에 실패하였습니다. 다시 시도해주세요.', type: 'error' });
 
-          // Reload the page after 3 seconds
+          // Reset loading state and show the Google button again after 3 seconds
           setTimeout(() => {
+            setLoading(false);
             window.location.reload();
-          }, 1000);
-        })
-        .finally(() => {
-          setLoading(false); // Set loading to false after the response
+          }, 3000);
         });
     } else {
       setLoading(false); // Set loading to false if there is no code parameter
