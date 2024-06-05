@@ -55,7 +55,7 @@ function Login() {
           // Reload the page after 3 seconds
           setTimeout(() => {
             window.location.reload();
-          }, 3000);
+          }, 2000);
         })
         .finally(() => {
           setLoading(false); // Set loading to false after the response
