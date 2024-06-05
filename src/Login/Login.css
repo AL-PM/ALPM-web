@@ -55,11 +55,11 @@
   }
   
   .banner.success {
-    background-color: #4CAF50; /* Green */
+    background-color: #4bc5fe; /* Green */
     color: white;
   }
   
   .banner.error {
-    background-color: #f44336; /* Red */
+    background-color: #ff8f87; /* Red */
     color: white;
   }
