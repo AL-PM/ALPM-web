@@ -169,7 +169,7 @@ function MyCodeGroup() {
             <div id="MyCodeGroup">
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"3"} />
-                <LoadingSpinner color={"EF4949"} comment={"내 코드 그룹 불러오는 중"}/>
+                <LoadingSpinner color={"#EF4949"} comment={"내 코드 그룹 불러오는 중"}/>
             </div>
         );
     }

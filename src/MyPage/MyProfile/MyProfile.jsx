@@ -94,7 +94,7 @@ function MyProfile() {
             <div>
                 <MainMenuBar page={"MyPage"} />
                 <MyPageMenuBar MyPage={"1"} />
-                <LoadingSpinner color={"EF4949"} comment={"내 정보 불러오는 중"}/>
+                <LoadingSpinner color={"#EF4949"} comment={"내 정보 불러오는 중"}/>
             </div>
         );
     }
