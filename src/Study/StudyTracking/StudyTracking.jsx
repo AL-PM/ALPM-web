@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+//import axios from 'axios';
 import './StudyTracking.css';
 
 function TrackingBanner({ message, type, onClose }) {
@@ -117,6 +117,7 @@ function StudyTracking({ problemCode }) {
 
         console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
 
+        /*
         try {
             const access_token = localStorage.getItem("access_token");
 
@@ -142,6 +143,7 @@ function StudyTracking({ problemCode }) {
             console.error(error);
             setBanner({ show: true, message: '정보 요청 중 오류가 발생했습니다', type: 'error' });
         }
+        */
     };
 
     const closeBanner = () => {
