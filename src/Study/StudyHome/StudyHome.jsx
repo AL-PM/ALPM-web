@@ -9,6 +9,14 @@ import StudyBlockOrdering from "../StudyBlockOrdering/StudyBlockOrdering.jsx";
 import StudyBlockWriting from "../StudyBlockWriting/StudyBlockWriting.jsx";
 import LoadingSpinner from '../../Etc/LoadingSpinner/LoadingSpinner.jsx';
 
+function Banner({ message, type }) {
+    return (
+      <div className={`banner ${type}`}>
+        {message}
+      </div>
+    );
+  }
+
 function StudyHomeBody() {
     return (
         <div id="StudyHomeBody">
@@ -26,6 +34,7 @@ function StudyHome() {
     const [searchResult, setSearchResult] = useState();
     const [problemCode, setProblemCode] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [banner, setBanner] = useState({ show: false, message: '', type: '' });
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -68,6 +77,7 @@ function StudyHome() {
             console.log(response.data);
             setProblem(true);
         } catch (error) {
+            setBanner({ show: true, message: '올바른 코드그룹을 골라서 다시 시도해주세요.', type: 'error' });
             console.error(error);
         }
         setIsLoading(false);
@@ -91,6 +101,7 @@ function StudyHome() {
 
     return (
         <div id="StudyHome">
+            {banner.show && <Banner message={banner.message} type={banner.type} />}
             <MainMenuBar page={"Study"} />
             <StudySettingBar 
                 setLanguage={setLanguage} 
