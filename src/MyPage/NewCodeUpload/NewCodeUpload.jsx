@@ -76,7 +76,7 @@ function NewCodeUpload() {
       language: language,
       content: code.replace(/\t/g, "    "),
       description: description
-    })
+    });
     try {
       const access_token = localStorage.getItem("access_token");
 
@@ -95,11 +95,11 @@ function NewCodeUpload() {
 
       if (response.status === 200) {
         console.log(response);
-        setBanner({ show: true, message: '업로드가 완료되었습니다', type: 'success' });
+        setBanner({ show: true, message: '업로드가 완료되었습니다. 10초 뒤 사용자 코드 목록으로 이동합니다', type: 'success' });
         setTimeout(() => {
           setBanner({ show: false, message: '', type: '' });
-        }, 3000);
-        navigator('/mypage/MyUploadCode');
+          navigator('/mypage/MyUploadCode');
+        }, 10000);
       } else {
         setBanner({ show: true, message: '업로드에 실패하였습니다.', type: 'error' });
         setTimeout(() => {
@@ -110,7 +110,7 @@ function NewCodeUpload() {
       console.error(error);
       setBanner({ show: true, message: '업로드 중 오류가 발생했습니다.', type: 'error' });
       setTimeout(() => {
-      setBanner({ show: false, message: '', type: '' });
+        setBanner({ show: false, message: '', type: '' });
       }, 3000);
     } finally {
       setUpload(false);
