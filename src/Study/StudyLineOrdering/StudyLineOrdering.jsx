@@ -2,6 +2,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from 'axios';
 import './StudyLineOrdering.css';
 
+function TrackingBanner({ message, type, onClose }) {
+    return (
+        <div className={`trackingbanner ${type}`}>
+            {message}
+            <button onClick={onClose} className={`trackingbanner-close-btn ${type}`}>확인</button>
+        </div>
+    );
+}
+
+
 function StudyLineOrdering({ problemCode }) {
     const [currentPage, setCurrentPage] = useState(0);
     const [userInput, setUserInput] = useState([]);
@@ -9,6 +19,7 @@ function StudyLineOrdering({ problemCode }) {
     const [initialRandomFinalCode, setInitialRandomFinalCode] = useState([]);
     const [processedData, setProcessedData] = useState([]);
     const [finalCode, setFinalCode] = useState([]);
+    const [banner, setBanner] = useState({ show: false, message: '', type: '' });
 
     const code = {
         text: problemCode.original,
@@ -182,26 +193,31 @@ function StudyLineOrdering({ problemCode }) {
           
                 if (response.status === 200) {
                     console.log(response);
-                    alert(`정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`);
+                    setBanner({ show: true, message: `정답입니다! 총 ${correctBlocks}개의 블록을 맞췄습니다.`, type: 'success' });
                     window.location.reload(); // Refresh the page
                 } else {
-                    alert('학습 완료에 실패하였습니다.');
+                    setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
                 }
                 } catch (error) {
                     console.error(error);
-                    alert('업로드 중 오류가 발생했습니다');
+                    setBanner({ show: true, message: '학습 완료에 실패하였습니다.', type: 'error' });
                 } 
 
             } else {
-                alert("틀렸습니다. 정답을 다시 작성해주세요.");
+                setBanner({ show: true, message: '오답입니다. 다시 작성해주세요.', type: 'error' });
                 console.log(finalCode);
                 resetFn();
         }
     }
+
+    const closeBanner = () => {
+        setBanner({ show: false, message: '', type: '' });
+    };
       
 
     return (
         <div>
+            {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             <div id="StudyLineOrdering" >
                 <div id="StudyLineOrderingTextContainer">
                     {processedData && processedData.map((codeData, index) =>
