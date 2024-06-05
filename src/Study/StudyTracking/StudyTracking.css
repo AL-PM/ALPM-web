@@ -73,7 +73,7 @@ textarea[id^="textarea-line-"] {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
 }
 
-.banner {
+.trackingbanner {
     font-family: 'SUITE-Regular';
     position: fixed;
     top: 50%;
@@ -88,17 +88,17 @@ textarea[id^="textarea-line-"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
 }
 
-.banner.success {
+.trackingbanner.success {
     background-color: #4bc5fe; /* 성공: 초록색 배경 */
     color: white;
 }
 
-.banner.error {
+.trackingbanner.error {
     background-color: #ff8f87; /* 실패: 빨간색 배경 */
     color: white;
 }
 
-.banner-close-btn {
+.trackingbanner-close-btn {
     margin-top: 10px;
     padding: 10px 20px;
     border: none;
@@ -110,7 +110,7 @@ textarea[id^="textarea-line-"] {
     transition: background-color 0.3s ease;
 }
 
-.banner-close-btn:hover {
+.trackingbanner-close-btn:hover {
     background-color: #4bc5fe;
     color: white;
 }

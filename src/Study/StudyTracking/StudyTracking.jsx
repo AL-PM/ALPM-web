@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './StudyTracking.css';
 
-function Banner({ message, type, onClose }) {
+function TrackingBanner({ message, type, onClose }) {
     return (
-        <div className={`banner ${type}`}>
+        <div className={`trackingbanner ${type}`}>
             {message}
-            <button onClick={onClose} className="banner-close-btn">확인</button>
+            <button onClick={onClose} className="trackingbanner-close-btn">확인</button>
         </div>
     );
 }
@@ -115,8 +115,6 @@ function StudyTracking({ problemCode }) {
             numOfWords += element.data.length;
         })
 
-        setBanner({ show: true, message: '따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
-
         console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
 
         try {
@@ -152,7 +150,7 @@ function StudyTracking({ problemCode }) {
 
     return (
         <div id="StudyTracking">
-            {banner.show && <Banner message={banner.message} type={banner.type} onClose={closeBanner} />}
+            {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             {processedData.map((codeData) =>
                 <div key={codeData.num}>
                     {codeData.data === inputData[codeData.num] ? null :
