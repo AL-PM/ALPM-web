@@ -43,7 +43,7 @@ function CodeDetailBody({content, description, owner}){
             />
             <CodeDetailTitle Title={"코드에 대한 설명"}/>
             <div id='CodeDescriptionContent' >
-                <ReactMarkdown>{description}</ReactMarkdown>
+                <ReactMarkdown>{description.replace("$","")}</ReactMarkdown>
             </div>
             <CodeDetailTitle Title={"작성자"}/>
             <div id="UserContent">
