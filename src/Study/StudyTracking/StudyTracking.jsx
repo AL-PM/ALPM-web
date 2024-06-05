@@ -6,7 +6,7 @@ function TrackingBanner({ message, type, onClose }) {
     return (
         <div className={`trackingbanner ${type}`}>
             {message}
-            <button onClick={onClose} className="trackingbanner-close-btn">확인</button>
+            <button onClick={onClose} className={`trackingbanner-close-btn ${type}`}>확인</button>
         </div>
     );
 }
@@ -116,7 +116,7 @@ function StudyTracking({ problemCode }) {
         })
 
         setBanner({ show: true, message: '따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
-        
+
         console.log('따라치기 학습이 완료되었습니다. \n 따라친 총 글자 수 : ' + numOfWords);
 
         /*
