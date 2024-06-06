@@ -73,11 +73,13 @@ function StudyLineOrdering({ problemCode }) {
                     return(data.trim() === '}' ||  trimmedLine.trim() === '};');
                 }
     
-                processedCode.push({
-                    data: trimmedLine,
-                    num: sectionNum[checkClosedBracket(trimmedLine) ? 0 : tmpSection]++, // Increment num within the section
-                    codeSection: checkClosedBracket(trimmedLine) ? 0 : tmpSection,
-                });
+                if (trimmedLine !== "") {
+                    processedCode.push({
+                        data: trimmedLine,
+                        num: sectionNum[checkClosedBracket(trimmedLine) ? 0 : tmpSection]++, // Increment num within the section
+                        codeSection: checkClosedBracket(trimmedLine) ? 0 : tmpSection,
+                    });
+                }   
             }
         });
     
