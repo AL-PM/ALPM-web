@@ -64,22 +64,20 @@ function StudyLineOrdering({ problemCode }) {
                     }
                 }
     
-                // Treat lines that are just closing brackets as part of section 0
-                if (trimmedLine.trim() === '}' || trimmedLine.trim() === '};') {
-                    tmpSection = 0;
-                }
-    
                 // Initialize the section number tracker if it doesn't exist
                 if (!sectionNum[tmpSection]) {
                     sectionNum[tmpSection] = 0;
+                }
+
+                function checkClosedBracket(data){
+                    return(data.trim() === '}' ||  trimmedLine.trim() === '};');
                 }
     
                 processedCode.push({
                     data: trimmedLine,
                     num: sectionNum[tmpSection]++, // Increment num within the section
-                    codeSection: tmpSection,
+                    codeSection: checkClosedBracket(trimmedLine) ? 0 : tmpSection,
                 });
-
             }
         });
     
