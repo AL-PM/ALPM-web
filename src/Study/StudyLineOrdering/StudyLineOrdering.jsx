@@ -75,7 +75,7 @@ function StudyLineOrdering({ problemCode }) {
     
                 processedCode.push({
                     data: trimmedLine,
-                    num: sectionNum[tmpSection]++, // Increment num within the section
+                    num: sectionNum[checkClosedBracket(trimmedLine) ? 0 : tmpSection]++, // Increment num within the section
                     codeSection: checkClosedBracket(trimmedLine) ? 0 : tmpSection,
                 });
             }
