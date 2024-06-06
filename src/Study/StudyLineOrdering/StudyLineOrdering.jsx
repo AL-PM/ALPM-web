@@ -65,7 +65,7 @@ function StudyLineOrdering({ problemCode }) {
                 }
     
                 // Treat lines that are just closing brackets as part of section 0
-                if (trimmedLine === '}' || trimmedLine === '};') {
+                if (trimmedLine.trim() === '}' || trimmedLine.trim() === '};') {
                     tmpSection = 0;
                 }
     
