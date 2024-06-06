@@ -37,9 +37,9 @@ function StudyLineOrdering({ problemCode }) {
         lines.forEach((line, index) => {
             let trimmedLine;
             if (language === 'PYTHON') {
-                trimmedLine = line.split("#")[0].trim();
+                trimmedLine = line.split("#")[0];
             } else {
-                trimmedLine = line.split("//")[0].trim();
+                trimmedLine = line.split("//")[0];
             }
             if (trimmedLine !== "") {
                 let tabCount = line.search(/\S|$/); // count leading tabs
@@ -74,13 +74,12 @@ function StudyLineOrdering({ problemCode }) {
                     sectionNum[tmpSection] = 0;
                 }
     
-                if (trimmedLine !== "") {
-                    processedCode.push({
-                        data: trimmedLine,
-                        num: sectionNum[tmpSection]++, // Increment num within the section
-                        codeSection: tmpSection,
-                    });
-                }
+                processedCode.push({
+                    data: trimmedLine,
+                    num: sectionNum[tmpSection]++, // Increment num within the section
+                    codeSection: tmpSection,
+                });
+
             }
         });
     
