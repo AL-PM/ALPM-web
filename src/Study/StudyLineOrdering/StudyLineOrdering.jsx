@@ -41,7 +41,7 @@ function StudyLineOrdering({ problemCode }) {
             } else {
                 trimmedLine = line.split("//")[0];
             }
-            if (trimmedLine !== "") {
+            if (trimmedLine.trim() !== "") {
                 let tabCount = line.search(/\S|$/); // count leading tabs
     
                 if (language === 'JAVA') {
