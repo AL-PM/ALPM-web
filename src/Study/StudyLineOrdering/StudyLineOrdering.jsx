@@ -33,17 +33,17 @@ function StudyLineOrdering({ problemCode }) {
         let tmpSection;
         let inSection = false;
         let sectionNum = {}; // to keep track of num within each section
-
+    
         lines.forEach((line, index) => {
             let trimmedLine;
-            if(language === 'PYTHON'){
-                trimmedLine = line.split("#")[0];
-            }else{
-                trimmedLine = line.split("//")[0];
+            if (language === 'PYTHON') {
+                trimmedLine = line.split("#")[0].trim();
+            } else {
+                trimmedLine = line.split("//")[0].trim();
             }
             if (trimmedLine !== "") {
                 let tabCount = line.search(/\S|$/); // count leading tabs
-
+    
                 if (language === 'JAVA') {
                     if (tabCount < 2) {
                         tmpSection = 0;
@@ -63,13 +63,18 @@ function StudyLineOrdering({ problemCode }) {
                         inSection = true;
                     }
                 }
-
+    
+                // Treat lines that are just closing brackets as part of section 0
+                if (trimmedLine === '}' || trimmedLine === '};') {
+                    tmpSection = 0;
+                }
+    
                 // Initialize the section number tracker if it doesn't exist
                 if (!sectionNum[tmpSection]) {
                     sectionNum[tmpSection] = 0;
                 }
-
-                if(trimmedLine.trim() !== ""){
+    
+                if (trimmedLine !== "") {
                     processedCode.push({
                         data: trimmedLine,
                         num: sectionNum[tmpSection]++, // Increment num within the section
@@ -78,7 +83,7 @@ function StudyLineOrdering({ problemCode }) {
                 }
             }
         });
-
+    
         return processedCode;
     }
 
