@@ -197,7 +197,7 @@ function MyCodeGroup() {
                 <button id='paginationBtn' onClick={handlePreviousPage} disabled={currentPage === 0}>{"<"}</button>
                 <span id='paginationTxt'> {currentPage + 1} / {searchResult.totalPages}</span>
                 <button id='paginationBtn' onClick={handleNextPage} disabled={currentPage >= searchResult.totalPages - 1}>{">"}</button>
-            </div>ㄴ
+            </div>
             <MyCodeGroupNew />
         </div>
     );
