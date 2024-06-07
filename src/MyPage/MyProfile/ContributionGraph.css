@@ -30,8 +30,9 @@
     z-index: 10;
 }
 
-.day-1 { background-color: #f1b3b3; } /* 0-1 학습 횟수 */
-.day-2 { background-color: #cb7a7a; } /* 2 학습 횟수 */
-.day-3 { background-color: #d54c4c; } /* 3 학습 횟수 */
+.day-0 { background-color: #ffffff ;}
+.day-1 { background-color: #f9d5d5; } /* 0-1 학습 횟수 */
+.day-2 { background-color: #f7b5b5; } /* 2 학습 횟수 */
+.day-3 { background-color: #f68b8b; } /* 3 학습 횟수 */
 .day-4 { background-color: #e72f2f; } /* 4 이상 학습 횟수 */
 .today { background-color: #5C4EFF; } /* 오늘 */
