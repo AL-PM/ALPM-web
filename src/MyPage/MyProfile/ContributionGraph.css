@@ -1,19 +1,21 @@
 .contribution-graph {
     display: flex;
+    flex-direction: column; /* Adjusted for column direction */
 }
 
 .week {
     display: flex;
-    flex-direction: column;
-    margin-right: 10px; /* Adjust margin for spacing between weeks */
+    flex-direction: row; /* Adjusted for row direction */
+    margin-bottom: 5px; /* Adjust margin for spacing between weeks */
 }
 
 .day {
-    width: 10px; /* Adjusted width */
-    height: 10px; /* Adjusted height */
-    margin: 3px 0; /* Adjust margin for spacing between days */
+    width: 15px; /* Adjusted width */
+    height: 15px; /* Adjusted height */
+    margin: 2px; /* Adjust margin for spacing between days */
     background-color: #ebedf0;
     position: relative;
+    cursor: pointer;
 }
 
 .day:hover::after {
@@ -30,9 +32,9 @@
     z-index: 10;
 }
 
-.day-0 { background-color: #ffffff ;}
-.day-1 { background-color: #f9d5d5; } /* 0-1 학습 횟수 */
-.day-2 { background-color: #f7b5b5; } /* 2 학습 횟수 */
-.day-3 { background-color: #f68b8b; } /* 3 학습 횟수 */
+.day-0 { background-color: #d6d6d6; }
+.day-1 { background-color: #feb8b8; } /* 0-1 학습 횟수 */
+.day-2 { background-color: #ff9d9d; } /* 2 학습 횟수 */
+.day-3 { background-color: #ff7b7b; } /* 3 학습 횟수 */
 .day-4 { background-color: #e72f2f; } /* 4 이상 학습 횟수 */
 .today { background-color: #5C4EFF; } /* 오늘 */
