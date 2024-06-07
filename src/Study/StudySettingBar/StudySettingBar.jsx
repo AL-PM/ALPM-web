@@ -5,8 +5,15 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
     const [levelDisabled, setLevelDisabled] = useState(false); // 난이도 선택 창 활성/비활성 상태
 
     // Filter out code groups with algorithm_count of 0 and add Default/Default group at the beginning
-    const filteredCodeGroupList = [
-        { id: -1, name: "Default", language: "Default", algorithm_count: 1 },
+    const filteredCodeGroupList = [{ 
+            id: -1, 
+            name: "Default", 
+            language: "Default", 
+            algorithm_count: 1 , 
+            owner : {
+                id : 0,
+                name : "Default",
+            }},
         ...codegrouplist.filter(codegrouptag => codegrouptag.algorithm_count !== 0)
     ];
 
@@ -67,16 +74,12 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
                 <span>{problemCode.name} / {problemCode.language} / {problemCode.owner.id === 1 ? "AL-PM" : problemCode.owner.name}</span>
             ) : (
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
-                    {filteredCodeGroupList.map((codegrouptag) => {
-                        const ownerName = codegrouptag.owner && codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner ? codegrouptag.owner.name : "Unknown Owner";
-                        return (
-                            <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>
-                                {codegrouptag.name} / {codegrouptag.language} / {ownerName}
-                            </option>
-                        );
-                    })}
+                    {filteredCodeGroupList.map((codegrouptag) => (
+                        <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>
+                            {codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}
+                        </option>
+                    ))}
                 </select>
-
             )}
             {problem ?
                 <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn}>
