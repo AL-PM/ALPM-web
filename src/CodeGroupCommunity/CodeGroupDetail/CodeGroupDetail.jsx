@@ -131,7 +131,7 @@ function CodeGroupDetail() {
       <CodeGroupDetailInfo
         language={codeGroupInfo.language}
         verified={codeGroupInfo.verified}
-        owner={codeGroupInfo.owner.name}
+        owner={codeGroupInfo.owner.id === 1 ? "AL-PM" : codeGroupInfo.owner.name}
         name={codeGroupInfo.name}
         numOfAlgorithm={codeGroupPage.content.length}
       />
