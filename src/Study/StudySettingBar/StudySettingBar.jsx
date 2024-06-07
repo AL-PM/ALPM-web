@@ -67,12 +67,16 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
                 <span>{problemCode.name} / {problemCode.language} / {problemCode.owner.id === 1 ? "AL-PM" : problemCode.owner.name}</span>
             ) : (
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
-                    {filteredCodeGroupList.map((codegrouptag) => (
-                        <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>
-                            {codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}
-                        </option>
-                    ))}
+                    {filteredCodeGroupList.map((codegrouptag) => {
+                        const ownerName = codegrouptag.owner && codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner ? codegrouptag.owner.name : "Unknown Owner";
+                        return (
+                            <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>
+                                {codegrouptag.name} / {codegrouptag.language} / {ownerName}
+                            </option>
+                        );
+                    })}
                 </select>
+
             )}
             {problem ?
                 <button id="ProblemSettingIcon" onClick={StudySettingBarResetFn}>
