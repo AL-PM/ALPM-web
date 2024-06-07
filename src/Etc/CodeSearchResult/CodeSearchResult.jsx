@@ -24,7 +24,7 @@ return(
                 <span>{verifiedInvertor(Data.verified)}</span>
                 <span>작성자</span>
                 <span>|</span>
-                <span>{Data.owner.name}</span>
+                <span>{Data.owner.id === 1 ? "AL-PM" : Data.owner.name}</span>
                 <span>제목</span>
                 <span>|</span>
                 <span>{Data.name}</span>

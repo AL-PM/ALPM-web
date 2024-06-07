@@ -58,7 +58,7 @@ function CodeDetailBody({ content, description, owner }) {
                     src={owner.profile}
                     alt="User Profile"
                 />
-                <span>{owner.name}</span>
+                <span>{owner.id === 1 ? "AL-PM" : owner.name}</span>
             </div>
         </div>
     );
