@@ -44,6 +44,10 @@ function StudyHome() {
                 const uid = localStorage.getItem("uid");
 
                 const response = await axios.get(`https://alpm.duckdns.org:8080/codeGroup/user/${uid}`, {
+                    params: {
+                        page: 0, // Use currentPage state
+                        size: 100
+                    },
                     withCredentials: true,
                     headers: {
                         'Authorization': `Bearer ${access_token}`
