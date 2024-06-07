@@ -64,7 +64,7 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
             <span id="SettingBarSetting">코드 그룹</span>}
             <span>|</span>
             {problem ? (
-                <span>{problemCode.name} / {problemCode.language} / {problemCode.owner.name}</span>
+                <span>{problemCode.name} / {problemCode.language} / {problemCode.owner.id === 1 ? "AL-PM" : problemCode.owner.name}</span>
             ) : (
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
                     {filteredCodeGroupList.map((codegrouptag) => (
