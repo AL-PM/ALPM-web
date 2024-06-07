@@ -87,9 +87,9 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
                     {filteredCodeGroupList.map((codegrouptag) =>
                         <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> 
                         { codegrouptag.id === -1 ?
-                            <span>선택 안됨</span>
+                            <span style={{display:'flex', justifySelf:'center', alignSelf:'center'}} >선택 안됨</span>
                             :
-                            <span>{codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}</span>
+                            <span style={{display:'flex', justifySelf:'center', alignSelf:'center'}} >{codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}</span>
                         }
                         </option>
                     )}
