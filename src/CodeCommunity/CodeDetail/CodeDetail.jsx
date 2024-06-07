@@ -81,9 +81,9 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
         <div id='codeFollowBtnContainer'>
             {banner.show && <Banner message={banner.message} type={banner.type} />}
             <div id='codeFollowGroupSetting'>
-                <span id="SettingBarSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }}>추가할 코드 그룹</span>
+                <span id="SettingBarSetting" style={{ width: "20vw", display: 'flex', justifyContent: 'center' }}>추가할 코드 그룹</span>
                 <span>|</span>
-                <select name="CodeGroupSetting" id="CodeGroupSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }} onChange={(event) => valueChangeFn(event.target.value)}>
+                <select name="CodeGroupSetting" id="CodeGroupSetting" style={{ width: "20vw", display: 'flex', justifyContent: 'center' }} onChange={(event) => valueChangeFn(event.target.value)}>
                     {filteredCodeGroupList.map((codegrouptag) =>
                         <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> 
                             {codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}
