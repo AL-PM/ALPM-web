@@ -76,7 +76,11 @@ function StudySettingBar({ setLanguage, setMethod, setLevel, setCodeGroup, codeg
                 <select name="CodeGroupSetting" id="CodeGroupSetting" onChange={setCodeGroupSetting} disabled={problem}>
                     {filteredCodeGroupList.map((codegrouptag) => (
                         <option key={codegrouptag.id} value={JSON.stringify(codegrouptag)}>
-                            {codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}
+                            {codegrouptag.id === -1 ?
+                                <span></span> 
+                                : 
+                                <span>{codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}</span>
+                            }                           
                         </option>
                     ))}
                 </select>
