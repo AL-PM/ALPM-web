@@ -30,10 +30,12 @@ function ContributionGraph({ historyList }) {
                         // Determine the class based on item.size
                         let sizeClass;
                         if (item.size < 1) {
+                            sizeClass = 'day-0';
+                        }else if (item.size === 1){
                             sizeClass = 'day-1';
-                        } else if (item.size === 1) {
-                            sizeClass = 'day-2';
                         } else if (item.size === 2) {
+                            sizeClass = 'day-2';
+                        } else if (item.size === 3) {
                             sizeClass = 'day-3';
                         } else {
                             sizeClass = 'day-4';
