@@ -26,12 +26,26 @@ function ContributionGraph({ historyList }) {
                         const date = new Date(item.date);
                         const dateString = date.toISOString().split('T')[0];
                         const isToday = date.getFullYear() === currentYear && Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 86400000) === currentDayOfYear;
-                        const dayClass = isToday ? `day-${Math.max(1, day)}` : `day-${day}`;
+
+                        // Determine the class based on item.size
+                        let sizeClass;
+                        if (item.size <= 1) {
+                            sizeClass = 'day-1';
+                        } else if (item.size === 2) {
+                            sizeClass = 'day-2';
+                        } else if (item.size === 3) {
+                            sizeClass = 'day-3';
+                        } else {
+                            sizeClass = 'day-4';
+                        }
+
+                        const dayClass = isToday ? 'today' : sizeClass;
+
                         return (
                             <div 
                                 key={dayIndex} 
-                                className={`day ${isToday ? 'today' : ''} ${dayClass}`} 
-                                title={`${dateString} | 학습한 알고리즘 : ${day} 개`}
+                                className={`day ${dayClass}`} 
+                                title={`${dateString} | 학습한 알고리즘 : ${item.size} 개`}
                             >
                             </div>
                         );
