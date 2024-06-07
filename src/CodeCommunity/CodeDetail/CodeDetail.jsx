@@ -20,7 +20,16 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
     const [banner, setBanner] = useState({ show: false, message: '', type: '' });
 
 
-    const defaultCodeGroup = { id: 0, name: "Default", language: "Default", algorithm_count: 1 };
+    const defaultCodeGroup = { 
+        id: -1, 
+        name: "Default", 
+        language: "Default", 
+        algorithm_count: 1 , 
+        owner : {
+            id : 0,
+            name : "Default",
+        }
+    };
 
     // 원하는 언어와 일치하는 코드 그룹 정보를 필터링하여 추가
     const filteredCodeGroupList = [defaultCodeGroup, ...codeGroupInfo.filter(group => group.language === language)];
@@ -76,7 +85,9 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
                 <span>|</span>
                 <select name="CodeGroupSetting" id="CodeGroupSetting" style={{ width: "10vw", display: 'flex', justifyContent: 'center' }} onChange={(event) => valueChangeFn(event.target.value)}>
                     {filteredCodeGroupList.map((codegrouptag) =>
-                        <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> {codegrouptag.name} / {codegrouptag.language} </option>
+                        <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> 
+                            {codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}
+                        </option>
                     )}
                 </select>
             </div>
