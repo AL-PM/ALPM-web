@@ -86,7 +86,11 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
                 <select name="CodeGroupSetting" id="CodeGroupSetting" style={{ width: "20vw", display: 'flex', justifyContent: 'center' }} onChange={(event) => valueChangeFn(event.target.value)}>
                     {filteredCodeGroupList.map((codegrouptag) =>
                         <option id="CodeGroupSettingList" key={codegrouptag.id} value={codegrouptag.id}> 
-                            {codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}
+                        { codegrouptag.id === -1 ?
+                            <span>선택 안됨</span>
+                            :
+                            <span>{codegrouptag.name} / {codegrouptag.language} / {codegrouptag.owner.id === 1 ? "AL-PM" : codegrouptag.owner.name}</span>
+                        }
                         </option>
                     )}
                 </select>
