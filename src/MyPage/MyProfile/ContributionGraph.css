@@ -32,7 +32,7 @@
     z-index: 10;
 }
 
-.day-0 { background-color: #d6d6d6; }
+.day-0 { background-color: #e1e1e1; }
 .day-1 { background-color: #feb8b8; } /* 0-1 학습 횟수 */
 .day-2 { background-color: #ff9d9d; } /* 2 학습 횟수 */
 .day-3 { background-color: #ff7b7b; } /* 3 학습 횟수 */
