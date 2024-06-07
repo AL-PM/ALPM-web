@@ -191,7 +191,7 @@ function NewCodeUpload() {
           placeholder='여기에 업로드할 코드에 대한 설명을 입력해주세요'
         />
       </div>
-      {code == "" ? null : <button onClick={tmpFn()} id="CodeUploadwBtn">임시_콘솔에 출력</button> }
+      {code === "" ? null : <button onClick={tmpFn()} id="CodeUploadwBtn">임시_콘솔에 출력</button> }
       <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
     </div>
   );
