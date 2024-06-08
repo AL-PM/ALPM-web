@@ -13,6 +13,17 @@
     padding-top : 30px;
 }
 
+#StudyTrackingGuide{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-size: larger;
+    font-weight: bold;
+    margin-top : 30px;
+    margin-bottom : 30px;
+    border-bottom:  1px solid;
+}
+
 #StudyTrackingBackground{
     padding-left: 30px;
     border: 0px;
@@ -129,9 +140,3 @@ textarea[id^="textarea-line-"] {
 }
 
 
-#StudyTrackingGuide{
-    display: flex;
-    justify-content: center;
-    align-items: center;   
-    font-weight: bold;
-}
