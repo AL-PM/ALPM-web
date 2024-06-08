@@ -260,13 +260,13 @@ function StudyBlockWriting({problemCode, level}) {
     };
 
     return (
-        <div id="StudyBlockOrdering" >
+        <div id="StudyBlockWriting" >
             <div id="StudyTrackingGuide">
                     <span> 학습 안내 _ 주어진 보기를 순서에 맞게 누른 뒤, 완료 버튼을 눌러주세요 </span>
                 </div>
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             <textarea readOnly
-                id="StudyBlockOrderingCodeArea"
+                id="StudyBlockWritingCodeArea"
                 rows={countRows(finalCode)}
                 cols={140}
                 value={finalCode}

@@ -1,6 +1,19 @@
+#StudyBlockWritingCodeArea{
+    border: 0px;
+    padding-top:50px;
+    padding-left: 20px;
+    resize: none;
+    font-family: 'intelone-mono-font-family-regular';
+    font-size: large;
+    gap : 10px;
+    border-top: 0.5px solid;
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-color: gray;
+}
 
-
-#StudyBlockOrdering{
+#StudyBlockWriting{
     width: 85vw;
     margin-top : 7.5vh;  
     margin-left : 7.5vw ;
