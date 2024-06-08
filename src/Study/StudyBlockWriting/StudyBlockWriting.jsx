@@ -273,7 +273,7 @@ function StudyBlockWriting({problemCode, level}) {
             />
             <div>
                 <div id="exampleBox">
-                    <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 답변 작성란 ] : 각 빈칸의 번호에 맞게 작성후 완료 버튼을 눌러주세요 "} </p>
+                    <p style={{ fontFamily: 'SUITE-Regular' }}>{"[ 답변 작성란 ]"} </p>
                     <div id="exampleList">
                         {userInput.map((eachBlock, index) =>
                             <div key={eachBlock.num} id="exampleListBlock">
