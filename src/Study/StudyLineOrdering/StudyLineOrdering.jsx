@@ -73,7 +73,7 @@ function StudyLineOrdering({ problemCode }) {
                     return(data.trim() === '}' ||  trimmedLine.trim() === '};');
                 }
     
-                if (trimmedLine === "" || trimmedLine.includes("```")) {
+                if (trimmedLine !== "" || !trimmedLine.includes("```")) {
                     processedCode.push({
                         data: trimmedLine,
                         num: sectionNum[checkClosedBracket(trimmedLine) ? 0 : tmpSection]++, // Increment num within the section
