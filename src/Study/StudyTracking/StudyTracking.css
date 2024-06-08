@@ -18,9 +18,9 @@
     align-items: center;   
     font-size: larger;
     font-weight: bold;
-    margin-top : 30px;
-    margin-bottom : 30px;
-    border-bottom:  1px solid;
+    padding-top : 30px;
+    padding-bottom : 30px;
+    border-bottom:  0.5px  gray;
 }
 
 #StudyTrackingBackground{
