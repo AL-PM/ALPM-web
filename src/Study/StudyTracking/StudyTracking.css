@@ -20,7 +20,12 @@
     font-weight: bold;
     padding-top : 30px;
     padding-bottom : 30px;
-    border-bottom:  0.5px  gray;
+}
+
+#StudyTrackingTextArea{
+    padding-top: 30px;
+    border-top: 0.5px solid;
+    border-color: gray;
 }
 
 #StudyTrackingBackground{

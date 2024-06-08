@@ -154,6 +154,7 @@ function StudyTracking({ problemCode }) {
             <div id="StudyTrackingGuide">
                 <span> 학습 안내 ___ 주어진 코드를 따라서 전체 코드를 작성해주세요 </span>
             </div>
+            <div id="StudyTrackingTextArea">
             {processedData.map((codeData) =>
                 <div key={codeData.num}>
                     {codeData.data === inputData[codeData.num] ? null :
@@ -174,6 +175,8 @@ function StudyTracking({ problemCode }) {
                     />
                 </div>
             )}
+            </div>
+            
             {currentExplanation === "" || isCompleted ? null :
                 <div id="explainationBox" disabled={!isCompleted} >
                     <p>현재 작성중인 라인에 대한 설명</p>
