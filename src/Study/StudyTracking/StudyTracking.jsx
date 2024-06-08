@@ -152,7 +152,7 @@ function StudyTracking({ problemCode }) {
         <div id="StudyTracking">
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             <div id="StudyTrackingGuide">
-                <span> 학습 안내 ___ 주어진 코드를 따라서 전체 코드를 작성해주세요 </span>
+                <span> 학습 안내 _ 주어진 코드를 따라서 전체 코드를 작성후 완료 버튼을 눌러주세요 </span>
             </div>
             <div id="StudyTrackingTextArea">
             {processedData.map((codeData) =>
