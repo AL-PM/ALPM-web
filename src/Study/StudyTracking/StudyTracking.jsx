@@ -151,7 +151,9 @@ function StudyTracking({ problemCode }) {
     return (
         <div id="StudyTracking">
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
-            <span style={{fontWeight:"bold", display:"flex" , justifySelf:"center", marginTop:"15px", marginBottom:"15px"}}> 학습 안내 | 주어진 코드를 따라서 전체 코드를 작성해주세요 </span>
+            <div id="StudyTrackingGuide">
+                <span> 학습 안내 ___ 주어진 코드를 따라서 전체 코드를 작성해주세요 </span>
+            </div>
             {processedData.map((codeData) =>
                 <div key={codeData.num}>
                     {codeData.data === inputData[codeData.num] ? null :

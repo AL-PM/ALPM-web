@@ -127,3 +127,11 @@ textarea[id^="textarea-line-"] {
     background-color: #ff8f87;
     color: white;
 }
+
+
+#StudyTrackingGuide{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    font-weight: bold;
+}
