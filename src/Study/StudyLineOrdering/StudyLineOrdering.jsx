@@ -223,6 +223,9 @@ function StudyLineOrdering({ problemCode }) {
         <div>
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
             <div id="StudyLineOrdering" >
+                <div id="StudyTrackingGuide">
+                    <span> 학습 안내 _ 주어진 보기를 순서에 맞게 누른 뒤, 완료 버튼을 눌러주세요 </span>
+                </div>
                 <div id="StudyLineOrderingTextContainer">
                     {processedData && processedData.map((codeData, index) =>
                         <div key={index} >
