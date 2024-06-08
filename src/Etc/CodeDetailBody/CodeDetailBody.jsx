@@ -12,7 +12,7 @@ function CodeDetailTitle({ Title }) {
     );
 }
 
-function CodeDetailBody({ content, description, owner }) {
+function CodeDetailBody({ content, description, owner , language}) {
     let finalCode = "";
 
     const data = content.split("\n");
@@ -24,7 +24,14 @@ function CodeDetailBody({ content, description, owner }) {
             continue;
         }
         // Split by `//` to remove comments
-        const codeLine = data[i].split("//")[0];
+
+        let codeLine;
+
+        if(language === "PYTHON")
+            codeLine = data[i].split("#")[0];
+        else
+            codeLine = data[i].split("//")[0];
+
         finalCode += codeLine + "\n";
     }
 
