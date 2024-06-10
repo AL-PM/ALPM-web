@@ -172,24 +172,25 @@ function StudyTracking({ problemCode }) {
             </div>
             <div id="StudyTrackingTextArea">
             {processedData.map((codeData) =>
-                <div key={codeData.num}>
-                    {codeData.data === inputData[codeData.num] ? null :
-                        <textarea readOnly id="StudyTrackingBackground" style={{ color: "gray" }}
-                            rows={1}
-                            cols={countNumOfWord(codeData.data)}
-                            defaultValue={codeData.data}
-                            tabIndex={-1}
-                        />}
-
-                    <textarea id={`textarea-line-${codeData.num}`} style={{ color: codeData.data === inputData[codeData.num] ? "blue" : "red" }}
+                <div key={codeData.num} id="StudyTrackingLineSpace" >
+                {codeData.data === inputData[codeData.num] ? null :
+                    <textarea readOnly id="StudyTrackingBackground"
                         rows={1}
-                        cols={countNumOfWord(inputData[codeData.num] || setTabFunt(codeData.tabCount))}
-                        value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
-                        onChange={(event) => handleInputChange(event, codeData.num)}
-                        onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
-                        readOnly={codeData.data === inputData[codeData.num]}
-                    />
-                </div>
+                        cols={countNumOfWord(codeData.data)}
+                        defaultValue={codeData.data}
+                        tabIndex={-1}
+                    />}
+                
+                <textarea id={`textarea-line-${codeData.num}`} style={{ color: codeData.data === inputData[codeData.num] ? "blue" : "red"}}
+                    rows={1}
+                    cols={countNumOfWord(inputData[codeData.num] || setTabFunt(codeData.tabCount))}
+                    value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
+                    onChange={(event) => handleInputChange(event, codeData.num)}
+                    onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
+                    readOnly={codeData.data === inputData[codeData.num]}
+                />
+            </div>
+            
             )}
             </div>
             
