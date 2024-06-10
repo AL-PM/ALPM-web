@@ -149,6 +149,10 @@ function StudyTracking({ problemCode }) {
         }
     };
 
+    function countNumOfWord( codeData ){
+
+    }
+
     return (
         <div id="StudyTracking">
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
@@ -185,7 +189,7 @@ function StudyTracking({ problemCode }) {
                     <p>{currentExplanation}</p>
                 </div>
             }
-            {loading ? null : <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>} 
+            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>
             
         </div>
     );
