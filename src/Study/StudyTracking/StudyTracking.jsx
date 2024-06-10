@@ -65,6 +65,21 @@ function StudyTracking({ problemCode }) {
         return defaultTab;
     }
 
+    function countNumOfWord(line) {
+        const tabSize = 8;
+        let numOfWords = 0;
+
+        for (let char of line) {
+            if (char === '\t') {
+                numOfWords += tabSize;
+            } else {
+                numOfWords += 1;
+            }
+        }
+
+        return numOfWords;
+    }
+
     const [inputData, setInputData] = useState({});
     const [currentExplanation, setCurrentExplanation] = useState("");
     const [isCompleted, setIsCompleted] = useState(false);
@@ -149,13 +164,6 @@ function StudyTracking({ problemCode }) {
         }
     };
 
-    /*
-
-    function countNumOfWord( codeData ){
-
-    }
-
-    */
     return (
         <div id="StudyTracking">
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
@@ -168,14 +176,14 @@ function StudyTracking({ problemCode }) {
                     {codeData.data === inputData[codeData.num] ? null :
                         <textarea readOnly id="StudyTrackingBackground" style={{ color: "gray" }}
                             rows={1}
-                            cols={130}
+                            cols={countNumOfWord(codeData.data)}
                             defaultValue={codeData.data}
                             tabIndex={-1}
                         />}
 
                     <textarea id={`textarea-line-${codeData.num}`} style={{ color: codeData.data === inputData[codeData.num] ? "blue" : "red" }}
                         rows={1}
-                        cols={130}
+                        cols={countNumOfWord(inputData[codeData.num] || setTabFunt(codeData.tabCount))}
                         value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
                         onChange={(event) => handleInputChange(event, codeData.num)}
                         onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
