@@ -149,10 +149,13 @@ function StudyTracking({ problemCode }) {
         }
     };
 
+    /*
+
     function countNumOfWord( codeData ){
 
     }
 
+    */
     return (
         <div id="StudyTracking">
             {banner.show && <TrackingBanner message={banner.message} type={banner.type} onClose={closeBanner} />}
