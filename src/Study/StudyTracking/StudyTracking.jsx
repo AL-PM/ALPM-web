@@ -135,6 +135,7 @@ function StudyTracking({ problemCode }) {
             if (response.status === 200) {
                 console.log(response);
                 setBanner({ show: true, message: '정답입니다. 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
+                window.location.reload(); // Refresh the page
             } else {
                 setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
             }
