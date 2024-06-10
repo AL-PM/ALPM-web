@@ -185,7 +185,8 @@ function StudyTracking({ problemCode }) {
                     <p>{currentExplanation}</p>
                 </div>
             }
-            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>
+            {loading ? null : <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>} 
+            
         </div>
     );
 }
