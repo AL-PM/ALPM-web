@@ -163,6 +163,21 @@ function StudyLineOrdering({ problemCode }) {
         setCurrentPage(0);
     }
 
+    function countNumOfWord(line) {
+        const tabSize = 8;
+        let numOfWords = 0;
+
+        for (let char of line) {
+            if (char === '\t') {
+                numOfWords += tabSize;
+            } else {
+                numOfWords += 1;
+            }
+        }
+
+        return numOfWords;
+    }
+
     const completeFn = async() => {
         let correctBlocks = 0;
         let isCorrect = true;
@@ -234,7 +249,7 @@ function StudyLineOrdering({ problemCode }) {
                                     readOnly
                                     id="StudyLineOrderingCodeArea"
                                     rows={1}
-                                    cols={130}
+                                    cols={countNumOfWord(codeData.data)}
                                     value={codeData.data}
                                     tabIndex={-1}
                                 />
@@ -243,7 +258,7 @@ function StudyLineOrdering({ problemCode }) {
                                     readOnly
                                     id="StudyLineOrderingCodeArea"
                                     rows={1}
-                                    cols={130}
+                                    cols={userInput[codeData.codeSection - 1] && userInput[codeData.codeSection - 1][codeData.num] ?countNumOfWord(userInput[codeData.codeSection - 1][codeData.num].data) : countNumOfWord(`\t[__${codeData.codeSection},${codeData.num + 1}__]`)}
                                     value={userInput[codeData.codeSection - 1] && userInput[codeData.codeSection - 1][codeData.num] ? userInput[codeData.codeSection - 1][codeData.num].data : `\t[__${codeData.codeSection},${codeData.num + 1}__]`}
                                     tabIndex={-1}
                                 />
