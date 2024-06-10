@@ -30,42 +30,32 @@
 }
 
 #StudyTrackingLineSpace {
-    position: relative;
-    margin-bottom: 10px; /* 각 줄 간격 조절 */
+    display: flex;
+    flex-direction: column;
 }
 
-#StudyTrackingBackground {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+#StudyTrackingBackground{
     padding-left: 30px;
-    border: 0;
+    border: 0px;
     resize: none;
     outline: none;
     font-family: 'intelone-mono-font-family-regular';
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: large;
-    width: 100%; /* 부모 요소에 맞춰서 너비 조정 */
 }
 
+#StudyTrackingInput,
 textarea[id^="textarea-line-"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
     padding-left: 30px;
-    border: 0;
+    border: 0px;
     resize: none;
     outline: none;
     font-family: 'intelone-mono-font-family-regular';
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: large;
-    width: 100%; /* 부모 요소에 맞춰서 너비 조정 */
 }
-
 
 #explainationBox{
     position: fixed;
