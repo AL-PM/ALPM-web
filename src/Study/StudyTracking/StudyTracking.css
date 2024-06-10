@@ -34,6 +34,9 @@
 }
 
 #StudyTrackingBackground{
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 1;
     padding-left: 30px;
     border: 0px;
@@ -47,6 +50,9 @@
 
 #StudyTrackingInput,
 textarea[id^="textarea-line-"] {
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 2;
     padding-left: 30px;
     border: 0px;
