@@ -42,7 +42,7 @@
     font-family: 'intelone-mono-font-family-regular';
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: large;
+    font-size: medium;
     color: #b1b1b1;
 }
 
@@ -55,7 +55,7 @@ textarea[id^="textarea-line-"] {
     font-family: 'intelone-mono-font-family-regular';
     padding-top: 5px;
     padding-bottom: 5px;
-    font-size: large;
+    font-size: medium;
 }
 
 #explainationBox{
