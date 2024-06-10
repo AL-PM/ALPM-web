@@ -171,39 +171,38 @@ function StudyTracking({ problemCode }) {
                 <span> 학습 안내 _ 주어진 코드를 따라서 전체 코드를 작성후 완료 버튼을 눌러주세요 </span>
             </div>
             <div id="StudyTrackingTextArea">
-            {processedData.map((codeData) =>
-                <div key={codeData.num} id="StudyTrackingLineSpace" >
-                {codeData.data === inputData[codeData.num] ? null :
-                    <textarea readOnly id="StudyTrackingBackground"
-                        rows={1}
-                        cols={countNumOfWord(codeData.data)}
-                        defaultValue={codeData.data}
-                        tabIndex={-1}
-                    />}
-                
-                <textarea id={`textarea-line-${codeData.num}`} style={{ color: codeData.data === inputData[codeData.num] ? "blue" : "red"}}
-                    rows={1}
-                    cols={countNumOfWord(inputData[codeData.num] || setTabFunt(codeData.tabCount))}
-                    value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
-                    onChange={(event) => handleInputChange(event, codeData.num)}
-                    onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
-                    readOnly={codeData.data === inputData[codeData.num]}
-                />
-            </div>
-            
-            )}
+                {processedData.map((codeData) =>
+                    <div key={codeData.num} id="StudyTrackingLineSpace">
+                        {codeData.data === inputData[codeData.num] ? null :
+                            <textarea readOnly id="StudyTrackingBackground"
+                                rows={1}
+                                cols={countNumOfWord(codeData.data)}
+                                defaultValue={codeData.data}
+                                tabIndex={-1}
+                            />}
+                        
+                        <textarea id={`textarea-line-${codeData.num}`} style={{ color: codeData.data === inputData[codeData.num] ? "blue" : "red"}}
+                            rows={1}
+                            cols={countNumOfWord(inputData[codeData.num] || setTabFunt(codeData.tabCount))}
+                            value={inputData[codeData.num] || setTabFunt(codeData.tabCount)}
+                            onChange={(event) => handleInputChange(event, codeData.num)}
+                            onKeyDown={(event) => handleKeyPress(event, codeData.num, codeData.data === inputData[codeData.num])}
+                            readOnly={codeData.data === inputData[codeData.num]}
+                        />
+                    </div>
+                )}
             </div>
             
             {currentExplanation === "" || isCompleted ? null :
-                <div id="explainationBox" disabled={!isCompleted} >
+                <div id="explainationBox" disabled={!isCompleted}>
                     <p>현재 작성중인 라인에 대한 설명</p>
                     <p style={{ fontWeight: "bold" }}>:</p>
                     <p>{currentExplanation}</p>
                 </div>
             }
-            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>
-            
-        </div>
+    <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>
+</div>
+
     );
 }
 
