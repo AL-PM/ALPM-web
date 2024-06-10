@@ -12,7 +12,7 @@ function CodeDetailTitle({ Title }) {
     );
 }
 
-function CodeDetailBody({ content, description, owner , language}) {
+function CodeDetailBody({ content, description, owner, language }) {
     let finalCode = "";
 
     const data = content.split("\n");
@@ -27,7 +27,7 @@ function CodeDetailBody({ content, description, owner , language}) {
 
         let codeLine;
 
-        if(language === "PYTHON")
+        if (language === "PYTHON")
             codeLine = data[i].split("#")[0];
         else
             codeLine = data[i].split("//")[0];
@@ -36,9 +36,38 @@ function CodeDetailBody({ content, description, owner , language}) {
     }
 
     // TextArea row 설정을 위해 코드 전체의 줄 수 계산
-    // Font-size medium 기준 +3 해야함
     function countNumberOfCode(code) {
         return code.split('\n').length;
+    }
+
+    function countNumOfWord(line) {
+        const tabSize = 8;
+        let numOfWords = 0;
+
+        for (let char of line) {
+            if (char === '\t') {
+                numOfWords += tabSize;
+            } else {
+                numOfWords += 1;
+            }
+        }
+
+        return numOfWords;
+    }
+
+    // 줄별로 최대 글자수를 계산하여 최종 cols 설정
+    function calculateMaxCols(code) {
+        const lines = code.split('\n');
+        let maxCols = 0;
+
+        for (let line of lines) {
+            const cols = countNumOfWord(line);
+            if (cols > maxCols) {
+                maxCols = cols;
+            }
+        }
+
+        return maxCols;
     }
 
     // Remove all instances of the "$" character
@@ -52,7 +81,7 @@ function CodeDetailBody({ content, description, owner , language}) {
                 id="CodeContent"
                 value={finalCode}
                 rows={countNumberOfCode(finalCode)}
-                cols={100}
+                cols={calculateMaxCols(finalCode)}
             />
             <CodeDetailTitle Title={"코드에 대한 설명"} />
             <div id="CodeDescriptionContent">
