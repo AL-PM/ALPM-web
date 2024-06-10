@@ -14,13 +14,13 @@ function TrackingBanner({ message, type, onClose }) {
 function StudyTracking({ problemCode }) {
 
     const [banner, setBanner] = useState({ show: false, message: '', type: '' });
+    const [loading, setLoading] = useState(false);
 
     function preprocessCode(problemCode) {
         let lines = problemCode.original.split("\n");
         let processedCode = [];
         const isPython = problemCode.language === "PYTHON";
 
-        // Remove leading and trailing ``` tags if present
         if (lines[0].startsWith("```")) {
             lines.shift();
         }
@@ -43,22 +43,19 @@ function StudyTracking({ problemCode }) {
             processedCode.push({
                 data: extractCode(lines[i]),
                 explain: extractExplain(lines[i]),
-                num: i + 1, // Line number starts from 1
+                num: i + 1,
                 tabCount: lines[i].search(/\S|$/)
             });
         }
 
-        // 데이터가 비어있는 요소를 필터링하여 제거합니다.
         processedCode = processedCode.filter(item => item.data !== "");
 
-        // 필터링 후 각 객체의 num을 다시 매깁니다.
         processedCode.forEach((item, index) => {
-            item.num = index + 1; // Line number starts from 1
+            item.num = index + 1;
         });
 
         return processedCode;
     }
-
 
     function setTabFunt(tabCount) {
         let defaultTab = "";
@@ -80,7 +77,6 @@ function StudyTracking({ problemCode }) {
             [num]: event.target.value
         });
 
-        // 입력이 변경되었을 때만 설명을 업데이트합니다.
         if (inputData[num] !== event.target.value) {
             const explanation = processedData[num - 1]?.explain || "";
             setCurrentExplanation(explanation);
@@ -109,13 +105,13 @@ function StudyTracking({ problemCode }) {
     }, [inputData, processedData]);
 
     const completeFn = async (processedData) => {
-
         let numOfWords = 0;
         processedData.forEach((element) => {
             numOfWords += element.data.length;
-        })
+        });
 
         console.log('따라치기 종료!! 따라친 총 글자 수 : ' + numOfWords);
+        setLoading(true);
 
         try {
             const access_token = localStorage.getItem("access_token");
@@ -135,18 +131,22 @@ function StudyTracking({ problemCode }) {
             if (response.status === 200) {
                 console.log(response);
                 setBanner({ show: true, message: '정답입니다. 따라친 총 글자 수 : ' + numOfWords, type: 'success' });
-                window.location.reload(); // Refresh the page
             } else {
                 setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다.', type: 'error' });
             }
         } catch (error) {
             console.error(error);
             setBanner({ show: true, message: '학습 완료 중 오류가 발생했습니다', type: 'error' });
+        } finally {
+            setLoading(false);
         }
     };
 
     const closeBanner = () => {
         setBanner({ show: false, message: '', type: '' });
+        if (banner.type === 'success') {
+            window.location.reload(); // Refresh the page only if the banner type is success
+        }
     };
 
     return (
@@ -185,9 +185,9 @@ function StudyTracking({ problemCode }) {
                     <p>{currentExplanation}</p>
                 </div>
             }
-            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted} onClick={() => completeFn(processedData)}> 완료 </button>
+            <button id="StudyTrackingCompleteBtn" disabled={!isCompleted || loading} onClick={() => completeFn(processedData)}> 완료 </button>
         </div>
-    )
+    );
 }
 
 export default StudyTracking;
