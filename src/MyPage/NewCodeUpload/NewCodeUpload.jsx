@@ -117,19 +117,12 @@ function NewCodeUpload() {
     }
   };
 
-  /*
-  
-  function tmpFn(){
     console.log({
       name: codeName,
       language: language,
       content: code.replace(/\t/g, "    "),
       description: description
     });
-  }
-
-  */
-
 
   if (upload) {
     return (
