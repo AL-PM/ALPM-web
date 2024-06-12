@@ -103,29 +103,18 @@ function NewCodeUpload() {
         setBanner({ show: true, message: '업로드에 실패하였습니다.', type: 'error' });
         setTimeout(() => {
           setBanner({ show: false, message: '', type: '' });
-        }, 1000);
+        }, 5000);
       }
     } catch (error) {
       console.error(error);
       setBanner({ show: true, message: '업로드 중 오류가 발생했습니다.', type: 'error' });
       setTimeout(() => {
         setBanner({ show: false, message: '', type: '' });
-      }, 1000);
+      }, 5000);
     } finally {
       setUpload(false);
     }
   };
-
-  const successTmpFn = () =>{
-    setBanner({ show: true, message: '업로드가 완료되었습니다. 확인 버튼을 눌러 사용자 코드 목록으로 이동합니다', type: 'success' });
-  }
-
-  const errorTmpFn = () =>{
-    setBanner({ show: true, message: '업로드 중 오류가 발생했습니다.', type: 'error' });
-      setTimeout(() => {
-        setBanner({ show: false, message: '', type: '' });
-      }, 1000);
-  }
 
   const handleConfirm = () => {
     setBanner({ show: false, message: '', type: '' });
@@ -196,8 +185,6 @@ function NewCodeUpload() {
           placeholder='여기에 업로드할 코드에 대한 설명을 입력해주세요'
         />
       </div>
-      <button onClick={successTmpFn} id="CodeUploadwBtn">성공 테스트 버튼</button>
-      <button onClick={errorTmpFn} id="CodeUploadwBtn">실패 테스트 버튼</button>
       <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
     </div>
   );
