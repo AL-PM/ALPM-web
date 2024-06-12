@@ -103,18 +103,22 @@ function NewCodeUpload() {
         setBanner({ show: true, message: '업로드에 실패하였습니다.', type: 'error' });
         setTimeout(() => {
           setBanner({ show: false, message: '', type: '' });
-        }, 3000);
+        }, 1000);
       }
     } catch (error) {
       console.error(error);
       setBanner({ show: true, message: '업로드 중 오류가 발생했습니다.', type: 'error' });
       setTimeout(() => {
         setBanner({ show: false, message: '', type: '' });
-      }, 3000);
+      }, 1000);
     } finally {
       setUpload(false);
     }
   };
+
+  const tmpFn = () =>{
+    setBanner({ show: true, message: '업로드가 완료되었습니다. 확인 버튼을 눌러 사용자 코드 목록으로 이동합니다', type: 'success' });
+  }
 
   const handleConfirm = () => {
     setBanner({ show: false, message: '', type: '' });
@@ -185,6 +189,7 @@ function NewCodeUpload() {
           placeholder='여기에 업로드할 코드에 대한 설명을 입력해주세요'
         />
       </div>
+      <button onClick={tmpFn} id="CodeUploadwBtn">테스트 버튼</button>
       <button onClick={NewCodeUploadBtcFn} id="CodeUploadwBtn">새로운 코드 업로드하기</button>
     </div>
   );
