@@ -31,15 +31,17 @@
 
 .confirm-button {
   padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
+  color: black;
+  background-color: #FFF;
+  border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .confirm-button:hover {
-  background-color: #3da6dd;
+  background-color: black;
+  border: none;
+  color:#FFF;
 }
 
 #UploadSettingInfo {
