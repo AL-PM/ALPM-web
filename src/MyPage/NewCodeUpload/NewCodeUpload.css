@@ -24,12 +24,12 @@
   color: #ff8f87;
 }
 
-#new-code-banner-message.error{
+.new-code-banner-message.error{
   margin-right: 20px;
   color: #ff8f87;
 }
 
-#new-code-banner-message.success{
+.new-code-banner-message.success{
   margin-right: 20px;
   color: #5C4EFF;
 }
