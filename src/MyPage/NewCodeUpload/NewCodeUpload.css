@@ -16,7 +16,7 @@
 }
 
 .new-code-banner.success {
-  border: 2px solid black;
+  border: 2px solid #5C4EFF;
 }
 
 .new-code-banner.error {
@@ -40,7 +40,7 @@
 
 .confirm-button:hover {
   background-color: #5C4EFF;
-  border: 2px solid #FFF;
+  border: 2px solid #5C4EFF;
   color:#FFF;
 }
 
