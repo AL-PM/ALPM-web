@@ -24,9 +24,14 @@
   color: #ff8f87;
 }
 
-#new-code-banner-message{
+#new-code-banner-message.error{
   margin-right: 20px;
-  color:#5C4EFF;
+  color: #ff8f87;
+}
+
+#new-code-banner-message.success{
+  margin-right: 20px;
+  color: #5C4EFF;
 }
 
 .confirm-button {
