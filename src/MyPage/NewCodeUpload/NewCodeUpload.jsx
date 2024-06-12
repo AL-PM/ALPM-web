@@ -19,7 +19,7 @@ function CodeUploadTitle({ Title }) {
 function NewCodeBanner({ message, type, onConfirm }) {
   return (
     <div className={`new-code-banner ${type}`}>
-      {message}
+      <span id='new-code-banner-message'>{message}</span>
       {type === 'success' && (
         <button onClick={onConfirm} className="confirm-button">확인</button>
       )}
