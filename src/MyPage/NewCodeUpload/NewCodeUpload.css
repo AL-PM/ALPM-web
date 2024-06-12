@@ -22,7 +22,21 @@
   color: #ff8f87;
 }
 
-#UploadSettingInfo{
+.confirm-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4bc5fe;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #3da6dd;
+}
+
+#UploadSettingInfo {
     display: flex;
     gap: 30px;
     border: 1px solid #ddd; /* 연한 회색 경계선 */
@@ -39,7 +53,7 @@
     font-size: medium;
 }
 
-#CodeUploadTitle{
+#CodeUploadTitle {
     display: flex;
     justify-content: start;
     gap: 20px;
@@ -49,7 +63,7 @@
     font-size: medium;
 }
 
-#UploadCode{
+#UploadCode {
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
@@ -67,7 +81,7 @@
     outline: none;
 }
 
-#UploadDescription{
+#UploadDescription {
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
@@ -85,7 +99,7 @@
     outline: none;
 }
 
-#CodeUploadwBtn{
+#CodeUploadwBtn {
     width: 85vw;
     height : 6.125vh;
     margin-top: 5vh;
@@ -104,16 +118,16 @@
     transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
 }
 
-#CodeUploadwBtn:hover{
+#CodeUploadwBtn:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 마우스를 올렸을 때 더 큰 그림자 */
 }
 
 #UploadSettingInfo {
     display: flex;
     gap: 10px;
-  }
-  
-  #UploadSettingInfo button {
+}
+
+#UploadSettingInfo button {
     background: none;
     font-family: 'SUITE-Regular';
     border: none;
@@ -121,13 +135,13 @@
     font-size: 16px;
     padding: 5px;
     transition: color 0.3s;
-  }
-  
-  #UploadSettingInfo button.selected {
+}
+
+#UploadSettingInfo button.selected {
     font-weight: bold;
     color: #EF4949;
-  }
-  
-  #UploadSettingInfo button:hover {
+}
+
+#UploadSettingInfo button:hover {
     color: #F5A3A3; /* Lighter red for hover */
-  }
+}

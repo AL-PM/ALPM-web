@@ -16,10 +16,13 @@ function CodeUploadTitle({ Title }) {
   );
 }
 
-function NewCodeBanner({ message, type }) {
+function NewCodeBanner({ message, type, onConfirm }) {
   return (
     <div className={`new-code-banner ${type}`}>
       {message}
+      {type === 'success' && (
+        <button onClick={onConfirm} className="confirm-button">확인</button>
+      )}
     </div>
   );
 }
@@ -95,11 +98,7 @@ function NewCodeUpload() {
 
       if (response.status === 200) {
         console.log(response);
-        setBanner({ show: true, message: '업로드가 완료되었습니다. 10초 뒤 사용자 코드 목록으로 이동합니다', type: 'success' });
-        setTimeout(() => {
-          setBanner({ show: false, message: '', type: '' });
-          navigator('/mypage/MyUploadCode');
-        }, 10000);
+        setBanner({ show: true, message: '업로드가 완료되었습니다. 확인 버튼을 눌러 사용자 코드 목록으로 이동합니다', type: 'success' });
       } else {
         setBanner({ show: true, message: '업로드에 실패하였습니다.', type: 'error' });
         setTimeout(() => {
@@ -117,12 +116,10 @@ function NewCodeUpload() {
     }
   };
 
-    console.log({
-      name: codeName,
-      language: language,
-      content: code.replace(/\t/g, "    "),
-      description: description
-    });
+  const handleConfirm = () => {
+    setBanner({ show: false, message: '', type: '' });
+    navigator('/mypage/MyUploadCode');
+  };
 
   if (upload) {
     return (
@@ -136,7 +133,7 @@ function NewCodeUpload() {
 
   return (
     <div>
-      {banner.show && <NewCodeBanner message={banner.message} type={banner.type} />}
+      {banner.show && <NewCodeBanner message={banner.message} type={banner.type} onConfirm={handleConfirm} />}
       <MainMenuBar page={"MyPage"} />
       <MyPageMenuBar MyPage={"5"} />
       <div id="CodeDetailBody">
