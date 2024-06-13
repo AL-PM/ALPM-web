@@ -25,6 +25,7 @@ function CodeDetailBody({ content, description, owner, language }) {
         }
         // Split by `//` to remove comments
 
+        /*
         let codeLine;
 
         if (language === "PYTHON")
@@ -33,6 +34,9 @@ function CodeDetailBody({ content, description, owner, language }) {
             codeLine = data[i].split("//")[0];
 
         finalCode += codeLine + "\n";
+        */
+       
+        finalCode += data[i] + "\n";
     }
 
     // TextArea row 설정을 위해 코드 전체의 줄 수 계산
