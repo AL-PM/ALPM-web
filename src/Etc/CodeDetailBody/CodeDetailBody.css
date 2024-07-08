@@ -93,9 +93,7 @@
 
 #CodeModNDelBtn{
     width: 20%;
-    height : 8vh;
-    margin-top: 1vh;
-    margin-bottom: 1vh;
+    height : 6vh;
     margin-right: 2.5vw;
 
     border: 1px solid #ddd; /* 연한 회색 경계선 */
