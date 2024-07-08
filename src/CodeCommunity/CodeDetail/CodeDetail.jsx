@@ -169,7 +169,7 @@ function CodeDetail() {
         <div id="CodeDetail">
             <MainMenuBar page={state.site} />
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.id === 1 ? "AL-PM" : codeInfo.owner.name} name={codeInfo.name} />
-            <CodeDetailBody content={codeInfo.original} description={codeInfo.description} language={codeInfo.language} owner={codeInfo.owner} />
+            <CodeDetailBody site={state.site} content={codeInfo.original} description={codeInfo.description} language={codeInfo.language} owner={codeInfo.owner} />
             <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo.content} codeId={state.id} language={codeInfo.language}/>
         </div>
     );

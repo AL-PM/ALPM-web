@@ -12,7 +12,7 @@ function CodeDetailTitle({ Title }) {
     );
 }
 
-function CodeDetailBody({ content, description, owner, language }) {
+function CodeDetailBody({ content, description, owner, site }) {
     let finalCode = "";
 
     const data = content.split("\n");
@@ -101,7 +101,7 @@ function CodeDetailBody({ content, description, owner, language }) {
                     />
                     <span>{owner.id === 1 ? "AL-PM" : owner.name}</span>
                 </div>
-                <button id="CodeModNDelBtn">코드 수정 및 삭제</button>
+                <button id="CodeModNDelBtn" style={{ color: site === "CodeGroup" ? "#009418" : "#FF6B00" }} >코드 수정 및 삭제</button>
             </div>
             
         </div>
