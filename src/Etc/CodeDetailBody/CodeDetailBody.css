@@ -71,14 +71,12 @@
     gap: 30px;
     font-size: large;
     display: flex;
-    align-items: center;
-
-    
+    align-items: center;  
 }
 
 #UserContentContainer{
     margin-top: 15px;
-    width: 80vw;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
