@@ -102,10 +102,11 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
     );
 }
 
-function CodeDelBtn(){
+function CodeDelBtn({site}){
     return(
         <div id='CodeDelBtnConatiner'>
-            <button id='CodeDelBtn'>코드 삭제하기</button>
+            <button id='CodeModDelBtn' style={{ color: site === "CodeGroup" ? "#009418" : "#FF6B00" }}>코드 수정</button>
+            <button id='CodeModDelBtn' style={{ color: site === "CodeGroup" ? "#009418" : "#FF6B00" }}>코드 삭제</button>
         </div>
     )
 } 
@@ -179,7 +180,7 @@ function CodeDetail() {
             <CodeDetailInfo verified={codeInfo.verified} language={codeInfo.language} owner={codeInfo.owner.id === 1 ? "AL-PM" : codeInfo.owner.name} name={codeInfo.name} />
             <CodeDetailBody content={codeInfo.original} description={codeInfo.description} language={codeInfo.language} owner={codeInfo.owner} />
             <CodeFollowBtn site={state.site} codeGroupInfo={codeGroupInfo.content} codeId={state.id} language={codeInfo.language}/>
-            <CodeDelBtn />
+            <CodeDelBtn site={state.site} />
         </div>
     );
 }
