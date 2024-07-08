@@ -92,15 +92,18 @@ function CodeDetailBody({ content, description, owner, language }) {
                 <ReactMarkdown>{sanitizedDescription}</ReactMarkdown>
             </div>
             <CodeDetailTitle Title={"작성자"} />
-            <div id="UserContent">
-                <img
-                    id="CodeDetailUserProfile"
-                    src={owner.profile}
-                    alt="User Profile"
-                />
-                <span>{owner.id === 1 ? "AL-PM" : owner.name}</span>
-                <button>코드 수정 및 삭제</button>
+            <div id="UserContentContainer">
+                <div id="UserContent">
+                    <img
+                        id="CodeDetailUserProfile"
+                        src={owner.profile}
+                        alt="User Profile"
+                    />
+                    <span>{owner.id === 1 ? "AL-PM" : owner.name}</span>
+                </div>
+                <button id="CodeModNDelBtn">코드 수정 및 삭제</button>
             </div>
+            
         </div>
     );
 }
