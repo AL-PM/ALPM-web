@@ -55,6 +55,8 @@
 
 #CodeDelBtn{
     width: 85vw;
+    height : 7.5vh;
+    margin-bottom: 7.5vh;
     margin-left: 7.5vw;
     margin-right: 7.5vw;
     display: flex;
