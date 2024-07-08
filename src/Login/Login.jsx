@@ -3,13 +3,83 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import googleLogo from './img/Google-Logo.png';
 import { HashLoader } from 'react-spinners';
-import './Login.css';
+import styled from 'styled-components';
+
+const BannerWrapper = styled.div`
+  font-family: 'SUITE-Regular';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  z-index: 1000;
+  font-size: 18px;
+  transition: transform 0.5s ease-in-out;
+  background-color: ${props => (props.type === 'success' ? '#4bc5fe' : '#ff8f87')};
+  color: white;
+`;
+
+const LoginWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const MainLogo = styled.span`
+  margin-top: 35vh;
+  font-size: 90px;
+`;
+
+const Description = styled.span`
+  margin-top: 1vh;
+  font-size: 30px;
+  margin-bottom: 15vh;
+`;
+
+const GoogleBtnContainer = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+const GoogleLogo = styled.img`
+  height: 5vh;
+`;
+
+const GoogleBtn = styled.button`
+  display: flex;
+  gap: 30px;
+  border: 0;
+  padding-right: 30px;
+  padding-left: 30px;
+  align-items: center;
+  justify-items: center;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+`;
+
+const LoaderWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoaderText = styled.span`
+  margin-top: 30px;
+  color: #5C4EFF;
+`;
 
 function Banner({ message, type }) {
   return (
-    <div className={`banner ${type}`}>
+    <BannerWrapper type={type}>
       {message}
-    </div>
+    </BannerWrapper>
   );
 }
 
@@ -66,24 +136,24 @@ function Login() {
   }, [navigate]);
 
   return (
-    <div id='Login'>
+    <LoginWrapper>
       {banner.show && <Banner message={banner.message} type={banner.type} />}
-      <span id='LoginMainLogo'>AL-PM</span>
-      <span id='LoginDesctiption'>새로운 알고리즘 학습의 시작!</span>
+      <MainLogo>AL-PM</MainLogo>
+      <Description>새로운 알고리즘 학습의 시작!</Description>
       {loading ?
-        <div style={{ display: "flex", flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <LoaderWrapper>
           <HashLoader color={"#5C4EFF"} speedMultiplier={0.8} />
-          <span style={{ marginTop: "30px", color: "#5C4EFF" }}>로그인 시도중</span>
-        </div>
+          <LoaderText>로그인 시도중</LoaderText>
+        </LoaderWrapper>
         :
-        <div id='GoogleBtnContainer'>
-          <button id='GoogleBtn' onClick={handleLogin} disabled={loading}>
-            <img id='loginGoogleLogo' src={googleLogo} alt="googleLogo" />
+        <GoogleBtnContainer>
+          <GoogleBtn onClick={handleLogin} disabled={loading}>
+            <GoogleLogo src={googleLogo} alt="googleLogo" />
             <span> 구글로 로그인하기 </span>
-          </button>
-        </div>
+          </GoogleBtn>
+        </GoogleBtnContainer>
       }
-    </div>
+    </LoginWrapper>
   );
 }
 
