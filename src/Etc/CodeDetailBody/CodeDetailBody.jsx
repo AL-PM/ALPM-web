@@ -99,6 +99,7 @@ function CodeDetailBody({ content, description, owner, language }) {
                     alt="User Profile"
                 />
                 <span>{owner.id === 1 ? "AL-PM" : owner.name}</span>
+                <button>코드 수정 및 변경</button>
             </div>
         </div>
     );
