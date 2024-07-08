@@ -127,7 +127,7 @@ function Login() {
           // Reset loading state and show the Google button again after 3 seconds
           setTimeout(() => {
             setLoading(false);
-            window.location.reload();
+            window.location.href = `https://alpm.pages.dev/`;
           }, 3000);
         });
     } else {
