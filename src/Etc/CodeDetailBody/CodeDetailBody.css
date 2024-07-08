@@ -69,23 +69,26 @@
     display: flex;
     justify-content: start;
     gap: 30px;
-    margin-top: 15px;
     font-size: large;
     display: flex;
     align-items: center;
 
+    
+}
+
+#UserContentContainer{
+    margin-top: 15px;
+    width: 80vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
     background-color: #fff; /* 배경색을 흰색으로 */
     transition: box-shadow 0.3s ease; /* 그림자 변화에 대한 트랜지션 */
-}
-
-#UserContentContainer{
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    height: 10vh;
 }
 
 #CodeModNDelBtn{
