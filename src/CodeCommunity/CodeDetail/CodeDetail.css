@@ -53,7 +53,8 @@
     display: flex;
     margin-left: 7.5vw;
     margin-right: 7.5vw;
-    margin-bottom: 7.5vh;
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
     gap:5vw;
 }
 
