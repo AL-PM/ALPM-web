@@ -9,6 +9,7 @@ import MyProfile from "./MyPage/MyProfile/MyProfile";
 import MyCodeBoard from "./MyPage/MyCodeBoard/MyCodeBoard";
 import MyCodeGroup from "./MyPage/MyCodeGroup/MyCodeGroup";
 import MyUploadCode from "./MyPage/MyUploadCode/MyUploadCode";
+import CodeMod from "./CodeCommunity/CodeMod/CodeMod";
 import Login from "./Login/Login";
 
 
@@ -21,6 +22,7 @@ function App(){
                 <Route path="/study/" element={<StudyHome />} />
                 <Route path="/code/" element={<CodeHome />} />
                 <Route path="/code/Detail" element={<CodeDetail />} />
+                <Route path="/code/Mod" element={<CodeMod />} />
                 <Route path="/codegroup/" element={<CodeGroupHome />} />
                 <Route path="/codegroup/Detail" element={<CodeGroupDetail />} />
                 <Route path="/mypage/" element={<MyProfile />} />
