@@ -93,6 +93,8 @@
     width: 20%;
     height : 6vh;
     margin-right: 2.5vw;
+    font-family: 'SUITE-Regular';
+    font-weight: bold;
 
     border: 1px solid #ddd; /* 연한 회색 경계선 */
     border-radius: 8px; /* 모서리를 둥글게 */
