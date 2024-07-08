@@ -47,3 +47,15 @@
     display: flex;
     flex-direction: column;
 }
+
+#CodeDelBtnConatiner{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+#CodeDelBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

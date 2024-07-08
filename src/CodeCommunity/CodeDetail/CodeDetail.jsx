@@ -104,8 +104,8 @@ function CodeFollowBtn({ site , codeGroupInfo, codeId, language }) {
 
 function CodeDelBtn(){
     return(
-        <div>
-
+        <div id='CodeDelBtnConatiner'>
+            <button id='CodeDelBtn'>코드 삭제하기</button>
         </div>
     )
 } 
