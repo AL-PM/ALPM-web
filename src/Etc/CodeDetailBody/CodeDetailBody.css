@@ -65,6 +65,7 @@
 
 #UserContent{
     height: 10vh;
+    width: 70%;
     display: flex;
     justify-content: start;
     gap: 30px;
@@ -81,12 +82,14 @@
 }
 
 #UserContentContainer{
+    width: 95%;
     display: flex;
     justify-content: space-between;
     height: 10vh;
 }
 
 #CodeModNDelBtn{
+    width: 20%;
     height : 8vh;
     margin-top: 1vh;
     margin-bottom: 1vh;
