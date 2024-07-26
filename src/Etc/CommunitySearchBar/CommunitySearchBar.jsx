@@ -72,9 +72,9 @@ function CommunitySearchBar({ secondTag, language, setLanguage, reference, setRe
                 placeholder="키워드를 입력해주세요"
             />
             {searchIsOn ? (
-                <button id="DataLoadbutton" onClick={searchResetBtn}> 전체 코드보기 </button>
+                <button id="DataLoadbutton" onClick={searchResetBtn}> 검색 비활성화하기 </button>
             ) : (
-                <button id="DataLoadbutton" onClick={searchButton}> 검색하기 </button>
+                <button id="DataLoadbutton" onClick={searchButton}> 검색 활성화하기 </button>
             )}
         </div>
     );
