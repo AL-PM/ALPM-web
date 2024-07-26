@@ -1,61 +1,61 @@
-#StudyHomeStudybar{
+#StudyHomeStudybar {
     width: 85vw;
-    margin-top: 7.5vh;    
-    margin-left : 7.5vw;
+    margin-top: 7.5vh;
+    margin-left: 7.5vw;
     margin-right: 7.5vw;
     display: flex;
     justify-content: space-around;
     font-size: medium;
 }
 
-#StudyHomeSettingKeyword{
+#StudyHomeSettingKeyword {
     font-weight: bold;
 }
 
 
-#StudyHomeBody{
+#StudyHomeBody {
     width: 85vw;
     height: 55vh;
-    margin-top : 7.5vh;
-    margin-bottom: 10vh;    
-    margin-left : 7.5vw;
+    margin-top: 7.5vh;
+    margin-bottom: 10vh;
+    margin-left: 7.5vw;
     margin-right: 7.5vw;
-    border: 1px solid #ddd; /* 연한 회색 경계선 */
-    border-radius: 8px; /* 모서리를 둥글게 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
-    background-color: #fff; /* 배경색을 흰색으로 */
+    border: 1px solid #ddd;
+    /* 연한 회색 경계선 */
+    border-radius: 8px;
+    /* 모서리를 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 가벼운 그림자 */
+    background-color: #fff;
+    /* 배경색을 흰색으로 */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#StudyHome{
+#StudyHome {
     display: flex;
     flex-direction: column;
 }
 
 .banner {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'SUITE-Regular';
-    font-size: medium;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
     z-index: 1000;
-  }
-  
-  .banner.success {
-    border: 2px solid #5C4EFF;
-  }
-  
-  .banner.error {
-    border: 2px solid #ff8f87;
-    color: #ff8f87;
-  }
+    font-size: 18px;
+    transition: transform 0.5s ease-in-out;
+    color: white;
+}
+
+.banner.success {
+    background-color:#4bc5fe ;
+}
+
+.banner.error {
+    background-color:#ff8f87 ;
+}
